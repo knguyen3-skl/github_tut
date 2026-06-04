@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bv3a3b0ahmhck"]
+
+[ext_resource type="PackedScene" uid="uid://dyy8m1anw4rj8" path="res://scenes/witch.tscn" id="1_2q6dc"]
+
+[node name="Node2D" type="Node2D" unique_id=480188596]
+
+[node name="CharacterBody2D" parent="." unique_id=778114501 instance=ExtResource("1_2q6dc")]
+position = Vector2(276, 262)
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=409045862]
+zoom = Vector2(5, 5)
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
