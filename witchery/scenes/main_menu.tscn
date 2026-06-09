@@ -1,0 +1,268 @@
+[gd_scene format=3 uid="uid://bsk5h2kk8u24n"]
+
+[ext_resource type="Script" uid="uid://4hsw8x2rnv7s" path="res://scripts/main_menu.gd" id="1_5dd4i"]
+[ext_resource type="Texture2D" uid="uid://868s0i5owvck" path="res://assets/wood_tech.png" id="1_8ln24"]
+[ext_resource type="Texture2D" uid="uid://ds4j82vja3u3h" path="res://assets/grass2_tech.png" id="1_l6cm7"]
+[ext_resource type="Texture2D" uid="uid://dri8or757ah0y" path="res://assets/button_bold_tech.png" id="1_tbmy8"]
+[ext_resource type="Texture2D" uid="uid://bndrktykp16q1" path="res://assets/spider_web_tech.png" id="2_ekxnf"]
+[ext_resource type="Texture2D" uid="uid://dh7rlqwwyccdu" path="res://assets/spill_tech.png" id="2_oa1go"]
+[ext_resource type="Texture2D" uid="uid://dse4l0phdu1og" path="res://assets/web_tech.png" id="3_bqqt6"]
+[ext_resource type="Texture2D" uid="uid://crhc0alwbwdn3" path="res://assets/potion_purple_tech.png" id="3_tbmy8"]
+[ext_resource type="Texture2D" uid="uid://j57c4g7m4san" path="res://assets/spider_tech.png" id="4_wu84c"]
+[ext_resource type="Texture2D" uid="uid://cxlxhtffoja2o" path="res://assets/wand_tech.png" id="9_jk1qb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jk1qb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jk1qb"]
+bg_color = Color(1, 1, 1, 0.1764706)
+border_color = Color(0.8, 0.8, 0.8, 0.47058824)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 20
+
+[node name="Control" type="Control" unique_id=1435852163]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5dd4i")
+
+[node name="CanvasLayer4" type="CanvasLayer" parent="." unique_id=1773150188]
+
+[node name="Label" type="Label" parent="CanvasLayer4" unique_id=1025616268]
+z_index = 4
+offset_left = 522.0
+offset_top = 358.0
+offset_right = 643.0
+offset_bottom = 441.0
+theme_override_font_sizes/font_size = 60
+text = "Play"
+
+[node name="Label2" type="Label" parent="CanvasLayer4" unique_id=2142789637]
+z_index = 4
+offset_left = 468.0
+offset_top = 451.0
+offset_right = 697.0
+offset_bottom = 534.0
+theme_override_font_sizes/font_size = 60
+text = "Options"
+
+[node name="Label3" type="Label" parent="CanvasLayer4" unique_id=105274579]
+z_index = 4
+offset_left = 516.0
+offset_top = 549.0
+offset_right = 642.0
+offset_bottom = 632.0
+theme_override_font_sizes/font_size = 60
+text = "Quit"
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer4" unique_id=2000267097]
+offset_left = 431.0
+offset_top = 320.0
+offset_right = 527.0
+offset_bottom = 428.0
+scale = Vector2(3.2, 3.2)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_jk1qb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer4/PanelContainer" unique_id=1003170242]
+layout_mode = 2
+theme_override_constants/separation = -18
+
+[node name="TextureButton2" type="TextureButton" parent="CanvasLayer4/PanelContainer/VBoxContainer" unique_id=1658757833]
+z_index = 3
+layout_mode = 2
+texture_normal = ExtResource("1_tbmy8")
+texture_hover = ExtResource("1_tbmy8")
+stretch_mode = 0
+
+[node name="TextureButton3" type="TextureButton" parent="CanvasLayer4/PanelContainer/VBoxContainer" unique_id=1868145572]
+z_index = 3
+layout_mode = 2
+texture_normal = ExtResource("1_tbmy8")
+texture_hover = ExtResource("1_tbmy8")
+stretch_mode = 0
+
+[node name="TextureButton4" type="TextureButton" parent="CanvasLayer4/PanelContainer/VBoxContainer" unique_id=289547065]
+z_index = 3
+layout_mode = 2
+texture_normal = ExtResource("1_tbmy8")
+texture_hover = ExtResource("1_tbmy8")
+stretch_mode = 0
+
+[node name="GrassTech" type="Sprite2D" parent="CanvasLayer4" unique_id=1927997693]
+position = Vector2(575.71564, 324.71564)
+scale = Vector2(0.4059197, 0.42385626)
+texture = ExtResource("1_l6cm7")
+
+[node name="SpiderWebTech" type="Sprite2D" parent="CanvasLayer4" unique_id=1257892315]
+position = Vector2(50.715637, -6.2843623)
+rotation = -0.95434517
+scale = Vector2(5.5, 5.5)
+texture = ExtResource("2_ekxnf")
+
+[node name="WebTech" type="Sprite2D" parent="CanvasLayer4" unique_id=787326697]
+position = Vector2(1055.7156, 96.71564)
+scale = Vector2(6, 6)
+texture = ExtResource("3_bqqt6")
+
+[node name="SpiderTech" type="Sprite2D" parent="CanvasLayer4" unique_id=303293061]
+position = Vector2(1101.7156, 154.71564)
+scale = Vector2(4, 4)
+texture = ExtResource("4_wu84c")
+
+[node name="WoodTech" type="Sprite2D" parent="CanvasLayer4" unique_id=101451280]
+z_index = 2
+position = Vector2(112, 399)
+scale = Vector2(7, 7)
+texture = ExtResource("1_8ln24")
+
+[node name="WoodTech2" type="Sprite2D" parent="CanvasLayer4" unique_id=807811495]
+z_index = 2
+position = Vector2(112.00001, 495)
+scale = Vector2(7, 7)
+texture = ExtResource("1_8ln24")
+
+[node name="WoodTech3" type="Sprite2D" parent="CanvasLayer4" unique_id=2000636559]
+z_index = 2
+position = Vector2(112, 591)
+scale = Vector2(7, 7)
+texture = ExtResource("1_8ln24")
+
+[node name="WoodTech4" type="Sprite2D" parent="CanvasLayer4" unique_id=46882508]
+z_index = 2
+position = Vector2(336, 399)
+scale = Vector2(7, 7)
+texture = ExtResource("1_8ln24")
+
+[node name="WoodTech5" type="Sprite2D" parent="CanvasLayer4" unique_id=835799461]
+z_index = 2
+position = Vector2(336, 495)
+scale = Vector2(7, 7)
+texture = ExtResource("1_8ln24")
+
+[node name="WoodTech6" type="Sprite2D" parent="CanvasLayer4" unique_id=1218386514]
+z_index = 2
+position = Vector2(336, 591)
+scale = Vector2(7, 7)
+texture = ExtResource("1_8ln24")
+
+[node name="WoodTech7" type="Sprite2D" parent="CanvasLayer4" unique_id=794275102]
+z_index = 2
+position = Vector2(559, 399)
+scale = Vector2(7, 7)
+texture = ExtResource("1_8ln24")
+
+[node name="WoodTech8" type="Sprite2D" parent="CanvasLayer4" unique_id=2077429212]
+z_index = 2
+position = Vector2(559, 495)
+scale = Vector2(7, 7)
+texture = ExtResource("1_8ln24")
+
+[node name="WoodTech9" type="Sprite2D" parent="CanvasLayer4" unique_id=1390849914]
+z_index = 2
+position = Vector2(559, 591)
+scale = Vector2(7, 7)
+texture = ExtResource("1_8ln24")
+
+[node name="WoodTech10" type="Sprite2D" parent="CanvasLayer4" unique_id=57019511]
+z_index = 2
+position = Vector2(783, 399)
+scale = Vector2(7, 7)
+texture = ExtResource("1_8ln24")
+
+[node name="WoodTech11" type="Sprite2D" parent="CanvasLayer4" unique_id=3837561]
+z_index = 2
+position = Vector2(783, 495)
+scale = Vector2(7, 7)
+texture = ExtResource("1_8ln24")
+
+[node name="WoodTech12" type="Sprite2D" parent="CanvasLayer4" unique_id=1055801897]
+z_index = 2
+position = Vector2(783, 591)
+scale = Vector2(7, 7)
+texture = ExtResource("1_8ln24")
+
+[node name="WoodTech13" type="Sprite2D" parent="CanvasLayer4" unique_id=1090125320]
+z_index = 2
+position = Vector2(1007, 399)
+scale = Vector2(7, 7)
+texture = ExtResource("1_8ln24")
+
+[node name="WoodTech14" type="Sprite2D" parent="CanvasLayer4" unique_id=392254165]
+z_index = 2
+position = Vector2(1007, 495)
+scale = Vector2(7, 7)
+texture = ExtResource("1_8ln24")
+
+[node name="WoodTech15" type="Sprite2D" parent="CanvasLayer4" unique_id=1642389592]
+z_index = 2
+position = Vector2(1007, 591)
+scale = Vector2(7, 7)
+texture = ExtResource("1_8ln24")
+
+[node name="WoodTech16" type="Sprite2D" parent="CanvasLayer4" unique_id=636032443]
+z_index = 2
+position = Vector2(1230, 399)
+scale = Vector2(7, 7)
+texture = ExtResource("1_8ln24")
+
+[node name="WoodTech17" type="Sprite2D" parent="CanvasLayer4" unique_id=1430288268]
+z_index = 2
+position = Vector2(1230, 495)
+scale = Vector2(7, 7)
+texture = ExtResource("1_8ln24")
+
+[node name="WoodTech18" type="Sprite2D" parent="CanvasLayer4" unique_id=1028385640]
+z_index = 2
+position = Vector2(1230, 591)
+scale = Vector2(7, 7)
+texture = ExtResource("1_8ln24")
+
+[node name="Panel" type="Panel" parent="CanvasLayer4" unique_id=373398188]
+z_index = 1
+offset_left = 279.00003
+offset_top = 60.0
+offset_right = 319.00003
+offset_bottom = 100.0
+scale = Vector2(15, 15)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jk1qb")
+
+[node name="SpillTech" type="Sprite2D" parent="CanvasLayer4" unique_id=1858946924]
+z_index = 2
+position = Vector2(181, 549)
+scale = Vector2(7, 7)
+texture = ExtResource("2_oa1go")
+
+[node name="PotionPurpleTech" type="Sprite2D" parent="CanvasLayer4" unique_id=923958696]
+z_index = 2
+position = Vector2(67, 407)
+scale = Vector2(9, 9)
+texture = ExtResource("3_tbmy8")
+
+[node name="WandTech" type="Sprite2D" parent="CanvasLayer4" unique_id=1507196081]
+z_index = 2
+position = Vector2(959.99994, 536)
+rotation = 0.5414302
+scale = Vector2(6, 6)
+texture = ExtResource("9_jk1qb")
+
+[node name="Label4" type="Label" parent="CanvasLayer4" unique_id=1950023582]
+z_index = 4
+offset_left = 378.0
+offset_top = 69.0
+offset_right = 797.0
+offset_bottom = 342.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.14901961)
+theme_override_constants/shadow_offset_x = 20
+theme_override_constants/shadow_offset_y = 30
+theme_override_font_sizes/font_size = 200
+text = "Title"
+
+[connection signal="pressed" from="CanvasLayer4/PanelContainer/VBoxContainer/TextureButton2" to="." method="_play_pressed"]
+[connection signal="pressed" from="CanvasLayer4/PanelContainer/VBoxContainer/TextureButton3" to="." method="_options_pressed"]
+[connection signal="pressed" from="CanvasLayer4/PanelContainer/VBoxContainer/TextureButton4" to="." method="_quit_pressed"]

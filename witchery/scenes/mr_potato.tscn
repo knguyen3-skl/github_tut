@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://buj423pij3ll6"]
+
+[ext_resource type="Script" uid="uid://d21w3sj21drbf" path="res://scenes/mr_potato.gd" id="1_fkyqd"]
+[ext_resource type="Texture2D" uid="uid://c5mbis7qs17av" path="res://assets/mr_potato_tech.png" id="1_qspst"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fkyqd"]
+size = Vector2(28, 31)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v6t6g"]
+radius = 16.0
+height = 40.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_383pu"]
+radius = 64.0
+height = 128.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1071034293]
+script = ExtResource("1_fkyqd")
+
+[node name="MrPotatoTech" type="Sprite2D" parent="." unique_id=1160241202]
+texture = ExtResource("1_qspst")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=320596883]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_fkyqd")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=498338532]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2120059255]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_v6t6g")
+
+[node name="enemy_range" type="Area2D" parent="." unique_id=1627029690]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_range" unique_id=1919159147]
+shape = SubResource("CapsuleShape2D_383pu")

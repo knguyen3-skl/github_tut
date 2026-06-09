@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bv3a3b0ahmhck"]
 
 [ext_resource type="PackedScene" uid="uid://dyy8m1anw4rj8" path="res://scenes/witch.tscn" id="1_2q6dc"]
+[ext_resource type="PackedScene" uid="uid://buj423pij3ll6" path="res://scenes/mr_potato.tscn" id="2_w7c3h"]
 
 [node name="Node2D" type="Node2D" unique_id=480188596]
 
@@ -11,3 +12,6 @@ position = Vector2(276, 262)
 zoom = Vector2(5, 5)
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
+
+[node name="CharacterBody2D2" parent="." unique_id=1071034293 instance=ExtResource("2_w7c3h")]
+position = Vector2(390, 266)

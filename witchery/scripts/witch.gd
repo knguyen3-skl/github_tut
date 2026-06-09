@@ -14,3 +14,4 @@ func _process(delta: float) -> void:
 	direction.y = Input.get_axis("ui_up", "ui_down")
 	velocity = speed * direction.normalized()
 	move_and_slide()
+	
