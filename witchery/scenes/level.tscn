@@ -13,7 +13,7 @@ source_geometry_group_name = &"mr_potato_path"
 [node name="Node2D" type="Node2D" unique_id=480188596]
 
 [node name="CharacterBody2D" parent="." unique_id=778114501 instance=ExtResource("1_2q6dc")]
-position = Vector2(276, 262)
+position = Vector2(235, 266)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=409045862]
 zoom = Vector2(5, 5)
