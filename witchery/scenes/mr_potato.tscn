@@ -14,8 +14,9 @@ height = 40.0
 radius = 64.0
 height = 128.0
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1071034293]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1071034293 node_paths=PackedStringArray("navigation_agent_2d")]
 script = ExtResource("1_fkyqd")
+navigation_agent_2d = NodePath("NavigationAgent2D")
 
 [node name="MrPotatoTech" type="Sprite2D" parent="." unique_id=1160241202]
 texture = ExtResource("1_qspst")
@@ -34,3 +35,8 @@ shape = SubResource("CapsuleShape2D_v6t6g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_range" unique_id=1919159147]
 shape = SubResource("CapsuleShape2D_383pu")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1453686346]
+debug_enabled = true
+
+[connection signal="area_entered" from="enemy_range" to="." method="_on_enemy_range_area_entered"]

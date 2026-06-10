@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed: int = 300
+var speed: int = 230
 var health: int = 10
 
 # Called when the node enters the scene tree for the first time.

@@ -16,7 +16,7 @@ script = ExtResource("1_b1vsk")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1716899384]
 shape = SubResource("RectangleShape2D_b1vsk")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1710240890]
+[node name="Area2D" type="Area2D" parent="." unique_id=1710240890 groups=["player"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2139358610]
 shape = SubResource("CapsuleShape2D_hgjeu")
