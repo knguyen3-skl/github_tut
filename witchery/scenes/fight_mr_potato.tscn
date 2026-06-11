@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://cpjxoxx6eqiu7"]
+
+[ext_resource type="Texture2D" uid="uid://ds4j82vja3u3h" path="res://assets/grass2_tech.png" id="1_1snm0"]
+[ext_resource type="Texture2D" uid="uid://c5mbis7qs17av" path="res://assets/mr_potato_tech.png" id="2_w2b38"]
+[ext_resource type="Texture2D" uid="uid://bq2s64pkdo8dh" path="res://assets/witch_tech.png" id="3_lt1b2"]
+[ext_resource type="Texture2D" uid="uid://s7x7ibmpwe2p" path="res://assets/bar_tech.png" id="4_lt1b2"]
+[ext_resource type="Texture2D" uid="uid://blq3vehgl7m87" path="res://assets/energy_tech.png" id="5_44pj3"]
+[ext_resource type="Texture2D" uid="uid://ryjhr7md15fx" path="res://assets/heart_tech.png" id="6_nlw5s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w2b38"]
+bg_color = Color(0, 0, 0, 0.25490198)
+border_color = Color(0.8, 0.8, 0.8, 0.47058824)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 20
+
+[node name="Node2D" type="Node2D" unique_id=1641416975]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=791422463]
+
+[node name="Grass2Tech" type="Sprite2D" parent="CanvasLayer" unique_id=1549348258]
+position = Vector2(555.99994, 323.34998)
+scale = Vector2(0.42001408, 0.42176467)
+texture = ExtResource("1_1snm0")
+
+[node name="MrPotatoTech" type="Sprite2D" parent="CanvasLayer" unique_id=732002285]
+position = Vector2(831.00006, 376.00003)
+scale = Vector2(6.5, 6.5)
+texture = ExtResource("2_w2b38")
+
+[node name="WitchTech" type="Sprite2D" parent="CanvasLayer" unique_id=14330415]
+position = Vector2(321, 353.00003)
+scale = Vector2(6, 6)
+texture = ExtResource("3_lt1b2")
+
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=450681592]
+z_index = 1
+texture_filter = 1
+offset_left = 41.000004
+offset_top = 32.0
+offset_right = 59.000004
+offset_bottom = 42.2
+scale = Vector2(15, 15)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w2b38")
+
+[node name="hp_bar" type="Sprite2D" parent="CanvasLayer" unique_id=107123261]
+position = Vector2(180, 72)
+scale = Vector2(4, 4)
+texture = ExtResource("4_lt1b2")
+
+[node name="sp_bar" type="Sprite2D" parent="CanvasLayer" unique_id=780885395]
+position = Vector2(179, 140)
+scale = Vector2(4, 4)
+texture = ExtResource("4_lt1b2")
+
+[node name="EnergyTech" type="Sprite2D" parent="CanvasLayer" unique_id=218121289]
+position = Vector2(85.00001, 147)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("5_44pj3")
+
+[node name="HeartTech" type="Sprite2D" parent="CanvasLayer" unique_id=1928399972]
+position = Vector2(87, 79)
+scale = Vector2(1.7, 1.5375001)
+texture = ExtResource("6_nlw5s")
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=827504252]
+z_index = 2
+offset_left = 108.0
+offset_top = 35.0
+offset_right = 131.0
+offset_bottom = 58.0
+text = "HP"
+
+[node name="Label2" type="Label" parent="CanvasLayer" unique_id=1961207939]
+z_index = 2
+offset_left = 108.0
+offset_top = 103.0
+offset_right = 131.0
+offset_bottom = 126.0
+text = "SP"
+
+[node name="Panel2" type="Panel" parent="CanvasLayer" unique_id=962192921]
+z_index = 1
+texture_filter = 1
+offset_left = 375.0
+offset_top = 51.0
+offset_right = 415.0
+offset_bottom = 56.0
+scale = Vector2(10, 10)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w2b38")
