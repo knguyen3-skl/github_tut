@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bxp4yqdwso2qx"]
+
+[node name="Node2D" type="Node2D" unique_id=742953802]
+
+[node name="Label" type="Label" parent="." unique_id=113260548]
+offset_left = 280.0
+offset_top = 157.0
+offset_right = 810.0
+offset_bottom = 430.0
+theme_override_font_sizes/font_size = 200
+text = "Loser"

@@ -1,11 +1,16 @@
 [gd_scene format=3 uid="uid://cpjxoxx6eqiu7"]
 
 [ext_resource type="Texture2D" uid="uid://ds4j82vja3u3h" path="res://assets/grass2_tech.png" id="1_1snm0"]
+[ext_resource type="Script" uid="uid://cpjn6q3cbsax6" path="res://scenes/fight_mr_potato.gd" id="1_tlxmr"]
 [ext_resource type="Texture2D" uid="uid://c5mbis7qs17av" path="res://assets/mr_potato_tech.png" id="2_w2b38"]
 [ext_resource type="Texture2D" uid="uid://bq2s64pkdo8dh" path="res://assets/witch_tech.png" id="3_lt1b2"]
 [ext_resource type="Texture2D" uid="uid://s7x7ibmpwe2p" path="res://assets/bar_tech.png" id="4_lt1b2"]
 [ext_resource type="Texture2D" uid="uid://blq3vehgl7m87" path="res://assets/energy_tech.png" id="5_44pj3"]
 [ext_resource type="Texture2D" uid="uid://ryjhr7md15fx" path="res://assets/heart_tech.png" id="6_nlw5s"]
+[ext_resource type="Texture2D" uid="uid://usejjjt7c451" path="res://assets/hpbar_tech.png" id="7_nlw5s"]
+[ext_resource type="Texture2D" uid="uid://khmv72dyodxn" path="res://assets/sheild_tech.png" id="9_2yrmm"]
+[ext_resource type="Texture2D" uid="uid://cxlxhtffoja2o" path="res://assets/wand_tech.png" id="10_2yrmm"]
+[ext_resource type="Texture2D" uid="uid://crhc0alwbwdn3" path="res://assets/potion_purple_tech.png" id="11_y7np1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w2b38"]
 bg_color = Color(0, 0, 0, 0.25490198)
@@ -16,7 +21,73 @@ corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 corner_detail = 20
 
-[node name="Node2D" type="Node2D" unique_id=1641416975]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_44pj3"]
+bg_color = Color(0, 0, 0, 0.25490198)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nlw5s"]
+bg_color = Color(0, 0, 0, 0.25490198)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y7np1"]
+bg_color = Color(0, 0, 0, 0.25490198)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wgrxm"]
+bg_color = Color(0, 0, 0, 0.39215687)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rwdpr"]
+bg_color = Color(0, 0, 0, 0.39215687)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tlxmr"]
+bg_color = Color(0, 0, 0, 0.39215687)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2yrmm"]
+bg_color = Color(0, 0, 0, 0.39215687)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7268j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hgm5l"]
+bg_color = Color(0.7137255, 0.2509804, 0.21960784, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3rw6t"]
+bg_color = Color(0.19607843, 0.7254902, 0.83137256, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_un3r7"]
+bg_color = Color(0.5372549, 0.1882353, 0.16470589, 1)
+
+[node name="Node2D" type="Node2D" unique_id=1641416975 node_paths=PackedStringArray("health_ui", "sp_ui", "potato_ui", "health", "sp", "potato_health", "first_turn_p", "first_turn_w", "second_turn_p", "second_turn_w", "third_turn_p", "third_turn_w", "timer")]
+script = ExtResource("1_tlxmr")
+health_ui = NodePath("CanvasLayer/ProgressBar")
+sp_ui = NodePath("CanvasLayer/ProgressBar2")
+potato_ui = NodePath("CanvasLayer/ProgressBar3")
+health = NodePath("CanvasLayer/Label5")
+sp = NodePath("CanvasLayer/Label6")
+potato_health = NodePath("CanvasLayer/Label7")
+first_turn_p = NodePath("CanvasLayer/Panel5")
+first_turn_w = NodePath("CanvasLayer/WitchTech4")
+second_turn_p = NodePath("CanvasLayer/Panel4")
+second_turn_w = NodePath("CanvasLayer/WitchTech3")
+third_turn_p = NodePath("CanvasLayer/Panel3")
+third_turn_w = NodePath("CanvasLayer/WitchTech2")
+timer = NodePath("Timer")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=791422463]
 
@@ -26,13 +97,13 @@ scale = Vector2(0.42001408, 0.42176467)
 texture = ExtResource("1_1snm0")
 
 [node name="MrPotatoTech" type="Sprite2D" parent="CanvasLayer" unique_id=732002285]
-position = Vector2(831.00006, 376.00003)
-scale = Vector2(6.5, 6.5)
+position = Vector2(832.00006, 371)
+scale = Vector2(6, 6)
 texture = ExtResource("2_w2b38")
 
 [node name="WitchTech" type="Sprite2D" parent="CanvasLayer" unique_id=14330415]
-position = Vector2(321, 353.00003)
-scale = Vector2(6, 6)
+position = Vector2(322, 360)
+scale = Vector2(5.5, 5.5)
 texture = ExtResource("3_lt1b2")
 
 [node name="Panel" type="Panel" parent="CanvasLayer" unique_id=450681592]
@@ -47,21 +118,25 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_w2b38")
 
 [node name="hp_bar" type="Sprite2D" parent="CanvasLayer" unique_id=107123261]
+z_index = 1
 position = Vector2(180, 72)
 scale = Vector2(4, 4)
 texture = ExtResource("4_lt1b2")
 
 [node name="sp_bar" type="Sprite2D" parent="CanvasLayer" unique_id=780885395]
+z_index = 1
 position = Vector2(179, 140)
 scale = Vector2(4, 4)
 texture = ExtResource("4_lt1b2")
 
 [node name="EnergyTech" type="Sprite2D" parent="CanvasLayer" unique_id=218121289]
+z_index = 1
 position = Vector2(85.00001, 147)
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("5_44pj3")
 
 [node name="HeartTech" type="Sprite2D" parent="CanvasLayer" unique_id=1928399972]
+z_index = 1
 position = Vector2(87, 79)
 scale = Vector2(1.7, 1.5375001)
 texture = ExtResource("6_nlw5s")
@@ -76,19 +151,194 @@ text = "HP"
 
 [node name="Label2" type="Label" parent="CanvasLayer" unique_id=1961207939]
 z_index = 2
-offset_left = 108.0
+offset_left = 109.0
 offset_top = 103.0
-offset_right = 131.0
+offset_right = 132.0
 offset_bottom = 126.0
 text = "SP"
 
-[node name="Panel2" type="Panel" parent="CanvasLayer" unique_id=962192921]
+[node name="Panel2" type="Panel" parent="CanvasLayer" unique_id=910814320]
+offset_left = 384.0
+offset_top = 43.0
+offset_right = 734.0
+offset_bottom = 68.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_44pj3")
+
+[node name="Panel3" type="Panel" parent="CanvasLayer" unique_id=1940380667]
+offset_left = 448.0
+offset_top = 13.0
+offset_right = 508.0
+offset_bottom = 73.0
+rotation = 0.7853982
+theme_override_styles/panel = SubResource("StyleBoxFlat_nlw5s")
+
+[node name="WitchTech2" type="Sprite2D" parent="CanvasLayer" unique_id=1443893441]
+position = Vector2(449, 53)
+scale = Vector2(2, 2)
+texture = ExtResource("3_lt1b2")
+region_enabled = true
+region_rect = Rect2(2, 0, 28, 27)
+
+[node name="Panel4" type="Panel" parent="CanvasLayer" unique_id=802424938]
+offset_left = 556.4264
+offset_top = 14.0
+offset_right = 616.4264
+offset_bottom = 74.0
+rotation = 0.7853982
+theme_override_styles/panel = SubResource("StyleBoxFlat_nlw5s")
+
+[node name="WitchTech3" type="Sprite2D" parent="CanvasLayer" unique_id=1074610998]
+position = Vector2(557.4264, 54)
+scale = Vector2(2, 2)
+texture = ExtResource("3_lt1b2")
+region_enabled = true
+region_rect = Rect2(2, 0, 28, 27)
+
+[node name="Panel5" type="Panel" parent="CanvasLayer" unique_id=1629405125]
+offset_left = 668.4264
+offset_top = 14.0
+offset_right = 728.4264
+offset_bottom = 74.0
+rotation = 0.7853982
+theme_override_styles/panel = SubResource("StyleBoxFlat_nlw5s")
+
+[node name="WitchTech4" type="Sprite2D" parent="CanvasLayer" unique_id=2088521862]
+position = Vector2(669.4264, 54)
+scale = Vector2(2, 2)
+texture = ExtResource("3_lt1b2")
+region_enabled = true
+region_rect = Rect2(2, 0, 28, 27)
+
+[node name="Polygon2D" type="Polygon2D" parent="CanvasLayer" unique_id=709534337]
+position = Vector2(816, 188)
+scale = Vector2(0.8, 0.8)
+color = Color(0.7137255, 0.2509804, 0.21960784, 1)
+polygon = PackedVector2Array(20, 70, 40, 30, 0, 30)
+uv = PackedVector2Array(50.471344, -0.8537636, 79.851776, 39.613644, 24.971344, 39.613644)
+
+[node name="HpbarTech" type="Sprite2D" parent="CanvasLayer" unique_id=1738118211]
 z_index = 1
-texture_filter = 1
-offset_left = 375.0
-offset_top = 51.0
-offset_right = 415.0
-offset_bottom = 56.0
-scale = Vector2(10, 10)
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_w2b38")
+position = Vector2(831, 506)
+scale = Vector2(5, 5)
+texture = ExtResource("7_nlw5s")
+
+[node name="Label3" type="Label" parent="CanvasLayer" unique_id=1808477000]
+offset_left = 771.0
+offset_top = 468.0
+offset_right = 811.0
+offset_bottom = 491.0
+theme_override_font_sizes/font_size = 16
+text = "HP"
+
+[node name="Label4" type="Label" parent="CanvasLayer" unique_id=970702815]
+offset_left = 783.0
+offset_top = 248.0
+offset_right = 880.0
+offset_bottom = 276.0
+theme_override_font_sizes/font_size = 20
+text = "Mr Potato"
+
+[node name="Button" type="Button" parent="CanvasLayer" unique_id=429305071]
+offset_left = 525.0
+offset_top = 526.0
+offset_right = 560.0
+offset_bottom = 566.0
+scale = Vector2(2, 2)
+theme_override_styles/normal = SubResource("StyleBoxFlat_y7np1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wgrxm")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_rwdpr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tlxmr")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_2yrmm")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_7268j")
+
+[node name="SheildTech" type="Sprite2D" parent="CanvasLayer/Button" unique_id=576953612]
+position = Vector2(17.5, 22)
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("9_2yrmm")
+
+[node name="Button2" type="Button" parent="CanvasLayer" unique_id=88902813]
+offset_left = 425.0
+offset_top = 526.0
+offset_right = 460.0
+offset_bottom = 566.0
+scale = Vector2(2, 2)
+theme_override_styles/normal = SubResource("StyleBoxFlat_y7np1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wgrxm")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_rwdpr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tlxmr")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_2yrmm")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_7268j")
+
+[node name="WandTech" type="Sprite2D" parent="CanvasLayer/Button2" unique_id=1393629923]
+position = Vector2(17.5, 20.5)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("10_2yrmm")
+
+[node name="Button3" type="Button" parent="CanvasLayer" unique_id=182097734]
+offset_left = 625.0
+offset_top = 526.0
+offset_right = 660.0
+offset_bottom = 566.0
+scale = Vector2(2, 2)
+theme_override_styles/normal = SubResource("StyleBoxFlat_y7np1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wgrxm")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_rwdpr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tlxmr")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_2yrmm")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_7268j")
+
+[node name="PotionPurpleTech" type="Sprite2D" parent="CanvasLayer/Button3" unique_id=440828728]
+position = Vector2(17.5, 19.5)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("11_y7np1")
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" unique_id=1273691482]
+offset_left = 112.0
+offset_top = 68.0
+offset_right = 276.0
+offset_bottom = 88.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_hgm5l")
+show_percentage = false
+
+[node name="Label5" type="Label" parent="CanvasLayer" unique_id=671087974]
+z_index = 1
+offset_left = 261.0
+offset_top = 35.0
+offset_right = 301.0
+offset_bottom = 58.0
+
+[node name="ProgressBar2" type="ProgressBar" parent="CanvasLayer" unique_id=148689889]
+offset_left = 111.0
+offset_top = 136.0
+offset_right = 275.0
+offset_bottom = 156.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_3rw6t")
+show_percentage = false
+
+[node name="Label6" type="Label" parent="CanvasLayer" unique_id=803901954]
+z_index = 1
+offset_left = 266.0
+offset_top = 104.0
+offset_right = 306.0
+offset_bottom = 127.0
+
+[node name="ProgressBar3" type="ProgressBar" parent="CanvasLayer" unique_id=707965587]
+offset_left = 771.0
+offset_top = 492.0
+offset_right = 891.0
+offset_bottom = 519.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_un3r7")
+show_percentage = false
+
+[node name="Label7" type="Label" parent="CanvasLayer" unique_id=602658453]
+offset_left = 875.0
+offset_top = 468.0
+offset_right = 915.0
+offset_bottom = 491.0
+
+[node name="Timer" type="Timer" parent="." unique_id=2088150919]
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_defend"]
+[connection signal="pressed" from="CanvasLayer/Button2" to="." method="_attack"]
+[connection signal="pressed" from="CanvasLayer/Button3" to="." method="_potion"]
+[connection signal="timeout" from="Timer" to="." method="_potato_turn"]

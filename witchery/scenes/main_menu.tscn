@@ -94,6 +94,7 @@ texture_hover = ExtResource("1_tbmy8")
 stretch_mode = 0
 
 [node name="GrassTech" type="Sprite2D" parent="CanvasLayer4" unique_id=1927997693]
+z_index = -1
 position = Vector2(575.71564, 324.71564)
 scale = Vector2(0.4059197, 0.42385626)
 texture = ExtResource("1_l6cm7")
@@ -121,103 +122,103 @@ scale = Vector2(7, 7)
 texture = ExtResource("1_8ln24")
 
 [node name="WoodTech2" type="Sprite2D" parent="CanvasLayer4" unique_id=807811495]
-z_index = 2
+z_index = 1
 position = Vector2(112.00001, 495)
 scale = Vector2(7, 7)
 texture = ExtResource("1_8ln24")
 
 [node name="WoodTech3" type="Sprite2D" parent="CanvasLayer4" unique_id=2000636559]
-z_index = 2
+z_index = 1
 position = Vector2(112, 591)
 scale = Vector2(7, 7)
 texture = ExtResource("1_8ln24")
 
 [node name="WoodTech4" type="Sprite2D" parent="CanvasLayer4" unique_id=46882508]
-z_index = 2
+z_index = 1
 position = Vector2(336, 399)
 scale = Vector2(7, 7)
 texture = ExtResource("1_8ln24")
 
 [node name="WoodTech5" type="Sprite2D" parent="CanvasLayer4" unique_id=835799461]
-z_index = 2
+z_index = 1
 position = Vector2(336, 495)
 scale = Vector2(7, 7)
 texture = ExtResource("1_8ln24")
 
 [node name="WoodTech6" type="Sprite2D" parent="CanvasLayer4" unique_id=1218386514]
-z_index = 2
+z_index = 1
 position = Vector2(336, 591)
 scale = Vector2(7, 7)
 texture = ExtResource("1_8ln24")
 
 [node name="WoodTech7" type="Sprite2D" parent="CanvasLayer4" unique_id=794275102]
-z_index = 2
+z_index = 1
 position = Vector2(559, 399)
 scale = Vector2(7, 7)
 texture = ExtResource("1_8ln24")
 
 [node name="WoodTech8" type="Sprite2D" parent="CanvasLayer4" unique_id=2077429212]
-z_index = 2
+z_index = 1
 position = Vector2(559, 495)
 scale = Vector2(7, 7)
 texture = ExtResource("1_8ln24")
 
 [node name="WoodTech9" type="Sprite2D" parent="CanvasLayer4" unique_id=1390849914]
-z_index = 2
+z_index = 1
 position = Vector2(559, 591)
 scale = Vector2(7, 7)
 texture = ExtResource("1_8ln24")
 
 [node name="WoodTech10" type="Sprite2D" parent="CanvasLayer4" unique_id=57019511]
-z_index = 2
+z_index = 1
 position = Vector2(783, 399)
 scale = Vector2(7, 7)
 texture = ExtResource("1_8ln24")
 
 [node name="WoodTech11" type="Sprite2D" parent="CanvasLayer4" unique_id=3837561]
-z_index = 2
+z_index = 1
 position = Vector2(783, 495)
 scale = Vector2(7, 7)
 texture = ExtResource("1_8ln24")
 
 [node name="WoodTech12" type="Sprite2D" parent="CanvasLayer4" unique_id=1055801897]
-z_index = 2
+z_index = 1
 position = Vector2(783, 591)
 scale = Vector2(7, 7)
 texture = ExtResource("1_8ln24")
 
 [node name="WoodTech13" type="Sprite2D" parent="CanvasLayer4" unique_id=1090125320]
-z_index = 2
+z_index = 1
 position = Vector2(1007, 399)
 scale = Vector2(7, 7)
 texture = ExtResource("1_8ln24")
 
 [node name="WoodTech14" type="Sprite2D" parent="CanvasLayer4" unique_id=392254165]
-z_index = 2
+z_index = 1
 position = Vector2(1007, 495)
 scale = Vector2(7, 7)
 texture = ExtResource("1_8ln24")
 
 [node name="WoodTech15" type="Sprite2D" parent="CanvasLayer4" unique_id=1642389592]
-z_index = 2
+z_index = 1
 position = Vector2(1007, 591)
 scale = Vector2(7, 7)
 texture = ExtResource("1_8ln24")
 
 [node name="WoodTech16" type="Sprite2D" parent="CanvasLayer4" unique_id=636032443]
-z_index = 2
+z_index = 1
 position = Vector2(1230, 399)
 scale = Vector2(7, 7)
 texture = ExtResource("1_8ln24")
 
 [node name="WoodTech17" type="Sprite2D" parent="CanvasLayer4" unique_id=1430288268]
-z_index = 2
+z_index = 1
 position = Vector2(1230, 495)
 scale = Vector2(7, 7)
 texture = ExtResource("1_8ln24")
 
 [node name="WoodTech18" type="Sprite2D" parent="CanvasLayer4" unique_id=1028385640]
-z_index = 2
+z_index = 1
 position = Vector2(1230, 591)
 scale = Vector2(7, 7)
 texture = ExtResource("1_8ln24")
@@ -239,13 +240,13 @@ scale = Vector2(7, 7)
 texture = ExtResource("2_oa1go")
 
 [node name="PotionPurpleTech" type="Sprite2D" parent="CanvasLayer4" unique_id=923958696]
-z_index = 2
+z_index = 3
 position = Vector2(67, 407)
 scale = Vector2(9, 9)
 texture = ExtResource("3_tbmy8")
 
 [node name="WandTech" type="Sprite2D" parent="CanvasLayer4" unique_id=1507196081]
-z_index = 2
+z_index = 3
 position = Vector2(959.99994, 536)
 rotation = 0.5414302
 scale = Vector2(6, 6)

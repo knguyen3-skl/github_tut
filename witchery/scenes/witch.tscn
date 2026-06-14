@@ -7,8 +7,8 @@
 size = Vector2(26, 48)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hgjeu"]
-radius = 15.0
-height = 58.0
+radius = 14.0
+height = 60.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=778114501]
 script = ExtResource("1_b1vsk")
