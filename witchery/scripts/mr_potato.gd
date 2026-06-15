@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var navigation_agent_2d: NavigationAgent2D
 @export var player : CharacterBody2D
 
-const SPEED = 150
+const SPEED = 100
 var direction : Vector2
 var stationary : Vector2
 

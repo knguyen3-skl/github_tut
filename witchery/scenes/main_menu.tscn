@@ -224,7 +224,6 @@ scale = Vector2(7, 7)
 texture = ExtResource("1_8ln24")
 
 [node name="Panel" type="Panel" parent="CanvasLayer4" unique_id=373398188]
-z_index = 1
 offset_left = 279.00003
 offset_top = 60.0
 offset_right = 319.00003
