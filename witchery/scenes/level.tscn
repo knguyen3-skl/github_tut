@@ -15,9 +15,9 @@ texture = ExtResource("1_w8frs")
 sources/0 = SubResource("TileSetAtlasSource_mx8sn")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_w7c3h"]
-vertices = PackedVector2Array(482.14063, 358.79688, 293.1875, 355.1875, 296.8125, 169.75781, 484.85156, 165.24219)
+vertices = PackedVector2Array(506.03906, 369, 270, 369, 270, 137.96094, 506.96094, 137.03125)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(287, 160, 495, 155, 492, 369, 283, 365)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(260, 128, 517, 127, 516, 379, 260, 379)])
 source_geometry_mode = 2
 source_geometry_group_name = &"mr_potato_path"
 
@@ -31,7 +31,7 @@ tile_set = SubResource("TileSet_ppgk2")
 position = Vector2(235, 266)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=409045862]
-zoom = Vector2(4, 4)
+zoom = Vector2(5, 5)
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 

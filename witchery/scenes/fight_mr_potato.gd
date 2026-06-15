@@ -15,6 +15,9 @@ extends Node2D
 
 @export var timer: Timer
 
+var turns_left: int = 3
+var potato_turns: int = 1
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	health_ui.max_value = Global.player_health
@@ -36,16 +39,16 @@ func _process(delta: float) -> void:
 
 
 func _defend() -> void:
-	if Global.turns_left >= 1:
-		Global.turns_left -= 1
+	if turns_left >= 1 and Global.player_health < Global.player_base_health:
+		turns_left -= 1
 		_turn()
 		Global.player_health += 1
 		health_ui.value = Global.player_health
 		health.text = str(Global.player_health)
 
 func _attack() -> void:
-	if Global.turns_left >= 1 and Global.player_special > 0:
-		Global.turns_left -= 1
+	if turns_left >= 1 and Global.player_special > 0:
+		turns_left -= 1
 		_turn()
 		Global.potato_health -= 1
 		Global.player_special -= 1
@@ -55,30 +58,29 @@ func _attack() -> void:
 		sp_ui.value = Global.player_special
 
 func _potion() -> void:
-	if Global.turns_left >= 1:
-		Global.turns_left -= 1
-		print(Global.turns_left)
+	if turns_left >= 1 and Global.player_special < Global.player_base_special:
+		turns_left -= 1
 		_turn()
 		Global.player_special += 1
 		sp_ui.value = Global.player_special
 		sp.text = str(Global.player_special)
 		
 func _turn() -> void:
-	if Global.turns_left == 2:
+	if turns_left == 2:
 		first_turn_p.visible = false 
 		first_turn_w.visible = false 
 		
-	elif Global.turns_left == 1:
+	elif turns_left == 1:
 		second_turn_p.visible = false 
 		second_turn_w.visible = false 
 	
-	elif Global.turns_left == 0:
+	elif turns_left == 0:
 		third_turn_p.visible = false 
 		third_turn_w.visible = false 
 		timer.start()
 		
 func _potato_attack() -> void:
-	if Global.turns_left == 0:
+	if turns_left == 0:
 		Global.player_health -= 1
 		health_ui.value = Global.player_health
 		health.text = str(Global.player_health)
@@ -89,13 +91,21 @@ func _potato_heal() -> void:
 	potato_health.text = str(Global.potato_health)
 
 func _potato_turn() -> void:
-	_potato_attack()
-	_potato_heal()
-	timer.stop()
-	_turn_reset()
+	if potato_turns == 1:
+		_potato_attack()
+		_potato_heal()
+		timer.stop()
+		_turn_reset()
+		potato_turns -= 1
+		
+	else:
+		_potato_heal()
+		timer.stop()
+		_turn_reset()
+		potato_turns += 1
 	
 func _turn_reset() -> void:
-	Global.turns_left = 3
+	turns_left = 3
 	first_turn_p.visible = true 
 	first_turn_w.visible = true 
 	second_turn_p.visible = true 
