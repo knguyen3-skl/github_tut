@@ -8,6 +8,7 @@ var direction : Vector2
 var stationary : Vector2
 
 func _ready() -> void:
+	# check in dict if defeated
 	# enemy's starting position
 	stationary = global_position
 	
@@ -33,4 +34,5 @@ func _physics_process(delta: float) -> void:
 
 func _mr_potato_fight(area: Area2D) -> void:
 	if area.is_in_group("player"):
+		Global.enemy_id = self.name
 		get_tree().call_deferred("change_scene_to_file", "res://scenes/fight_mr_potato.tscn")

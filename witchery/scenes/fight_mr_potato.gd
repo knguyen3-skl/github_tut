@@ -46,6 +46,8 @@ func _process(delta: float) -> void:
 		print(Global.potato_fight)
 		Global.money += 10
 		Global.potato_health = 10
+		Global.enemy_dict[Global.enemy_id] = "dead"
+		print(Global.enemy_dict)
 		get_tree().call_deferred("change_scene_to_file", "res://scenes/level.tscn")
 
 func _defend() -> void:
@@ -83,7 +85,7 @@ func _potion() -> void:
 		sp_ui.value = Global.player_special
 		sp.text = str(Global.player_special)
 	
-	elif Global.player_special == Global.player_base_special:
+	elif Global.player_special == Global.player_base_special and turns_left >= 1:
 		mistake.text = str("Special Points is already maxed!")
 		mistake_timer.start()
 		

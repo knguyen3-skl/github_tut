@@ -10,7 +10,7 @@ size = Vector2(28, 31)
 radius = 15.0
 height = 36.0
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1071034293 node_paths=PackedStringArray("navigation_agent_2d")]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1071034293 node_paths=PackedStringArray("navigation_agent_2d") groups=["enemy"]]
 script = ExtResource("1_fkyqd")
 navigation_agent_2d = NodePath("NavigationAgent2D")
 
