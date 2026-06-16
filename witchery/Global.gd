@@ -1,5 +1,9 @@
 extends Node
 
+var money: int = 0
+
+var potato_fight: bool = false
+
 var player_base_health: int = 10
 var player_base_special: int = 5
 
@@ -8,7 +12,6 @@ var player_special: int = 5
 
 
 var potato_health: int = 10
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

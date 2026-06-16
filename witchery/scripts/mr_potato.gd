@@ -31,6 +31,6 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.lerp(direction * SPEED, delta)
 		move_and_slide()
 
-
 func _mr_potato_fight(area: Area2D) -> void:
-	get_tree().call_deferred("change_scene_to_file", "res://scenes/fight_mr_potato.tscn")
+	if area.is_in_group("player"):
+		get_tree().call_deferred("change_scene_to_file", "res://scenes/fight_mr_potato.tscn")

@@ -73,7 +73,7 @@ bg_color = Color(0.19607843, 0.7254902, 0.83137256, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_un3r7"]
 bg_color = Color(0.5372549, 0.1882353, 0.16470589, 1)
 
-[node name="Node2D" type="Node2D" unique_id=1641416975 node_paths=PackedStringArray("health_ui", "sp_ui", "potato_ui", "health", "sp", "potato_health", "first_turn_p", "first_turn_w", "second_turn_p", "second_turn_w", "third_turn_p", "third_turn_w", "timer")]
+[node name="Node2D" type="Node2D" unique_id=1641416975 node_paths=PackedStringArray("health_ui", "sp_ui", "potato_ui", "health", "sp", "potato_health", "first_turn_p", "first_turn_w", "second_turn_p", "second_turn_w", "third_turn_p", "third_turn_w", "timer", "mistake_timer", "mistake")]
 script = ExtResource("1_tlxmr")
 health_ui = NodePath("CanvasLayer/ProgressBar")
 sp_ui = NodePath("CanvasLayer/ProgressBar2")
@@ -88,6 +88,8 @@ second_turn_w = NodePath("CanvasLayer/WitchTech3")
 third_turn_p = NodePath("CanvasLayer/Panel3")
 third_turn_w = NodePath("CanvasLayer/WitchTech2")
 timer = NodePath("Timer")
+mistake_timer = NodePath("Timer2")
+mistake = NodePath("CanvasLayer/Label8")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=791422463]
 
@@ -336,9 +338,20 @@ offset_top = 468.0
 offset_right = 915.0
 offset_bottom = 491.0
 
+[node name="Label8" type="Label" parent="CanvasLayer" unique_id=391381124]
+offset_left = 62.0
+offset_top = 196.0
+offset_right = 102.0
+offset_bottom = 224.0
+theme_override_colors/font_color = Color(0.7137255, 0.2509804, 0.21960784, 1)
+theme_override_font_sizes/font_size = 20
+
 [node name="Timer" type="Timer" parent="." unique_id=2088150919]
+
+[node name="Timer2" type="Timer" parent="." unique_id=256539285]
 
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_defend"]
 [connection signal="pressed" from="CanvasLayer/Button2" to="." method="_attack"]
 [connection signal="pressed" from="CanvasLayer/Button3" to="." method="_potion"]
 [connection signal="timeout" from="Timer" to="." method="_potato_turn"]
+[connection signal="timeout" from="Timer2" to="." method="_mistake_timeout"]

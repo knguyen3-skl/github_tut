@@ -14,17 +14,21 @@ extends Node2D
 @export var third_turn_w: Sprite2D
 
 @export var timer: Timer
+@export var mistake_timer: Timer
+@export var mistake: Label
 
 var turns_left: int = 3
 var potato_turns: int = 1
+var basic_spell: int = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	health_ui.max_value = Global.player_health
+	Global.potato_fight = true
+	health_ui.max_value = Global.player_base_health
 	health_ui.value = Global.player_health
 	health.text = str(Global.player_health)
 	
-	sp_ui.max_value = Global.player_special
+	sp_ui.max_value = Global.player_base_special
 	sp_ui.value = Global.player_special
 	sp.text = str(Global.player_special)
 	
@@ -35,8 +39,14 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Global.player_health <=0:
+		Global.potato_fight = false
 		get_tree().call_deferred("change_scene_to_file", "res://scenes/died.tscn")
-
+	elif Global.potato_health == 0:
+		Global.potato_fight = false
+		print(Global.potato_fight)
+		Global.money += 10
+		Global.potato_health = 10
+		get_tree().call_deferred("change_scene_to_file", "res://scenes/level.tscn")
 
 func _defend() -> void:
 	if turns_left >= 1 and Global.player_health < Global.player_base_health:
@@ -45,6 +55,10 @@ func _defend() -> void:
 		Global.player_health += 1
 		health_ui.value = Global.player_health
 		health.text = str(Global.player_health)
+	
+	elif Global.player_health == Global.player_base_health:
+		mistake.text = str("Health is already maxed!")
+		mistake_timer.start()	
 
 func _attack() -> void:
 	if turns_left >= 1 and Global.player_special > 0:
@@ -56,6 +70,10 @@ func _attack() -> void:
 		potato_health.text = str(Global.potato_health)
 		sp.text = str(Global.player_special)
 		sp_ui.value = Global.player_special
+		
+	elif Global.player_special < basic_spell and turns_left >= 1:
+		mistake.text = str("Not enough special points!")
+		mistake_timer.start()
 
 func _potion() -> void:
 	if turns_left >= 1 and Global.player_special < Global.player_base_special:
@@ -64,6 +82,10 @@ func _potion() -> void:
 		Global.player_special += 1
 		sp_ui.value = Global.player_special
 		sp.text = str(Global.player_special)
+	
+	elif Global.player_special == Global.player_base_special:
+		mistake.text = str("Special Points is already maxed!")
+		mistake_timer.start()
 		
 func _turn() -> void:
 	if turns_left == 2:
@@ -93,7 +115,6 @@ func _potato_heal() -> void:
 func _potato_turn() -> void:
 	if potato_turns == 1:
 		_potato_attack()
-		_potato_heal()
 		timer.stop()
 		_turn_reset()
 		potato_turns -= 1
@@ -112,4 +133,7 @@ func _turn_reset() -> void:
 	second_turn_w.visible = true 
 	third_turn_p.visible = true 
 	third_turn_w.visible = true 
-	
+
+func _mistake_timeout() -> void:
+	mistake_timer.stop()
+	mistake.text = str("")
