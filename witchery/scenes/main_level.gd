@@ -20,5 +20,6 @@ func _process(delta: float) -> void:
 	for enemies in get_tree().get_nodes_in_group("enemy"):
 		if Global.enemy_dict[enemies.name] == "dead":
 			enemies.hide()
-			enemies.collison_layer = 0
-			enemies.collion_mask = 0
+			enemies.get_child(2).monitoring = false
+			enemies.get_child(1).disabled = true
+			enemies.set_physics_process(false)
