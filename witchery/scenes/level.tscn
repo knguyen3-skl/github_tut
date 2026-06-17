@@ -74,4 +74,6 @@ theme_override_font_sizes/font_size = 40
 text = "0"
 
 [node name="Timer" type="Timer" parent="." unique_id=1305153551]
-wait_time = 10.0
+wait_time = 60.0
+
+[connection signal="timeout" from="Timer" to="." method="_respawn_enemy"]
