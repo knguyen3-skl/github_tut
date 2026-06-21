@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cg2fcg5mb52fy"]
+
+[node name="ColorRect" type="ColorRect" unique_id=848347300]
+offset_right = 700.0
+offset_bottom = 400.0
+color = Color(1, 1, 1, 0.60784316)
+
+[node name="Label" type="Label" parent="." unique_id=765713126]
+texture_filter = 1
+layout_mode = 0
+offset_left = 151.0
+offset_top = 1.0
+offset_right = 519.0
+offset_bottom = 70.0
+theme_override_font_sizes/font_size = 50
+text = "Potion Brewing"
+horizontal_alignment = 1

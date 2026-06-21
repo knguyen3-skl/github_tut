@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cpjxoxx6eqiu7"]
 
 [ext_resource type="Texture2D" uid="uid://ds4j82vja3u3h" path="res://assets/grass2_tech.png" id="1_1snm0"]
-[ext_resource type="Script" uid="uid://cpjn6q3cbsax6" path="res://scenes/fight_mr_potato.gd" id="1_tlxmr"]
+[ext_resource type="Script" uid="uid://cpjn6q3cbsax6" path="res://scripts/fight_mr_potato.gd" id="1_tlxmr"]
 [ext_resource type="Texture2D" uid="uid://c5mbis7qs17av" path="res://assets/mr_potato_tech.png" id="2_w2b38"]
 [ext_resource type="Texture2D" uid="uid://bq2s64pkdo8dh" path="res://assets/witch_tech.png" id="3_lt1b2"]
 [ext_resource type="Texture2D" uid="uid://s7x7ibmpwe2p" path="res://assets/bar_tech.png" id="4_lt1b2"]

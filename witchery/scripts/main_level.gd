@@ -18,14 +18,13 @@ func _ready() -> void:
 			enemies.get_child(2).monitoring = false
 			enemies.get_child(1).disabled = true
 			enemies.set_physics_process(false)
-			get_tree().create_timer(5).connect("timeout", _respawn_enemy.bind(enemies.name))
+			get_tree().create_timer(60).connect("timeout", _respawn_enemy.bind(enemies.name))
 			
 			
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	# if alive show
 	# if dead hide + untouchable
-	# create timer 
 	for enemies in get_tree().get_nodes_in_group("enemy"):
 		if Global.enemy_dict[enemies.name] == "alive":
 			enemies.show()
