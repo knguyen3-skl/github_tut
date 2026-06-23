@@ -15,7 +15,13 @@ func _process(delta: float) -> void:
 		print("potion")
 		Global.potion_brewing = true
 		brewing.show()
-
+		brewing.get_child(9).hide()
+		brewing.get_child(10).hide()
+		brewing.get_child(11).hide()
+		brewing.get_child(4).show()
+		brewing.get_child(5).show()
+		brewing.get_child(6).show()
+		
 
 func _on_area_2d_entered(area: Area2D) -> void:
 	if area.is_in_group("player"):

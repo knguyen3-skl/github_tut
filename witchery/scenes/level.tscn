@@ -60,12 +60,13 @@ navigation_polygon = SubResource("NavigationPolygon_w7c3h")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2083746308]
 
-[node name="ColorRect2" parent="CanvasLayer" unique_id=1527701950 instance=ExtResource("7_klq6b")]
+[node name="ColorRect2" parent="CanvasLayer" unique_id=1527701950 node_paths=PackedStringArray("player_cam") instance=ExtResource("7_klq6b")]
 visible = false
 offset_left = 87.0
 offset_top = 112.0
 offset_right = 974.0
 offset_bottom = 605.0
+player_cam = NodePath("../../CharacterBody2D/Camera2D")
 
 [node name="Label" type="Label" parent="CanvasLayer" unique_id=1217283519]
 offset_left = 23.0

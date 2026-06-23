@@ -2,16 +2,18 @@
 
 [ext_resource type="Script" uid="uid://dbg5h8w15gmbn" path="res://scripts/inventory.gd" id="1_hj2ta"]
 [ext_resource type="Texture2D" uid="uid://crhc0alwbwdn3" path="res://assets/potion_purple_tech.png" id="1_qw0r6"]
+[ext_resource type="Texture2D" uid="uid://dit7vdud5kxxa" path="res://assets/potion_tech.png" id="3_ty45s"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hj2ta"]
 bg_color = Color(0.66458356, 0, 0.04976818, 1)
 
-[node name="ColorRect" type="ColorRect" unique_id=1527701950 node_paths=PackedStringArray("purple_potion")]
+[node name="ColorRect" type="ColorRect" unique_id=1527701950 node_paths=PackedStringArray("purple_potion", "blue_potion")]
 offset_right = 887.0
 offset_bottom = 493.0
 color = Color(0.38928655, 0.38928664, 0.38928658, 1)
 script = ExtResource("1_hj2ta")
 purple_potion = NodePath("Label")
+blue_potion = NodePath("Label4")
 
 [node name="PotionPurpleTech" type="Sprite2D" parent="." unique_id=1004625745]
 position = Vector2(74, 75)
@@ -43,5 +45,27 @@ offset_right = 893.0
 offset_bottom = 23.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_hj2ta")
 text = "X"
+
+[node name="PotionTech" type="Sprite2D" parent="." unique_id=1201370349]
+position = Vector2(226, 70)
+scale = Vector2(2.625, 2.625)
+texture = ExtResource("3_ty45s")
+
+[node name="Label3" type="Label" parent="." unique_id=1134718666]
+layout_mode = 0
+offset_left = 178.0
+offset_top = 128.0
+offset_right = 235.0
+offset_bottom = 151.0
+text = "Owned"
+
+[node name="Label4" type="Label" parent="." unique_id=746797733]
+layout_mode = 0
+offset_left = 239.0
+offset_top = 126.0
+offset_right = 279.0
+offset_bottom = 154.0
+theme_override_font_sizes/font_size = 20
+text = "0"
 
 [connection signal="pressed" from="Button" to="." method="_exit_inventory"]
