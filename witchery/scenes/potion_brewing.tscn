@@ -1,13 +1,32 @@
 [gd_scene format=3 uid="uid://cg2fcg5mb52fy"]
 
-[node name="ColorRect" type="ColorRect" unique_id=848347300]
+[ext_resource type="Script" uid="uid://iw5gkyhxi7bl" path="res://scripts/potion_brewing.gd" id="1_r2ldb"]
+[ext_resource type="Texture2D" uid="uid://dri8or757ah0y" path="res://assets/button_bold_tech.png" id="2_a2xwt"]
+[ext_resource type="Texture2D" uid="uid://crhc0alwbwdn3" path="res://assets/potion_purple_tech.png" id="3_a2xwt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r2ldb"]
+bg_color = Color(0.79607844, 0, 0.047058824, 1)
+
+[node name="ColorRect" type="ColorRect" unique_id=848347300 node_paths=PackedStringArray("timer")]
 offset_right = 700.0
 offset_bottom = 400.0
 color = Color(1, 1, 1, 0.60784316)
+script = ExtResource("1_r2ldb")
+timer = NodePath("Timer")
 
-[node name="Label" type="Label" parent="." unique_id=765713126]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1138995101]
+
+[node name="Label2" type="Label" parent="CanvasLayer" unique_id=464998859]
+z_index = 1
+offset_left = 263.0
+offset_top = 284.0
+offset_right = 412.0
+offset_bottom = 367.0
+theme_override_font_sizes/font_size = 60
+text = "Brew"
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=765713126]
 texture_filter = 1
-layout_mode = 0
 offset_left = 151.0
 offset_top = 1.0
 offset_right = 519.0
@@ -15,3 +34,82 @@ offset_bottom = 70.0
 theme_override_font_sizes/font_size = 50
 text = "Potion Brewing"
 horizontal_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer" unique_id=1073951921]
+offset_left = 196.0
+offset_top = 251.0
+offset_right = 292.0
+offset_bottom = 299.0
+scale = Vector2(3, 3)
+texture_normal = ExtResource("2_a2xwt")
+
+[node name="Button" type="Button" parent="CanvasLayer" unique_id=1831052836]
+offset_left = 658.0
+offset_top = -20.0
+offset_right = 698.0
+offset_bottom = 20.0
+scale = Vector2(1.5, 1.5)
+theme_override_styles/normal = SubResource("StyleBoxFlat_r2ldb")
+text = "X"
+
+[node name="Label3" type="Label" parent="CanvasLayer" unique_id=920909985]
+offset_left = 49.0
+offset_top = 159.0
+offset_right = 493.0
+offset_bottom = 201.0
+theme_override_font_sizes/font_size = 30
+text = "Brew a cool potion for 20 coins"
+
+[node name="PotionPurpleTech" type="Sprite2D" parent="CanvasLayer" unique_id=968515113]
+position = Vector2(567, 185.00002)
+scale = Vector2(3, 3)
+texture = ExtResource("3_a2xwt")
+
+[node name="Label4" type="Label" parent="CanvasLayer" unique_id=665728897]
+visible = false
+offset_left = 248.0
+offset_top = 254.0
+offset_right = 438.0
+offset_bottom = 282.0
+theme_override_colors/font_color = Color(0.80768085, 0, 0.14059189, 1)
+theme_override_font_sizes/font_size = 20
+text = "You are too broke :("
+
+[node name="Button2" type="Button" parent="CanvasLayer" unique_id=360735254]
+offset_left = 658.0
+offset_top = 215.0
+offset_right = 700.0
+offset_bottom = 278.0
+theme_override_font_sizes/font_size = 40
+text = ">"
+
+[node name="Timer" type="Timer" parent="." unique_id=1094015051]
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1956235276]
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer2" unique_id=1372853352]
+offset_left = 196.0
+offset_top = 251.00002
+offset_right = 292.0
+offset_bottom = 299.0
+scale = Vector2(3, 3)
+texture_normal = ExtResource("2_a2xwt")
+
+[node name="Label" type="Label" parent="CanvasLayer2" unique_id=1005727043]
+offset_left = 276.0
+offset_top = 293.0
+offset_right = 400.0
+offset_bottom = 362.0
+theme_override_font_sizes/font_size = 50
+text = "Brew"
+
+[node name="Label2" type="Label" parent="CanvasLayer2" unique_id=428418925]
+offset_left = 53.0
+offset_top = 171.0
+offset_right = 339.0
+offset_bottom = 194.0
+text = "Brew a super cool potion for 30 coins"
+
+[connection signal="pressed" from="CanvasLayer/TextureButton" to="." method="_brewed"]
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_exit_brewing"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

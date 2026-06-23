@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://jx154qlqg5uh"]
+
+[ext_resource type="Script" uid="uid://dbg5h8w15gmbn" path="res://scripts/inventory.gd" id="1_hj2ta"]
+[ext_resource type="Texture2D" uid="uid://crhc0alwbwdn3" path="res://assets/potion_purple_tech.png" id="1_qw0r6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hj2ta"]
+bg_color = Color(0.66458356, 0, 0.04976818, 1)
+
+[node name="ColorRect" type="ColorRect" unique_id=1527701950 node_paths=PackedStringArray("purple_potion")]
+offset_right = 887.0
+offset_bottom = 493.0
+color = Color(0.38928655, 0.38928664, 0.38928658, 1)
+script = ExtResource("1_hj2ta")
+purple_potion = NodePath("Label")
+
+[node name="PotionPurpleTech" type="Sprite2D" parent="." unique_id=1004625745]
+position = Vector2(74, 75)
+scale = Vector2(2, 2)
+texture = ExtResource("1_qw0r6")
+
+[node name="Label" type="Label" parent="." unique_id=690783154]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 124.0
+offset_right = 108.0
+offset_bottom = 152.0
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="Label2" type="Label" parent="." unique_id=784552579]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 126.0
+offset_right = 88.0
+offset_bottom = 149.0
+text = "Owned:"
+
+[node name="Button" type="Button" parent="." unique_id=335999504]
+layout_mode = 0
+offset_left = 863.0
+offset_top = -8.0
+offset_right = 893.0
+offset_bottom = 23.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_hj2ta")
+text = "X"
+
+[connection signal="pressed" from="Button" to="." method="_exit_inventory"]

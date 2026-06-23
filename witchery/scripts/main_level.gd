@@ -1,9 +1,17 @@
 extends Node2D
 
 @export var money: Label
+@export var player: CharacterBody2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	print(Global.last_player_positon)
+	
+	if Global.last_player_positon == Vector2(-140.0, 266.0):
+		pass
+	else:
+		player.global_position = Global.last_player_positon
+	
 	money.text = str(Global.money)
 	if Global.enemy_dict == {}:
 		# get every enemy and add to dict
