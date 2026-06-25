@@ -21,6 +21,8 @@ func _process(delta: float) -> void:
 		brewing.get_child(9).hide()
 		brewing.get_child(10).hide()
 		brewing.get_child(11).hide()
+		brewing.get_child(12).hide()
+		brewing.get_child(8).show()
 		brewing.get_child(4).show()
 		brewing.get_child(5).show()
 		brewing.get_child(6).show()
