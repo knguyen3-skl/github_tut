@@ -1,5 +1,6 @@
 extends ColorRect
 
+@export var inventory: ColorRect
 @export var timer: Timer
 @export var money: Label
 @export var no_money: Label
@@ -36,6 +37,7 @@ func _purple_brewed() -> void:
 		timer.start()
 
 func _exit_brewing() -> void:
+	Global.potion_brewing = false
 	hide()
 
 

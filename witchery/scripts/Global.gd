@@ -21,6 +21,8 @@ var enemy_id: String
 var potion_brewing: bool = false
 var last_player_positon : Vector2
 
+var inventory_status: bool = false
+
 var inventory = {
 	"purple_potion": 0,
 	"blue_potion": 0,

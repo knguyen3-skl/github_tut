@@ -60,13 +60,14 @@ navigation_polygon = SubResource("NavigationPolygon_w7c3h")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2083746308]
 
-[node name="ColorRect2" parent="CanvasLayer" unique_id=1527701950 node_paths=PackedStringArray("player_cam") instance=ExtResource("7_klq6b")]
+[node name="ColorRect2" parent="CanvasLayer" unique_id=1527701950 node_paths=PackedStringArray("player_cam", "brewing_potion") instance=ExtResource("7_klq6b")]
 visible = false
 offset_left = 87.0
 offset_top = 112.0
 offset_right = 974.0
 offset_bottom = 605.0
 player_cam = NodePath("../../CharacterBody2D/Camera2D")
+brewing_potion = NodePath("../ColorRect")
 
 [node name="Label" type="Label" parent="CanvasLayer" unique_id=1217283519]
 offset_left = 23.0
@@ -84,12 +85,13 @@ offset_bottom = 78.0
 theme_override_font_sizes/font_size = 40
 text = "0"
 
-[node name="ColorRect" parent="CanvasLayer" unique_id=848347300 node_paths=PackedStringArray("money") instance=ExtResource("5_2r41h")]
+[node name="ColorRect" parent="CanvasLayer" unique_id=848347300 node_paths=PackedStringArray("inventory", "money") instance=ExtResource("5_2r41h")]
 visible = false
 offset_left = 216.0
 offset_top = 133.0
 offset_right = 916.0
 offset_bottom = 533.0
+inventory = NodePath("../ColorRect2")
 money = NodePath("../Label2")
 
 [node name="Button" type="Button" parent="CanvasLayer" unique_id=172158956]
@@ -100,9 +102,11 @@ offset_bottom = 43.0
 scale = Vector2(2, 2)
 text = "Inventory"
 
-[node name="Node2D" parent="." unique_id=1706893009 node_paths=PackedStringArray("brewing") instance=ExtResource("5_ppgk2")]
+[node name="Node2D" parent="." unique_id=1706893009 node_paths=PackedStringArray("brewing", "inventory") instance=ExtResource("5_ppgk2")]
 position = Vector2(-183, 337)
+scale = Vector2(0.5, 0.5)
 brewing = NodePath("../CanvasLayer/ColorRect")
+inventory = NodePath("../CanvasLayer/ColorRect2")
 
 [node name="CharacterBody2D4" parent="." unique_id=1096044319 node_paths=PackedStringArray("player") instance=ExtResource("2_w7c3h")]
 position = Vector2(92, 531)

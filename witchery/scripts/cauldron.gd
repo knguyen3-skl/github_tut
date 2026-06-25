@@ -3,6 +3,7 @@ extends StaticBody2D
 var player_near: bool = false
 
 @export var brewing: ColorRect
+@export var inventory: ColorRect
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,6 +16,8 @@ func _process(delta: float) -> void:
 		print("potion")
 		Global.potion_brewing = true
 		brewing.show()
+		inventory.hide()
+		Global.inventory_status = false
 		brewing.get_child(9).hide()
 		brewing.get_child(10).hide()
 		brewing.get_child(11).hide()

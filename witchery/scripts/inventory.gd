@@ -2,6 +2,7 @@ extends ColorRect
 @export var purple_potion: Label
 @export var blue_potion: Label
 @export var player_cam: Camera2D
+@export var brewing_potion: ColorRect
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,6 +19,9 @@ func _process(delta: float) -> void:
 
 func _on_inventory_pressed() -> void:
 	show()
+	Global.potion_brewing = false
+	brewing_potion.hide()
+	Global.inventory_status = true
 	player_cam.drag_horizontal_enabled = false
 	player_cam.drag_vertical_enabled = false
 
