@@ -66,7 +66,7 @@ func _attack() -> void:
 	if turns_left >= 1 and Global.player_special > 0:
 		turns_left -= 1
 		_turn()
-		Global.potato_health -= 10
+		Global.potato_health -= 1
 		Global.player_special -= 1
 		potato_ui.value = Global.potato_health
 		potato_health.text = str(Global.potato_health)

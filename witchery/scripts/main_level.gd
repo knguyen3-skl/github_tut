@@ -26,7 +26,7 @@ func _ready() -> void:
 			enemies.get_child(2).monitoring = false
 			enemies.get_child(1).disabled = true
 			enemies.set_physics_process(false)
-			get_tree().create_timer(60).connect("timeout", _respawn_enemy.bind(enemies.name))
+			get_tree().create_timer(30).connect("timeout", _respawn_enemy.bind(enemies.name))
 			
 			
 # Called every frame. 'delta' is the elapsed time since the previous frame.
