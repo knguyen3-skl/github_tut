@@ -2,10 +2,21 @@ extends Node2D
 
 @export var money: Label
 @export var player: CharacterBody2D
+@export var player_health: ProgressBar
+@export var player_special: ProgressBar
+@export var health: Label
+@export var special: Label
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	print(Global.last_player_positon)
+	player_health.max_value = Global.player_base_health
+	player_health.value = Global.player_health
+	health.text = str(Global.player_health)
+	
+	player_special.max_value = Global.player_base_special
+	player_special.value = Global.player_special
+	special.text = str(Global.player_special)
 	
 	if Global.last_player_positon == Vector2(-140.0, 266.0):
 		pass
