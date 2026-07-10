@@ -4,6 +4,10 @@ var player_near: bool = false
 
 @export var brewing: ColorRect
 @export var inventory: ColorRect
+@export var player_health: ProgressBar
+@export var player_special: ProgressBar
+@export var health: Label
+@export var special: Label
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -39,3 +43,15 @@ func _on_area_2d_exited(area: Area2D) -> void:
 		player_near = false
 		$ColorRect2.hide()
 		brewing.hide()
+
+
+func _healing(area: Area2D) -> void:
+	if area.is_in_group("player"):
+		print("hi")
+		if Global.player_health < Global.player_base_health or Global.player_special < Global.player_base_special:
+			Global.player_health = Global.player_base_health
+			player_health.value = Global.player_health
+			health.text = str(Global.player_health)
+			Global.player_special = Global.player_base_special
+			player_special.value = Global.player_special
+			special.text = str(Global.player_special)
