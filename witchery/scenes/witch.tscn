@@ -1,7 +1,11 @@
 [gd_scene format=3 uid="uid://dyy8m1anw4rj8"]
 
 [ext_resource type="Script" uid="uid://dtxubhcj31gfj" path="res://scripts/witch.gd" id="1_b1vsk"]
-[ext_resource type="Texture2D" uid="uid://bq2s64pkdo8dh" path="res://assets/witch_tech.png" id="1_hgjeu"]
+[ext_resource type="Texture2D" uid="uid://ctjuhgg2d51q" path="res://assets/frame0001.png" id="2_qrkn2"]
+[ext_resource type="Texture2D" uid="uid://cw0r43s8dslx8" path="res://assets/frame0002.png" id="3_vid1f"]
+[ext_resource type="Texture2D" uid="uid://bhx4owakn0r1e" path="res://assets/frame0003.png" id="4_1g4oy"]
+[ext_resource type="Texture2D" uid="uid://cnj2wvkaprido" path="res://assets/frame0004.png" id="5_80ajc"]
+[ext_resource type="Texture2D" uid="uid://yby6sgm3nqqj" path="res://assets/frame0000.png" id="6_tw4fk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b1vsk"]
 size = Vector2(26, 48)
@@ -9,6 +13,34 @@ size = Vector2(26, 48)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hgjeu"]
 radius = 15.0
 height = 58.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p6b3e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_tw4fk")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qrkn2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vid1f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1g4oy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_80ajc")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=778114501]
 script = ExtResource("1_b1vsk")
@@ -22,5 +54,7 @@ shape = SubResource("RectangleShape2D_b1vsk")
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_hgjeu")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1994025141]
-texture = ExtResource("1_hgjeu")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=138174723]
+sprite_frames = SubResource("SpriteFrames_p6b3e")
+animation = &"walk"
+autoplay = "idle"

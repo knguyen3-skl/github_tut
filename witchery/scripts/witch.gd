@@ -13,5 +13,14 @@ func _process(delta: float) -> void:
 	direction.x = Input.get_axis("ui_left", "ui_right")
 	direction.y = Input.get_axis("ui_up", "ui_down")
 	velocity = speed * direction.normalized()
+	
+	if Input.get_axis("ui_left", "ui_right"):
+		$AnimatedSprite2D.animation = "walk"
+		if direction.x == -1:
+			$AnimatedSprite2D.flip_h = true
+		else:
+			$AnimatedSprite2D.flip_h = false
+	else:
+		$AnimatedSprite2D.animation = "idle"
 	move_and_slide()
 	

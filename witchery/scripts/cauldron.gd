@@ -47,11 +47,9 @@ func _on_area_2d_exited(area: Area2D) -> void:
 
 func _healing(area: Area2D) -> void:
 	if area.is_in_group("player"):
-		print("hi")
-		if Global.player_health < Global.player_base_health or Global.player_special < Global.player_base_special:
-			Global.player_health = Global.player_base_health
-			player_health.value = Global.player_health
-			health.text = str(Global.player_health)
-			Global.player_special = Global.player_base_special
-			player_special.value = Global.player_special
-			special.text = str(Global.player_special)
+		Global.player_health = Global.player_base_health
+		player_health.value = Global.player_health
+		health.text = str(Global.player_health)
+		Global.player_special = Global.player_base_special
+		player_special.value = Global.player_special
+		special.text = str(Global.player_special)
