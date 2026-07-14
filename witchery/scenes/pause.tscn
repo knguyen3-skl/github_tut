@@ -1,0 +1,148 @@
+[gd_scene format=3 uid="uid://d1qryld5yii4n"]
+
+[ext_resource type="Texture2D" uid="uid://2hvddcwoy8s3" path="res://assets/book_tech.png" id="1_aicil"]
+[ext_resource type="Script" uid="uid://6slqddgfr6dx" path="res://scripts/pause.gd" id="1_wen6a"]
+[ext_resource type="Texture2D" uid="uid://dse4l0phdu1og" path="res://assets/web_tech.png" id="2_jn4bt"]
+[ext_resource type="Texture2D" uid="uid://j57c4g7m4san" path="res://assets/spider_tech.png" id="3_r1fnm"]
+[ext_resource type="Texture2D" uid="uid://bndrktykp16q1" path="res://assets/spider_web_tech.png" id="4_wen6a"]
+[ext_resource type="Texture2D" uid="uid://dx5ffu386ai8t" path="res://assets/button_tech.png" id="5_r1fnm"]
+[ext_resource type="Texture2D" uid="uid://dri8or757ah0y" path="res://assets/button_bold_tech.png" id="6_wen6a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cml1b"]
+bg_color = Color(0.7666196, 0.76661956, 0.76661944, 0.43137255)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+
+[node name="ColorRect" type="ColorRect" unique_id=625441976]
+offset_left = 526.0
+offset_top = 283.0
+offset_right = 566.0
+offset_bottom = 323.0
+script = ExtResource("1_wen6a")
+
+[node name="BookTech" type="Sprite2D" parent="." unique_id=231041678]
+position = Vector2(50, 100)
+scale = Vector2(27, 27)
+texture = ExtResource("1_aicil")
+
+[node name="WebTech" type="Sprite2D" parent="." unique_id=1484206869]
+position = Vector2(530, -186)
+scale = Vector2(6, 6)
+texture = ExtResource("2_jn4bt")
+
+[node name="SpiderTech" type="Sprite2D" parent="." unique_id=282963011]
+z_index = 1
+position = Vector2(576, -129)
+scale = Vector2(4, 4)
+texture = ExtResource("3_r1fnm")
+
+[node name="SpiderWebTech" type="Sprite2D" parent="." unique_id=1856327193]
+position = Vector2(-479, 316)
+rotation = 0.4143622
+scale = Vector2(5, 5)
+texture = ExtResource("4_wen6a")
+
+[node name="ButtonTech" type="Sprite2D" parent="." unique_id=1446810160]
+position = Vector2(-110.00001, 21.000008)
+scale = Vector2(12, 12)
+texture = ExtResource("5_r1fnm")
+region_enabled = true
+region_rect = Rect2(55, 6, 21, 21)
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1106766072]
+layout_mode = 0
+offset_left = -139.0
+offset_top = -132.99998
+offset_right = -104.0
+offset_bottom = -72.56044
+rotation = -0.23433267
+color = Color(0.2627451, 0.11372549, 0.44313726, 0.54901963)
+
+[node name="Label" type="Label" parent="." unique_id=1367262321]
+layout_mode = 0
+offset_left = -231.0
+offset_top = -70.0
+offset_right = 15.0
+offset_bottom = 125.0
+theme_override_font_sizes/font_size = 65
+text = "Game 
+Paused"
+horizontal_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=2137745433]
+layout_mode = 0
+offset_left = 84.99997
+offset_top = -156.0
+offset_right = 180.99997
+offset_bottom = -108.0
+scale = Vector2(3, 3)
+texture_normal = ExtResource("6_wen6a")
+
+[node name="TextureButton2" type="TextureButton" parent="." unique_id=674854815]
+layout_mode = 0
+offset_left = 84.99997
+offset_top = -63.0
+offset_right = 180.99997
+offset_bottom = -15.0
+scale = Vector2(3, 3)
+texture_normal = ExtResource("6_wen6a")
+
+[node name="TextureButton3" type="TextureButton" parent="." unique_id=308777977]
+layout_mode = 0
+offset_left = 84.99997
+offset_top = 33.0
+offset_right = 180.99997
+offset_bottom = 81.0
+scale = Vector2(3, 3)
+texture_normal = ExtResource("6_wen6a")
+
+[node name="Label2" type="Label" parent="." unique_id=1952358581]
+layout_mode = 0
+offset_left = 119.0
+offset_top = -115.0
+offset_right = 339.0
+offset_bottom = -46.0
+theme_override_font_sizes/font_size = 50
+text = "Continue"
+
+[node name="Label3" type="Label" parent="." unique_id=1302289854]
+layout_mode = 0
+offset_left = 134.0
+offset_top = -23.0
+offset_right = 325.0
+offset_bottom = 46.0
+theme_override_font_sizes/font_size = 50
+text = "Options"
+
+[node name="Label4" type="Label" parent="." unique_id=1755487779]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 76.0
+offset_right = 280.0
+offset_bottom = 145.0
+theme_override_font_sizes/font_size = 50
+text = "Quit"
+
+[node name="Button" type="Button" parent="." unique_id=629021296]
+layout_mode = 0
+offset_left = -510.0
+offset_top = -273.0
+offset_right = -424.0
+offset_bottom = -186.0
+scale = Vector2(0.8, 0.8)
+theme_override_styles/normal = SubResource("StyleBoxFlat_cml1b")
+
+[node name="Polygon2D" type="Polygon2D" parent="Button" unique_id=770095067]
+position = Vector2(-10, 68)
+rotation = -1.5707964
+scale = Vector2(1.2, 1.2)
+polygon = PackedVector2Array(20, 62.499996, 40, 30, 0, 30)
+uv = PackedVector2Array(50.471344, -0.8537636, 79.851776, 39.613644, 24.971344, 39.613644)
+
+[connection signal="pressed" from="TextureButton" to="." method="_continue"]
+[connection signal="pressed" from="TextureButton2" to="." method="_options"]
+[connection signal="pressed" from="TextureButton3" to="." method="_quit"]
+[connection signal="pressed" from="Button" to="." method="_close"]

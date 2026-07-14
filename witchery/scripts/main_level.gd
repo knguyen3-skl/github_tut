@@ -6,6 +6,16 @@ extends Node2D
 @export var player_special: ProgressBar
 @export var health: Label
 @export var special: Label
+@export var hp_bar: Sprite2D
+@export var sp_bar:Sprite2D
+@export var heart:Sprite2D
+@export var energy:Sprite2D
+@export var inventory: Button
+@export var coins: Label
+@export var pause: Button
+@export var stats: Panel
+@export var hp: Label
+@export var sp: Label
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -50,6 +60,42 @@ func _process(delta: float) -> void:
 			enemies.get_child(2).monitoring = true
 			enemies.get_child(1).disabled = false
 			enemies.set_physics_process(true)
+	
+	if Global.pause == true:
+		inventory.hide()
+		coins.hide()
+		money.hide()
+		player_health.hide()
+		player_special.hide()
+		health.hide()
+		special.hide()
+		hp_bar.hide()
+		sp_bar.hide()
+		heart.hide()
+		energy.hide()
+		hp.hide()
+		sp.hide()
+		stats.hide()
+		pause.hide()
+		player.speed = 0
+	
+	else:
+		player.speed = 100
+		inventory.show()
+		coins.show()
+		money.show()
+		player_health.show()
+		player_special.show()
+		health.show()
+		special.show()
+		hp_bar.show()
+		sp_bar.show()
+		heart.show()
+		energy.show()
+		hp.show()
+		sp.show()
+		stats.show()
+		pause.show()
 
 func _respawn_enemy(enemy_id: StringName) -> void:
 	Global.enemy_dict[enemy_id] = "alive"
