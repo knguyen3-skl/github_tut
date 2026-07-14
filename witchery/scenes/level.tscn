@@ -180,10 +180,11 @@ text = "SP"
 
 [node name="ColorRect2" parent="CanvasLayer" unique_id=1527701950 node_paths=PackedStringArray("player_cam", "brewing_potion") instance=ExtResource("7_klq6b")]
 visible = false
-offset_left = 87.0
-offset_top = 112.0
-offset_right = 974.0
-offset_bottom = 605.0
+z_index = 3
+offset_left = 203.0
+offset_top = 123.0
+offset_right = 944.0
+offset_bottom = 536.0
 player_cam = NodePath("../../CharacterBody2D/Camera2D")
 brewing_potion = NodePath("../ColorRect")
 

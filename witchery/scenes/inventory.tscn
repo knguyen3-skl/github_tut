@@ -2,69 +2,81 @@
 
 [ext_resource type="Script" uid="uid://dbg5h8w15gmbn" path="res://scripts/inventory.gd" id="1_hj2ta"]
 [ext_resource type="Texture2D" uid="uid://crhc0alwbwdn3" path="res://assets/potion_purple_tech.png" id="1_qw0r6"]
+[ext_resource type="Texture2D" uid="uid://db3kevffj8enl" path="res://assets/block_tech.png" id="2_53g1v"]
 [ext_resource type="Texture2D" uid="uid://dit7vdud5kxxa" path="res://assets/potion_tech.png" id="3_ty45s"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hj2ta"]
 bg_color = Color(0.66458356, 0, 0.04976818, 1)
 
 [node name="ColorRect" type="ColorRect" unique_id=1527701950 node_paths=PackedStringArray("purple_potion", "blue_potion")]
-offset_right = 887.0
-offset_bottom = 493.0
+offset_right = 741.0
+offset_bottom = 409.0
 color = Color(0.38928655, 0.38928664, 0.38928658, 1)
 script = ExtResource("1_hj2ta")
 purple_potion = NodePath("Label")
 blue_potion = NodePath("Label4")
 
-[node name="PotionPurpleTech" type="Sprite2D" parent="." unique_id=1004625745]
-position = Vector2(80, 90)
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=563575798]
+layout_mode = 0
+offset_right = 247.33334
+offset_bottom = 137.66667
 scale = Vector2(3, 3)
+texture = ExtResource("2_53g1v")
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 17
+
+[node name="PotionPurpleTech" type="Sprite2D" parent="." unique_id=1004625745]
+position = Vector2(96.00001, 98.2)
+scale = Vector2(2.3, 2.3)
 texture = ExtResource("1_qw0r6")
 
 [node name="Label" type="Label" parent="." unique_id=690783154]
 layout_mode = 0
-offset_left = 102.0
-offset_top = 164.0
-offset_right = 114.0
-offset_bottom = 192.0
+offset_left = 122.0
+offset_top = 157.2
+offset_right = 134.0
+offset_bottom = 185.2
 theme_override_font_sizes/font_size = 20
 text = "0"
 
 [node name="Label2" type="Label" parent="." unique_id=784552579]
 layout_mode = 0
-offset_left = 34.0
-offset_top = 167.0
-offset_right = 94.0
-offset_bottom = 190.0
+offset_left = 54.0
+offset_top = 160.2
+offset_right = 114.0
+offset_bottom = 183.2
 text = "Owned:"
 
 [node name="Button" type="Button" parent="." unique_id=335999504]
 layout_mode = 0
-offset_left = 863.0
-offset_top = -8.0
-offset_right = 893.0
-offset_bottom = 23.0
+offset_left = 721.0
+offset_top = -11.0
+offset_right = 751.0
+offset_bottom = 20.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_hj2ta")
 text = "X"
 
 [node name="PotionTech" type="Sprite2D" parent="." unique_id=1201370349]
-position = Vector2(220, 90)
-scale = Vector2(3.74375, 3.7437499)
+position = Vector2(201, 95)
+scale = Vector2(2.5, 2.5)
 texture = ExtResource("3_ty45s")
 
 [node name="Label3" type="Label" parent="." unique_id=1134718666]
 layout_mode = 0
-offset_left = 171.0
-offset_top = 169.0
-offset_right = 231.0
-offset_bottom = 192.0
+offset_left = 164.0
+offset_top = 161.85
+offset_right = 224.0
+offset_bottom = 184.85
 text = "Owned:"
 
 [node name="Label4" type="Label" parent="." unique_id=746797733]
 layout_mode = 0
-offset_left = 236.0
-offset_top = 166.0
-offset_right = 276.0
-offset_bottom = 194.0
+offset_left = 229.0
+offset_top = 158.85
+offset_right = 269.0
+offset_bottom = 186.85
 theme_override_font_sizes/font_size = 20
 text = "0"
 
