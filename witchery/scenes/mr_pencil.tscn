@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://be62xxjbf101m"]
+
+[ext_resource type="Texture2D" uid="uid://bk71h7pld0vpn" path="res://assets/mr_pencil.png" id="1_873u4"]
+[ext_resource type="Script" uid="uid://cxarxd3oi3ah5" path="res://scripts/mr_pencil.gd" id="1_suqmq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_suqmq"]
+size = Vector2(207, 279)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8ltqn"]
+radius = 32.0
+height = 160.0
+
+[node name="StaticBody2D" type="StaticBody2D" unique_id=250580257 node_paths=PackedStringArray("e")]
+script = ExtResource("1_suqmq")
+e = NodePath("ColorRect")
+
+[node name="MrPencil" type="Sprite2D" parent="." unique_id=1795247681]
+scale = Vector2(3, 3)
+texture = ExtResource("1_873u4")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=348051645]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1742848041]
+position = Vector2(3.5, 4.5)
+shape = SubResource("RectangleShape2D_suqmq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2146531756]
+position = Vector2(2, 2)
+shape = SubResource("CapsuleShape2D_8ltqn")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=403941592]
+offset_left = -17.0
+offset_top = -18.0
+offset_right = 20.0
+offset_bottom = 19.0
+
+[node name="Label" type="Label" parent="ColorRect" unique_id=650035020]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 1.0
+offset_right = 25.0
+offset_bottom = 36.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "E"
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

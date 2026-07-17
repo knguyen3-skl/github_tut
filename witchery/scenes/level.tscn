@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://jx154qlqg5uh" path="res://scenes/inventory.tscn" id="7_klq6b"]
 [ext_resource type="PackedScene" uid="uid://d1qryld5yii4n" path="res://scenes/pause.tscn" id="11_8iemx"]
 [ext_resource type="Texture2D" uid="uid://brtr5suid7hej" path="res://assets/bright_grass_tech.png" id="11_t1rx8"]
+[ext_resource type="PackedScene" uid="uid://be62xxjbf101m" path="res://scenes/mr_pencil.tscn" id="13_64w2a"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mx8sn"]
 texture = ExtResource("1_w8frs")
@@ -83,7 +84,7 @@ tile_map_data = PackedByteArray("AADx/xMAAAAAAAAAAADy/xIAAAAAAAAAAADz/xIAAAAAAAA
 tile_set = SubResource("TileSet_64w2a")
 
 [node name="CharacterBody2D" parent="." unique_id=778114501 instance=ExtResource("1_2q6dc")]
-position = Vector2(-140, 266)
+position = Vector2(-262, 210)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=409045862]
 zoom = Vector2(5, 5)
@@ -99,7 +100,7 @@ position = Vector2(-390, -266)
 navigation_polygon = SubResource("NavigationPolygon_w7c3h")
 
 [node name="CharacterBody2D3" parent="." unique_id=1563649147 node_paths=PackedStringArray("player") instance=ExtResource("2_w7c3h")]
-position = Vector2(61, 160)
+position = Vector2(52, 89)
 player = NodePath("../CharacterBody2D")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="CharacterBody2D3" unique_id=540656425]
@@ -264,6 +265,10 @@ player = NodePath("../CharacterBody2D")
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="CharacterBody2D4" unique_id=1437106461]
 position = Vector2(-390, -266)
 navigation_polygon = SubResource("NavigationPolygon_w7c3h")
+
+[node name="StaticBody2D" parent="." unique_id=250580257 instance=ExtResource("13_64w2a")]
+position = Vector2(-154, 143)
+scale = Vector2(0.4, 0.4)
 
 [connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/ColorRect2" method="_on_inventory_pressed"]
 [connection signal="pressed" from="CanvasLayer/Button2" to="CanvasLayer/ColorRect3" method="_open_pause"]

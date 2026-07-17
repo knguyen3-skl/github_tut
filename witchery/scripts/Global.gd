@@ -31,7 +31,7 @@ var inventory = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	last_player_positon = Vector2(-140.0, 266.0)
+	last_player_positon = Vector2(-262.0, 210.0)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

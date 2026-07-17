@@ -28,7 +28,7 @@ func _ready() -> void:
 	player_special.value = Global.player_special
 	special.text = str(Global.player_special)
 	
-	if Global.last_player_positon == Vector2(-140.0, 266.0):
+	if Global.last_player_positon == Vector2(-262.0, 210.0):
 		pass
 	else:
 		player.global_position = Global.last_player_positon

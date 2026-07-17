@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3m61h0xj77a3"
-path="res://.godot/imported/frame0000.png-687f12d8d3e1be5d01ff44cecf383267.ctex"
+uid="uid://bk71h7pld0vpn"
+path="res://.godot/imported/mr_pencil.png-05cd3919e6eb217aa6d4f8a85697a5a0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/frame0000.png"
-dest_files=["res://.godot/imported/frame0000.png-687f12d8d3e1be5d01ff44cecf383267.ctex"]
+source_file="res://assets/mr_pencil.png"
+dest_files=["res://.godot/imported/mr_pencil.png-05cd3919e6eb217aa6d4f8a85697a5a0.ctex"]
 
 [params]
 
