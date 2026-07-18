@@ -17,7 +17,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if player_near == true and Input.is_physical_key_pressed(KEY_E):
-		print("potion")
 		Global.potion_brewing = true
 		brewing.show()
 		inventory.hide()

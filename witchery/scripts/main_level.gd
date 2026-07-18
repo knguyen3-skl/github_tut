@@ -16,9 +16,11 @@ extends Node2D
 @export var stats: Panel
 @export var hp: Label
 @export var sp: Label
+@export var speech_block: ColorRect
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	speech_block.hide()
 	print(Global.last_player_positon)
 	player_health.max_value = Global.player_base_health
 	player_health.value = Global.player_health
@@ -77,6 +79,9 @@ func _process(delta: float) -> void:
 		sp.hide()
 		stats.hide()
 		pause.hide()
+		player.speed = 0
+	
+	elif Global.talking == true:
 		player.speed = 0
 	
 	else:

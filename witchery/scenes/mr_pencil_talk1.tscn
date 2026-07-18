@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://6cvl0t8hh6cl"]
+
+[ext_resource type="Texture2D" uid="uid://db3kevffj8enl" path="res://assets/block_tech.png" id="1_xmkkj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rrhv0"]
+bg_color = Color(0.79607844, 0.6509804, 0.49019608, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0sx2y"]
+bg_color = Color(0.79607844, 0.6509804, 0.49019608, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="ColorRect" type="ColorRect" unique_id=1116805313]
+offset_right = 61.0
+offset_bottom = 33.0
+
+[node name="Panel" type="Panel" parent="." unique_id=337234314]
+layout_mode = 0
+offset_top = -47.0
+offset_right = 233.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_rrhv0")
+
+[node name="Button" type="Button" parent="." unique_id=964574248]
+visible = false
+layout_mode = 0
+offset_left = 678.0
+offset_top = -73.0
+offset_right = 797.0
+offset_bottom = -21.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_0sx2y")
+text = "Me?"
+
+[node name="Label" type="Label" parent="." unique_id=376641047]
+layout_mode = 0
+offset_left = 41.0
+offset_top = -46.0
+offset_right = 184.0
+offset_bottom = -1.0
+theme_override_font_sizes/font_size = 32
+text = "Mr Pencil"
+
+[node name="Label2" type="Label" parent="." unique_id=1968640371]
+z_index = 1
+layout_mode = 0
+offset_left = 39.0
+offset_top = 29.0
+offset_right = 743.0
+offset_bottom = 176.0
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 35
+
+[node name="Button2" type="Button" parent="." unique_id=2029088273]
+visible = false
+layout_mode = 0
+offset_left = 434.0
+offset_top = -73.0
+offset_right = 797.0
+offset_bottom = -21.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_0sx2y")
+text = "Yes, how did you know?"
+
+[node name="Button3" type="Button" parent="." unique_id=1741152752]
+visible = false
+layout_mode = 0
+offset_left = 392.0
+offset_top = -150.0
+offset_right = 797.0
+offset_bottom = -98.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_0sx2y")
+text = "How did you end up here?"
+
+[node name="Button4" type="Button" parent="." unique_id=63286661]
+visible = false
+layout_mode = 0
+offset_left = 388.0
+offset_top = -73.0
+offset_right = 797.0
+offset_bottom = -21.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_0sx2y")
+text = "Will I be rich in the future?"
+
+[node name="Button5" type="Button" parent="." unique_id=179164966]
+visible = false
+layout_mode = 0
+offset_left = 559.0
+offset_top = -73.0
+offset_right = 797.0
+offset_bottom = -21.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_0sx2y")
+text = "Sure I guess"
+
+[node name="Label3" type="Label" parent="." unique_id=1943806417]
+z_index = 1
+layout_mode = 0
+offset_left = 274.0
+offset_top = 140.0
+offset_right = 503.0
+offset_bottom = 168.0
+theme_override_font_sizes/font_size = 20
+text = "Press space to continue"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=268290373]
+layout_mode = 0
+offset_right = 285.0
+offset_bottom = 70.0
+scale = Vector2(2.8, 2.8)
+texture = ExtResource("1_xmkkj")
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 17

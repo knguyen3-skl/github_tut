@@ -17,6 +17,13 @@ extends Node2D
 @export var mistake_timer: Timer
 @export var mistake: Label
 
+@export var spell: Button
+@export var defend: Button
+@export var potion: Button
+
+@export var pause: ColorRect
+@export var pause_button: Button
+
 var turns_left: int = 3
 var potato_turns: int = 1
 var basic_spell: int = 1
@@ -35,9 +42,17 @@ func _ready() -> void:
 	potato_ui.max_value = Global.potato_health
 	potato_ui.value = Global.potato_health
 	potato_health.text = str(Global.potato_health)
+	
+	pause.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if Global.pause == false:
+		pause_button.show()
+		spell.show()
+		defend.show()
+		potion.show()
+	
 	if Global.player_health <=0:
 		Global.potato_fight = false
 		get_tree().call_deferred("change_scene_to_file", "res://scenes/died.tscn")
@@ -139,3 +154,11 @@ func _turn_reset() -> void:
 func _mistake_timeout() -> void:
 	mistake_timer.stop()
 	mistake.text = str("")
+
+func _pause() -> void:
+	pause.show()
+	Global.pause = true
+	pause_button.hide()
+	spell.hide()
+	defend.hide()
+	potion.hide()

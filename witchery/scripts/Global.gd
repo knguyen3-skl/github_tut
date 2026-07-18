@@ -23,6 +23,7 @@ var last_player_positon : Vector2
 
 var inventory_status: bool = false
 var pause: bool = false
+var talking: bool = false
 
 var inventory = {
 	"purple_potion": 0,
