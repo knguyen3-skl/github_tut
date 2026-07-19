@@ -30,6 +30,8 @@ var inventory = {
 	"blue_potion": 0,
 }
 
+var quest_1_talk = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	last_player_positon = Vector2(-262.0, 210.0)

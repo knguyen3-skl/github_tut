@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://6cvl0t8hh6cl"]
 
+[ext_resource type="Script" uid="uid://djyj7t2cbiwq2" path="res://scripts/mr_pencil_talk_1.gd" id="1_rrhv0"]
 [ext_resource type="Texture2D" uid="uid://db3kevffj8enl" path="res://assets/block_tech.png" id="1_xmkkj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rrhv0"]
@@ -14,9 +15,16 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
-[node name="ColorRect" type="ColorRect" unique_id=1116805313]
+[node name="ColorRect" type="ColorRect" unique_id=1116805313 node_paths=PackedStringArray("text", "button_1", "button_2", "button_3", "button_4", "button_5")]
 offset_right = 61.0
 offset_bottom = 33.0
+script = ExtResource("1_rrhv0")
+text = NodePath("Label2")
+button_1 = NodePath("Button")
+button_2 = NodePath("Button2")
+button_3 = NodePath("Button3")
+button_4 = NodePath("Button4")
+button_5 = NodePath("Button5")
 
 [node name="Panel" type="Panel" parent="." unique_id=337234314]
 layout_mode = 0
@@ -68,7 +76,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_0sx2y")
 text = "Yes, how did you know?"
 
 [node name="Button3" type="Button" parent="." unique_id=1741152752]
-visible = false
 layout_mode = 0
 offset_left = 392.0
 offset_top = -150.0
@@ -80,7 +87,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_0sx2y")
 text = "How did you end up here?"
 
 [node name="Button4" type="Button" parent="." unique_id=63286661]
-visible = false
 layout_mode = 0
 offset_left = 388.0
 offset_top = -73.0
@@ -123,3 +129,9 @@ patch_margin_left = 17
 patch_margin_top = 17
 patch_margin_right = 17
 patch_margin_bottom = 17
+
+[connection signal="pressed" from="Button" to="." method="_first"]
+[connection signal="pressed" from="Button2" to="." method="_second"]
+[connection signal="pressed" from="Button3" to="." method="_third"]
+[connection signal="pressed" from="Button4" to="." method="_fourth"]
+[connection signal="pressed" from="Button5" to="." method="_fifth"]
