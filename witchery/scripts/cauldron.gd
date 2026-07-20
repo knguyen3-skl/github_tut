@@ -21,14 +21,11 @@ func _process(delta: float) -> void:
 		brewing.show()
 		inventory.hide()
 		Global.inventory_status = false
-		brewing.get_child(9).hide()
-		brewing.get_child(10).hide()
-		brewing.get_child(11).hide()
-		brewing.get_child(12).hide()
-		brewing.get_child(8).show()
-		brewing.get_child(4).show()
-		brewing.get_child(5).show()
-		brewing.get_child(6).show()
+		for items in brewing.get_children():
+			if items.is_in_group("blue_options"):
+				items.hide()
+			elif items.is_in_group("purple_options"):
+				items.show()
 		
 
 func _on_area_2d_entered(area: Area2D) -> void:

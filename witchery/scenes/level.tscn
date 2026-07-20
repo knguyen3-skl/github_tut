@@ -220,6 +220,7 @@ text = "0"
 
 [node name="ColorRect" parent="CanvasLayer" unique_id=848347300 node_paths=PackedStringArray("inventory", "money") instance=ExtResource("5_2r41h")]
 visible = false
+z_index = 4
 offset_left = 216.0
 offset_top = 133.0
 offset_right = 916.0
@@ -251,6 +252,7 @@ offset_bottom = 324.0
 puase = NodePath("../Button2")
 
 [node name="ColorRect4" parent="CanvasLayer" unique_id=1116805313 instance=ExtResource("14_fpun6")]
+visible = false
 offset_left = 159.0
 offset_top = 387.0
 offset_right = 220.0
