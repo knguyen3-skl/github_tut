@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ds4j82vja3u3h" path="res://assets/grass2_tech.png" id="1_1snm0"]
 [ext_resource type="Script" uid="uid://cpjn6q3cbsax6" path="res://scripts/fight_mr_potato.gd" id="1_tlxmr"]
-[ext_resource type="Texture2D" uid="uid://c5mbis7qs17av" path="res://assets/mr_potato_tech.png" id="2_w2b38"]
+[ext_resource type="Texture2D" uid="uid://txmfqmtqi8l7" path="res://assets/Mrpotato0000.png" id="3_7268j"]
 [ext_resource type="Texture2D" uid="uid://bq2s64pkdo8dh" path="res://assets/witch_tech.png" id="3_lt1b2"]
 [ext_resource type="Texture2D" uid="uid://s7x7ibmpwe2p" path="res://assets/bar_tech.png" id="4_lt1b2"]
 [ext_resource type="Texture2D" uid="uid://blq3vehgl7m87" path="res://assets/energy_tech.png" id="5_44pj3"]
@@ -116,7 +116,7 @@ texture = ExtResource("1_1snm0")
 [node name="MrPotatoTech" type="Sprite2D" parent="CanvasLayer" unique_id=732002285]
 position = Vector2(832.00006, 371)
 scale = Vector2(6, 6)
-texture = ExtResource("2_w2b38")
+texture = ExtResource("3_7268j")
 
 [node name="WitchTech" type="Sprite2D" parent="CanvasLayer" unique_id=14330415]
 position = Vector2(322, 360)
@@ -362,6 +362,7 @@ theme_override_colors/font_color = Color(0.7137255, 0.2509804, 0.21960784, 1)
 theme_override_font_sizes/font_size = 20
 
 [node name="ColorRect" parent="CanvasLayer" unique_id=625441976 instance=ExtResource("12_7268j")]
+visible = false
 z_index = 1
 offset_top = 282.0
 offset_bottom = 322.0

@@ -1,7 +1,31 @@
 [gd_scene format=3 uid="uid://buj423pij3ll6"]
 
 [ext_resource type="Script" uid="uid://d21w3sj21drbf" path="res://scripts/mr_potato.gd" id="1_fkyqd"]
-[ext_resource type="Texture2D" uid="uid://c5mbis7qs17av" path="res://assets/mr_potato_tech.png" id="1_qspst"]
+[ext_resource type="Texture2D" uid="uid://txmfqmtqi8l7" path="res://assets/Mrpotato0000.png" id="2_383pu"]
+[ext_resource type="Texture2D" uid="uid://c5mq1it26gg5w" path="res://assets/Mrpotato0001.png" id="3_eiafw"]
+[ext_resource type="Texture2D" uid="uid://dv5k6bqeh20uf" path="res://assets/Mrpotato0002.png" id="4_l6sf7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5gyy8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_383pu")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_eiafw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_l6sf7")
+}],
+"loop": false,
+"name": &"walk",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fkyqd"]
 size = Vector2(28, 31)
@@ -10,12 +34,15 @@ size = Vector2(28, 31)
 radius = 15.0
 height = 36.0
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1071034293 node_paths=PackedStringArray("navigation_agent_2d") groups=["enemy"]]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1071034293 node_paths=PackedStringArray("navigation_agent_2d", "animation") groups=["enemy"]]
 script = ExtResource("1_fkyqd")
 navigation_agent_2d = NodePath("NavigationAgent2D")
+animation = NodePath("AnimatedSprite2D")
 
-[node name="MrPotatoTech" type="Sprite2D" parent="." unique_id=1160241202]
-texture = ExtResource("1_qspst")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=576065573]
+sprite_frames = SubResource("SpriteFrames_5gyy8")
+animation = &"walk"
+autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=320596883]
 position = Vector2(0, 0.5)

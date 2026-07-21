@@ -13,10 +13,8 @@ extends Node2D
 @export var inventory: Button
 @export var coins: Label
 @export var pause: Button
-@export var stats: Panel
-@export var hp: Label
-@export var sp: Label
 @export var speech_block: ColorRect
+@export var canvas: CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -64,20 +62,11 @@ func _process(delta: float) -> void:
 			enemies.set_physics_process(true)
 	
 	if Global.pause == true:
+		for items in canvas.get_children():
+			if items.is_in_group("stats"):
+				items.hide()
+				
 		inventory.hide()
-		coins.hide()
-		money.hide()
-		player_health.hide()
-		player_special.hide()
-		health.hide()
-		special.hide()
-		hp_bar.hide()
-		sp_bar.hide()
-		heart.hide()
-		energy.hide()
-		hp.hide()
-		sp.hide()
-		stats.hide()
 		pause.hide()
 		player.speed = 0
 	
@@ -87,20 +76,12 @@ func _process(delta: float) -> void:
 	else:
 		player.speed = 100
 		inventory.show()
+		pause.show()
 		coins.show()
 		money.show()
-		player_health.show()
-		player_special.show()
-		health.show()
-		special.show()
-		hp_bar.show()
-		sp_bar.show()
-		heart.show()
-		energy.show()
-		hp.show()
-		sp.show()
-		stats.show()
-		pause.show()
+		for items in canvas.get_children():
+			if items.is_in_group("stats"):
+				items.show()
 
 func _respawn_enemy(enemy_id: StringName) -> void:
 	Global.enemy_dict[enemy_id] = "alive"
