@@ -30,7 +30,7 @@ var inventory = {
 	"blue_potion": 0,
 }
 
-var into: bool = false
+var intro: bool = false
 var quest_1_talk: bool = false
 
 # Called when the node enters the scene tree for the first time.

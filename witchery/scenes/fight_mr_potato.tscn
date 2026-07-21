@@ -8,10 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://blq3vehgl7m87" path="res://assets/energy_tech.png" id="5_44pj3"]
 [ext_resource type="Texture2D" uid="uid://ryjhr7md15fx" path="res://assets/heart_tech.png" id="6_nlw5s"]
 [ext_resource type="Texture2D" uid="uid://usejjjt7c451" path="res://assets/hpbar_tech.png" id="7_nlw5s"]
-[ext_resource type="Texture2D" uid="uid://khmv72dyodxn" path="res://assets/sheild_tech.png" id="9_2yrmm"]
 [ext_resource type="Texture2D" uid="uid://cxlxhtffoja2o" path="res://assets/wand_tech.png" id="10_2yrmm"]
 [ext_resource type="Texture2D" uid="uid://crhc0alwbwdn3" path="res://assets/potion_purple_tech.png" id="11_y7np1"]
 [ext_resource type="PackedScene" uid="uid://d1qryld5yii4n" path="res://scenes/pause.tscn" id="12_7268j"]
+[ext_resource type="Texture2D" uid="uid://db3kevffj8enl" path="res://assets/block_tech.png" id="12_rwdpr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w2b38"]
 bg_color = Color(0, 0, 0, 0.25490198)
@@ -74,7 +74,7 @@ bg_color = Color(0.19607843, 0.7254902, 0.83137256, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_un3r7"]
 bg_color = Color(0.5372549, 0.1882353, 0.16470589, 1)
 
-[node name="Node2D" type="Node2D" unique_id=1641416975 node_paths=PackedStringArray("health_ui", "sp_ui", "potato_ui", "health", "sp", "potato_health", "first_turn_p", "first_turn_w", "second_turn_p", "second_turn_w", "third_turn_p", "third_turn_w", "timer", "mistake_timer", "mistake", "spell", "defend", "potion", "pause", "pause_button")]
+[node name="Node2D" type="Node2D" unique_id=1641416975 node_paths=PackedStringArray("health_ui", "sp_ui", "potato_ui", "health", "sp", "potato_health", "first_turn_p", "first_turn_w", "second_turn_p", "second_turn_w", "third_turn_p", "third_turn_w", "timer", "mistake_timer", "mistake", "spell", "potion", "pause", "pause_button", "canvas", "dark", "light", "block", "text", "sub_text")]
 script = ExtResource("1_tlxmr")
 health_ui = NodePath("CanvasLayer/ProgressBar")
 sp_ui = NodePath("CanvasLayer/ProgressBar2")
@@ -91,11 +91,16 @@ third_turn_w = NodePath("CanvasLayer/WitchTech2")
 timer = NodePath("Timer")
 mistake_timer = NodePath("Timer2")
 mistake = NodePath("CanvasLayer/Label8")
-spell = NodePath("CanvasLayer/Button")
-defend = NodePath("CanvasLayer/Button2")
+spell = NodePath("CanvasLayer/Button2")
 potion = NodePath("CanvasLayer/Button3")
 pause = NodePath("CanvasLayer/ColorRect")
 pause_button = NodePath("CanvasLayer/Button4")
+canvas = NodePath("CanvasLayer")
+dark = NodePath("CanvasLayer/Polygon2D2")
+light = NodePath("CanvasLayer/Polygon2D3")
+block = NodePath("CanvasLayer/NinePatchRect")
+text = NodePath("CanvasLayer/Label9")
+sub_text = NodePath("CanvasLayer/Label10")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=791422463]
 
@@ -255,28 +260,10 @@ offset_bottom = 276.0
 theme_override_font_sizes/font_size = 20
 text = "Mr Potato"
 
-[node name="Button" type="Button" parent="CanvasLayer" unique_id=429305071]
-offset_left = 554.0
-offset_top = 528.0
-offset_right = 589.0
-offset_bottom = 568.0
-scale = Vector2(2, 2)
-theme_override_styles/normal = SubResource("StyleBoxFlat_y7np1")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_wgrxm")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_rwdpr")
-theme_override_styles/hover = SubResource("StyleBoxFlat_tlxmr")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_2yrmm")
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_7268j")
-
-[node name="SheildTech" type="Sprite2D" parent="CanvasLayer/Button" unique_id=576953612]
-position = Vector2(17.5, 22)
-scale = Vector2(1.4, 1.4)
-texture = ExtResource("9_2yrmm")
-
 [node name="Button2" type="Button" parent="CanvasLayer" unique_id=88902813]
-offset_left = 454.0
+offset_left = 498.0
 offset_top = 528.0
-offset_right = 489.0
+offset_right = 533.0
 offset_bottom = 568.0
 scale = Vector2(2, 2)
 theme_override_styles/normal = SubResource("StyleBoxFlat_y7np1")
@@ -292,9 +279,9 @@ scale = Vector2(0.55, 0.55)
 texture = ExtResource("10_2yrmm")
 
 [node name="Button3" type="Button" parent="CanvasLayer" unique_id=182097734]
-offset_left = 654.0
+offset_left = 597.0
 offset_top = 528.0
-offset_right = 689.0
+offset_right = 632.0
 offset_bottom = 568.0
 scale = Vector2(2, 2)
 theme_override_styles/normal = SubResource("StyleBoxFlat_y7np1")
@@ -367,12 +354,55 @@ z_index = 1
 offset_top = 282.0
 offset_bottom = 322.0
 
+[node name="Polygon2D2" type="Polygon2D" parent="CanvasLayer" unique_id=1081953984 groups=["intro"]]
+visible = false
+color = Color(0, 0, 0, 0.38431373)
+polygon = PackedVector2Array(1152, 0, 1152, 648, -40, 648, -40, 0)
+
+[node name="Polygon2D3" type="Polygon2D" parent="CanvasLayer" unique_id=1926151371]
+visible = false
+color = Color(1, 1, 1, 0.67058825)
+polygon = PackedVector2Array(45, 33, 312, 33, 312, 184, 39, 183, 39, 32)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer" unique_id=2010717157 groups=["intro"]]
+visible = false
+z_index = 1
+offset_left = 171.0
+offset_top = 418.0
+offset_right = 456.0
+offset_bottom = 488.0
+scale = Vector2(2.8, 2.8)
+texture = ExtResource("12_rwdpr")
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 17
+
+[node name="Label9" type="Label" parent="CanvasLayer" unique_id=2137615109 groups=["intro"]]
+visible = false
+z_index = 1
+offset_left = 208.0
+offset_top = 447.0
+offset_right = 945.0
+offset_bottom = 594.0
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 35
+
+[node name="Label10" type="Label" parent="CanvasLayer" unique_id=99205052 groups=["intro"]]
+visible = false
+z_index = 1
+offset_left = 456.0
+offset_top = 554.0
+offset_right = 685.0
+offset_bottom = 582.0
+theme_override_font_sizes/font_size = 20
+text = "Press space to continue"
+
 [node name="Timer" type="Timer" parent="." unique_id=2088150919]
 
 [node name="Timer2" type="Timer" parent="." unique_id=256539285]
 
 [connection signal="pressed" from="CanvasLayer/Button4" to="." method="_pause"]
-[connection signal="pressed" from="CanvasLayer/Button" to="." method="_defend"]
 [connection signal="pressed" from="CanvasLayer/Button2" to="." method="_attack"]
 [connection signal="pressed" from="CanvasLayer/Button3" to="." method="_potion"]
 [connection signal="timeout" from="Timer" to="." method="_potato_turn"]

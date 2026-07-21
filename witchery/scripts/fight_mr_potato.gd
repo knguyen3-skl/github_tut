@@ -18,15 +18,35 @@ extends Node2D
 @export var mistake: Label
 
 @export var spell: Button
-@export var defend: Button
 @export var potion: Button
 
 @export var pause: ColorRect
 @export var pause_button: Button
 
+@export var canvas: CanvasLayer
+@export var dark: Polygon2D
+@export var light: Polygon2D
+@export var block: NinePatchRect
+@export var text: Label
+@export var sub_text: Label
+
+var bars: bool = false
+
 var turns_left: int = 3
 var potato_turns: int = 1
 var basic_spell: int = 1
+
+var intro = [
+	"This is a quick introduction to mastering
+combat!",
+"In the top left is your health and special 
+points",
+"Whenever you get attacked, you will lose
+health, so be careful and don't go below 0",
+"Special points can be used to cast spells, so
+remember to recharge them",
+
+]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -44,13 +64,19 @@ func _ready() -> void:
 	potato_health.text = str(Global.potato_health)
 	
 	pause.hide()
-
+	
+	if Global.intro == false:
+		for items in canvas.get_children():
+			if items.is_in_group("intro"):
+				items.show()
+				
+		text.text = intro[0]
+				
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Global.pause == false:
 		pause_button.show()
 		spell.show()
-		defend.show()
 		potion.show()
 	
 	if Global.player_health <=0:
@@ -64,18 +90,10 @@ func _process(delta: float) -> void:
 		Global.enemy_dict[Global.enemy_id] = "dead"
 		print(Global.enemy_dict)
 		get_tree().call_deferred("change_scene_to_file", "res://scenes/level.tscn")
-
-func _defend() -> void:
-	if turns_left >= 1 and Global.player_health < Global.player_base_health:
-		turns_left -= 1
-		_turn()
-		Global.player_health += 1
-		health_ui.value = Global.player_health
-		health.text = str(Global.player_health)
-	
-	elif Global.player_health == Global.player_base_health:
-		mistake.text = str("Health is already maxed!")
-		mistake_timer.start()	
+		
+	if Global.intro == false and bars == false and Input.is_action_just_pressed("next"):
+		text.text = intro[1]
+		light.show()
 
 func _attack() -> void:
 	if turns_left >= 1 and Global.player_special > 0:
@@ -160,5 +178,4 @@ func _pause() -> void:
 	Global.pause = true
 	pause_button.hide()
 	spell.hide()
-	defend.hide()
 	potion.hide()
