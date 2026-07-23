@@ -16,10 +16,10 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 3.0,
 "texture": ExtResource("3_eiafw")
 }, {
-"duration": 1.0,
+"duration": 3.0,
 "texture": ExtResource("4_l6sf7")
 }],
 "loop": false,
@@ -28,11 +28,11 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fkyqd"]
-size = Vector2(28, 31)
+size = Vector2(26, 27)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v6t6g"]
 radius = 15.0
-height = 36.0
+height = 32.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1071034293 node_paths=PackedStringArray("navigation_agent_2d", "animation") groups=["enemy"]]
 script = ExtResource("1_fkyqd")
@@ -45,13 +45,13 @@ animation = &"walk"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=320596883]
-position = Vector2(0, 0.5)
+position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_fkyqd")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=498338532]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2120059255]
-position = Vector2(0, 2)
+position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_v6t6g")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1453686346]

@@ -4,7 +4,9 @@ extends Node2D
 @export var potato_ui: ProgressBar
 @export var health: Label
 @export var sp: Label
+@export var potato_hp: Label
 @export var potato_health: Label
+@export var potato_bar: Sprite2D
 
 @export var first_turn_p: Panel
 @export var first_turn_w: Sprite2D
@@ -25,17 +27,21 @@ extends Node2D
 
 @export var canvas: CanvasLayer
 @export var dark: Polygon2D
-@export var light: Polygon2D
+@export var light_bar: Polygon2D
+@export var light_potato: Polygon2D
+@export var light_options: Polygon2D
 @export var block: NinePatchRect
 @export var text: Label
 @export var sub_text: Label
 
 var bars: bool = false
+var options: bool = false
 
 var turns_left: int = 3
 var potato_turns: int = 1
 var basic_spell: int = 1
 
+var counter = 0
 var intro = [
 	"This is a quick introduction to mastering
 combat!",
@@ -45,6 +51,12 @@ points",
 health, so be careful and don't go below 0",
 "Special points can be used to cast spells, so
 remember to recharge them",
+"This is your enemy's health",
+"Attack the enemy to defeat it",
+"Down here are the different actions you
+can choose from each round.",
+"Each action will cost you one turn, so
+decide with caution.",
 
 ]
 
@@ -70,7 +82,16 @@ func _ready() -> void:
 			if items.is_in_group("intro"):
 				items.show()
 				
+		for items in canvas.get_children():
+			if items.is_in_group("stats"):
+				items.z_index = 0
 		text.text = intro[0]
+	
+	spell.mouse_filter = 2
+	potion.mouse_filter = 2
+	block.position = Vector2(171.0,418.0)
+	text.position = Vector2(208.0,447.0)
+	sub_text.position = Vector2(456.0, 554.0)
 				
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -91,9 +112,53 @@ func _process(delta: float) -> void:
 		print(Global.enemy_dict)
 		get_tree().call_deferred("change_scene_to_file", "res://scenes/level.tscn")
 		
-	if Global.intro == false and bars == false and Input.is_action_just_pressed("next"):
-		text.text = intro[1]
-		light.show()
+	if counter == 4:
+		bars = true
+		light_bar.hide()
+		light_potato.show()
+		light_options.hide()
+		for items in canvas.get_children():
+			if items.is_in_group("stats"):
+				items.z_index = 0
+				
+		block.position = Vector2(171.0,40.0)
+		text.position = Vector2(208.0,70.0)
+		sub_text.position = Vector2(456.0, 175.0)
+		potato_bar.z_index = 3
+		potato_hp.z_index = 3
+		potato_health.z_index = 3
+		potato_ui.z_index = 2
+	
+	if counter == 6:
+		light_potato.hide()
+		light_options.show()
+		potato_bar.z_index = 1
+		potato_hp.z_index = 0
+		potato_health.z_index = 0
+		potato_ui.z_index = 0
+		spell.z_index = 2
+		potion.z_index = 2
+		options = true
+	
+	if Global.intro == false and bars == false and counter < 4 and Input.is_action_just_pressed("next"):
+		counter += 1
+		text.text = intro[counter]
+		print(counter)
+		light_bar.show()
+		
+		for items in canvas.get_children():
+			if items.is_in_group("stats"):
+				items.z_index = 1
+				
+	elif Global.intro == false and counter >= 4 and options == false and Input.is_action_just_pressed("next"):
+		counter += 1
+		text.text = intro[counter]
+		print(counter)
+				
+	elif Global.intro == false and counter >= 6 and options == true and Input.is_action_just_pressed("next"):
+		counter += 1
+		text.text = intro[counter]
+		print(counter)
 
 func _attack() -> void:
 	if turns_left >= 1 and Global.player_special > 0:
