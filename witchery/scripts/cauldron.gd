@@ -8,10 +8,11 @@ var player_near: bool = false
 @export var player_special: ProgressBar
 @export var health: Label
 @export var special: Label
+@export var e: ColorRect
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$ColorRect2.hide()
+	e.hide()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -30,14 +31,14 @@ func _process(delta: float) -> void:
 
 func _on_area_2d_entered(area: Area2D) -> void:
 	if area.is_in_group("player"):
-		$ColorRect2.show()
+		e.show()
 		player_near = true
 
 
 func _on_area_2d_exited(area: Area2D) -> void:
 	if area.is_in_group("player"):
 		player_near = false
-		$ColorRect2.hide()
+		e.hide()
 		brewing.hide()
 
 

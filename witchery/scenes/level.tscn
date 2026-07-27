@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://brtr5suid7hej" path="res://assets/bright_grass_tech.png" id="11_t1rx8"]
 [ext_resource type="PackedScene" uid="uid://be62xxjbf101m" path="res://scenes/mr_pencil.tscn" id="13_64w2a"]
 [ext_resource type="PackedScene" uid="uid://6cvl0t8hh6cl" path="res://scenes/mr_pencil_talk1.tscn" id="14_fpun6"]
+[ext_resource type="PackedScene" uid="uid://cl27xtb4kvvx5" path="res://scenes/market.tscn" id="15_wc255"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mx8sn"]
 texture = ExtResource("1_w8frs")
@@ -36,9 +37,9 @@ texture = ExtResource("11_t1rx8")
 sources/0 = SubResource("TileSetAtlasSource_8iemx")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_w7c3h"]
-vertices = PackedVector2Array(454.2422, 194.89063, 458.72656, 370.9375, 282.89844, 370.04688, 281.10156, 193.10156)
+vertices = PackedVector2Array(506, 369, 270, 369, 270, 137.96094, 506, 137.03125)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(260, 128, 517, 127, 516, 379, 260, 379)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(260, 128, 516, 127, 516, 379, 260, 379)])
 source_geometry_mode = 2
 source_geometry_group_name = &"mr_potato_path"
 
@@ -96,7 +97,7 @@ position = Vector2(389, 204)
 player = NodePath("../CharacterBody2D")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="CharacterBody2D2" unique_id=2081568768]
-position = Vector2(-390, -266)
+position = Vector2(-390, -258)
 navigation_polygon = SubResource("NavigationPolygon_w7c3h")
 
 [node name="CharacterBody2D3" parent="." unique_id=1563649147 node_paths=PackedStringArray("player") instance=ExtResource("2_w7c3h")]
@@ -104,7 +105,7 @@ position = Vector2(384, 531)
 player = NodePath("../CharacterBody2D")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="CharacterBody2D3" unique_id=540656425]
-position = Vector2(-390, -266)
+position = Vector2(-389, -253)
 navigation_polygon = SubResource("NavigationPolygon_w7c3h")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2083746308]
@@ -271,13 +272,16 @@ position = Vector2(92, 531)
 player = NodePath("../CharacterBody2D")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="CharacterBody2D4" unique_id=1437106461]
-position = Vector2(-390, -266)
+position = Vector2(-388, -255)
 navigation_polygon = SubResource("NavigationPolygon_w7c3h")
 
 [node name="StaticBody2D" parent="." unique_id=250580257 node_paths=PackedStringArray("speech_block") instance=ExtResource("13_64w2a")]
 position = Vector2(-154, 143)
 scale = Vector2(0.4, 0.4)
 speech_block = NodePath("../CanvasLayer/ColorRect4")
+
+[node name="StaticBody2D2" parent="." unique_id=1302831023 instance=ExtResource("15_wc255")]
+position = Vector2(-20, 128)
 
 [connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/ColorRect2" method="_on_inventory_pressed"]
 [connection signal="pressed" from="CanvasLayer/Button2" to="CanvasLayer/ColorRect3" method="_open_pause"]

@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://b7osk4rmhfbyf"]
+
+[ext_resource type="Texture2D" uid="uid://db3kevffj8enl" path="res://assets/block_tech.png" id="1_lx5au"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfvoa"]
+bg_color = Color(0.66458356, 0, 0.04976818, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1l46r"]
+bg_color = Color(0.79607844, 0.6509804, 0.49019608, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+
+[node name="ColorRect" type="ColorRect" unique_id=1185942794]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=456755120]
+layout_mode = 0
+offset_right = 247.33334
+offset_bottom = 137.66667
+scale = Vector2(3, 3)
+texture = ExtResource("1_lx5au")
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 17
+
+[node name="Button" type="Button" parent="." unique_id=438905336]
+layout_mode = 0
+offset_left = 721.0
+offset_top = -11.0
+offset_right = 751.0
+offset_bottom = 20.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_xfvoa")
+text = "X"
+
+[node name="Panel" type="Panel" parent="." unique_id=1648120885 groups=["speech"]]
+visible = false
+layout_mode = 0
+offset_left = -30.0
+offset_top = 170.0
+offset_right = 203.0
+offset_bottom = 217.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1l46r")
+
+[node name="Label" type="Label" parent="." unique_id=1988694098 groups=["speech"]]
+visible = false
+layout_mode = 0
+offset_left = 11.0
+offset_top = 171.0
+offset_right = 154.0
+offset_bottom = 216.0
+theme_override_font_sizes/font_size = 32
+text = "Mr Pencil"
+
+[node name="Label3" type="Label" parent="." unique_id=1179880485 groups=["speech"]]
+visible = false
+z_index = 1
+layout_mode = 0
+offset_left = 244.0
+offset_top = 357.0
+offset_right = 473.0
+offset_bottom = 385.0
+theme_override_font_sizes/font_size = 20
+text = "Press space to continue"
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="." unique_id=656291770 groups=["speech"]]
+visible = false
+layout_mode = 0
+offset_left = -29.999994
+offset_top = 216.99998
+offset_right = 255.0
+offset_bottom = 287.0
+scale = Vector2(2.8, 2.8)
+texture = ExtResource("1_lx5au")
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 17
