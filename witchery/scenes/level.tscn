@@ -15,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://be62xxjbf101m" path="res://scenes/mr_pencil.tscn" id="13_64w2a"]
 [ext_resource type="PackedScene" uid="uid://6cvl0t8hh6cl" path="res://scenes/mr_pencil_talk1.tscn" id="14_fpun6"]
 [ext_resource type="PackedScene" uid="uid://cl27xtb4kvvx5" path="res://scenes/market.tscn" id="15_wc255"]
+[ext_resource type="PackedScene" uid="uid://clsjk425nghlu" path="res://scenes/stall.tscn" id="16_arp2o"]
+[ext_resource type="PackedScene" uid="uid://b7osk4rmhfbyf" path="res://scenes/shop.tscn" id="17_ux5qa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mx8sn"]
 texture = ExtResource("1_w8frs")
@@ -257,6 +259,14 @@ offset_top = 387.0
 offset_right = 220.0
 offset_bottom = 420.0
 
+[node name="ColorRect5" parent="CanvasLayer" unique_id=1185942794 node_paths=PackedStringArray("player_cam") instance=ExtResource("17_ux5qa")]
+z_index = 2
+offset_left = -25.0
+offset_top = -36.0
+offset_right = 15.0
+offset_bottom = 4.0
+player_cam = NodePath("../../CharacterBody2D/Camera2D")
+
 [node name="Node2D" parent="." unique_id=1706893009 node_paths=PackedStringArray("brewing", "inventory", "player_health", "player_special", "health", "special") instance=ExtResource("5_ppgk2")]
 position = Vector2(-179, 339)
 scale = Vector2(0.5, 0.5)
@@ -281,7 +291,13 @@ scale = Vector2(0.4, 0.4)
 speech_block = NodePath("../CanvasLayer/ColorRect4")
 
 [node name="StaticBody2D2" parent="." unique_id=1302831023 instance=ExtResource("15_wc255")]
-position = Vector2(-20, 128)
+position = Vector2(-26.999992, 158)
+scale = Vector2(0.5, 0.5)
+
+[node name="StaticBody2D3" parent="." unique_id=101525766 node_paths=PackedStringArray("shop") instance=ExtResource("16_arp2o")]
+position = Vector2(-67.99999, 99)
+scale = Vector2(0.8, 0.8)
+shop = NodePath("../CanvasLayer/ColorRect5")
 
 [connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/ColorRect2" method="_on_inventory_pressed"]
 [connection signal="pressed" from="CanvasLayer/Button2" to="CanvasLayer/ColorRect3" method="_open_pause"]

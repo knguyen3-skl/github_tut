@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://b7osk4rmhfbyf"]
 
+[ext_resource type="Script" uid="uid://tsuittpcyot2" path="res://scripts/shop.gd" id="1_1l46r"]
 [ext_resource type="Texture2D" uid="uid://db3kevffj8enl" path="res://assets/block_tech.png" id="1_lx5au"]
+[ext_resource type="Texture2D" uid="uid://cxlxhtffoja2o" path="res://assets/wand_tech.png" id="2_xfvoa"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfvoa"]
 bg_color = Color(0.66458356, 0, 0.04976818, 1)
@@ -10,14 +12,27 @@ bg_color = Color(0.79607844, 0.6509804, 0.49019608, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 
-[node name="ColorRect" type="ColorRect" unique_id=1185942794]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_032fp"]
+bg_color = Color(0.08235294, 0.08235294, 0.08235294, 0.49803922)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="ColorRect" type="ColorRect" unique_id=1185942794 node_paths=PackedStringArray("timer", "broke")]
 offset_right = 40.0
 offset_bottom = 40.0
+color = Color(1, 1, 1, 0)
+script = ExtResource("1_1l46r")
+timer = NodePath("Timer")
+broke = NodePath("Label4")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=456755120]
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=456755120 groups=["shop"]]
 layout_mode = 0
-offset_right = 247.33334
-offset_bottom = 137.66667
+offset_left = 159.0
+offset_top = 122.0
+offset_right = 444.00003
+offset_bottom = 283.33334
 scale = Vector2(3, 3)
 texture = ExtResource("1_lx5au")
 patch_margin_left = 17
@@ -25,55 +40,119 @@ patch_margin_top = 17
 patch_margin_right = 17
 patch_margin_bottom = 17
 
-[node name="Button" type="Button" parent="." unique_id=438905336]
+[node name="Button" type="Button" parent="." unique_id=438905336 groups=["shop"]]
 layout_mode = 0
-offset_left = 721.0
-offset_top = -11.0
-offset_right = 751.0
-offset_bottom = 20.0
+offset_left = 973.0
+offset_top = 105.0
+offset_right = 1033.0
+offset_bottom = 165.0
+theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_xfvoa")
 text = "X"
 
 [node name="Panel" type="Panel" parent="." unique_id=1648120885 groups=["speech"]]
 visible = false
 layout_mode = 0
-offset_left = -30.0
-offset_top = 170.0
-offset_right = 203.0
-offset_bottom = 217.0
+offset_left = 184.0
+offset_top = 376.0
+offset_right = 417.0
+offset_bottom = 423.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_1l46r")
 
 [node name="Label" type="Label" parent="." unique_id=1988694098 groups=["speech"]]
 visible = false
 layout_mode = 0
-offset_left = 11.0
-offset_top = 171.0
-offset_right = 154.0
-offset_bottom = 216.0
+offset_left = 204.0
+offset_top = 376.0
+offset_right = 399.0
+offset_bottom = 421.0
 theme_override_font_sizes/font_size = 32
-text = "Mr Pencil"
+text = "Shop Keeper"
+
+[node name="Label2" type="Label" parent="." unique_id=2087044934 groups=["speech"]]
+visible = false
+z_index = 1
+layout_mode = 0
+offset_left = 231.0
+offset_top = 458.0
+offset_right = 935.0
+offset_bottom = 605.0
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 35
+text = "Welcome to my humble store!"
 
 [node name="Label3" type="Label" parent="." unique_id=1179880485 groups=["speech"]]
 visible = false
 z_index = 1
 layout_mode = 0
-offset_left = 244.0
-offset_top = 357.0
-offset_right = 473.0
-offset_bottom = 385.0
+offset_left = 458.0
+offset_top = 563.0
+offset_right = 687.0
+offset_bottom = 591.0
 theme_override_font_sizes/font_size = 20
 text = "Press space to continue"
 
 [node name="NinePatchRect2" type="NinePatchRect" parent="." unique_id=656291770 groups=["speech"]]
 visible = false
 layout_mode = 0
-offset_left = -29.999994
-offset_top = 216.99998
-offset_right = 255.0
-offset_bottom = 287.0
+offset_left = 183.99998
+offset_top = 422.99997
+offset_right = 469.0
+offset_bottom = 493.0
 scale = Vector2(2.8, 2.8)
 texture = ExtResource("1_lx5au")
 patch_margin_left = 17
 patch_margin_top = 17
 patch_margin_right = 17
 patch_margin_bottom = 17
+
+[node name="Panel2" type="Panel" parent="." unique_id=1404870102 groups=["shop"]]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 166.0
+offset_right = 439.0
+offset_bottom = 457.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_032fp")
+
+[node name="ColorRect" type="ColorRect" parent="Panel2" unique_id=262435515]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 16.0
+offset_right = 213.0
+offset_bottom = 137.0
+color = Color(0.08468988, 0.08468995, 0.08468989, 0.49803922)
+
+[node name="WandTech" type="Sprite2D" parent="Panel2" unique_id=2010317714]
+position = Vector2(114, 81)
+scale = Vector2(2, 2)
+texture = ExtResource("2_xfvoa")
+region_enabled = true
+region_rect = Rect2(0, 0, 48, 55)
+
+[node name="Button" type="Button" parent="Panel2" unique_id=312876515]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 224.0
+offset_right = 185.0
+offset_bottom = 280.0
+theme_override_font_sizes/font_size = 30
+text = "Purchase"
+
+[node name="Label4" type="Label" parent="." unique_id=71555234]
+visible = false
+z_index = 1
+layout_mode = 0
+offset_left = 411.0
+offset_top = 517.0
+offset_right = 743.0
+offset_bottom = 566.0
+theme_override_colors/font_color = Color(1, 0.16078432, 0.16470589, 1)
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 35
+text = "Not Enough Money!"
+
+[node name="Timer" type="Timer" parent="." unique_id=344822138]
+
+[connection signal="pressed" from="Button" to="." method="_exit"]
+[connection signal="pressed" from="Panel2/Button" to="." method="_buy_first"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

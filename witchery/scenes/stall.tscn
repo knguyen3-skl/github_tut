@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://clsjk425nghlu"]
+
+[ext_resource type="Script" uid="uid://dxn8bc3i6naxu" path="res://scripts/market.gd" id="1_wuado"]
+[ext_resource type="Texture2D" uid="uid://qqpyhg17dw33" path="res://assets/stall_tech.png" id="2_3dq5b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nay5t"]
+size = Vector2(124, 46)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i2wm8"]
+size = Vector2(264.75, 249.125)
+
+[node name="StaticBody2D" type="StaticBody2D" unique_id=101525766 node_paths=PackedStringArray("e")]
+script = ExtResource("1_wuado")
+e = NodePath("ColorRect2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1725224054]
+position = Vector2(64, 106)
+shape = SubResource("RectangleShape2D_nay5t")
+
+[node name="StallTech" type="Sprite2D" parent="." unique_id=394783012]
+position = Vector2(64, 65)
+scale = Vector2(2, 2)
+texture = ExtResource("2_3dq5b")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=632137803]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1555743814]
+position = Vector2(65, 64)
+shape = SubResource("RectangleShape2D_i2wm8")
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1380822971]
+offset_left = 55.0
+offset_top = 76.0
+offset_right = 75.0
+offset_bottom = 96.0
+
+[node name="Label" type="Label" parent="ColorRect2" unique_id=39292968]
+layout_mode = 0
+offset_left = 6.0
+offset_top = -1.0
+offset_right = 15.0
+offset_bottom = 21.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 15
+text = "E"
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

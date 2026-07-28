@@ -1,47 +1,18 @@
 [gd_scene format=3 uid="uid://cl27xtb4kvvx5"]
 
-[ext_resource type="Script" uid="uid://dxn8bc3i6naxu" path="res://scripts/market.gd" id="1_aifk4"]
+[ext_resource type="Texture2D" uid="uid://ccdgn7jxmu8s2" path="res://assets/shop_girl_tech.png" id="2_iks0y"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ye60e"]
-size = Vector2(40, 40)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k70a0"]
+radius = 28.0
+height = 128.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r3u7j"]
-size = Vector2(111.25, 110.5)
-
-[node name="StaticBody2D" type="StaticBody2D" unique_id=1302831023 node_paths=PackedStringArray("e")]
-script = ExtResource("1_aifk4")
-e = NodePath("ColorRect2")
-
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1283390880]
-offset_right = 40.0
-offset_bottom = 40.0
-color = Color(0.5191619, 0.5191619, 0.5191619, 1)
+[node name="StaticBody2D" type="StaticBody2D" unique_id=1302831023]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2054543958]
-position = Vector2(20, 20)
-shape = SubResource("RectangleShape2D_ye60e")
+position = Vector2(20, 24)
+shape = SubResource("CapsuleShape2D_k70a0")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=806682250]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=163208034]
-position = Vector2(20, 20)
-shape = SubResource("RectangleShape2D_r3u7j")
-
-[node name="ColorRect2" type="ColorRect" parent="." unique_id=1036853625]
-offset_left = 5.0
-offset_top = 5.0
-offset_right = 35.0
-offset_bottom = 35.0
-
-[node name="Label" type="Label" parent="ColorRect2" unique_id=1540913336]
-layout_mode = 0
-offset_left = 9.0
-offset_top = 1.0
-offset_right = 21.0
-offset_bottom = 29.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
-text = "E"
-
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[node name="ShopGirlTech" type="Sprite2D" parent="." unique_id=1274342168]
+position = Vector2(20, 18.999998)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_iks0y")
