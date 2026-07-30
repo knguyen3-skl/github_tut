@@ -20,6 +20,7 @@ extends Node2D
 @export var mistake: Label
 
 @export var spell: Button
+@export var spell_menu: ColorRect
 @export var potion: Button
 
 @export var pause: ColorRect
@@ -34,12 +35,18 @@ extends Node2D
 @export var text: Label
 @export var sub_text: Label
 
+@export var super_cast_b: Button
+@export var look_over_there_b: Button
+
 var bars: bool = false
 var options: bool = false
+
+var spell_opned: bool = false
 
 var turns_left: int = 3
 var potato_turns: int = 1
 var basic_spell: int = 1
+var super_cast: int = 2
 
 var counter = 0
 var intro = [
@@ -62,6 +69,7 @@ decide with caution.",
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	spell_menu.hide()
 	Global.potato_fight = true
 	health_ui.max_value = Global.player_base_health
 	health_ui.value = Global.player_health
@@ -87,14 +95,33 @@ func _ready() -> void:
 				items.z_index = 0
 		text.text = intro[0]
 	
-	spell.mouse_filter = 2
-	potion.mouse_filter = 2
-	block.position = Vector2(171.0,418.0)
-	text.position = Vector2(208.0,447.0)
-	sub_text.position = Vector2(456.0, 554.0)
+		spell.mouse_filter = 2
+		potion.mouse_filter = 2
+		block.position = Vector2(171.0,418.0)
+		text.position = Vector2(208.0,447.0)
+		sub_text.position = Vector2(456.0, 554.0)
+		
 				
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if spell_menu.visible == true and Global.shop["super_cast"] == "yes" and Global.shop["look_over_there"] == "yes":
+		super_cast_b.show()
+		look_over_there_b.show()
+		look_over_there_b.position = Vector2(346.0,17)
+		
+	elif spell_menu.visible == true and Global.shop["super_cast"] == "yes" and Global.shop["look_over_there"] == "no":
+		super_cast_b.show()
+		look_over_there_b.hide()
+	
+	elif spell_menu.visible == true and Global.shop["super_cast"] == "no" and Global.shop["look_over_there"] == "yes":
+		super_cast_b.hide()
+		look_over_there_b.show()
+		look_over_there_b.position = Vector2(185.0,17)
+	
+	else:
+		super_cast_b.hide()
+		look_over_there_b.hide()
+	
 	if Global.pause == false:
 		pause_button.show()
 		spell.show()
@@ -161,19 +188,9 @@ func _process(delta: float) -> void:
 		print(counter)
 
 func _attack() -> void:
-	if turns_left >= 1 and Global.player_special > 0:
-		turns_left -= 1
-		_turn()
-		Global.potato_health -= 1
-		Global.player_special -= 1
-		potato_ui.value = Global.potato_health
-		potato_health.text = str(Global.potato_health)
-		sp.text = str(Global.player_special)
-		sp_ui.value = Global.player_special
-		
-	elif Global.player_special < basic_spell and turns_left >= 1:
-		mistake.text = str("Not enough special points!")
-		mistake_timer.start()
+	spell_menu.show()
+	spell_opned = true
+	
 
 func _potion() -> void:
 	if turns_left >= 1 and Global.player_special < Global.player_base_special:
@@ -244,3 +261,48 @@ func _pause() -> void:
 	pause_button.hide()
 	spell.hide()
 	potion.hide()
+
+
+	
+
+
+func _super_cast() -> void:
+	print("hello")
+	if turns_left >= 1 and Global.player_special > 1:
+		turns_left -= 1
+		_turn()
+		Global.potato_health -= 3
+		Global.player_special -= 2
+		potato_ui.value = Global.potato_health
+		potato_health.text = str(Global.potato_health)
+		sp.text = str(Global.player_special)
+		sp_ui.value = Global.player_special
+		spell_opned = false
+		spell_menu.hide()
+		
+	elif Global.player_special < super_cast and turns_left >= 1:
+		mistake.text = str("Not enough special points!")
+		mistake_timer.start()
+
+
+func _basic_spell() -> void:
+	if turns_left >= 1 and Global.player_special > 0:
+		turns_left -= 1
+		_turn()
+		Global.potato_health -= 1
+		Global.player_special -= 1
+		potato_ui.value = Global.potato_health
+		potato_health.text = str(Global.potato_health)
+		sp.text = str(Global.player_special)
+		sp_ui.value = Global.player_special
+		spell_opned = false
+		spell_menu.hide()
+		
+	elif Global.player_special < basic_spell and turns_left >= 1:
+		mistake.text = str("Not enough special points!")
+		mistake_timer.start()
+
+
+func _spell_menu_exit() -> void:
+	spell_opned = false
+	spell_menu.hide()

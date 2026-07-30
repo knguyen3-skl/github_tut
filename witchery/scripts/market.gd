@@ -14,6 +14,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if player_near == true and Input.is_physical_key_pressed(KEY_E):
+		Global.shop_speech = false
 		for items in shop.get_children():
 			if items.is_in_group("shop"):
 				items.hide()
@@ -23,11 +24,13 @@ func _process(delta: float) -> void:
 		
 	if Input.is_action_just_pressed("next"):
 		Global.market = true
+		Global.shop_speech = true
 		for items in shop.get_children():
 			if items.is_in_group("shop"):
 				items.show()
 			elif items.is_in_group("speech"):
 				items.hide()
+		
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
@@ -38,6 +41,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
 	if area.is_in_group("player"):
+		Global.shop_speech = false
 		e.hide()
 		shop.hide()
 		player_near = false

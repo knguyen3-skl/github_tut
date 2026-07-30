@@ -52,6 +52,7 @@ func _ready() -> void:
 			
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	money.text = str(Global.money)
 	# if alive show
 	# if dead hide + untouchable
 	for enemies in get_tree().get_nodes_in_group("enemy"):

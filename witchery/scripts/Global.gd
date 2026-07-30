@@ -1,6 +1,6 @@
 extends Node
 
-var money: int = 0
+var money: int = 150
 
 var potato_fight: bool = false
 
@@ -25,13 +25,19 @@ var inventory_status: bool = false
 var pause: bool = false
 var talking: bool = false
 var market: bool = false
+var shop_speech: bool = false
 
 var inventory = {
 	"purple_potion": 0,
 	"blue_potion": 0,
 }
 
-var intro: bool = false
+var shop = {
+	"super_cast": "no",
+	"look_over_there": "no",
+}
+
+var intro: bool = true
 var quest_1_talk: bool = false
 
 # Called when the node enters the scene tree for the first time.
