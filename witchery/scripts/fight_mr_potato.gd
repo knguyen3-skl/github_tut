@@ -43,6 +43,8 @@ var options: bool = false
 
 var spell_opned: bool = false
 
+var potato_distract: bool = false
+
 var turns_left: int = 3
 var potato_turns: int = 1
 var basic_spell: int = 1
@@ -64,6 +66,7 @@ remember to recharge them",
 can choose from each round.",
 "Each action will cost you one turn, so
 decide with caution.",
+"For now lets cast a spell, click on the wand",
 
 ]
 
@@ -130,7 +133,7 @@ func _process(delta: float) -> void:
 	if Global.player_health <=0:
 		Global.potato_fight = false
 		get_tree().call_deferred("change_scene_to_file", "res://scenes/died.tscn")
-	elif Global.potato_health == 0:
+	elif Global.potato_health <= 0:
 		Global.potato_fight = false
 		print(Global.potato_fight)
 		Global.money += 10
@@ -166,6 +169,9 @@ func _process(delta: float) -> void:
 		spell.z_index = 2
 		potion.z_index = 2
 		options = true
+		
+	if counter == 8:
+		spell.mouse_filter = 1
 	
 	if Global.intro == false and bars == false and counter < 4 and Input.is_action_just_pressed("next"):
 		counter += 1
@@ -230,19 +236,23 @@ func _potato_heal() -> void:
 	potato_health.text = str(Global.potato_health)
 
 func _potato_turn() -> void:
-	if potato_turns == 1:
+	if potato_turns == 1 and potato_distract == false:
 		_potato_attack()
 		timer.stop()
-		_turn_reset()
 		potato_turns -= 1
 		
-	else:
+	elif potato_turns != 1 and potato_distract == false:
 		_potato_heal()
 		timer.stop()
-		_turn_reset()
 		potato_turns += 1
+		
+	else:
+		timer.stop()
+	
+	_turn_reset()
 	
 func _turn_reset() -> void:
+	print("oops")
 	turns_left = 3
 	first_turn_p.visible = true 
 	first_turn_w.visible = true 
@@ -263,13 +273,12 @@ func _pause() -> void:
 	potion.hide()
 
 
-	
-
 
 func _super_cast() -> void:
 	print("hello")
 	if turns_left >= 1 and Global.player_special > 1:
 		turns_left -= 1
+		print(turns_left)
 		_turn()
 		Global.potato_health -= 3
 		Global.player_special -= 2
@@ -288,6 +297,7 @@ func _super_cast() -> void:
 func _basic_spell() -> void:
 	if turns_left >= 1 and Global.player_special > 0:
 		turns_left -= 1
+		print(turns_left)
 		_turn()
 		Global.potato_health -= 1
 		Global.player_special -= 1
@@ -306,3 +316,13 @@ func _basic_spell() -> void:
 func _spell_menu_exit() -> void:
 	spell_opned = false
 	spell_menu.hide()
+
+
+func _distract() -> void:
+	if turns_left >= 1:
+		turns_left -= 1
+		_turn()
+		print(turns_left)
+		potato_distract = true
+		spell_opned = false
+		spell_menu.hide()

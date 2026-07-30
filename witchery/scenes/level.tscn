@@ -292,11 +292,11 @@ scale = Vector2(0.4, 0.4)
 speech_block = NodePath("../CanvasLayer/ColorRect4")
 
 [node name="StaticBody2D2" parent="." unique_id=1302831023 instance=ExtResource("15_wc255")]
-position = Vector2(-26.999992, 158)
+position = Vector2(49, 158)
 scale = Vector2(0.5, 0.5)
 
 [node name="StaticBody2D3" parent="." unique_id=101525766 node_paths=PackedStringArray("shop") instance=ExtResource("16_arp2o")]
-position = Vector2(-67.99999, 99)
+position = Vector2(7.9999924, 99)
 scale = Vector2(0.8, 0.8)
 shop = NodePath("../CanvasLayer/ColorRect5")
 
