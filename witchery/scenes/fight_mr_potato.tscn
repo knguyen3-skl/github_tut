@@ -86,7 +86,7 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
-[node name="Node2D" type="Node2D" unique_id=1641416975 node_paths=PackedStringArray("health_ui", "sp_ui", "potato_ui", "health", "sp", "potato_hp", "potato_health", "potato_bar", "first_turn_p", "first_turn_w", "second_turn_p", "second_turn_w", "third_turn_p", "third_turn_w", "timer", "mistake_timer", "mistake", "spell", "spell_menu", "potion", "pause", "pause_button", "canvas", "dark", "light_bar", "light_potato", "light_options", "block", "text", "sub_text", "super_cast_b", "look_over_there_b")]
+[node name="Node2D" type="Node2D" unique_id=1641416975 node_paths=PackedStringArray("health_ui", "sp_ui", "potato_ui", "health", "sp", "potato_hp", "potato_health", "potato_bar", "first_turn_p", "first_turn_w", "second_turn_p", "second_turn_w", "third_turn_p", "third_turn_w", "timer", "mistake_timer", "mistake", "spell", "spell_menu", "potion", "pause", "pause_button", "canvas", "dark", "light_bar", "light_potato", "light_options", "light_turns", "block", "text", "sub_text", "super_cast_b", "look_over_there_b")]
 script = ExtResource("1_tlxmr")
 health_ui = NodePath("CanvasLayer/ProgressBar")
 sp_ui = NodePath("CanvasLayer/ProgressBar2")
@@ -115,6 +115,7 @@ dark = NodePath("CanvasLayer/Polygon2D2")
 light_bar = NodePath("CanvasLayer/Polygon2D3")
 light_potato = NodePath("CanvasLayer/Polygon2D5")
 light_options = NodePath("CanvasLayer/Polygon2D4")
+light_turns = NodePath("CanvasLayer/Polygon2D6")
 block = NodePath("CanvasLayer/NinePatchRect")
 text = NodePath("CanvasLayer/Label9")
 sub_text = NodePath("CanvasLayer/Label10")
@@ -199,14 +200,14 @@ offset_right = 132.0
 offset_bottom = 126.0
 text = "SP"
 
-[node name="Panel2" type="Panel" parent="CanvasLayer" unique_id=910814320]
+[node name="Panel2" type="Panel" parent="CanvasLayer" unique_id=910814320 groups=["turns"]]
 offset_left = 384.0
 offset_top = 43.0
 offset_right = 734.0
 offset_bottom = 68.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_44pj3")
 
-[node name="Panel3" type="Panel" parent="CanvasLayer" unique_id=1940380667]
+[node name="Panel3" type="Panel" parent="CanvasLayer" unique_id=1940380667 groups=["turns"]]
 offset_left = 448.0
 offset_top = 13.0
 offset_right = 508.0
@@ -214,14 +215,14 @@ offset_bottom = 73.0
 rotation = 0.7853982
 theme_override_styles/panel = SubResource("StyleBoxFlat_nlw5s")
 
-[node name="WitchTech2" type="Sprite2D" parent="CanvasLayer" unique_id=1443893441]
+[node name="WitchTech2" type="Sprite2D" parent="CanvasLayer" unique_id=1443893441 groups=["turns"]]
 position = Vector2(449, 53)
 scale = Vector2(2, 2)
 texture = ExtResource("3_lt1b2")
 region_enabled = true
 region_rect = Rect2(2, 0, 28, 27)
 
-[node name="Panel4" type="Panel" parent="CanvasLayer" unique_id=802424938]
+[node name="Panel4" type="Panel" parent="CanvasLayer" unique_id=802424938 groups=["turns"]]
 offset_left = 556.4264
 offset_top = 14.0
 offset_right = 616.4264
@@ -229,14 +230,14 @@ offset_bottom = 74.0
 rotation = 0.7853982
 theme_override_styles/panel = SubResource("StyleBoxFlat_nlw5s")
 
-[node name="WitchTech3" type="Sprite2D" parent="CanvasLayer" unique_id=1074610998]
+[node name="WitchTech3" type="Sprite2D" parent="CanvasLayer" unique_id=1074610998 groups=["turns"]]
 position = Vector2(557.4264, 54)
 scale = Vector2(2, 2)
 texture = ExtResource("3_lt1b2")
 region_enabled = true
 region_rect = Rect2(2, 0, 28, 27)
 
-[node name="Panel5" type="Panel" parent="CanvasLayer" unique_id=1629405125]
+[node name="Panel5" type="Panel" parent="CanvasLayer" unique_id=1629405125 groups=["turns"]]
 offset_left = 668.4264
 offset_top = 14.0
 offset_right = 728.4264
@@ -244,7 +245,7 @@ offset_bottom = 74.0
 rotation = 0.7853982
 theme_override_styles/panel = SubResource("StyleBoxFlat_nlw5s")
 
-[node name="WitchTech4" type="Sprite2D" parent="CanvasLayer" unique_id=2088521862]
+[node name="WitchTech4" type="Sprite2D" parent="CanvasLayer" unique_id=2088521862 groups=["turns"]]
 position = Vector2(669.4264, 54)
 scale = Vector2(2, 2)
 texture = ExtResource("3_lt1b2")
@@ -385,6 +386,7 @@ color = Color(1, 1, 1, 0.67058825)
 polygon = PackedVector2Array(45, 33, 312, 33, 312, 184, 39, 183, 39, 32)
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer" unique_id=2010717157 groups=["intro"]]
+visible = false
 z_index = 3
 offset_left = 171.0
 offset_top = 40.0
@@ -398,6 +400,7 @@ patch_margin_right = 17
 patch_margin_bottom = 17
 
 [node name="Label9" type="Label" parent="CanvasLayer" unique_id=2137615109 groups=["intro"]]
+visible = false
 z_index = 3
 offset_left = 208.0
 offset_top = 70.0
@@ -405,9 +408,11 @@ offset_right = 945.0
 offset_bottom = 217.0
 theme_override_constants/line_spacing = 0
 theme_override_font_sizes/font_size = 35
-text = "For now lets cast a spell, click on the wand"
+text = "You get three turns each round and will
+reset after the enemy's turn"
 
 [node name="Label10" type="Label" parent="CanvasLayer" unique_id=99205052 groups=["intro"]]
+visible = false
 z_index = 3
 offset_left = 456.0
 offset_top = 175.0
@@ -586,6 +591,13 @@ offset_right = 98.0
 offset_bottom = 82.0
 theme_override_font_sizes/font_size = 60
 text = "?"
+
+[node name="Polygon2D6" type="Polygon2D" parent="CanvasLayer" unique_id=1994022919]
+visible = false
+position = Vector2(-1589.9772, -709.1291)
+scale = Vector2(2.5928555, 1.5161293)
+color = Color(0.76862746, 0.84705883, 0.7490196, 1)
+polygon = PackedVector2Array(759, 473, 899, 473, 899, 535, 759, 535)
 
 [node name="Timer" type="Timer" parent="." unique_id=2088150919]
 

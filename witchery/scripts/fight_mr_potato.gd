@@ -31,6 +31,7 @@ extends Node2D
 @export var light_bar: Polygon2D
 @export var light_potato: Polygon2D
 @export var light_options: Polygon2D
+@export var light_turns: Polygon2D
 @export var block: NinePatchRect
 @export var text: Label
 @export var sub_text: Label
@@ -40,7 +41,7 @@ extends Node2D
 
 var bars: bool = false
 var options: bool = false
-
+var turns: bool = false
 var spell_opned: bool = false
 
 var potato_distract: bool = false
@@ -60,6 +61,10 @@ points",
 health, so be careful and don't go below 0",
 "Special points can be used to cast spells, so
 remember to recharge them",
+"Up here are the amount of turns you have
+left each round",
+"You get three turns each round and will
+reset after the enemy's turn",
 "This is your enemy's health",
 "Attack the enemy to defeat it",
 "Down here are the different actions you
@@ -67,7 +72,13 @@ can choose from each round.",
 "Each action will cost you one turn, so
 decide with caution.",
 "For now lets cast a spell, click on the wand",
-
+"This area displays all the spells you could
+cast.",
+"Each spell will have discriptions which tells
+you the requirements and specifications",
+"For the 'Basic Spell' it does 1 damage to 
+the enemy in return for 1 special point",
+"Now, cast the spell"
 ]
 
 # Called when the node enters the scene tree for the first time.
@@ -143,13 +154,26 @@ func _process(delta: float) -> void:
 		get_tree().call_deferred("change_scene_to_file", "res://scenes/level.tscn")
 		
 	if counter == 4:
-		bars = true
 		light_bar.hide()
-		light_potato.show()
-		light_options.hide()
+		turns = true
+		light_turns.show()
 		for items in canvas.get_children():
 			if items.is_in_group("stats"):
 				items.z_index = 0
+				
+		for items in canvas.get_children():
+			if items.is_in_group("turns"):
+				items.z_index += 2
+		
+	elif counter == 6:
+		bars = true
+		light_turns.hide()
+		light_potato.show()
+		light_options.hide()
+				
+		for items in canvas.get_children():
+			if items.is_in_group("turns"):
+				items.z_index -= 2
 				
 		block.position = Vector2(171.0,40.0)
 		text.position = Vector2(208.0,70.0)
@@ -159,7 +183,7 @@ func _process(delta: float) -> void:
 		potato_health.z_index = 3
 		potato_ui.z_index = 2
 	
-	if counter == 6:
+	elif counter == 8:
 		light_potato.hide()
 		light_options.show()
 		potato_bar.z_index = 1
@@ -170,10 +194,10 @@ func _process(delta: float) -> void:
 		potion.z_index = 2
 		options = true
 		
-	if counter == 8:
+	elif counter == 10:
 		spell.mouse_filter = 1
 	
-	if Global.intro == false and bars == false and counter < 4 and Input.is_action_just_pressed("next"):
+	if Global.intro == false and bars == false and counter < 3 and Input.is_action_just_pressed("next"):
 		counter += 1
 		text.text = intro[counter]
 		print(counter)
@@ -183,12 +207,18 @@ func _process(delta: float) -> void:
 			if items.is_in_group("stats"):
 				items.z_index = 1
 				
-	elif Global.intro == false and counter >= 4 and options == false and Input.is_action_just_pressed("next"):
+	elif Global.intro == false and counter >= 3 and Input.is_action_just_pressed("next"):
+		counter += 1
+		text.text = intro[counter]
+		print(counter)
+		light_bar.hide()
+	
+	elif Global.intro == false and counter >= 6 and options == false and Input.is_action_just_pressed("next"):
 		counter += 1
 		text.text = intro[counter]
 		print(counter)
 				
-	elif Global.intro == false and counter >= 6 and options == true and Input.is_action_just_pressed("next"):
+	elif Global.intro == false and counter >= 8 and options == true and Input.is_action_just_pressed("next"):
 		counter += 1
 		text.text = intro[counter]
 		print(counter)
