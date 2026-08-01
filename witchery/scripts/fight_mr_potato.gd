@@ -35,13 +35,18 @@ extends Node2D
 @export var block: NinePatchRect
 @export var text: Label
 @export var sub_text: Label
+@export var intro_timer: Timer
 
+@export var basic_spell_b: Button
 @export var super_cast_b: Button
 @export var look_over_there_b: Button
 
 var bars: bool = false
 var options: bool = false
 var turns: bool = false
+var wand_1:bool = false
+var wand_2:bool = false
+
 var spell_opned: bool = false
 
 var potato_distract: bool = false
@@ -77,8 +82,14 @@ cast.",
 "Each spell will have discriptions which tells
 you the requirements and specifications",
 "For the 'Basic Spell' it does 1 damage to 
-the enemy in return for 1 special point",
-"Now, cast the spell"
+the enemy and cost no special points",
+"Now, cast the spell",
+"As you could see, the spell you just casted
+did 1 damage to the enemy and took away",
+"as well as reduced your turns down to 2",
+"This concludes introduction",
+"Now go have fun and beat up some 
+enemies!"
 ]
 
 # Called when the node enters the scene tree for the first time.
@@ -106,7 +117,7 @@ func _ready() -> void:
 				
 		for items in canvas.get_children():
 			if items.is_in_group("stats"):
-				items.z_index = 0
+				items.z_index -= 2
 		text.text = intro[0]
 	
 		spell.mouse_filter = 2
@@ -114,6 +125,11 @@ func _ready() -> void:
 		block.position = Vector2(171.0,418.0)
 		text.position = Vector2(208.0,447.0)
 		sub_text.position = Vector2(456.0, 554.0)
+		
+	else:
+		for items in canvas.get_children():
+			if items.is_in_group("intro"):
+				items.hide()
 		
 				
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -167,14 +183,13 @@ func _process(delta: float) -> void:
 		
 	elif counter == 6:
 		bars = true
-		light_turns.hide()
-		light_potato.show()
-		light_options.hide()
-				
 		for items in canvas.get_children():
 			if items.is_in_group("turns"):
 				items.z_index -= 2
 				
+		light_turns.hide()
+		light_potato.show()
+		light_options.hide()
 		block.position = Vector2(171.0,40.0)
 		text.position = Vector2(208.0,70.0)
 		sub_text.position = Vector2(456.0, 175.0)
@@ -196,8 +211,16 @@ func _process(delta: float) -> void:
 		
 	elif counter == 10:
 		spell.mouse_filter = 1
+		
+		if wand_1 == true:
+			basic_spell_b.mouse_filter = 2
+			text.text = intro[11]
+			counter += 1
+		
+	elif counter == 14:
+			basic_spell_b.mouse_filter = 1
 	
-	if Global.intro == false and bars == false and counter < 3 and Input.is_action_just_pressed("next"):
+	if Global.intro == false and Global.pause == false and bars == false and counter < 3 and Input.is_action_just_pressed("next"):
 		counter += 1
 		text.text = intro[counter]
 		print(counter)
@@ -207,25 +230,51 @@ func _process(delta: float) -> void:
 			if items.is_in_group("stats"):
 				items.z_index = 1
 				
-	elif Global.intro == false and counter >= 3 and Input.is_action_just_pressed("next"):
+	elif Global.intro == false and Global.pause == false and counter >= 3 and counter <6 and Input.is_action_just_pressed("next"):
+		print("3")
 		counter += 1
 		text.text = intro[counter]
 		print(counter)
 		light_bar.hide()
 	
-	elif Global.intro == false and counter >= 6 and options == false and Input.is_action_just_pressed("next"):
+	elif Global.intro == false and Global.pause == false and counter >= 6 and options == false and Input.is_action_just_pressed("next"):
 		counter += 1
 		text.text = intro[counter]
 		print(counter)
+		print("6")
 				
-	elif Global.intro == false and counter >= 8 and options == true and Input.is_action_just_pressed("next"):
+	elif Global.intro == false and Global.pause == false and counter >= 8 and counter < 10 and options == true and Input.is_action_just_pressed("next"):
 		counter += 1
 		text.text = intro[counter]
 		print(counter)
+		print("8")
+		
+	elif Global.intro == false and Global.pause == false and counter >= 10 and counter < 14 and wand_1 == true and Input.is_action_just_pressed("next"):
+		counter += 1
+		text.text = intro[counter]
+		print(counter)
+		print("10")
+		
+	elif Global.intro == false and Global.pause == false and counter >= 15 and counter < 18 and Input.is_action_just_pressed("next"):
+		counter += 1
+		text.text = intro[counter]
+		print(counter)
+		print("15")
+		
+	elif counter == 18 and Input.is_action_just_pressed("next"):
+		for items in canvas.get_children():
+			if items.is_in_group("intro"):
+				items.hide()
 
 func _attack() -> void:
-	spell_menu.show()
-	spell_opned = true
+	if Global.intro == true:
+		spell_menu.show()
+		spell_opned = true
+		
+	else:
+		spell_menu.show()
+		spell_opned = true
+		wand_1 = true
 	
 
 func _potion() -> void:
@@ -282,7 +331,6 @@ func _potato_turn() -> void:
 	_turn_reset()
 	
 func _turn_reset() -> void:
-	print("oops")
 	turns_left = 3
 	first_turn_p.visible = true 
 	first_turn_w.visible = true 
@@ -306,12 +354,12 @@ func _pause() -> void:
 
 func _super_cast() -> void:
 	print("hello")
-	if turns_left >= 1 and Global.player_special > 1:
+	if turns_left >= 1 and Global.player_special > 0:
 		turns_left -= 1
 		print(turns_left)
 		_turn()
-		Global.potato_health -= 3
-		Global.player_special -= 2
+		Global.potato_health -= 2
+		Global.player_special -= 1
 		potato_ui.value = Global.potato_health
 		potato_health.text = str(Global.potato_health)
 		sp.text = str(Global.player_special)
@@ -325,22 +373,32 @@ func _super_cast() -> void:
 
 
 func _basic_spell() -> void:
-	if turns_left >= 1 and Global.player_special > 0:
+	if Global.intro == false and turns_left >= 1:
 		turns_left -= 1
 		print(turns_left)
 		_turn()
 		Global.potato_health -= 1
-		Global.player_special -= 1
 		potato_ui.value = Global.potato_health
 		potato_health.text = str(Global.potato_health)
-		sp.text = str(Global.player_special)
-		sp_ui.value = Global.player_special
 		spell_opned = false
 		spell_menu.hide()
+		light_options.hide()
+		intro_timer.start()
 		
-	elif Global.player_special < basic_spell and turns_left >= 1:
-		mistake.text = str("Not enough special points!")
-		mistake_timer.start()
+		for items in canvas.get_children():
+			if items.is_in_group("intro"):
+				items.hide()
+		
+	
+	elif turns_left >= 1 and Global.intro == true:
+		turns_left -= 1
+		print(turns_left)
+		_turn()
+		Global.potato_health -= 1
+		potato_ui.value = Global.potato_health
+		potato_health.text = str(Global.potato_health)
+		spell_opned = false
+		spell_menu.hide()
 
 
 func _spell_menu_exit() -> void:
@@ -356,3 +414,20 @@ func _distract() -> void:
 		potato_distract = true
 		spell_opned = false
 		spell_menu.hide()
+
+
+func _continue_intro() -> void:
+	print("ola")
+	wand_2 = true
+	for items in canvas.get_children():
+		if items.is_in_group("intro"):
+			items.show()
+		elif items.is_in_group("turns"):
+			items.z_index -= 2
+			
+	block.position = Vector2(171.0,418.0)
+	text.position = Vector2(208.0,447.0)
+	sub_text.position = Vector2(456.0, 554.0)
+	counter += 1
+	text.text = intro[counter]
+	print(counter)

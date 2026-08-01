@@ -113,7 +113,6 @@ navigation_polygon = SubResource("NavigationPolygon_w7c3h")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2083746308]
 
 [node name="Panel" type="Panel" parent="CanvasLayer" unique_id=1097685587]
-z_index = 1
 texture_filter = 1
 offset_left = 10.000001
 offset_top = 11.0

@@ -157,7 +157,7 @@ offset_right = 195.0
 offset_bottom = 218.0
 theme_override_colors/font_color = Color(0.87058824, 0.87058824, 0.87058824, 1)
 theme_override_font_sizes/font_size = 18
-text = "Does 3 DMG for 2 SP"
+text = "Does 2 DMG for 21SP"
 
 [node name="Label3" type="Label" parent="Panel2" unique_id=1738327102]
 layout_mode = 0
