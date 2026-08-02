@@ -1,29 +1,28 @@
 [gd_scene format=3 uid="uid://cg2fcg5mb52fy"]
 
 [ext_resource type="Script" uid="uid://iw5gkyhxi7bl" path="res://scripts/potion_brewing.gd" id="1_r2ldb"]
-[ext_resource type="Texture2D" uid="uid://dri8or757ah0y" path="res://assets/button_bold_tech.png" id="2_a2xwt"]
 [ext_resource type="Texture2D" uid="uid://db3kevffj8enl" path="res://assets/block_tech.png" id="2_ocvxt"]
 [ext_resource type="Texture2D" uid="uid://crhc0alwbwdn3" path="res://assets/potion_purple_tech.png" id="3_a2xwt"]
+[ext_resource type="Texture2D" uid="uid://dhdcprsq4eiiu" path="res://assets/button_brown.png" id="3_c8ira"]
 [ext_resource type="Texture2D" uid="uid://dit7vdud5kxxa" path="res://assets/potion_tech.png" id="4_280xy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ocvxt"]
+bg_color = Color(0.16026929, 0.16026929, 0.16026929, 0.49803922)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r2ldb"]
 bg_color = Color(0.79607844, 0, 0.047058824, 1)
 
-[node name="ColorRect" type="ColorRect" unique_id=848347300 node_paths=PackedStringArray("timer", "no_money", "purple_button", "blue_button", "purple_price", "blue_price", "purple_potion", "blue_potion", "purple_to_blue", "blue_to_purple")]
+[node name="ColorRect" type="ColorRect" unique_id=848347300 node_paths=PackedStringArray("timer", "no_money")]
 offset_right = 700.0
 offset_bottom = 400.0
 color = Color(0.3198733, 0.31987324, 0.31987324, 1)
 script = ExtResource("1_r2ldb")
 timer = NodePath("Timer")
 no_money = NodePath("Label4")
-purple_button = NodePath("TextureButton")
-blue_button = NodePath("TextureButton2")
-purple_price = NodePath("Label3")
-blue_price = NodePath("Label6")
-purple_potion = NodePath("PotionPurpleTech")
-blue_potion = NodePath("PotionTech")
-purple_to_blue = NodePath("Button2")
-blue_to_purple = NodePath("Button3")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1600015623]
 layout_mode = 0
@@ -36,6 +35,14 @@ patch_margin_top = 17
 patch_margin_right = 17
 patch_margin_bottom = 17
 
+[node name="Panel2" type="Panel" parent="." unique_id=1299058358]
+layout_mode = 0
+offset_left = 82.0
+offset_top = 89.0
+offset_right = 282.0
+offset_bottom = 339.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ocvxt")
+
 [node name="Timer" type="Timer" parent="." unique_id=1094015051]
 
 [node name="Button" type="Button" parent="." unique_id=1831052836]
@@ -47,48 +54,60 @@ offset_bottom = 25.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_r2ldb")
 text = "X"
 
+[node name="ButtonBrown" type="Sprite2D" parent="." unique_id=638712255]
+position = Vector2(353, 10.500001)
+scale = Vector2(4.4, 3.8)
+texture = ExtResource("3_c8ira")
+
 [node name="Label" type="Label" parent="." unique_id=765713126]
+z_index = 1
 texture_filter = 1
 layout_mode = 0
-offset_left = 163.0
-offset_top = 41.0
-offset_right = 531.0
-offset_bottom = 110.0
-theme_override_font_sizes/font_size = 50
-text = "Potion Brewing"
+offset_left = 167.0
+offset_top = -19.0
+offset_right = 535.0
+offset_bottom = 36.0
+theme_override_constants/line_spacing = -6
+theme_override_font_sizes/font_size = 40
+text = "Brewing Station"
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="." unique_id=464998859]
 z_index = 1
 layout_mode = 0
-offset_left = 266.0
-offset_top = 260.0
-offset_right = 415.0
-offset_bottom = 343.0
-theme_override_font_sizes/font_size = 60
+offset_left = 419.0
+offset_top = 269.0
+offset_right = 556.0
+offset_bottom = 345.0
+theme_override_font_sizes/font_size = 55
 text = "Brew"
 
 [node name="TextureButton" type="TextureButton" parent="." unique_id=1073951921 groups=["purple_options"]]
 layout_mode = 0
-offset_left = 196.0
-offset_top = 230.0
-offset_right = 292.0
-offset_bottom = 278.0
+offset_left = 359.0
+offset_top = 260.0
+offset_right = 445.0
+offset_bottom = 292.0
 scale = Vector2(3, 3)
-texture_normal = ExtResource("2_a2xwt")
+texture_normal = ExtResource("3_c8ira")
 
 [node name="Label3" type="Label" parent="." unique_id=920909985 groups=["purple_options"]]
+visible = false
 layout_mode = 0
-offset_left = 49.0
-offset_top = 132.0
-offset_right = 493.0
-offset_bottom = 174.0
-theme_override_font_sizes/font_size = 30
-text = "Brew a cool potion for 20 coins"
+offset_left = 368.0
+offset_top = 136.0
+offset_right = 624.0
+offset_bottom = 209.0
+theme_override_colors/font_color = Color(0.95815676, 0.95815676, 0.95815676, 1)
+theme_override_constants/line_spacing = -1
+theme_override_font_sizes/font_size = 25
+text = "When used in battle, 
+regain 1 SP"
 
 [node name="PotionPurpleTech" type="Sprite2D" parent="." unique_id=968515113 groups=["purple_options"]]
-position = Vector2(567, 185.00002)
-scale = Vector2(3, 3)
+visible = false
+position = Vector2(182, 210)
+scale = Vector2(5, 5)
 texture = ExtResource("3_a2xwt")
 
 [node name="Label4" type="Label" parent="." unique_id=665728897]
@@ -105,45 +124,88 @@ text = "You are too broke :("
 [node name="Button2" type="Button" parent="." unique_id=360735254 groups=["purple_options"]]
 z_index = 3
 layout_mode = 0
-offset_left = 658.0
-offset_top = 223.0
-offset_right = 700.0
-offset_bottom = 286.0
+offset_left = 674.0
+offset_top = 221.0
+offset_right = 716.0
+offset_bottom = 284.0
 theme_override_font_sizes/font_size = 40
 text = ">"
 
 [node name="TextureButton2" type="TextureButton" parent="." unique_id=1372853352 groups=["blue_options"]]
 layout_mode = 0
-offset_left = 196.0
-offset_top = 230.0
-offset_right = 292.0
-offset_bottom = 278.0
+offset_left = 359.0
+offset_top = 260.0
+offset_right = 445.0
+offset_bottom = 292.0
 scale = Vector2(3, 3)
-texture_normal = ExtResource("2_a2xwt")
+texture_normal = ExtResource("3_c8ira")
 
 [node name="Label6" type="Label" parent="." unique_id=428418925 groups=["blue_options"]]
 layout_mode = 0
-offset_left = 49.0
-offset_top = 132.0
-offset_right = 583.0
-offset_bottom = 219.0
-theme_override_font_sizes/font_size = 30
-text = "Brew a super cool potion 
-for 30 coins"
+offset_left = 368.0
+offset_top = 136.0
+offset_right = 617.0
+offset_bottom = 223.0
+theme_override_colors/font_color = Color(0.95686275, 0.95686275, 0.95686275, 1)
+theme_override_constants/line_spacing = -1
+theme_override_font_sizes/font_size = 25
+text = "When used in battle,
+regain 2 HP and 1 SP"
 
 [node name="PotionTech" type="Sprite2D" parent="." unique_id=1071053387 groups=["blue_options"]]
-position = Vector2(567, 187)
-scale = Vector2(3.5273438, 3.5273438)
+position = Vector2(181.99997, 208.00002)
+scale = Vector2(6.2, 6.2)
 texture = ExtResource("4_280xy")
 
 [node name="Button3" type="Button" parent="." unique_id=777904626 groups=["blue_options"]]
 z_index = 3
 layout_mode = 0
-offset_top = 219.0
-offset_right = 43.0
-offset_bottom = 285.0
+offset_left = -16.0
+offset_top = 224.0
+offset_right = 27.0
+offset_bottom = 290.0
 theme_override_font_sizes/font_size = 40
 text = "<"
+
+[node name="Label5" type="Label" parent="." unique_id=242863306 groups=["purple_options"]]
+visible = false
+layout_mode = 0
+offset_left = 366.0
+offset_top = 71.0
+offset_right = 640.0
+offset_bottom = 120.0
+theme_override_font_sizes/font_size = 35
+text = "Auspicious Soda"
+
+[node name="Label7" type="Label" parent="." unique_id=1586249783 groups=["purple_options"]]
+visible = false
+layout_mode = 0
+offset_left = 369.0
+offset_top = 225.0
+offset_right = 555.0
+offset_bottom = 253.0
+theme_override_colors/font_color = Color(0.95815676, 0.95815676, 0.95815676, 1)
+theme_override_font_sizes/font_size = 20
+text = "Requires: 1 sprouts"
+
+[node name="Label8" type="Label" parent="." unique_id=2120426221 groups=["blue_options"]]
+layout_mode = 0
+offset_left = 395.0
+offset_top = 71.0
+offset_right = 571.0
+offset_bottom = 120.0
+theme_override_font_sizes/font_size = 35
+text = "Just Water"
+
+[node name="Label9" type="Label" parent="." unique_id=94597036 groups=["blue_options"]]
+layout_mode = 0
+offset_left = 369.0
+offset_top = 225.0
+offset_right = 555.0
+offset_bottom = 253.0
+theme_override_colors/font_color = Color(0.95815676, 0.95815676, 0.95815676, 1)
+theme_override_font_sizes/font_size = 20
+text = "Requires: 2 sprouts"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="Button" to="." method="_exit_brewing"]

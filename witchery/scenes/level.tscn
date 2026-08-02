@@ -112,7 +112,7 @@ navigation_polygon = SubResource("NavigationPolygon_w7c3h")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2083746308]
 
-[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=1097685587]
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=1097685587 groups=["stats"]]
 texture_filter = 1
 offset_left = 10.000001
 offset_top = 11.0
@@ -122,31 +122,31 @@ scale = Vector2(15, 15)
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_8iemx")
 
-[node name="hp_bar" type="Sprite2D" parent="CanvasLayer" unique_id=418015308]
+[node name="hp_bar" type="Sprite2D" parent="CanvasLayer" unique_id=418015308 groups=["stats"]]
 z_index = 2
 position = Vector2(147, 52)
 scale = Vector2(4, 4)
 texture = ExtResource("5_olg7q")
 
-[node name="sp_bar" type="Sprite2D" parent="CanvasLayer" unique_id=548101581]
+[node name="sp_bar" type="Sprite2D" parent="CanvasLayer" unique_id=548101581 groups=["stats"]]
 z_index = 2
 position = Vector2(146, 120)
 scale = Vector2(4, 4)
 texture = ExtResource("5_olg7q")
 
-[node name="EnergyTech" type="Sprite2D" parent="CanvasLayer" unique_id=400282535]
+[node name="EnergyTech" type="Sprite2D" parent="CanvasLayer" unique_id=400282535 groups=["stats"]]
 z_index = 2
 position = Vector2(52, 127)
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("6_t1rx8")
 
-[node name="HeartTech" type="Sprite2D" parent="CanvasLayer" unique_id=381328961]
+[node name="HeartTech" type="Sprite2D" parent="CanvasLayer" unique_id=381328961 groups=["stats"]]
 z_index = 2
 position = Vector2(53.999985, 59)
 scale = Vector2(1.7, 1.5375001)
 texture = ExtResource("7_8iemx")
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" unique_id=146505870]
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" unique_id=146505870 groups=["stats"]]
 offset_left = 79.0
 offset_top = 44.0
 offset_right = 243.0
@@ -154,7 +154,7 @@ offset_bottom = 71.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_olg7q")
 show_percentage = false
 
-[node name="ProgressBar2" type="ProgressBar" parent="CanvasLayer" unique_id=429163243]
+[node name="ProgressBar2" type="ProgressBar" parent="CanvasLayer" unique_id=429163243 groups=["stats"]]
 offset_left = 78.0
 offset_top = 111.0
 offset_right = 242.0
@@ -162,21 +162,21 @@ offset_bottom = 138.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_t1rx8")
 show_percentage = false
 
-[node name="Label5" type="Label" parent="CanvasLayer" unique_id=1835316428]
+[node name="Label5" type="Label" parent="CanvasLayer" unique_id=1835316428 groups=["stats"]]
 z_index = 1
 offset_left = 215.0
 offset_top = 16.0
 offset_right = 255.0
 offset_bottom = 39.0
 
-[node name="Label6" type="Label" parent="CanvasLayer" unique_id=1310594588]
+[node name="Label6" type="Label" parent="CanvasLayer" unique_id=1310594588 groups=["stats"]]
 z_index = 1
 offset_left = 223.0
 offset_top = 85.0
 offset_right = 263.0
 offset_bottom = 108.0
 
-[node name="Label3" type="Label" parent="CanvasLayer" unique_id=1437822289]
+[node name="Label3" type="Label" parent="CanvasLayer" unique_id=1437822289 groups=["stats"]]
 z_index = 2
 offset_left = 75.0
 offset_top = 15.0
@@ -184,7 +184,7 @@ offset_right = 98.0
 offset_bottom = 38.0
 text = "HP"
 
-[node name="Label4" type="Label" parent="CanvasLayer" unique_id=24128106]
+[node name="Label4" type="Label" parent="CanvasLayer" unique_id=24128106 groups=["stats"]]
 z_index = 2
 offset_left = 76.0
 offset_top = 83.0
@@ -192,7 +192,7 @@ offset_right = 99.0
 offset_bottom = 106.0
 text = "SP"
 
-[node name="ColorRect2" parent="CanvasLayer" unique_id=1527701950 node_paths=PackedStringArray("player_cam", "brewing_potion") instance=ExtResource("7_klq6b")]
+[node name="ColorRect2" parent="CanvasLayer" unique_id=1527701950 node_paths=PackedStringArray("player_cam", "brewing_potion", "player") instance=ExtResource("7_klq6b")]
 visible = false
 z_index = 3
 offset_left = 203.0
@@ -201,6 +201,7 @@ offset_right = 944.0
 offset_bottom = 536.0
 player_cam = NodePath("../../CharacterBody2D/Camera2D")
 brewing_potion = NodePath("../ColorRect")
+player = NodePath("../../CharacterBody2D")
 
 [node name="Label" type="Label" parent="CanvasLayer" unique_id=1217283519]
 offset_left = 10.0

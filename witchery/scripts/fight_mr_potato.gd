@@ -46,6 +46,7 @@ var options: bool = false
 var turns: bool = false
 var wand_1:bool = false
 var wand_2:bool = false
+var clicked: bool = false
 
 var spell_opned: bool = false
 
@@ -76,7 +77,8 @@ reset after the enemy's turn",
 can choose from each round.",
 "Each action will cost you one turn, so
 decide with caution.",
-"For now lets cast a spell, click on the wand",
+"There's no need to use any potions yet, so 
+lets cast a spell instead, click on the wand",
 "This area displays all the spells you could
 cast.",
 "Each spell will have discriptions which tells
@@ -198,7 +200,7 @@ func _process(delta: float) -> void:
 		potato_health.z_index = 3
 		potato_ui.z_index = 2
 	
-	elif counter == 8:
+	elif counter == 8 and clicked == false:
 		light_potato.hide()
 		light_options.show()
 		potato_bar.z_index = 1
@@ -270,6 +272,9 @@ func _attack() -> void:
 	if Global.intro == true:
 		spell_menu.show()
 		spell_opned = true
+		light_options.hide()
+		clicked = true
+
 		
 	else:
 		spell_menu.show()

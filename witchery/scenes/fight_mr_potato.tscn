@@ -430,8 +430,8 @@ offset_right = 945.0
 offset_bottom = 217.0
 theme_override_constants/line_spacing = 0
 theme_override_font_sizes/font_size = 35
-text = "Now go have fun and beat up some 
-enemies!"
+text = "There's no need to use any potions yet, so 
+lets cast a spell instead, click on the wand"
 
 [node name="Label10" type="Label" parent="CanvasLayer" unique_id=99205052 groups=["intro"]]
 visible = false
@@ -456,6 +456,7 @@ color = Color(0.76862746, 0.84705883, 0.7490196, 1)
 polygon = PackedVector2Array(759, 473, 899, 473, 899, 535, 759, 535)
 
 [node name="ColorRect2" type="ColorRect" parent="CanvasLayer" unique_id=1124120278]
+visible = false
 z_index = 3
 offset_left = 274.0
 offset_top = 282.0
@@ -618,6 +619,21 @@ position = Vector2(-1589.9772, -709.1291)
 scale = Vector2(2.5928555, 1.5161293)
 color = Color(0.76862746, 0.84705883, 0.7490196, 1)
 polygon = PackedVector2Array(759, 473, 899, 473, 899, 535, 759, 535)
+
+[node name="ColorRect3" type="ColorRect" parent="CanvasLayer" unique_id=599211083]
+z_index = 3
+offset_left = 372.0
+offset_top = 279.0
+offset_right = 887.0
+offset_bottom = 502.0
+color = Color(0.4117647, 0.4117647, 0.4117647, 1)
+
+[node name="Polygon2D" type="Polygon2D" parent="CanvasLayer/ColorRect3" unique_id=1910126147]
+position = Vector2(243, 189)
+scale = Vector2(0.8, 0.8)
+color = Color(0.4117647, 0.4117647, 0.4117647, 1)
+polygon = PackedVector2Array(20, 70, 40, 30, 0, 30)
+uv = PackedVector2Array(50.471344, -0.8537636, 79.851776, 39.613644, 24.971344, 39.613644)
 
 [node name="Timer" type="Timer" parent="." unique_id=2088150919]
 

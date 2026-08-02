@@ -3,6 +3,7 @@ extends ColorRect
 @export var blue_potion: Label
 @export var player_cam: Camera2D
 @export var brewing_potion: ColorRect
+@export var player: CharacterBody2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
