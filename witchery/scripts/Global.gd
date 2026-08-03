@@ -37,7 +37,7 @@ var shop = {
 	"look_over_there": "no",
 }
 
-var intro: bool = false
+var intro: bool = true
 var quest_1_talk: bool = false
 
 # Called when the node enters the scene tree for the first time.

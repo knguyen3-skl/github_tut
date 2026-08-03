@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://ds4j82vja3u3h" path="res://assets/grass2_tech.png" id="1_1snm0"]
 [ext_resource type="Script" uid="uid://cpjn6q3cbsax6" path="res://scripts/fight_mr_potato.gd" id="1_tlxmr"]
 [ext_resource type="Texture2D" uid="uid://txmfqmtqi8l7" path="res://assets/Mrpotato0000.png" id="3_7268j"]
+[ext_resource type="Texture2D" uid="uid://dit7vdud5kxxa" path="res://assets/potion_tech.png" id="3_hgm5l"]
 [ext_resource type="Texture2D" uid="uid://bq2s64pkdo8dh" path="res://assets/witch_tech.png" id="3_lt1b2"]
 [ext_resource type="Texture2D" uid="uid://s7x7ibmpwe2p" path="res://assets/bar_tech.png" id="4_lt1b2"]
 [ext_resource type="Texture2D" uid="uid://b3m61h0xj77a3" path="res://assets/frame0000.png" id="4_wgrxm"]
@@ -14,6 +15,25 @@
 [ext_resource type="PackedScene" uid="uid://d1qryld5yii4n" path="res://scenes/pause.tscn" id="12_7268j"]
 [ext_resource type="Texture2D" uid="uid://db3kevffj8enl" path="res://assets/block_tech.png" id="12_rwdpr"]
 [ext_resource type="Texture2D" uid="uid://dcarmbqrchx5x" path="res://assets/star_tech.png" id="13_rwdpr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhm2j"]
+content_margin_left = 25.0
+content_margin_top = 20.0
+content_margin_right = 25.0
+content_margin_bottom = 20.0
+bg_color = Color(0.4117647, 0.4117647, 0.4117647, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7pvyh"]
+bg_color = Color(0.08235294, 0.08235294, 0.08235294, 0.49803922)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w2b38"]
 bg_color = Color(0, 0, 0, 0.25490198)
@@ -79,14 +99,7 @@ bg_color = Color(0.5372549, 0.1882353, 0.16470589, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3577e"]
 bg_color = Color(0.66458356, 0, 0.04976818, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7pvyh"]
-bg_color = Color(0.08235294, 0.08235294, 0.08235294, 0.49803922)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
-[node name="Node2D" type="Node2D" unique_id=1641416975 node_paths=PackedStringArray("health_ui", "sp_ui", "potato_ui", "health", "sp", "potato_hp", "potato_health", "potato_bar", "first_turn_p", "first_turn_w", "second_turn_p", "second_turn_w", "third_turn_p", "third_turn_w", "timer", "mistake_timer", "mistake", "spell", "spell_menu", "potion", "pause", "pause_button", "canvas", "dark", "light_bar", "light_potato", "light_options", "light_turns", "block", "text", "sub_text", "intro_timer", "basic_spell_b", "super_cast_b", "look_over_there_b")]
+[node name="Node2D" type="Node2D" unique_id=1641416975 node_paths=PackedStringArray("health_ui", "sp_ui", "potato_ui", "health", "sp", "potato_hp", "potato_health", "potato_bar", "first_turn_p", "first_turn_w", "second_turn_p", "second_turn_w", "third_turn_p", "third_turn_w", "timer", "mistake_timer", "mistake", "spell", "spell_menu", "potion", "pause", "pause_button", "canvas", "dark", "light_bar", "light_potato", "light_options", "light_turns", "block", "text", "sub_text", "intro_timer", "basic_spell_b", "super_cast_b", "look_over_there_b", "potion_menu", "potion_exit", "soda_b", "soda_value", "just_water_b", "just_water_value")]
 script = ExtResource("1_tlxmr")
 health_ui = NodePath("CanvasLayer/ProgressBar")
 sp_ui = NodePath("CanvasLayer/ProgressBar2")
@@ -123,8 +136,148 @@ intro_timer = NodePath("Timer3")
 basic_spell_b = NodePath("CanvasLayer/ColorRect2/Button2")
 super_cast_b = NodePath("CanvasLayer/ColorRect2/Button3")
 look_over_there_b = NodePath("CanvasLayer/ColorRect2/Button4")
+potion_menu = NodePath("CanvasLayer/PanelContainer2")
+potion_exit = NodePath("CanvasLayer/Button")
+soda_b = NodePath("CanvasLayer/PanelContainer2/HBoxContainer/Button2")
+soda_value = NodePath("CanvasLayer/PanelContainer2/HBoxContainer/Button2/Label4")
+just_water_b = NodePath("CanvasLayer/PanelContainer2/HBoxContainer/Button3")
+just_water_value = NodePath("CanvasLayer/PanelContainer2/HBoxContainer/Button3/Label4")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=791422463]
+
+[node name="PanelContainer2" type="PanelContainer" parent="CanvasLayer" unique_id=723731608]
+z_index = 2
+offset_left = 369.0
+offset_top = 273.0
+offset_right = 894.0
+offset_bottom = 498.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_rhm2j")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PanelContainer2" unique_id=965302120]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Button2" type="Button" parent="CanvasLayer/PanelContainer2/HBoxContainer" unique_id=963601003]
+custom_minimum_size = Vector2(145, 0)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_7pvyh")
+
+[node name="Label2" type="Label" parent="CanvasLayer/PanelContainer2/HBoxContainer/Button2" unique_id=1237962577]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 103.0
+offset_right = 92.0
+offset_bottom = 150.0
+theme_override_colors/font_color = Color(0.86898494, 0.8689849, 0.8689849, 1)
+theme_override_font_sizes/font_size = 15
+text = "Regain 1 SP"
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/PanelContainer2/HBoxContainer/Button2" unique_id=973575149]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 11.0
+offset_right = 125.0
+offset_bottom = 74.0
+mouse_filter = 2
+color = Color(0.08468988, 0.08468995, 0.08468989, 0.49803922)
+
+[node name="PotionPurpleTech" type="Sprite2D" parent="CanvasLayer/PanelContainer2/HBoxContainer/Button2" unique_id=2100592982]
+position = Vector2(71, 42)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("11_y7np1")
+
+[node name="Label" type="Label" parent="CanvasLayer/PanelContainer2/HBoxContainer/Button2" unique_id=1564438786]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 75.0
+offset_right = 135.0
+offset_bottom = 103.0
+theme_override_font_sizes/font_size = 16
+text = "Auspicious Soda"
+
+[node name="Label3" type="Label" parent="CanvasLayer/PanelContainer2/HBoxContainer/Button2" unique_id=2119833549]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 137.0
+offset_right = 66.0
+offset_bottom = 159.0
+theme_override_colors/font_color = Color(0.86898494, 0.8689849, 0.8689849, 1)
+theme_override_font_sizes/font_size = 15
+text = "Owned:"
+
+[node name="Label4" type="Label" parent="CanvasLayer/PanelContainer2/HBoxContainer/Button2" unique_id=955544295]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 137.0
+offset_right = 126.0
+offset_bottom = 159.0
+theme_override_colors/font_color = Color(0.86898494, 0.8689849, 0.8689849, 1)
+theme_override_font_sizes/font_size = 15
+
+[node name="Button3" type="Button" parent="CanvasLayer/PanelContainer2/HBoxContainer" unique_id=283873555]
+custom_minimum_size = Vector2(145, 0)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_7pvyh")
+
+[node name="Label2" type="Label" parent="CanvasLayer/PanelContainer2/HBoxContainer/Button3" unique_id=148921640]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 106.0
+offset_right = 143.0
+offset_bottom = 153.0
+theme_override_colors/font_color = Color(0.86898494, 0.8689849, 0.8689849, 1)
+theme_override_font_sizes/font_size = 15
+text = "Regain 2 HP and 
+1 SP"
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/PanelContainer2/HBoxContainer/Button3" unique_id=475780508]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 11.0
+offset_right = 125.0
+offset_bottom = 74.0
+mouse_filter = 2
+color = Color(0.08468988, 0.08468995, 0.08468989, 0.49803922)
+
+[node name="PotionTech" type="Sprite2D" parent="CanvasLayer/PanelContainer2/HBoxContainer/Button3" unique_id=1744813448]
+position = Vector2(72, 41)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_hgm5l")
+
+[node name="Label" type="Label" parent="CanvasLayer/PanelContainer2/HBoxContainer/Button3" unique_id=609484002]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 74.0
+offset_right = 124.0
+offset_bottom = 102.0
+theme_override_font_sizes/font_size = 20
+text = "Just Water"
+
+[node name="Label3" type="Label" parent="CanvasLayer/PanelContainer2/HBoxContainer/Button3" unique_id=116878840]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 154.0
+offset_right = 66.0
+offset_bottom = 176.0
+theme_override_colors/font_color = Color(0.86898494, 0.8689849, 0.8689849, 1)
+theme_override_font_sizes/font_size = 15
+text = "Owned:"
+
+[node name="Label4" type="Label" parent="CanvasLayer/PanelContainer2/HBoxContainer/Button3" unique_id=2064027332]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 154.0
+offset_right = 126.0
+offset_bottom = 176.0
+theme_override_colors/font_color = Color(0.86898494, 0.8689849, 0.8689849, 1)
+theme_override_font_sizes/font_size = 15
+
+[node name="Polygon2D" type="Polygon2D" parent="CanvasLayer/PanelContainer2" unique_id=1844497111]
+position = Vector2(246, 199)
+scale = Vector2(0.8, 0.8)
+color = Color(0.4117647, 0.4117647, 0.4117647, 1)
+polygon = PackedVector2Array(20, 70, 40, 30, 0, 30)
+uv = PackedVector2Array(50.471344, -0.8537636, 79.851776, 39.613644, 24.971344, 39.613644)
 
 [node name="Button4" type="Button" parent="CanvasLayer" unique_id=1379259856]
 z_index = 1
@@ -491,9 +644,9 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_7pvyh")
 
 [node name="Label2" type="Label" parent="CanvasLayer/ColorRect2/Button2" unique_id=715796639]
 layout_mode = 0
-offset_left = 13.0
+offset_left = 14.0
 offset_top = 111.0
-offset_right = 130.0
+offset_right = 131.0
 offset_bottom = 158.0
 theme_override_colors/font_color = Color(0.86898494, 0.8689849, 0.8689849, 1)
 theme_override_font_sizes/font_size = 15
@@ -636,6 +789,16 @@ color = Color(0.4117647, 0.4117647, 0.4117647, 1)
 polygon = PackedVector2Array(20, 70, 40, 30, 0, 30)
 uv = PackedVector2Array(50.471344, -0.8537636, 79.851776, 39.613644, 24.971344, 39.613644)
 
+[node name="Button" type="Button" parent="CanvasLayer" unique_id=566301445]
+z_index = 2
+offset_left = 870.0
+offset_top = 261.0
+offset_right = 905.0
+offset_bottom = 296.0
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_3577e")
+text = "X"
+
 [node name="Timer" type="Timer" parent="." unique_id=2088150919]
 
 [node name="Timer2" type="Timer" parent="." unique_id=256539285]
@@ -644,6 +807,147 @@ uv = PackedVector2Array(50.471344, -0.8537636, 79.851776, 39.613644, 24.971344, 
 wait_time = 2.0
 one_shot = true
 
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=656442686]
+offset_left = 274.0
+offset_top = 661.0
+offset_right = 799.0
+offset_bottom = 888.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_rhm2j")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer" unique_id=292695934]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Button2" type="Button" parent="PanelContainer/HBoxContainer" unique_id=709338385]
+custom_minimum_size = Vector2(145, 0)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_7pvyh")
+
+[node name="Label2" type="Label" parent="PanelContainer/HBoxContainer/Button2" unique_id=883108015]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 111.0
+offset_right = 133.0
+offset_bottom = 158.0
+theme_override_colors/font_color = Color(0.86898494, 0.8689849, 0.8689849, 1)
+theme_override_font_sizes/font_size = 15
+text = "Does 1 DMG "
+
+[node name="ColorRect" type="ColorRect" parent="PanelContainer/HBoxContainer/Button2" unique_id=338803169]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 11.0
+offset_right = 125.0
+offset_bottom = 74.0
+mouse_filter = 2
+color = Color(0.08468988, 0.08468995, 0.08468989, 0.49803922)
+
+[node name="StarTech" type="Sprite2D" parent="PanelContainer/HBoxContainer/Button2" unique_id=70841160]
+position = Vector2(70, 43)
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("13_rwdpr")
+
+[node name="Label" type="Label" parent="PanelContainer/HBoxContainer/Button2" unique_id=119898811]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 74.0
+offset_right = 123.0
+offset_bottom = 102.0
+theme_override_font_sizes/font_size = 20
+text = "Basic Spell"
+
+[node name="Button3" type="Button" parent="PanelContainer/HBoxContainer" unique_id=1342187639]
+custom_minimum_size = Vector2(145, 0)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_7pvyh")
+
+[node name="Label2" type="Label" parent="PanelContainer/HBoxContainer/Button3" unique_id=959787186]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 108.0
+offset_right = 132.0
+offset_bottom = 155.0
+theme_override_colors/font_color = Color(0.86898494, 0.8689849, 0.8689849, 1)
+theme_override_font_sizes/font_size = 15
+text = "Does 2 DMG for 
+1 SP"
+
+[node name="ColorRect" type="ColorRect" parent="PanelContainer/HBoxContainer/Button3" unique_id=1246757249]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 11.0
+offset_right = 125.0
+offset_bottom = 74.0
+mouse_filter = 2
+color = Color(0.08468988, 0.08468995, 0.08468989, 0.49803922)
+
+[node name="WandTech" type="Sprite2D" parent="PanelContainer/HBoxContainer/Button3" unique_id=785566275]
+position = Vector2(73, 44)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("10_2yrmm")
+region_enabled = true
+region_rect = Rect2(0, 0, 48, 55)
+
+[node name="Label" type="Label" parent="PanelContainer/HBoxContainer/Button3" unique_id=1712225864]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 74.0
+offset_right = 125.0
+offset_bottom = 102.0
+theme_override_font_sizes/font_size = 20
+text = "Super Cast"
+
+[node name="Button4" type="Button" parent="PanelContainer/HBoxContainer" unique_id=1257007982]
+custom_minimum_size = Vector2(145, 0)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_7pvyh")
+
+[node name="Label2" type="Label" parent="PanelContainer/HBoxContainer/Button4" unique_id=1464304520]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 105.0
+offset_right = 141.0
+offset_bottom = 177.0
+theme_override_colors/font_color = Color(0.86898494, 0.8689849, 0.8689849, 1)
+theme_override_font_sizes/font_size = 14
+text = "Distract the enemy 
+and make them
+lose a turn"
+
+[node name="ColorRect" type="ColorRect" parent="PanelContainer/HBoxContainer/Button4" unique_id=1016692032]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 11.0
+offset_right = 126.0
+offset_bottom = 74.0
+mouse_filter = 2
+color = Color(0.08468988, 0.08468995, 0.08468989, 0.49803922)
+
+[node name="Label" type="Label" parent="PanelContainer/HBoxContainer/Button4" unique_id=1136109483]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 76.0
+offset_right = 139.0
+offset_bottom = 99.0
+theme_override_font_sizes/font_size = 16
+text = "Look Over There!"
+
+[node name="Label3" type="Label" parent="PanelContainer/HBoxContainer/Button4" unique_id=2017188507]
+layout_mode = 0
+offset_left = 59.0
+offset_top = -1.0
+offset_right = 99.0
+offset_bottom = 82.0
+theme_override_font_sizes/font_size = 60
+text = "?"
+
+[node name="Polygon2D" type="Polygon2D" parent="PanelContainer" unique_id=1903128183]
+position = Vector2(246, 202)
+scale = Vector2(0.8, 0.8)
+color = Color(0.4117647, 0.4117647, 0.4117647, 1)
+polygon = PackedVector2Array(20, 70, 40, 30, 0, 30)
+uv = PackedVector2Array(50.471344, -0.8537636, 79.851776, 39.613644, 24.971344, 39.613644)
+
 [connection signal="pressed" from="CanvasLayer/Button4" to="." method="_pause"]
 [connection signal="pressed" from="CanvasLayer/Button2" to="." method="_attack"]
 [connection signal="pressed" from="CanvasLayer/Button3" to="." method="_potion"]
@@ -651,6 +955,7 @@ one_shot = true
 [connection signal="pressed" from="CanvasLayer/ColorRect2/Button2" to="." method="_basic_spell"]
 [connection signal="pressed" from="CanvasLayer/ColorRect2/Button3" to="." method="_super_cast"]
 [connection signal="pressed" from="CanvasLayer/ColorRect2/Button4" to="." method="_distract"]
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_exit_potion"]
 [connection signal="timeout" from="Timer" to="." method="_potato_turn"]
 [connection signal="timeout" from="Timer2" to="." method="_mistake_timeout"]
 [connection signal="timeout" from="Timer3" to="." method="_continue_intro"]

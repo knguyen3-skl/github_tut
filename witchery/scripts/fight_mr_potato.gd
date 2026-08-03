@@ -41,6 +41,14 @@ extends Node2D
 @export var super_cast_b: Button
 @export var look_over_there_b: Button
 
+@export var potion_menu: PanelContainer
+@export var potion_exit: Button
+
+@export var soda_b: Button
+@export var soda_value:Label
+@export var just_water_b: Button
+@export var just_water_value:Label
+
 var bars: bool = false
 var options: bool = false
 var turns: bool = false
@@ -94,9 +102,12 @@ did 1 damage to the enemy and took away",
 enemies!"
 ]
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	potion_menu.hide()
 	spell_menu.hide()
+	potion_exit.hide()
 	Global.potato_fight = true
 	health_ui.max_value = Global.player_base_health
 	health_ui.value = Global.player_health
@@ -136,6 +147,9 @@ func _ready() -> void:
 				
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	soda_value.text = str(Global.inventory["purple_potion"])
+	just_water_value.text = str(Global.inventory["blue_potion"])
+	
 	if spell_menu.visible == true and Global.shop["super_cast"] == "yes" and Global.shop["look_over_there"] == "yes":
 		super_cast_b.show()
 		look_over_there_b.show()
@@ -264,14 +278,13 @@ func _process(delta: float) -> void:
 			if items.is_in_group("intro"):
 				items.hide()
 
+
 func _attack() -> void:
 	if Global.intro == false:
 		spell_menu.show()
 		spell_opned = true
 		light_options.hide()
 		clicked = true
-
-		
 	else:
 		spell_menu.show()
 		spell_opned = true
@@ -279,17 +292,25 @@ func _attack() -> void:
 	
 
 func _potion() -> void:
-	if turns_left >= 1 and Global.player_special < Global.player_base_special:
-		turns_left -= 1
-		_turn()
-		Global.player_special += 1
-		sp_ui.value = Global.player_special
-		sp.text = str(Global.player_special)
+	potion_menu.show()
+	potion_exit.show()
+	if Global.inventory["purple_potion"] == 0:
+		soda_b.hide()
 	
-	elif Global.player_special == Global.player_base_special and turns_left >= 1:
-		mistake.text = str("Special Points is already maxed!")
-		mistake_timer.start()
-		
+	if Global.inventory["blue_potion"] == 0:
+		just_water_b.hide()
+	
+	#if turns_left >= 1 and Global.player_special < Global.player_base_special:
+		#turns_left -= 1
+		#_turn()
+		#Global.player_special += 1
+		#sp_ui.value = Global.player_special
+		#sp.text = str(Global.player_special)
+	#elif Global.player_special == Global.player_base_special and turns_left >= 1:
+		#mistake.text = str("Special Points is already maxed!")
+		#mistake_timer.start()
+
+
 func _turn() -> void:
 	if turns_left == 2:
 		first_turn_p.visible = false 
@@ -434,3 +455,8 @@ func _continue_intro() -> void:
 	counter += 1
 	text.text = intro[counter]
 	print(counter)
+
+
+func _exit_potion() -> void:
+	potion_exit.hide()
+	potion_menu.hide()
