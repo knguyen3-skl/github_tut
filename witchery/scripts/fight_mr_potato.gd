@@ -187,7 +187,7 @@ func _process(delta: float) -> void:
 		bars = true
 		for items in canvas.get_children():
 			if items.is_in_group("turns"):
-				items.z_index -= 2
+				items.z_index = -2
 				
 		light_turns.hide()
 		light_potato.show()
@@ -233,7 +233,6 @@ func _process(delta: float) -> void:
 				items.z_index = 1
 				
 	elif Global.intro == false and Global.pause == false and counter >= 3 and counter <6 and Input.is_action_just_pressed("next"):
-		print("3")
 		counter += 1
 		text.text = intro[counter]
 		print(counter)
@@ -243,19 +242,16 @@ func _process(delta: float) -> void:
 		counter += 1
 		text.text = intro[counter]
 		print(counter)
-		print("6")
 				
 	elif Global.intro == false and Global.pause == false and counter >= 8 and counter < 10 and options == true and Input.is_action_just_pressed("next"):
 		counter += 1
 		text.text = intro[counter]
 		print(counter)
-		print("8")
 		
 	elif Global.intro == false and Global.pause == false and counter >= 10 and counter < 14 and wand_1 == true and Input.is_action_just_pressed("next"):
 		counter += 1
 		text.text = intro[counter]
 		print(counter)
-		print("10")
 		
 	elif Global.intro == false and Global.pause == false and counter >= 15 and counter < 18 and Input.is_action_just_pressed("next"):
 		counter += 1
@@ -269,7 +265,7 @@ func _process(delta: float) -> void:
 				items.hide()
 
 func _attack() -> void:
-	if Global.intro == true:
+	if Global.intro == false:
 		spell_menu.show()
 		spell_opned = true
 		light_options.hide()
@@ -393,6 +389,8 @@ func _basic_spell() -> void:
 		for items in canvas.get_children():
 			if items.is_in_group("intro"):
 				items.hide()
+			elif items.is_in_group("turns"):
+				items.z_index = 0
 		
 	
 	elif turns_left >= 1 and Global.intro == true:
@@ -428,7 +426,7 @@ func _continue_intro() -> void:
 		if items.is_in_group("intro"):
 			items.show()
 		elif items.is_in_group("turns"):
-			items.z_index -= 2
+			items.z_index = 0
 			
 	block.position = Vector2(171.0,418.0)
 	text.position = Vector2(208.0,447.0)

@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
 	if Global.market == true:
 		player_cam.drag_horizontal_enabled = false
 		player_cam.drag_vertical_enabled = false
-	elif Global.market == false:
+	elif Global.market == false and Global.inventory_status == false:
 		player_cam.drag_horizontal_enabled = true
 		player_cam.drag_vertical_enabled = true
 	
