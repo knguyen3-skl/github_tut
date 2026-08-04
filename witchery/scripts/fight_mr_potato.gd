@@ -20,7 +20,8 @@ extends Node2D
 @export var mistake: Label
 
 @export var spell: Button
-@export var spell_menu: ColorRect
+@export var spell_menu: PanelContainer
+@export var spell_exit: Button
 @export var potion: Button
 
 @export var pause: ColorRect
@@ -108,6 +109,7 @@ func _ready() -> void:
 	potion_menu.hide()
 	spell_menu.hide()
 	potion_exit.hide()
+	spell_exit.hide()
 	Global.potato_fight = true
 	health_ui.max_value = Global.player_base_health
 	health_ui.value = Global.player_health
@@ -150,24 +152,6 @@ func _process(delta: float) -> void:
 	soda_value.text = str(Global.inventory["purple_potion"])
 	just_water_value.text = str(Global.inventory["blue_potion"])
 	
-	if spell_menu.visible == true and Global.shop["super_cast"] == "yes" and Global.shop["look_over_there"] == "yes":
-		super_cast_b.show()
-		look_over_there_b.show()
-		look_over_there_b.position = Vector2(346.0,17)
-		
-	elif spell_menu.visible == true and Global.shop["super_cast"] == "yes" and Global.shop["look_over_there"] == "no":
-		super_cast_b.show()
-		look_over_there_b.hide()
-	
-	elif spell_menu.visible == true and Global.shop["super_cast"] == "no" and Global.shop["look_over_there"] == "yes":
-		super_cast_b.hide()
-		look_over_there_b.show()
-		look_over_there_b.position = Vector2(185.0,17)
-	
-	else:
-		super_cast_b.hide()
-		look_over_there_b.hide()
-	
 	if Global.pause == false:
 		pause_button.show()
 		spell.show()
@@ -184,6 +168,16 @@ func _process(delta: float) -> void:
 		Global.enemy_dict[Global.enemy_id] = "dead"
 		print(Global.enemy_dict)
 		get_tree().call_deferred("change_scene_to_file", "res://scenes/level.tscn")
+		
+	if Global.player_health > Global.player_base_health:
+		Global.player_health = Global.player_base_health
+		health_ui.value = Global.player_health
+		health.text = str(Global.player_health)	
+	
+	if Global.player_special > Global.player_base_special:
+		Global.player_special = Global.player_base_special
+		sp_ui.value = Global.player_special
+		sp.text = str(Global.player_special)	
 		
 	if counter == 4:
 		light_bar.hide()
@@ -286,10 +280,20 @@ func _attack() -> void:
 		light_options.hide()
 		clicked = true
 	else:
+		spell_exit.show()
 		spell_menu.show()
 		spell_opned = true
 		wand_1 = true
-	
+		
+		if Global.shop["super_cast"] == "yes":
+			super_cast_b.show()
+		else:
+			super_cast_b.hide()
+		
+		if Global.shop["look_over_there"] == "yes":
+			look_over_there_b.show()
+		else:
+			look_over_there_b.hide()
 
 func _potion() -> void:
 	potion_menu.show()
@@ -388,9 +392,14 @@ func _super_cast() -> void:
 		sp_ui.value = Global.player_special
 		spell_opned = false
 		spell_menu.hide()
+		spell_exit.hide()
 		
 	elif Global.player_special < super_cast and turns_left >= 1:
 		mistake.text = str("Not enough special points!")
+		mistake_timer.start()
+		
+	else:
+		mistake.text = str("Not your turn!")
 		mistake_timer.start()
 
 
@@ -404,6 +413,7 @@ func _basic_spell() -> void:
 		potato_health.text = str(Global.potato_health)
 		spell_opned = false
 		spell_menu.hide()
+		spell_exit.hide()
 		light_options.hide()
 		intro_timer.start()
 		
@@ -412,8 +422,6 @@ func _basic_spell() -> void:
 				items.hide()
 			elif items.is_in_group("turns"):
 				items.z_index = 0
-		
-	
 	elif turns_left >= 1 and Global.intro == true:
 		turns_left -= 1
 		print(turns_left)
@@ -423,11 +431,16 @@ func _basic_spell() -> void:
 		potato_health.text = str(Global.potato_health)
 		spell_opned = false
 		spell_menu.hide()
+		spell_exit.hide()
+	else:
+		mistake.text = str("Not your turn!")
+		mistake_timer.start()
 
 
 func _spell_menu_exit() -> void:
 	spell_opned = false
 	spell_menu.hide()
+	spell_exit.hide()
 
 
 func _distract() -> void:
@@ -438,6 +451,10 @@ func _distract() -> void:
 		potato_distract = true
 		spell_opned = false
 		spell_menu.hide()
+		spell_exit.hide()
+	else:
+		mistake.text = str("Not your turn!")
+		mistake_timer.start()
 
 
 func _continue_intro() -> void:
@@ -460,3 +477,48 @@ func _continue_intro() -> void:
 func _exit_potion() -> void:
 	potion_exit.hide()
 	potion_menu.hide()
+
+
+func _purple_potion() -> void:
+	if turns_left >= 1 and Global.player_special < Global.player_base_special and Global.inventory["purple_potion"] >= 1:
+		Global.inventory["purple_potion"] -= 1
+		soda_value.text = str(Global.inventory["purple_potion"])
+		turns_left -= 1
+		_turn()
+		Global.player_special += 1
+		sp.text = str(Global.player_special)
+		sp_ui.value = Global.player_special
+		potion_exit.hide()
+		potion_menu.hide()
+	elif Global.player_special == Global.player_base_special:
+		mistake.text = str("Already maxed SP")
+		mistake_timer.start()
+	elif Global.inventory["purple_potion"] == 0:
+		soda_b.hide()
+	else:
+		mistake.text = str("Not your turn!")
+		mistake_timer.start()
+
+
+func _blue_potion() -> void:
+	if turns_left >= 1 and (Global.player_special < Global.player_base_special or Global.player_health < Global.player_base_health) and Global.inventory["blue_potion"] >= 1:
+		Global.inventory["blue_potion"] -= 1
+		soda_value.text = str(Global.inventory["blue_potion"])
+		turns_left -= 1
+		_turn()
+		Global.player_special += 1
+		Global.player_health += 2
+		sp.text = str(Global.player_special)
+		sp_ui.value = Global.player_special
+		health.text = str(Global.player_health)
+		health_ui.value = Global.player_health
+		potion_exit.hide()
+		potion_menu.hide()
+	elif Global.player_special == Global.player_base_special:
+		mistake.text = str("Already maxed SP")
+		mistake_timer.start()
+	elif Global.inventory["blue_potion"] == 0:
+		just_water_b.hide()
+	else:
+		mistake.text = str("Not your turn!")
+		mistake_timer.start()
