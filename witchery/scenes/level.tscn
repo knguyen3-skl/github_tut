@@ -90,7 +90,7 @@ tile_set = SubResource("TileSet_64w2a")
 position = Vector2(-262, 210)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=409045862]
-zoom = Vector2(5, 5)
+zoom = Vector2(4, 4)
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
@@ -292,7 +292,7 @@ scale = Vector2(0.4, 0.4)
 speech_block = NodePath("../CanvasLayer/ColorRect4")
 
 [node name="StaticBody2D2" parent="." unique_id=1302831023 instance=ExtResource("15_wc255")]
-position = Vector2(49, 158)
+position = Vector2(49, 155)
 scale = Vector2(0.5, 0.5)
 
 [node name="StaticBody2D3" parent="." unique_id=101525766 node_paths=PackedStringArray("shop") instance=ExtResource("16_arp2o")]

@@ -24,23 +24,13 @@ func _process(delta: float) -> void:
 		player_cam.drag_horizontal_enabled = true
 		player_cam.drag_vertical_enabled = true
 	
-	if Global.shop["super_cast"] == "no" and Global.shop_speech == true and Global.shop["look_over_there"] == "no":
+	if Global.shop["super_cast"] == "no" and Global.shop_speech == true:
 		super_cast.show()
-	
-	elif Global.shop["super_cast"] == "no" and Global.shop_speech == true and Global.shop["look_over_there"] == "yes":
-		super_cast.show()
-	
 	else:
 		super_cast.hide()
 		
-	if Global.shop["look_over_there"] == "no" and Global.shop["super_cast"] == "no" and Global.shop_speech == true:
+	if Global.shop["look_over_there"] == "no" and Global.shop_speech == true:
 		look_over_there.show()
-		look_over_there.position = Vector2(489.0,164.0)
-		
-	elif Global.shop["look_over_there"] == "no" and Global.shop["super_cast"] == "yes" and Global.shop_speech == true:
-		look_over_there.show()
-		look_over_there.position = Vector2(229.0,164.0)
-		
 	else:
 		look_over_there.hide()
 

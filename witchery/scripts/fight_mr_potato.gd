@@ -303,16 +303,6 @@ func _potion() -> void:
 	
 	if Global.inventory["blue_potion"] == 0:
 		just_water_b.hide()
-	
-	#if turns_left >= 1 and Global.player_special < Global.player_base_special:
-		#turns_left -= 1
-		#_turn()
-		#Global.player_special += 1
-		#sp_ui.value = Global.player_special
-		#sp.text = str(Global.player_special)
-	#elif Global.player_special == Global.player_base_special and turns_left >= 1:
-		#mistake.text = str("Special Points is already maxed!")
-		#mistake_timer.start()
 
 
 func _turn() -> void:
@@ -491,7 +481,7 @@ func _purple_potion() -> void:
 		potion_exit.hide()
 		potion_menu.hide()
 	elif Global.player_special == Global.player_base_special:
-		mistake.text = str("Already maxed SP")
+		mistake.text = str("Special points already maxed!")
 		mistake_timer.start()
 	elif Global.inventory["purple_potion"] == 0:
 		soda_b.hide()
@@ -515,7 +505,7 @@ func _blue_potion() -> void:
 		potion_exit.hide()
 		potion_menu.hide()
 	elif Global.player_special == Global.player_base_special:
-		mistake.text = str("Already maxed SP")
+		mistake.text = str("Stats Already maxed!")
 		mistake_timer.start()
 	elif Global.inventory["blue_potion"] == 0:
 		just_water_b.hide()

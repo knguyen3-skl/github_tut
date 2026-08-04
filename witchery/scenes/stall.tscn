@@ -4,28 +4,39 @@
 [ext_resource type="Texture2D" uid="uid://qqpyhg17dw33" path="res://assets/stall_tech.png" id="2_3dq5b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nay5t"]
-size = Vector2(124, 46)
+size = Vector2(8, 46)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wuado"]
+size = Vector2(108, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i2wm8"]
-size = Vector2(264.75, 249.125)
+size = Vector2(239, 237)
 
 [node name="StaticBody2D" type="StaticBody2D" unique_id=101525766 node_paths=PackedStringArray("e")]
 script = ExtResource("1_wuado")
 e = NodePath("ColorRect2")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1725224054]
-position = Vector2(64, 106)
-shape = SubResource("RectangleShape2D_nay5t")
 
 [node name="StallTech" type="Sprite2D" parent="." unique_id=394783012]
 position = Vector2(64, 65)
 scale = Vector2(2, 2)
 texture = ExtResource("2_3dq5b")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1725224054]
+position = Vector2(6, 106)
+shape = SubResource("RectangleShape2D_nay5t")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=966600675]
+position = Vector2(122, 106)
+shape = SubResource("RectangleShape2D_nay5t")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="." unique_id=755082712]
+position = Vector2(64, 117)
+shape = SubResource("RectangleShape2D_wuado")
+
 [node name="Area2D" type="Area2D" parent="." unique_id=632137803]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1555743814]
-position = Vector2(65, 64)
+position = Vector2(61.5, 63.5)
 shape = SubResource("RectangleShape2D_i2wm8")
 
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=1380822971]
