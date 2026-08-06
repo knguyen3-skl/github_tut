@@ -14,6 +14,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if Global.pause == true:
+		hide()
+		
 	purple_potion.text = str(Global.inventory["purple_potion"])
 	blue_potion.text = str(Global.inventory["blue_potion"])
 

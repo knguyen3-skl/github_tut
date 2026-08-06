@@ -3,6 +3,7 @@ extends ColorRect
 @export var inventory: ColorRect
 @export var timer: Timer
 @export var money: Label
+@export var sprout: Label
 @export var no_money: Label
 
 # Called when the node enters the scene tree for the first time.
@@ -15,12 +16,13 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if Global.pause == true:
+		hide()
 
 func _purple_brewed() -> void:
-	if Global.money >= 20:
-		Global.money -= 20
-		money.text = str(Global.money)
+	if Global.sprout >= 1:
+		Global.sprout -= 1
+		sprout.text = str(Global.sprout)
 		Global.inventory["purple_potion"] += 1
 		print("purple_potion")
 		print(Global.inventory)
@@ -46,9 +48,9 @@ func _purple_to_blue() -> void:
 			items.show()
 
 func _blue_brewed() -> void:
-	if Global.money >= 30:
-		Global.money -= 30
-		money.text = str(Global.money)
+	if Global.sprout >= 2:
+		Global.sprout -= 2
+		sprout.text = str(Global.sprout)
 		Global.inventory["blue_potion"] += 1
 		print("blue_potion")
 		print(Global.inventory)

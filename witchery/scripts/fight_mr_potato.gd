@@ -186,6 +186,7 @@ func _process(delta: float) -> void:
 		Global.enemy_dict[Global.enemy_id] = potato_dead
 		print(Global.enemy_dict)
 		Global.quest_1_value += 1
+		Global.sprout += 1
 		get_tree().call_deferred("change_scene_to_file", "res://scenes/level.tscn")
 	elif Global.potato_health <= 0:
 		Global.potato_fight = false
@@ -194,6 +195,7 @@ func _process(delta: float) -> void:
 		Global.potato_health = 10
 		Global.enemy_dict[Global.enemy_id] = potato_dead
 		print(Global.enemy_dict)
+		Global.sprout += 1
 		get_tree().call_deferred("change_scene_to_file", "res://scenes/level.tscn")
 		
 	if Global.player_health > Global.player_base_health:

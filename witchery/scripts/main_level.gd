@@ -16,6 +16,8 @@ extends Node2D
 @export var speech_block: ColorRect
 @export var canvas: CanvasLayer
 @export var quest: ColorRect
+@export var sprout: Label
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -29,6 +31,8 @@ func _ready() -> void:
 	player_special.max_value = Global.player_base_special
 	player_special.value = Global.player_special
 	special.text = str(Global.player_special)
+	
+	sprout.text = str(Global.sprout)
 	
 	if Global.last_player_positon == Vector2(-262.0, 210.0):
 		pass
@@ -54,6 +58,7 @@ func _ready() -> void:
 			
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	sprout.text = str(Global.sprout)
 	money.text = str(Global.money)
 	# if alive show
 	# if dead hide + untouchable
