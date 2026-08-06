@@ -15,10 +15,12 @@ extends Node2D
 @export var pause: Button
 @export var speech_block: ColorRect
 @export var canvas: CanvasLayer
+@export var quest: ColorRect
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	speech_block.hide()
+	quest.hide()
 	print(Global.last_player_positon)
 	player_health.max_value = Global.player_base_health
 	player_health.value = Global.player_health
@@ -83,6 +85,10 @@ func _process(delta: float) -> void:
 		for items in canvas.get_children():
 			if items.is_in_group("stats"):
 				items.show()
+	
+	if Global.quest_1_talk == true:
+		quest.show()
+				
 
 func _respawn_enemy(enemy_id: StringName) -> void:
 	Global.enemy_dict[enemy_id] = "alive"

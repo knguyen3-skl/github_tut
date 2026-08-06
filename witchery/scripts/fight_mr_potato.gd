@@ -178,10 +178,19 @@ func _process(delta: float) -> void:
 	if Global.player_health <=0:
 		Global.potato_fight = false
 		get_tree().call_deferred("change_scene_to_file", "res://scenes/died.tscn")
+	elif Global.potato_health <= 0 and Global.quest_1_talk == true:
+		Global.potato_fight = false
+		print(Global.potato_fight)
+		Global.money += 30
+		Global.potato_health = 10
+		Global.enemy_dict[Global.enemy_id] = potato_dead
+		print(Global.enemy_dict)
+		Global.quest_1_value += 1
+		get_tree().call_deferred("change_scene_to_file", "res://scenes/level.tscn")
 	elif Global.potato_health <= 0:
 		Global.potato_fight = false
 		print(Global.potato_fight)
-		Global.money += 10
+		Global.money += 30
 		Global.potato_health = 10
 		Global.enemy_dict[Global.enemy_id] = potato_dead
 		print(Global.enemy_dict)

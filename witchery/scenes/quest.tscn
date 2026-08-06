@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://b85ku1q1sm8br"]
+
+[ext_resource type="Script" uid="uid://bw1pv5n5odrrd" path="res://scripts/quest.gd" id="1_7fbp7"]
+[ext_resource type="Texture2D" uid="uid://db3kevffj8enl" path="res://assets/block_tech.png" id="1_y6gx0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7fbp7"]
+paragraph_spacing = -6.0
+font_size = 25
+
+[node name="ColorRect" type="ColorRect" unique_id=200887967 node_paths=PackedStringArray("potato_defeat", "hide_show")]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(1, 1, 1, 0)
+script = ExtResource("1_7fbp7")
+potato_defeat = NodePath("Label4")
+hide_show = NodePath("Button")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1715151746 groups=["quest"]]
+layout_mode = 0
+offset_right = 134.66669
+offset_bottom = 169.33334
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_y6gx0")
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 17
+
+[node name="Label" type="Label" parent="." unique_id=1445951352 groups=["quest"]]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 14.0
+offset_right = 197.0
+offset_bottom = 81.0
+theme_override_font_sizes/font_size = 30
+text = "A Helping 
+Hand"
+label_settings = SubResource("LabelSettings_7fbp7")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="." unique_id=1739054164 groups=["quest"]]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 93.0
+offset_right = 186.0
+offset_bottom = 168.0
+theme_override_font_sizes/font_size = 16
+text = "Deafeat 5 potato 
+monsters to help Mr
+Pencil."
+
+[node name="Label3" type="Label" parent="." unique_id=542757784 groups=["quest"]]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 183.0
+offset_right = 156.0
+offset_bottom = 232.0
+theme_override_font_sizes/font_size = 12
+text = "Potatos defeated:     / 5"
+
+[node name="Label4" type="Label" parent="." unique_id=2087584882 groups=["quest"]]
+layout_mode = 0
+offset_left = 127.0
+offset_top = 183.0
+offset_right = 134.0
+offset_bottom = 200.0
+theme_override_font_sizes/font_size = 12
+text = "0"
+
+[node name="Button" type="Button" parent="." unique_id=1558040809]
+layout_mode = 0
+offset_left = -25.0
+offset_top = 100.0
+offset_bottom = 150.0
+theme_override_font_sizes/font_size = 30
+text = ">"
+
+[connection signal="pressed" from="Button" to="." method="_hide_quest"]

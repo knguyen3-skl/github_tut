@@ -39,6 +39,8 @@ var shop = {
 
 var intro: bool = false
 var quest_1_talk: bool = false
+var quest_1: bool = false
+var quest_1_value: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
