@@ -56,7 +56,8 @@ var turns: bool = false
 var wand_1:bool = false
 var clicked: bool = false
 
-var spell_opned: bool = false
+var spell_opened: bool = false
+var potion_opened: bool = false
 var potato_distract: bool = false
 
 var turns_left: int = 3
@@ -304,14 +305,28 @@ func _attack() -> void:
 		look_over_there_b.hide()
 		spell_menu.show()
 		spell_exit.show()
-		spell_opned = true
+		spell_opened = true
 		light_options.hide()
 		clicked = true
 	else:
 		spell_exit.show()
 		spell_menu.show()
-		spell_opned = true
+		spell_opened = true
 		wand_1 = true
+		
+	if potion_opened == true:
+		potion_menu.hide()
+		potion_exit.hide()
+		spell_exit.show()
+		spell_menu.show()
+		spell_opened = true
+		potion_opened = false
+	else:
+		spell_exit.show()
+		spell_menu.show()
+		spell_opened = true
+		wand_1 = true
+		
 		
 		if Global.shop[super_cast] == status_brought:
 			super_cast_b.show()
@@ -324,11 +339,21 @@ func _attack() -> void:
 			look_over_there_b.hide()
 
 func _potion() -> void:
-	potion_menu.show()
-	potion_exit.show()
+	
+	if spell_opened == true:
+		spell_menu.hide()
+		spell_exit.hide()
+		spell_opened = false
+		potion_opened = true
+		potion_menu.show()
+		potion_exit.show()
+	else:
+		potion_opened = true
+		potion_menu.show()
+		potion_exit.show()
+	
 	if Global.inventory[purple_potion] == 0:
 		soda_b.hide()
-	
 	if Global.inventory[blue_potion] == 0:
 		just_water_b.hide()
 
@@ -408,7 +433,7 @@ func _super_cast() -> void:
 		potato_health.text = str(Global.potato_health)
 		sp.text = str(Global.player_special)
 		sp_ui.value = Global.player_special
-		spell_opned = false
+		spell_opened = false
 		spell_menu.hide()
 		spell_exit.hide()
 		
@@ -429,7 +454,7 @@ func _basic_spell() -> void:
 		Global.potato_health -= 1
 		potato_ui.value = Global.potato_health
 		potato_health.text = str(Global.potato_health)
-		spell_opned = false
+		spell_opened = false
 		spell_menu.hide()
 		spell_exit.hide()
 		light_options.hide()
@@ -447,7 +472,7 @@ func _basic_spell() -> void:
 		Global.potato_health -= 1
 		potato_ui.value = Global.potato_health
 		potato_health.text = str(Global.potato_health)
-		spell_opned = false
+		spell_opened = false
 		spell_menu.hide()
 		spell_exit.hide()
 	else:
@@ -456,7 +481,7 @@ func _basic_spell() -> void:
 
 
 func _spell_menu_exit() -> void:
-	spell_opned = false
+	spell_opened = false
 	spell_menu.hide()
 	spell_exit.hide()
 
@@ -467,7 +492,7 @@ func _distract() -> void:
 		_turn()
 		print(turns_left)
 		potato_distract = true
-		spell_opned = false
+		spell_opened = false
 		spell_menu.hide()
 		spell_exit.hide()
 	else:

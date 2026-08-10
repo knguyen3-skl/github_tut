@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://be62xxjbf101m" path="res://scenes/mr_pencil.tscn" id="13_64w2a"]
 [ext_resource type="PackedScene" uid="uid://b85ku1q1sm8br" path="res://scenes/quest.tscn" id="14_82cfe"]
 [ext_resource type="PackedScene" uid="uid://6cvl0t8hh6cl" path="res://scenes/mr_pencil_talk1.tscn" id="14_fpun6"]
+[ext_resource type="PackedScene" uid="uid://cgams75qdwkhu" path="res://scenes/announcement.tscn" id="15_gunhw"]
 [ext_resource type="PackedScene" uid="uid://cl27xtb4kvvx5" path="res://scenes/market.tscn" id="15_wc255"]
 [ext_resource type="PackedScene" uid="uid://clsjk425nghlu" path="res://scenes/stall.tscn" id="16_arp2o"]
 [ext_resource type="PackedScene" uid="uid://b7osk4rmhfbyf" path="res://scenes/shop.tscn" id="17_ux5qa"]
@@ -222,7 +223,7 @@ offset_bottom = 638.0
 theme_override_font_sizes/font_size = 40
 text = "0"
 
-[node name="ColorRect" parent="CanvasLayer" unique_id=848347300 node_paths=PackedStringArray("inventory", "money", "sprout") instance=ExtResource("5_2r41h")]
+[node name="ColorRect" parent="CanvasLayer" unique_id=848347300 node_paths=PackedStringArray("inventory", "money", "sprout", "announcement") instance=ExtResource("5_2r41h")]
 visible = false
 z_index = 4
 offset_left = 216.0
@@ -232,6 +233,7 @@ offset_bottom = 533.0
 inventory = NodePath("../ColorRect2")
 money = NodePath("../Label2")
 sprout = NodePath("../Label8")
+announcement = NodePath("../ColorRect7")
 
 [node name="Button" type="Button" parent="CanvasLayer" unique_id=172158956]
 offset_left = 852.0
@@ -293,6 +295,12 @@ offset_right = 295.0
 offset_bottom = 586.0
 theme_override_font_sizes/font_size = 40
 text = "0"
+
+[node name="ColorRect7" parent="CanvasLayer" unique_id=1027835110 instance=ExtResource("15_gunhw")]
+offset_left = 374.0
+offset_top = 221.0
+offset_right = 414.0
+offset_bottom = 261.0
 
 [node name="Node2D" parent="." unique_id=1706893009 node_paths=PackedStringArray("brewing", "inventory", "player_health", "player_special", "health", "special") instance=ExtResource("5_ppgk2")]
 position = Vector2(-179, 339)

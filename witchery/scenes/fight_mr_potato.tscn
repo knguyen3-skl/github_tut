@@ -801,7 +801,6 @@ text = "X"
 [node name="Timer2" type="Timer" parent="." unique_id=256539285]
 
 [node name="Timer3" type="Timer" parent="." unique_id=1636983236]
-wait_time = 2.0
 one_shot = true
 
 [connection signal="pressed" from="CanvasLayer/PanelContainer/HBoxContainer/Button2" to="." method="_basic_spell"]

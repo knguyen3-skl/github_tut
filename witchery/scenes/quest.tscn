@@ -45,7 +45,7 @@ offset_top = 93.0
 offset_right = 186.0
 offset_bottom = 168.0
 theme_override_font_sizes/font_size = 16
-text = "Deafeat 5 potato 
+text = "Deafeat 3 potato 
 monsters to help Mr
 Pencil."
 
@@ -56,7 +56,7 @@ offset_top = 183.0
 offset_right = 156.0
 offset_bottom = 232.0
 theme_override_font_sizes/font_size = 12
-text = "Potatos defeated:     / 5"
+text = "Potatos defeated:     / 3"
 
 [node name="Label4" type="Label" parent="." unique_id=2087584882 groups=["quest"]]
 layout_mode = 0

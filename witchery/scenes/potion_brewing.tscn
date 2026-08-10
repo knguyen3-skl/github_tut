@@ -16,13 +16,14 @@ corner_radius_bottom_left = 20
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r2ldb"]
 bg_color = Color(0.79607844, 0, 0.047058824, 1)
 
-[node name="ColorRect" type="ColorRect" unique_id=848347300 node_paths=PackedStringArray("timer", "no_money")]
+[node name="ColorRect" type="ColorRect" unique_id=848347300 node_paths=PackedStringArray("timer", "no_money", "timer_brewed")]
 offset_right = 700.0
 offset_bottom = 400.0
 color = Color(0.3198733, 0.31987324, 0.31987324, 1)
 script = ExtResource("1_r2ldb")
 timer = NodePath("Timer")
 no_money = NodePath("Label4")
+timer_brewed = NodePath("Timer2")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1600015623]
 layout_mode = 0
@@ -207,9 +208,13 @@ offset_bottom = 120.0
 theme_override_font_sizes/font_size = 35
 text = "Just Water"
 
+[node name="Timer2" type="Timer" parent="." unique_id=1106744542]
+wait_time = 0.5
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="Button" to="." method="_exit_brewing"]
 [connection signal="pressed" from="TextureButton" to="." method="_purple_brewed"]
 [connection signal="pressed" from="TextureButton2" to="." method="_blue_brewed"]
 [connection signal="pressed" from="Button2" to="." method="_purple_to_blue"]
 [connection signal="pressed" from="Button3" to="." method="_blue_to_pruple"]
+[connection signal="timeout" from="Timer2" to="." method="_msg_done"]

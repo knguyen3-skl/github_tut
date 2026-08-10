@@ -5,6 +5,9 @@ extends ColorRect
 @export var money: Label
 @export var sprout: Label
 @export var no_money: Label
+@export var announcement: ColorRect
+@export var timer_brewed: Timer
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,6 +29,14 @@ func _purple_brewed() -> void:
 		Global.inventory["purple_potion"] += 1
 		print("purple_potion")
 		print(Global.inventory)
+		announcement.show()
+		hide()
+		timer_brewed.start()
+		for items in announcement.get_children():
+			if items.is_in_group("rewards"):
+				items.hide()
+			else:
+				items.show()
 	else:
 		print("brokie")
 		no_money.show()
@@ -54,6 +65,14 @@ func _blue_brewed() -> void:
 		Global.inventory["blue_potion"] += 1
 		print("blue_potion")
 		print(Global.inventory)
+		hide()
+		timer_brewed.start()
+		announcement.show()
+		for items in announcement.get_children():
+			if items.is_in_group("rewards"):
+				items.hide()
+			else:
+				items.show()
 	else:
 		print("brokie")
 		no_money.show()
@@ -66,3 +85,7 @@ func _blue_to_pruple() -> void:
 			items.show()
 		elif items.is_in_group("blue_options"):
 			items.hide()
+
+
+func _msg_done() -> void:
+	announcement.hide()

@@ -1,7 +1,7 @@
 extends Node
 
 var money: int = 0
-var sprout: int = 0
+var sprout: int = 4
 
 var potato_fight: bool = false
 
@@ -38,10 +38,12 @@ var shop = {
 	"look_over_there": "no",
 }
 
-var intro: bool = false
+var intro: bool = true
 var quest_1_talk: bool = false
 var quest_1: bool = false
 var quest_1_value: int = 0
+
+var sprout_reward = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
