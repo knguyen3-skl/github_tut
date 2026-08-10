@@ -236,7 +236,6 @@ func _process(delta: float) -> void:
 		potato_hp.z_index = 3
 		potato_health.z_index = 3
 		potato_ui.z_index = 2
-	
 	elif counter == 8 and clicked == false:
 		light_potato.hide()
 		light_options.show()
@@ -247,7 +246,6 @@ func _process(delta: float) -> void:
 		spell.z_index = 2
 		potion.z_index = 2
 		options = true
-		
 	elif counter == 10:
 		spell.mouse_filter = 1
 		
@@ -255,7 +253,6 @@ func _process(delta: float) -> void:
 			basic_spell_b.mouse_filter = 2
 			text.text = intro[11]
 			counter += 1
-		
 	elif counter == 14:
 			basic_spell_b.mouse_filter = 1
 	
@@ -398,7 +395,6 @@ func _pause() -> void:
 	pause_button.hide()
 	spell.hide()
 	potion.hide()
-
 
 
 func _super_cast() -> void:
