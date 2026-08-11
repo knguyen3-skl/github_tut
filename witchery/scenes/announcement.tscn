@@ -3,12 +3,24 @@
 [ext_resource type="Texture2D" uid="uid://db3kevffj8enl" path="res://assets/block_tech.png" id="1_edy45"]
 [ext_resource type="Script" uid="uid://d2x6yjs3wyp3n" path="res://scripts/announcement.gd" id="2_iirmq"]
 
-[node name="ColorRect" type="ColorRect" unique_id=1027835110]
+[node name="ColorRect" type="ColorRect" unique_id=1027835110 node_paths=PackedStringArray("sprout")]
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("2_iirmq")
+sprout = NodePath("Label5")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1827268804]
+layout_mode = 0
+offset_right = 167.5
+offset_bottom = 109.0
+scale = Vector2(2, 2)
+texture = ExtResource("1_edy45")
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 17
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="." unique_id=1696255977 groups=["rewards"]]
 layout_mode = 0
 offset_right = 167.5
 offset_bottom = 109.0

@@ -1,7 +1,7 @@
 extends Node
 
-var money: int = 0
-var sprout: int = 4
+var money: int = 100
+var sprout: int = 0
 
 var potato_fight: bool = false
 
@@ -11,8 +11,8 @@ var player_base_special: int = 5
 var player_health: int = 10
 var player_special: int = 5
 
-
 var potato_health: int = 10
+var battle_won: bool = false
 
 var enemy_dict= {}
 var enemy_status: bool = true
@@ -38,7 +38,7 @@ var shop = {
 	"look_over_there": "no",
 }
 
-var intro: bool = true
+var intro: bool = false
 var quest_1_talk: bool = false
 var quest_1: bool = false
 var quest_1_value: int = 0

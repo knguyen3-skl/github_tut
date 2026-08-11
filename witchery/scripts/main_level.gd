@@ -17,6 +17,10 @@ extends Node2D
 @export var canvas: CanvasLayer
 @export var quest: ColorRect
 @export var sprout: Label
+@export var announcement: ColorRect
+@export var timer_msg: Timer
+
+var timer: bool = false
 
 
 # Called when the node enters the scene tree for the first time.
@@ -90,11 +94,27 @@ func _process(delta: float) -> void:
 		for items in canvas.get_children():
 			if items.is_in_group("stats"):
 				items.show()
-	
+				
+				
 	if Global.quest_1_talk == true:
 		quest.show()
 				
-
+	if Global.battle_won == true and timer == false:
+		announcement.show()
+		for items in announcement.get_children():
+			if items.is_in_group("rewards"):
+				items.show()
+			else:
+				items.hide()
+		print("yo")
+		timer_msg.start()
+		timer = true
+	
+	
 func _respawn_enemy(enemy_id: StringName) -> void:
 	Global.enemy_dict[enemy_id] = "alive"
 	print(Global.enemy_dict)
+
+
+func _rewards() -> void:
+	announcement.hide()

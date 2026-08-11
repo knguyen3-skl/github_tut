@@ -196,7 +196,10 @@ func _process(delta: float) -> void:
 		Global.potato_health = 10
 		Global.enemy_dict[Global.enemy_id] = potato_dead
 		print(Global.enemy_dict)
-		Global.sprout += 1
+		var random_sprout = randi_range(1,3)
+		Global.sprout_reward = random_sprout
+		Global.sprout += random_sprout
+		Global.battle_won = true
 		get_tree().call_deferred("change_scene_to_file", "res://scenes/level.tscn")
 		
 	if Global.player_health > Global.player_base_health:
