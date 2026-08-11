@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://tsuittpcyot2" path="res://scripts/shop.gd" id="1_1l46r"]
 [ext_resource type="Texture2D" uid="uid://db3kevffj8enl" path="res://assets/block_tech.png" id="1_lx5au"]
 [ext_resource type="Texture2D" uid="uid://cxlxhtffoja2o" path="res://assets/wand_tech.png" id="2_xfvoa"]
+[ext_resource type="Texture2D" uid="uid://cki2qc60cqak1" path="res://assets/coin_tech.png" id="4_032fp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfvoa"]
 bg_color = Color(0.66458356, 0, 0.04976818, 1)
@@ -25,7 +26,7 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
-[node name="ColorRect" type="ColorRect" unique_id=1185942794 node_paths=PackedStringArray("timer", "broke", "super_cast", "look_over_there") groups=["shop"]]
+[node name="ColorRect" type="ColorRect" unique_id=1185942794 node_paths=PackedStringArray("timer", "broke", "super_cast", "look_over_there", "nothing") groups=["shop"]]
 offset_right = 40.0
 offset_bottom = 40.0
 color = Color(1, 1, 1, 0)
@@ -34,6 +35,7 @@ timer = NodePath("Timer")
 broke = NodePath("Label4")
 super_cast = NodePath("PanelContainer/HBoxContainer/Panel2")
 look_over_there = NodePath("PanelContainer/HBoxContainer/Panel3")
+nothing = NodePath("Label5")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=456755120 groups=["shop"]]
 layout_mode = 0
@@ -130,7 +132,6 @@ text = "Not Enough Money!"
 [node name="Timer" type="Timer" parent="." unique_id=344822138]
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1504054594 groups=["shop"]]
-visible = false
 layout_mode = 0
 offset_left = 211.0
 offset_top = 165.0
@@ -192,13 +193,18 @@ text = "Does 2 DMG for 1SP"
 
 [node name="Label3" type="Label" parent="PanelContainer/HBoxContainer/Panel2" unique_id=1738327102]
 layout_mode = 0
-offset_left = 17.0
-offset_top = 199.0
-offset_right = 213.0
-offset_bottom = 227.0
+offset_left = 103.0
+offset_top = 200.0
+offset_right = 134.0
+offset_bottom = 228.0
 theme_override_colors/font_color = Color(0.87058824, 0.87058824, 0.87058824, 1)
 theme_override_font_sizes/font_size = 18
-text = "Cost: $100"
+text = "100"
+
+[node name="CoinTech" type="Sprite2D" parent="PanelContainer/HBoxContainer/Panel2" unique_id=676704339]
+position = Vector2(86, 213)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_032fp")
 
 [node name="Panel3" type="Panel" parent="PanelContainer/HBoxContainer" unique_id=852963303 groups=["shop"]]
 custom_minimum_size = Vector2(210, 0)
@@ -236,13 +242,13 @@ make them lose a turn"
 
 [node name="Label3" type="Label" parent="PanelContainer/HBoxContainer/Panel3" unique_id=1918820349]
 layout_mode = 0
-offset_left = 21.0
-offset_top = 201.0
-offset_right = 217.0
+offset_left = 110.0
+offset_top = 203.0
+offset_right = 131.0
 offset_bottom = 229.0
 theme_override_colors/font_color = Color(0.87058824, 0.87058824, 0.87058824, 1)
 theme_override_font_sizes/font_size = 18
-text = "Cost: $50"
+text = "50"
 
 [node name="ColorRect" type="ColorRect" parent="PanelContainer/HBoxContainer/Panel3" unique_id=933908101]
 layout_mode = 0
@@ -259,6 +265,23 @@ offset_right = 126.0
 offset_bottom = 124.0
 theme_override_font_sizes/font_size = 90
 text = "?"
+
+[node name="CoinTech" type="Sprite2D" parent="PanelContainer/HBoxContainer/Panel3" unique_id=46255113]
+position = Vector2(92, 216)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_032fp")
+
+[node name="Label5" type="Label" parent="." unique_id=151650190]
+visible = false
+z_index = 1
+layout_mode = 0
+offset_left = 362.0
+offset_top = 315.0
+offset_right = 836.0
+offset_bottom = 364.0
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 35
+text = "There's nothing left to buy..."
 
 [connection signal="pressed" from="Button" to="." method="_exit"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

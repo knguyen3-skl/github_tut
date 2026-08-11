@@ -31,6 +31,11 @@ func _process(delta: float) -> void:
 			elif items.is_in_group("speech"):
 				items.hide()
 		
+		if shop.status == true:
+			shop.nothing.show()
+		else:
+			shop.nothing.hide()
+		
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:

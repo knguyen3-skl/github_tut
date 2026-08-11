@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://crhc0alwbwdn3" path="res://assets/potion_purple_tech.png" id="3_a2xwt"]
 [ext_resource type="Texture2D" uid="uid://dhdcprsq4eiiu" path="res://assets/button_brown.png" id="3_c8ira"]
 [ext_resource type="Texture2D" uid="uid://dit7vdud5kxxa" path="res://assets/potion_tech.png" id="4_280xy"]
+[ext_resource type="Texture2D" uid="uid://225epqan7c2r" path="res://assets/sprout_tech.png" id="6_c8ira"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ocvxt"]
 bg_color = Color(0.16026929, 0.16026929, 0.16026929, 0.49803922)
@@ -179,15 +180,14 @@ theme_override_font_sizes/font_size = 35
 text = "Auspicious Soda"
 
 [node name="Label7" type="Label" parent="." unique_id=1586249783 groups=["purple_options"]]
-visible = false
 layout_mode = 0
 offset_left = 369.0
-offset_top = 225.0
+offset_top = 220.0
 offset_right = 555.0
-offset_bottom = 253.0
+offset_bottom = 248.0
 theme_override_colors/font_color = Color(0.95815676, 0.95815676, 0.95815676, 1)
 theme_override_font_sizes/font_size = 20
-text = "Requires: 1 sprouts"
+text = "Requires: 1"
 
 [node name="Label9" type="Label" parent="." unique_id=94597036 groups=["blue_options"]]
 layout_mode = 0
@@ -197,7 +197,7 @@ offset_right = 555.0
 offset_bottom = 248.0
 theme_override_colors/font_color = Color(0.95815676, 0.95815676, 0.95815676, 1)
 theme_override_font_sizes/font_size = 20
-text = "Requires: 2 sprouts"
+text = "Requires: 2 "
 
 [node name="Label8" type="Label" parent="." unique_id=2120426221 groups=["blue_options"]]
 layout_mode = 0
@@ -209,6 +209,11 @@ theme_override_font_sizes/font_size = 35
 text = "Just Water"
 
 [node name="Timer2" type="Timer" parent="." unique_id=1106744542]
+
+[node name="SproutTech" type="Sprite2D" parent="." unique_id=305375491]
+position = Vector2(495, 234)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("6_c8ira")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="Button" to="." method="_exit_brewing"]

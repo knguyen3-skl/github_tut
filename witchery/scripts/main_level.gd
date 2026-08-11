@@ -77,6 +77,8 @@ func _process(delta: float) -> void:
 		for items in canvas.get_children():
 			if items.is_in_group("stats"):
 				items.hide()
+			elif items.is_in_group("collect"):
+				items.hide()
 				
 		inventory.hide()
 		pause.hide()
@@ -84,15 +86,16 @@ func _process(delta: float) -> void:
 	
 	elif Global.talking == true:
 		player.speed = 0
-	
 	else:
 		player.speed = 100
 		inventory.show()
 		pause.show()
-		coins.show()
+
 		money.show()
 		for items in canvas.get_children():
 			if items.is_in_group("stats"):
+				items.show()
+			elif items.is_in_group("collect"):
 				items.show()
 				
 				

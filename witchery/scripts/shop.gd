@@ -5,6 +5,14 @@ extends ColorRect
 @export var broke: Label
 @export var super_cast: Panel
 @export var look_over_there: Panel
+@export var nothing: Label
+
+var supercast: String = "super_cast"
+var lookoverthere: String = "look_over_there"
+var brought: String = "yes"
+var avaliable: String = "no"
+var status: bool = false
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,15 +34,18 @@ func _process(delta: float) -> void:
 		player_cam.drag_horizontal_enabled = true
 		player_cam.drag_vertical_enabled = true
 	
-	if Global.shop["super_cast"] == "no" and Global.shop_speech == true:
+	if Global.shop[supercast] == avaliable and Global.shop_speech == true:
 		super_cast.show()
 	else:
 		super_cast.hide()
 		
-	if Global.shop["look_over_there"] == "no" and Global.shop_speech == true:
+	if Global.shop[lookoverthere] == avaliable and Global.shop_speech == true:
 		look_over_there.show()
 	else:
 		look_over_there.hide()
+	
+	if Global.shop[lookoverthere] == brought and Global.shop[supercast] == brought:
+		status = true
 
 
 func _exit() -> void:
@@ -45,13 +56,11 @@ func _exit() -> void:
 func _buy_first() -> void:
 	if Global.money >= 100:
 		Global.money -= 100
-		print("brought!")
-		Global.shop["super_cast"] = "yes"
+		Global.shop[supercast] = brought
 		
 	else:
 		timer.start()
 		broke.show()
-		print("brookie ahahha")
 
 
 func _on_timer_timeout() -> void:
@@ -61,10 +70,8 @@ func _on_timer_timeout() -> void:
 func _buy_distract() -> void:
 	if Global.money >= 50:
 		Global.money -= 50
-		print("brought!")
-		Global.shop["look_over_there"] = "yes"
+		Global.shop[lookoverthere] = brought
 		
 	else:
 		timer.start()
 		broke.show()
-		print("brookie ahahha")
