@@ -1,4 +1,5 @@
 extends Node2D
+@export var player: AnimatedSprite2D
 @export var health_ui: ProgressBar
 @export var sp_ui: ProgressBar
 @export var potato_ui: ProgressBar
@@ -125,6 +126,7 @@ var sub_text_position_2 = Vector2(456.0, 175.0)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	player.animation = "idle"
 	potion_menu.hide()
 	spell_menu.hide()
 	potion_exit.hide()
@@ -427,6 +429,7 @@ func _pause() -> void:
 
 func _super_cast() -> void:
 	if turns_left >= 1 and Global.player_special > 0:
+		player.play("casting")
 		turns_left -= 1
 		print(turns_left)
 		_turn()
@@ -451,6 +454,7 @@ func _super_cast() -> void:
 
 func _basic_spell() -> void:
 	if Global.intro == false and turns_left >= 1:
+		player.play("casting")
 		turns_left -= 1
 		print(turns_left)
 		_turn()
@@ -469,6 +473,7 @@ func _basic_spell() -> void:
 			elif items.is_in_group("turns"):
 				items.z_index = 0
 	elif turns_left >= 1 and Global.intro == true:
+		player.play("casting")
 		turns_left -= 1
 		print(turns_left)
 		_turn()
@@ -491,6 +496,7 @@ func _spell_menu_exit() -> void:
 
 func _distract() -> void:
 	if turns_left >= 1:
+		player.play("casting")
 		turns_left -= 1
 		_turn()
 		print(turns_left)
@@ -527,6 +533,7 @@ func _exit_potion() -> void:
 
 func _purple_potion() -> void:
 	if turns_left >= 1 and Global.player_special < Global.player_base_special and Global.inventory[purple_potion] >= 1:
+		player.play("potion")
 		Global.inventory[purple_potion] -= 1
 		soda_value.text = str(Global.inventory[purple_potion])
 		turns_left -= 1
@@ -548,6 +555,7 @@ func _purple_potion() -> void:
 
 func _blue_potion() -> void:
 	if turns_left >= 1 and (Global.player_special < Global.player_base_special or Global.player_health < Global.player_base_health) and Global.inventory[blue_potion] >= 1:
+		player.play("potion")
 		Global.inventory[blue_potion] -= 1
 		soda_value.text = str(Global.inventory[blue_potion])
 		turns_left -= 1

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bq2s64pkdo8dh"
-path="res://.godot/imported/witch_tech.png-5d81e4f7664151c7039346123118dc32.ctex"
+uid="uid://c74xe3llccqyk"
+path="res://.godot/imported/casting0003.png-2adb33bf791510a5ec04fa41944496b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/witch_tech.png"
-dest_files=["res://.godot/imported/witch_tech.png-5d81e4f7664151c7039346123118dc32.ctex"]
+source_file="res://assets/casting0003.png"
+dest_files=["res://.godot/imported/casting0003.png-2adb33bf791510a5ec04fa41944496b3.ctex"]
 
 [params]
 

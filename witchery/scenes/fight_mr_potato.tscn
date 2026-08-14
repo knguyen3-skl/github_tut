@@ -4,17 +4,38 @@
 [ext_resource type="Script" uid="uid://cpjn6q3cbsax6" path="res://scripts/fight_mr_potato.gd" id="1_tlxmr"]
 [ext_resource type="Texture2D" uid="uid://txmfqmtqi8l7" path="res://assets/Mrpotato0000.png" id="3_7268j"]
 [ext_resource type="Texture2D" uid="uid://dit7vdud5kxxa" path="res://assets/potion_tech.png" id="3_hgm5l"]
-[ext_resource type="Texture2D" uid="uid://bq2s64pkdo8dh" path="res://assets/witch_tech.png" id="3_lt1b2"]
 [ext_resource type="Texture2D" uid="uid://s7x7ibmpwe2p" path="res://assets/bar_tech.png" id="4_lt1b2"]
 [ext_resource type="Texture2D" uid="uid://b3m61h0xj77a3" path="res://assets/frame0000.png" id="4_wgrxm"]
 [ext_resource type="Texture2D" uid="uid://blq3vehgl7m87" path="res://assets/energy_tech.png" id="5_44pj3"]
 [ext_resource type="Texture2D" uid="uid://ryjhr7md15fx" path="res://assets/heart_tech.png" id="6_nlw5s"]
 [ext_resource type="Texture2D" uid="uid://usejjjt7c451" path="res://assets/hpbar_tech.png" id="7_nlw5s"]
+[ext_resource type="Texture2D" uid="uid://dmh3q7h8fl1g1" path="res://assets/casting0000.png" id="8_bd0v5"]
+[ext_resource type="Texture2D" uid="uid://hqhks8atkl16" path="res://assets/casting0001.png" id="9_4tnyp"]
+[ext_resource type="Texture2D" uid="uid://df6s5dl4lytqm" path="res://assets/potion_animation0005.png" id="9_wwk1y"]
 [ext_resource type="Texture2D" uid="uid://cxlxhtffoja2o" path="res://assets/wand_tech.png" id="10_2yrmm"]
+[ext_resource type="Texture2D" uid="uid://bfn5hcletfrsb" path="res://assets/casting0002.png" id="10_atgat"]
+[ext_resource type="Texture2D" uid="uid://f8qg44n21dve" path="res://assets/potion_animation0006.png" id="10_bualr"]
+[ext_resource type="Texture2D" uid="uid://cl34oaiia2wu6" path="res://assets/potion_animation0007.png" id="11_b540y"]
+[ext_resource type="Texture2D" uid="uid://c74xe3llccqyk" path="res://assets/casting0003.png" id="11_lnk8l"]
 [ext_resource type="Texture2D" uid="uid://crhc0alwbwdn3" path="res://assets/potion_purple_tech.png" id="11_y7np1"]
 [ext_resource type="PackedScene" uid="uid://d1qryld5yii4n" path="res://scenes/pause.tscn" id="12_7268j"]
+[ext_resource type="Texture2D" uid="uid://bw526lw2lm5xk" path="res://assets/potion_animation0008.png" id="12_cob7s"]
 [ext_resource type="Texture2D" uid="uid://db3kevffj8enl" path="res://assets/block_tech.png" id="12_rwdpr"]
+[ext_resource type="Texture2D" uid="uid://dmgj62rbt2y0p" path="res://assets/casting0004.png" id="12_snwy0"]
+[ext_resource type="Texture2D" uid="uid://4hxuf6p7nkxt" path="res://assets/potion_animation0009.png" id="13_lasbf"]
 [ext_resource type="Texture2D" uid="uid://dcarmbqrchx5x" path="res://assets/star_tech.png" id="13_rwdpr"]
+[ext_resource type="Texture2D" uid="uid://cusxt7r7k5w4d" path="res://assets/casting0005.png" id="13_t6ldy"]
+[ext_resource type="Texture2D" uid="uid://b8oh00br7wjk1" path="res://assets/casting0006.png" id="14_34xmx"]
+[ext_resource type="Texture2D" uid="uid://cu3s8hni3m3gw" path="res://assets/potion_animation0010.png" id="14_ntyfx"]
+[ext_resource type="Texture2D" uid="uid://b66kha6tysobo" path="res://assets/potion_animation0011.png" id="15_3m6lg"]
+[ext_resource type="Texture2D" uid="uid://c7ec1kd1tvg6q" path="res://assets/casting0007.png" id="15_atgat"]
+[ext_resource type="Texture2D" uid="uid://d01ep6gghl81o" path="res://assets/potion_animation0012.png" id="16_bd0v5"]
+[ext_resource type="Texture2D" uid="uid://bu8oq4ue8l2q0" path="res://assets/casting0008.png" id="16_lnk8l"]
+[ext_resource type="Texture2D" uid="uid://ujg8g3t1qm4k" path="res://assets/potion_animation0013.png" id="17_4tnyp"]
+[ext_resource type="Texture2D" uid="uid://djff6cjge2y1k" path="res://assets/casting0009.png" id="17_snwy0"]
+[ext_resource type="Texture2D" uid="uid://dvc5k30wb1ixo" path="res://assets/potion_animation0014.png" id="18_atgat"]
+[ext_resource type="Texture2D" uid="uid://dw8hmi3sud0g7" path="res://assets/potion_animation0015.png" id="19_lnk8l"]
+[ext_resource type="Texture2D" uid="uid://b4sndk4v2l63o" path="res://assets/potion_animation0016.png" id="20_snwy0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhm2j"]
 content_margin_left = 25.0
@@ -34,6 +55,99 @@ corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t6ldy"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": ExtResource("8_bd0v5")
+}, {
+"duration": 0.5,
+"texture": ExtResource("9_4tnyp")
+}, {
+"duration": 0.5,
+"texture": ExtResource("10_atgat")
+}, {
+"duration": 0.5,
+"texture": ExtResource("11_lnk8l")
+}, {
+"duration": 0.5,
+"texture": ExtResource("12_snwy0")
+}, {
+"duration": 0.5,
+"texture": ExtResource("13_t6ldy")
+}, {
+"duration": 0.5,
+"texture": ExtResource("14_34xmx")
+}, {
+"duration": 0.5,
+"texture": ExtResource("15_atgat")
+}, {
+"duration": 0.5,
+"texture": ExtResource("16_lnk8l")
+}, {
+"duration": 0.5,
+"texture": ExtResource("17_snwy0")
+}, {
+"duration": 0.5,
+"texture": ExtResource("4_wgrxm")
+}],
+"loop": false,
+"name": &"casting",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_wgrxm")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": ExtResource("9_wwk1y")
+}, {
+"duration": 0.5,
+"texture": ExtResource("10_bualr")
+}, {
+"duration": 0.5,
+"texture": ExtResource("11_b540y")
+}, {
+"duration": 0.5,
+"texture": ExtResource("12_cob7s")
+}, {
+"duration": 0.5,
+"texture": ExtResource("13_lasbf")
+}, {
+"duration": 0.5,
+"texture": ExtResource("14_ntyfx")
+}, {
+"duration": 0.5,
+"texture": ExtResource("15_3m6lg")
+}, {
+"duration": 0.5,
+"texture": ExtResource("16_bd0v5")
+}, {
+"duration": 0.5,
+"texture": ExtResource("17_4tnyp")
+}, {
+"duration": 0.5,
+"texture": ExtResource("18_atgat")
+}, {
+"duration": 0.5,
+"texture": ExtResource("19_lnk8l")
+}, {
+"duration": 0.5,
+"texture": ExtResource("20_snwy0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wgrxm")
+}],
+"loop": false,
+"name": &"potion",
+"speed": 5.0
+}]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w2b38"]
 bg_color = Color(0, 0, 0, 0.25490198)
@@ -99,8 +213,9 @@ bg_color = Color(0.5372549, 0.1882353, 0.16470589, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3577e"]
 bg_color = Color(0.66458356, 0, 0.04976818, 1)
 
-[node name="Node2D" type="Node2D" unique_id=1641416975 node_paths=PackedStringArray("health_ui", "sp_ui", "potato_ui", "health", "sp", "potato_hp", "potato_health", "potato_bar", "first_turn_p", "first_turn_w", "second_turn_p", "second_turn_w", "third_turn_p", "third_turn_w", "timer", "mistake_timer", "mistake", "spell", "spell_menu", "spell_exit", "potion", "pause", "pause_button", "canvas", "dark", "light_bar", "light_potato", "light_options", "light_turns", "block", "text", "sub_text", "intro_timer", "basic_spell_b", "super_cast_b", "look_over_there_b", "potion_menu", "potion_exit", "soda_b", "soda_value", "just_water_b", "just_water_value")]
+[node name="Node2D" type="Node2D" unique_id=1641416975 node_paths=PackedStringArray("player", "health_ui", "sp_ui", "potato_ui", "health", "sp", "potato_hp", "potato_health", "potato_bar", "first_turn_p", "first_turn_w", "second_turn_p", "second_turn_w", "third_turn_p", "third_turn_w", "timer", "mistake_timer", "mistake", "spell", "spell_menu", "spell_exit", "potion", "pause", "pause_button", "canvas", "dark", "light_bar", "light_potato", "light_options", "light_turns", "block", "text", "sub_text", "intro_timer", "basic_spell_b", "super_cast_b", "look_over_there_b", "potion_menu", "potion_exit", "soda_b", "soda_value", "just_water_b", "just_water_value")]
 script = ExtResource("1_tlxmr")
+player = NodePath("CanvasLayer/WitchTech")
 health_ui = NodePath("CanvasLayer/ProgressBar")
 sp_ui = NodePath("CanvasLayer/ProgressBar2")
 potato_ui = NodePath("CanvasLayer/ProgressBar3")
@@ -110,11 +225,11 @@ potato_hp = NodePath("CanvasLayer/Label3")
 potato_health = NodePath("CanvasLayer/Label7")
 potato_bar = NodePath("CanvasLayer/HpbarTech")
 first_turn_p = NodePath("CanvasLayer/Panel5")
-first_turn_w = NodePath("CanvasLayer/WitchTech4")
+first_turn_w = NodePath("CanvasLayer/Frame0002")
 second_turn_p = NodePath("CanvasLayer/Panel4")
-second_turn_w = NodePath("CanvasLayer/WitchTech3")
+second_turn_w = NodePath("CanvasLayer/Frame0001")
 third_turn_p = NodePath("CanvasLayer/Panel3")
-third_turn_w = NodePath("CanvasLayer/WitchTech2")
+third_turn_w = NodePath("CanvasLayer/Frame0000")
 timer = NodePath("Timer")
 mistake_timer = NodePath("Timer2")
 mistake = NodePath("CanvasLayer/Label8")
@@ -290,6 +405,7 @@ polygon = PackedVector2Array(20, 70, 40, 30, 0, 30)
 uv = PackedVector2Array(50.471344, -0.8537636, 79.851776, 39.613644, 24.971344, 39.613644)
 
 [node name="PanelContainer2" type="PanelContainer" parent="CanvasLayer" unique_id=723731608]
+visible = false
 z_index = 2
 offset_left = 369.0
 offset_top = 273.0
@@ -444,10 +560,13 @@ position = Vector2(832.00006, 371)
 scale = Vector2(6, 6)
 texture = ExtResource("3_7268j")
 
-[node name="WitchTech" type="Sprite2D" parent="CanvasLayer" unique_id=1378884449]
+[node name="WitchTech" type="AnimatedSprite2D" parent="CanvasLayer" unique_id=1187909492]
 position = Vector2(293, 361)
 scale = Vector2(6, 6)
-texture = ExtResource("4_wgrxm")
+sprite_frames = SubResource("SpriteFrames_t6ldy")
+animation = &"casting"
+frame = 10
+frame_progress = 1.0
 
 [node name="Panel" type="Panel" parent="CanvasLayer" unique_id=450681592]
 texture_filter = 1
@@ -519,13 +638,6 @@ rotation = 0.7853982
 theme_override_styles/panel = SubResource("StyleBoxFlat_nlw5s")
 metadata/_edit_use_anchors_ = true
 
-[node name="WitchTech2" type="Sprite2D" parent="CanvasLayer" unique_id=1443893441 groups=["turns"]]
-position = Vector2(449, 53)
-scale = Vector2(2, 2)
-texture = ExtResource("3_lt1b2")
-region_enabled = true
-region_rect = Rect2(2, 0, 28, 27)
-
 [node name="Panel4" type="Panel" parent="CanvasLayer" unique_id=802424938 groups=["turns"]]
 offset_left = 556.4264
 offset_top = 14.0
@@ -535,13 +647,6 @@ rotation = 0.7853982
 theme_override_styles/panel = SubResource("StyleBoxFlat_nlw5s")
 metadata/_edit_use_anchors_ = true
 
-[node name="WitchTech3" type="Sprite2D" parent="CanvasLayer" unique_id=1074610998 groups=["turns"]]
-position = Vector2(557.4264, 54)
-scale = Vector2(2, 2)
-texture = ExtResource("3_lt1b2")
-region_enabled = true
-region_rect = Rect2(2, 0, 28, 27)
-
 [node name="Panel5" type="Panel" parent="CanvasLayer" unique_id=1629405125 groups=["turns"]]
 offset_left = 668.4264
 offset_top = 14.0
@@ -550,13 +655,6 @@ offset_bottom = 74.0
 rotation = 0.7853982
 theme_override_styles/panel = SubResource("StyleBoxFlat_nlw5s")
 metadata/_edit_use_anchors_ = true
-
-[node name="WitchTech4" type="Sprite2D" parent="CanvasLayer" unique_id=2088521862 groups=["turns"]]
-position = Vector2(669.4264, 54)
-scale = Vector2(2, 2)
-texture = ExtResource("3_lt1b2")
-region_enabled = true
-region_rect = Rect2(2, 0, 28, 27)
 
 [node name="Polygon2D" type="Polygon2D" parent="CanvasLayer" unique_id=709534337]
 position = Vector2(816, 188)
@@ -570,6 +668,29 @@ z_index = 1
 position = Vector2(831, 506)
 scale = Vector2(5, 5)
 texture = ExtResource("7_nlw5s")
+
+[node name="Frame0000" type="Sprite2D" parent="CanvasLayer" unique_id=2044448617 groups=["turns"]]
+position = Vector2(449, 53)
+scale = Vector2(2, 2)
+texture = ExtResource("4_wgrxm")
+region_enabled = true
+region_rect = Rect2(3, 0, 26, 26)
+
+[node name="Frame0001" type="Sprite2D" parent="CanvasLayer" unique_id=1442411701 groups=["turns"]]
+z_index = 10
+position = Vector2(557, 54)
+scale = Vector2(2, 2)
+texture = ExtResource("4_wgrxm")
+region_enabled = true
+region_rect = Rect2(3, 0, 26, 26)
+
+[node name="Frame0002" type="Sprite2D" parent="CanvasLayer" unique_id=1818029171 groups=["turns"]]
+z_index = 10
+position = Vector2(669, 54)
+scale = Vector2(2, 2)
+texture = ExtResource("4_wgrxm")
+region_enabled = true
+region_rect = Rect2(3, 0, 26, 26)
 
 [node name="Label3" type="Label" parent="CanvasLayer" unique_id=1808477000]
 offset_left = 771.0
@@ -787,6 +908,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_3577e")
 text = "X"
 
 [node name="Button" type="Button" parent="CanvasLayer" unique_id=566301445]
+visible = false
 z_index = 2
 offset_left = 870.0
 offset_top = 261.0

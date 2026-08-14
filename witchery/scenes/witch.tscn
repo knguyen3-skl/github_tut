@@ -60,5 +60,3 @@ shape = SubResource("CapsuleShape2D_hgjeu")
 sprite_frames = SubResource("SpriteFrames_p6b3e")
 animation = &"walk"
 autoplay = "idle"
-frame = 2
-frame_progress = 0.0034479632

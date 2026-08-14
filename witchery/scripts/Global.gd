@@ -29,16 +29,16 @@ var market: bool = false
 var shop_speech: bool = false
 
 var inventory = {
-	"purple_potion": 0,
+	"purple_potion": 1,
 	"blue_potion": 0,
 }
 
 var shop = {
-	"super_cast": "no",
+	"super_cast": "yes",
 	"look_over_there": "no",
 }
 
-var intro: bool = false
+var intro: bool = true
 var quest_1_talk: bool = false
 var quest_1: bool = false
 var quest_1_value: int = 0
