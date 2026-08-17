@@ -36,6 +36,14 @@
 [ext_resource type="Texture2D" uid="uid://dvc5k30wb1ixo" path="res://assets/potion_animation0014.png" id="18_atgat"]
 [ext_resource type="Texture2D" uid="uid://dw8hmi3sud0g7" path="res://assets/potion_animation0015.png" id="19_lnk8l"]
 [ext_resource type="Texture2D" uid="uid://b4sndk4v2l63o" path="res://assets/potion_animation0016.png" id="20_snwy0"]
+[ext_resource type="Texture2D" uid="uid://gwdl3ynlqrh2" path="res://assets/spell_animation0006.png" id="37_1ly0q"]
+[ext_resource type="Texture2D" uid="uid://2vegvmht8bj7" path="res://assets/spell_animation0007.png" id="38_7xni5"]
+[ext_resource type="Texture2D" uid="uid://b3lok0younny4" path="res://assets/spell_animation0000.png" id="39_e1wqj"]
+[ext_resource type="Texture2D" uid="uid://bjtf11srpdqg7" path="res://assets/spell_animation0001.png" id="40_5lbbq"]
+[ext_resource type="Texture2D" uid="uid://bu5wysn5ne71f" path="res://assets/spell_animation0002.png" id="41_55wat"]
+[ext_resource type="Texture2D" uid="uid://b8sb2ok0ve2mv" path="res://assets/spell_animation0003.png" id="42_gpi7s"]
+[ext_resource type="Texture2D" uid="uid://dm50i67n41wof" path="res://assets/spell_animation0004.png" id="43_8xwck"]
+[ext_resource type="Texture2D" uid="uid://sha1meod02ux" path="res://assets/spell_animation0005.png" id="44_j2m3b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhm2j"]
 content_margin_left = 25.0
@@ -210,10 +218,107 @@ bg_color = Color(0.19607843, 0.7254902, 0.83137256, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_un3r7"]
 bg_color = Color(0.5372549, 0.1882353, 0.16470589, 1)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_5hhqb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("37_1ly0q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_7xni5")
+}],
+"loop": true,
+"name": &"flying",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": ExtResource("39_e1wqj")
+}, {
+"duration": 0.5,
+"texture": ExtResource("40_5lbbq")
+}, {
+"duration": 0.5,
+"texture": ExtResource("41_55wat")
+}, {
+"duration": 0.5,
+"texture": ExtResource("42_gpi7s")
+}, {
+"duration": 0.5,
+"texture": ExtResource("43_8xwck")
+}, {
+"duration": 0.5,
+"texture": ExtResource("44_j2m3b")
+}],
+"loop": false,
+"name": &"summoning",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_1ly0q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(298, 324)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_7xni5"]
+resource_name = "fireball"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(298, 324), Vector2(749, 324)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.93, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e1wqj"]
+_data = {
+&"RESET": SubResource("Animation_1ly0q"),
+&"fireball": SubResource("Animation_7xni5")
+}
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3577e"]
 bg_color = Color(0.66458356, 0, 0.04976818, 1)
 
-[node name="Node2D" type="Node2D" unique_id=1641416975 node_paths=PackedStringArray("player", "health_ui", "sp_ui", "potato_ui", "health", "sp", "potato_hp", "potato_health", "potato_bar", "first_turn_p", "first_turn_w", "second_turn_p", "second_turn_w", "third_turn_p", "third_turn_w", "timer", "mistake_timer", "mistake", "spell", "spell_menu", "spell_exit", "potion", "pause", "pause_button", "canvas", "dark", "light_bar", "light_potato", "light_options", "light_turns", "block", "text", "sub_text", "intro_timer", "basic_spell_b", "super_cast_b", "look_over_there_b", "potion_menu", "potion_exit", "soda_b", "soda_value", "just_water_b", "just_water_value")]
+[node name="Node2D" type="Node2D" unique_id=1641416975 node_paths=PackedStringArray("player", "health_ui", "sp_ui", "potato_ui", "health", "sp", "potato_hp", "potato_health", "potato_bar", "first_turn_p", "first_turn_w", "second_turn_p", "second_turn_w", "third_turn_p", "third_turn_w", "timer", "mistake_timer", "mistake", "spell", "spell_menu", "spell_exit", "potion", "pause", "pause_button", "canvas", "dark", "light_bar", "light_potato", "light_options", "light_turns", "block", "text", "sub_text", "intro_timer", "basic_spell_b", "super_cast_b", "look_over_there_b", "potion_menu", "potion_exit", "soda_b", "soda_value", "just_water_b", "just_water_value", "fireball", "spell_time")]
 script = ExtResource("1_tlxmr")
 player = NodePath("CanvasLayer/WitchTech")
 health_ui = NodePath("CanvasLayer/ProgressBar")
@@ -258,6 +363,8 @@ soda_b = NodePath("CanvasLayer/PanelContainer2/HBoxContainer/Button2")
 soda_value = NodePath("CanvasLayer/PanelContainer2/HBoxContainer/Button2/Label4")
 just_water_b = NodePath("CanvasLayer/PanelContainer2/HBoxContainer/Button3")
 just_water_value = NodePath("CanvasLayer/PanelContainer2/HBoxContainer/Button3/Label4")
+fireball = NodePath("CanvasLayer/AnimatedSprite2D")
+spell_time = NodePath("Timer4")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=791422463]
 
@@ -896,6 +1003,16 @@ color = Color(0.4117647, 0.4117647, 0.4117647, 1)
 polygon = PackedVector2Array(20, 70, 40, 30, 0, 30)
 uv = PackedVector2Array(50.471344, -0.8537636, 79.851776, 39.613644, 24.971344, 39.613644)
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer" unique_id=550119931]
+visible = false
+position = Vector2(298, 324)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_5hhqb")
+animation = &"summoning"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/AnimatedSprite2D" unique_id=1864334172]
+libraries/ = SubResource("AnimationLibrary_e1wqj")
+
 [node name="Button5" type="Button" parent="CanvasLayer" unique_id=2005292655]
 visible = false
 z_index = 1
@@ -925,6 +1042,8 @@ text = "X"
 [node name="Timer3" type="Timer" parent="." unique_id=1636983236]
 one_shot = true
 
+[node name="Timer4" type="Timer" parent="." unique_id=899836875]
+
 [connection signal="pressed" from="CanvasLayer/PanelContainer/HBoxContainer/Button2" to="." method="_basic_spell"]
 [connection signal="pressed" from="CanvasLayer/PanelContainer/HBoxContainer/Button3" to="." method="_super_cast"]
 [connection signal="pressed" from="CanvasLayer/PanelContainer/HBoxContainer/Button4" to="." method="_distract"]
@@ -938,3 +1057,4 @@ one_shot = true
 [connection signal="timeout" from="Timer" to="." method="_potato_turn"]
 [connection signal="timeout" from="Timer2" to="." method="_mistake_timeout"]
 [connection signal="timeout" from="Timer3" to="." method="_continue_intro"]
+[connection signal="timeout" from="Timer4" to="." method="_cast"]

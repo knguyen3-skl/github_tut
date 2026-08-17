@@ -51,6 +51,9 @@ extends Node2D
 @export var just_water_b: Button
 @export var just_water_value:Label
 
+@export var fireball: AnimatedSprite2D
+@export var spell_time: Timer
+
 var bars: bool = false
 var options: bool = false
 var turns: bool = false
@@ -115,6 +118,7 @@ did 1 damage to the enemy and took away",
 enemies!"
 ]
 
+
 var block_position_1 = Vector2(171.0,418.0)
 var text_position_1 = Vector2(208.0,447.0)
 var sub_text_position_1 = Vector2(456.0, 554.0)
@@ -126,6 +130,7 @@ var sub_text_position_2 = Vector2(456.0, 175.0)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	fireball.hide()
 	player.animation = "idle"
 	potion_menu.hide()
 	spell_menu.hide()
@@ -430,6 +435,9 @@ func _pause() -> void:
 func _super_cast() -> void:
 	if turns_left >= 1 and Global.player_special > 0:
 		player.play("casting")
+		fireball.show()
+		fireball.play("summoning")
+		spell_time.start()
 		turns_left -= 1
 		print(turns_left)
 		_turn()
@@ -455,6 +463,9 @@ func _super_cast() -> void:
 func _basic_spell() -> void:
 	if Global.intro == false and turns_left >= 1:
 		player.play("casting")
+		fireball.show()
+		fireball.play("summoning")
+		spell_time.start()
 		turns_left -= 1
 		print(turns_left)
 		_turn()
@@ -474,6 +485,9 @@ func _basic_spell() -> void:
 				items.z_index = 0
 	elif turns_left >= 1 and Global.intro == true:
 		player.play("casting")
+		fireball.show()
+		fireball.play("summoning")
+		spell_time.start()
 		turns_left -= 1
 		print(turns_left)
 		_turn()
@@ -497,6 +511,9 @@ func _spell_menu_exit() -> void:
 func _distract() -> void:
 	if turns_left >= 1:
 		player.play("casting")
+		fireball.show()
+		fireball.play("summoning")
+		spell_time.start()
 		turns_left -= 1
 		_turn()
 		print(turns_left)
@@ -576,3 +593,9 @@ func _blue_potion() -> void:
 	else:
 		mistake.text = str(mistake_no_turn)
 		mistake_timer.start()
+
+
+func _cast() -> void:
+	fireball.play("flying")
+	fireball.get_child(0).play("fireball")
+	spell_time.stop()
