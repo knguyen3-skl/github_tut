@@ -21,6 +21,10 @@ extends Node2D
 @export var timer_msg: Timer
 
 var timer: bool = false
+var start_pos = Vector2(-262.0, 210.0)
+var status_alive: String = "alive"
+var status_dead: String = "dead"
+var respawn_time: int = 30
 
 
 # Called when the node enters the scene tree for the first time.
@@ -38,7 +42,7 @@ func _ready() -> void:
 	
 	sprout.text = str(Global.sprout)
 	
-	if Global.last_player_positon == Vector2(-262.0, 210.0):
+	if Global.last_player_positon == start_pos:
 		pass
 	else:
 		player.global_position = Global.last_player_positon
@@ -48,16 +52,16 @@ func _ready() -> void:
 		# get every enemy and add to dict
 		for enemies in get_tree().get_nodes_in_group("enemy"):
 			# add the status key
-			Global.enemy_dict[enemies.name] = "alive"
+			Global.enemy_dict[enemies.name] = status_alive
 		print(Global.enemy_dict)
 	
 	for enemies in get_tree().get_nodes_in_group("enemy"):
-		if Global.enemy_dict[enemies.name] == "dead":
+		if Global.enemy_dict[enemies.name] == status_dead:
 			enemies.hide()
 			enemies.get_child(2).monitoring = false
 			enemies.get_child(1).disabled = true
 			enemies.set_physics_process(false)
-			get_tree().create_timer(30).connect("timeout", _respawn_enemy.bind(enemies.name))
+			get_tree().create_timer(respawn_time).connect("timeout", _respawn_enemy.bind(enemies.name))
 			
 			
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -67,7 +71,7 @@ func _process(delta: float) -> void:
 	# if alive show
 	# if dead hide + untouchable
 	for enemies in get_tree().get_nodes_in_group("enemy"):
-		if Global.enemy_dict[enemies.name] == "alive":
+		if Global.enemy_dict[enemies.name] == status_alive:
 			enemies.show()
 			enemies.get_child(2).monitoring = true
 			enemies.get_child(1).disabled = false
@@ -109,13 +113,12 @@ func _process(delta: float) -> void:
 				items.show()
 			else:
 				items.hide()
-		print("yo")
 		timer_msg.start()
 		timer = true
 	
 	
 func _respawn_enemy(enemy_id: StringName) -> void:
-	Global.enemy_dict[enemy_id] = "alive"
+	Global.enemy_dict[enemy_id] = status_alive
 	print(Global.enemy_dict)
 
 

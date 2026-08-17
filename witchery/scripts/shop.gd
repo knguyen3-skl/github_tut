@@ -12,6 +12,8 @@ var lookoverthere: String = "look_over_there"
 var brought: String = "yes"
 var avaliable: String = "no"
 var status: bool = false
+var super_cast_price: int = 100
+var distract_price: int = 100
 
 
 # Called when the node enters the scene tree for the first time.
@@ -53,9 +55,9 @@ func _exit() -> void:
 	hide()
 
 
-func _buy_first() -> void:
-	if Global.money >= 100:
-		Global.money -= 100
+func _buy_super_cast() -> void:
+	if Global.money >= super_cast_price:
+		Global.money -= super_cast_price
 		Global.shop[supercast] = brought
 		
 	else:
@@ -68,8 +70,8 @@ func _on_timer_timeout() -> void:
 
 
 func _buy_distract() -> void:
-	if Global.money >= 50:
-		Global.money -= 50
+	if Global.money >= distract_price:
+		Global.money -= distract_price
 		Global.shop[lookoverthere] = brought
 		
 	else:

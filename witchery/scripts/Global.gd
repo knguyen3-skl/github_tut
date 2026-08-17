@@ -20,7 +20,7 @@ var enemy_status: bool = true
 var enemy_id: String
 
 var potion_brewing: bool = false
-var last_player_positon : Vector2
+var last_player_positon = Vector2(-262.0, 210.0)
 
 var inventory_status: bool = false
 var pause: bool = false
@@ -47,7 +47,7 @@ var sprout_reward = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	last_player_positon = Vector2(-262.0, 210.0)
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

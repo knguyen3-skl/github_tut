@@ -53,6 +53,7 @@ extends Node2D
 
 @export var fireball: AnimatedSprite2D
 @export var spell_time: Timer
+@export var fireball_animation: AnimationPlayer
 
 var bars: bool = false
 var options: bool = false
@@ -126,6 +127,8 @@ var sub_text_position_1 = Vector2(456.0, 554.0)
 var block_position_2 = Vector2(171.0,40.0)
 var text_position_2 = Vector2(208.0,70.0)
 var sub_text_position_2 = Vector2(456.0, 175.0)
+
+var fireball_starting = Vector2(298.0, 324.0)
 
 
 # Called when the node enters the scene tree for the first time.
@@ -437,6 +440,7 @@ func _super_cast() -> void:
 		player.play("casting")
 		fireball.show()
 		fireball.play("summoning")
+		fireball.position = fireball_starting
 		spell_time.start()
 		turns_left -= 1
 		print(turns_left)
@@ -465,6 +469,7 @@ func _basic_spell() -> void:
 		player.play("casting")
 		fireball.show()
 		fireball.play("summoning")
+		fireball.position = fireball_starting
 		spell_time.start()
 		turns_left -= 1
 		print(turns_left)
@@ -487,6 +492,7 @@ func _basic_spell() -> void:
 		player.play("casting")
 		fireball.show()
 		fireball.play("summoning")
+		fireball.position = fireball_starting
 		spell_time.start()
 		turns_left -= 1
 		print(turns_left)
@@ -513,6 +519,7 @@ func _distract() -> void:
 		player.play("casting")
 		fireball.show()
 		fireball.play("summoning")
+		fireball.position = fireball_starting
 		spell_time.start()
 		turns_left -= 1
 		_turn()
