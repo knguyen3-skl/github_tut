@@ -9,4 +9,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	#sets the amount of sprouts the player recieves on the announcement to the randomised
+	#number stored in the Global script after battle
 	sprout.text = str(Global.sprout_reward)

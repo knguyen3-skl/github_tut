@@ -437,6 +437,8 @@ func _pause() -> void:
 
 func _super_cast() -> void:
 	if turns_left >= 1 and Global.player_special > 0:
+		spell.mouse_filter = 2
+		potion.mouse_filter = 2
 		player.play("casting")
 		fireball.show()
 		fireball.play("summoning")
@@ -466,6 +468,8 @@ func _super_cast() -> void:
 
 func _basic_spell() -> void:
 	if Global.intro == false and turns_left >= 1:
+		spell.mouse_filter = 2
+		potion.mouse_filter = 2
 		player.play("casting")
 		fireball.show()
 		fireball.play("summoning")
@@ -489,6 +493,8 @@ func _basic_spell() -> void:
 			elif items.is_in_group("turns"):
 				items.z_index = 0
 	elif turns_left >= 1 and Global.intro == true:
+		spell.mouse_filter = 2
+		potion.mouse_filter = 2
 		player.play("casting")
 		fireball.show()
 		fireball.play("summoning")
@@ -516,6 +522,8 @@ func _spell_menu_exit() -> void:
 
 func _distract() -> void:
 	if turns_left >= 1:
+		spell.mouse_filter = 2
+		potion.mouse_filter = 2
 		player.play("casting")
 		fireball.show()
 		fireball.play("summoning")
@@ -604,5 +612,7 @@ func _blue_potion() -> void:
 
 func _cast() -> void:
 	fireball.play("flying")
-	fireball.get_child(0).play("fireball")
+	fireball_animation.play("fireball")
 	spell_time.stop()
+	spell.mouse_filter = 1
+	potion.mouse_filter = 1

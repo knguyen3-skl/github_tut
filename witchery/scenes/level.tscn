@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://225epqan7c2r" path="res://assets/sprout_tech.png" id="16_h6wmr"]
 [ext_resource type="PackedScene" uid="uid://b7osk4rmhfbyf" path="res://scenes/shop.tscn" id="17_ux5qa"]
 [ext_resource type="Texture2D" uid="uid://cki2qc60cqak1" path="res://assets/coin_tech.png" id="20_8gofh"]
+[ext_resource type="Texture2D" uid="uid://biiwambmqhpa8" path="res://assets/stone_tech.png" id="22_pqd0y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mx8sn"]
 texture = ExtResource("1_w8frs")
@@ -63,6 +64,13 @@ bg_color = Color(0.7137255, 0.2509804, 0.21960784, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t1rx8"]
 bg_color = Color(0.19607843, 0.7254902, 0.83137256, 1)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5k0ak"]
+texture = ExtResource("22_pqd0y")
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_wu01b"]
+sources/0 = SubResource("TileSetAtlasSource_5k0ak")
 
 [node name="Node2D" type="Node2D" unique_id=480188596 node_paths=PackedStringArray("money", "player", "player_health", "player_special", "health", "special", "hp_bar", "sp_bar", "heart", "energy", "inventory", "pause", "speech_block", "canvas", "quest", "sprout", "announcement", "timer_msg")]
 script = ExtResource("1_mx8sn")
@@ -332,6 +340,9 @@ scale = Vector2(0.8, 0.8)
 shop = NodePath("../CanvasLayer/ColorRect5")
 
 [node name="Timer" type="Timer" parent="." unique_id=1362600283]
+
+[node name="TileMapLayer3" type="TileMapLayer" parent="." unique_id=534066415]
+tile_set = SubResource("TileSet_wu01b")
 
 [connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/ColorRect2" method="_on_inventory_pressed"]
 [connection signal="pressed" from="CanvasLayer/Button2" to="CanvasLayer/ColorRect3" method="_open_pause"]
