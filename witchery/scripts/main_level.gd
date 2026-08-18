@@ -19,6 +19,9 @@ extends Node2D
 @export var sprout: Label
 @export var announcement: ColorRect
 @export var timer_msg: Timer
+@export var dialogue_scene = preload("res://scenes/balloon.tscn")
+@export var dialogue = preload("res://dialogue/pencil_dialogue.dialogue")
+@export var mr_pencil = StaticBody2D
 
 var timer: bool = false
 var start_pos = Vector2(-262.0, 210.0)
@@ -29,6 +32,11 @@ var respawn_time: int = 30
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
+	# if dialogue and Global.quest_talk == false:
+	#	Global.questtalk_ = true:
+	# DialogueManager.show_dialogue_balloon(dialogue, "start")
+	
 	speech_block.hide()
 	quest.hide()
 	print(Global.last_player_positon)

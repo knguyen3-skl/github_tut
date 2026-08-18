@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dnf5k2xrtuace"
+path="res://.godot/imported/pencil_dialogue.dialogue-b1aee94413933f968e525404a70ecd3e.tres"
+
+[deps]
+
+source_file="res://dialogue/pencil_dialogue.dialogue"
+dest_files=["res://.godot/imported/pencil_dialogue.dialogue-b1aee94413933f968e525404a70ecd3e.tres"]
+
+[params]
+
+defaults=true
