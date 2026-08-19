@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://biiwambmqhpa8"
-path="res://.godot/imported/stone_tech.png-035f2ad931dd4203cd9944cb8534a2c5.ctex"
+uid="uid://chf1al2rarwoh"
+path="res://.godot/imported/stone_tile_tech.png-d6b59c85fd06c3a36d0acc423acc0d8e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/stone_tech.png"
-dest_files=["res://.godot/imported/stone_tech.png-035f2ad931dd4203cd9944cb8534a2c5.ctex"]
+source_file="res://scenes/stone_tile_tech.png"
+dest_files=["res://.godot/imported/stone_tile_tech.png-d6b59c85fd06c3a36d0acc423acc0d8e.ctex"]
 
 [params]
 

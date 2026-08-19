@@ -39,9 +39,10 @@ var shop = {
 }
 
 var intro: bool = true
-var quest_1_talk: bool = false
 var quest_1: bool = false
 var quest_1_value: int = 0
+var quest_talk: bool = false
+var quest_talk_finish: bool = false
 
 var sprout_reward = 1
 

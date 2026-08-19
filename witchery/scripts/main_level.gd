@@ -13,7 +13,6 @@ extends Node2D
 @export var inventory: Button
 @export var coins: Label
 @export var pause: Button
-@export var speech_block: ColorRect
 @export var canvas: CanvasLayer
 @export var quest: ColorRect
 @export var sprout: Label
@@ -21,23 +20,17 @@ extends Node2D
 @export var timer_msg: Timer
 @export var dialogue_scene = preload("res://scenes/balloon.tscn")
 @export var dialogue = preload("res://dialogue/pencil_dialogue.dialogue")
-@export var mr_pencil = StaticBody2D
 
 var timer: bool = false
 var start_pos = Vector2(-262.0, 210.0)
 var status_alive: String = "alive"
 var status_dead: String = "dead"
 var respawn_time: int = 30
+var quest_repeat: bool = false
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
-	# if dialogue and Global.quest_talk == false:
-	#	Global.questtalk_ = true:
-	# DialogueManager.show_dialogue_balloon(dialogue, "start")
-	
-	speech_block.hide()
 	quest.hide()
 	print(Global.last_player_positon)
 	player_health.max_value = Global.player_base_health
@@ -76,6 +69,19 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	sprout.text = str(Global.sprout)
 	money.text = str(Global.money)
+	
+	
+	if Global.talking == true and Global.quest_talk == false and dialogue:
+		DialogueManager.show_dialogue_balloon(dialogue, "start")
+		DialogueManager.dialogue_ended.connect(_quest)
+		Global.quest_talk = true
+		
+	elif Global.quest_talk_finish == true and Global.talking == true and quest_repeat == false:
+		print("oopsps")
+		DialogueManager.show_dialogue_balloon(dialogue, "finished")
+		quest_repeat = true
+		DialogueManager.dialogue_ended.connect(_quest_repeat)
+	
 	# if alive show
 	# if dead hide + untouchable
 	for enemies in get_tree().get_nodes_in_group("enemy"):
@@ -102,7 +108,6 @@ func _process(delta: float) -> void:
 		player.speed = 100
 		inventory.show()
 		pause.show()
-
 		money.show()
 		for items in canvas.get_children():
 			if items.is_in_group("stats"):
@@ -110,9 +115,6 @@ func _process(delta: float) -> void:
 			elif items.is_in_group("collect"):
 				items.show()
 				
-				
-	if Global.quest_1_talk == true:
-		quest.show()
 				
 	if Global.battle_won == true and timer == false:
 		announcement.show()
@@ -132,3 +134,12 @@ func _respawn_enemy(enemy_id: StringName) -> void:
 
 func _rewards() -> void:
 	announcement.hide()
+
+func _quest(_resource):
+	quest.show()
+	Global.talking = false
+	Global.quest_talk_finish = true
+	
+func _quest_repeat(_resource):
+	Global.talking = false
+	quest_repeat = false

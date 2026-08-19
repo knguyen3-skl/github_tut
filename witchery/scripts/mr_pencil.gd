@@ -3,7 +3,6 @@ extends StaticBody2D
 var player_near: bool = false
 
 @export var e: ColorRect
-@export var speech_block: ColorRect
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,7 +12,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if player_near == true and Input.is_physical_key_pressed(KEY_E):
-		speech_block.show()
 		Global.talking = true
 
 
