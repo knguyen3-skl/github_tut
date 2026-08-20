@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 				items.show()
 		shop.show()
 		
-	if Input.is_action_just_pressed("next"):
+	if Input.is_action_just_pressed("next") and player_near == true:
 		Global.market = true
 		Global.shop_speech = true
 		for items in shop.get_children():

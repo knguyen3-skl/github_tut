@@ -27,6 +27,10 @@ var status_alive: String = "alive"
 var status_dead: String = "dead"
 var respawn_time: int = 30
 var quest_repeat: bool = false
+var potato_defeated: int = 3
+var quest_complete_repeat: bool = false
+var complete_dialogue: bool = false
+var reward_money: int = 100
 
 
 # Called when the node enters the scene tree for the first time.
@@ -70,18 +74,46 @@ func _process(delta: float) -> void:
 	sprout.text = str(Global.sprout)
 	money.text = str(Global.money)
 	
+	if Global.talking == true:
+		inventory.hide()
+		pause.hide()
+		for items in canvas.get_children():
+			if items.is_in_group("stats"):
+				items.hide()
+			elif items.is_in_group("collect"):
+				items.hide()
+	else:
+		inventory.show()
+		pause.show()
+		for items in canvas.get_children():
+			if items.is_in_group("stats"):
+				items.show()
+			elif items.is_in_group("collect"):
+				items.show()
+	
+	if Global.quest_talk_finish == true and Global.quest_complete == false:
+		quest.show()
+	else:
+		quest.hide()
 	
 	if Global.talking == true and Global.quest_talk == false and dialogue:
 		DialogueManager.show_dialogue_balloon(dialogue, "start")
 		DialogueManager.dialogue_ended.connect(_quest)
 		Global.quest_talk = true
-		
-	elif Global.quest_talk_finish == true and Global.talking == true and quest_repeat == false:
-		print("oopsps")
-		DialogueManager.show_dialogue_balloon(dialogue, "finished")
+	elif Global.quest_talk_finish == true and Global.talking == true and quest_repeat == false and Global.quest_1_value < 3:
+		DialogueManager.show_dialogue_balloon(dialogue, "repeat")
 		quest_repeat = true
 		DialogueManager.dialogue_ended.connect(_quest_repeat)
-	
+	elif Global.quest_1_value >= potato_defeated and Global.talking == true and Global.quest_complete == false:
+		Global.quest_complete = true
+		quest.hide()
+		DialogueManager.show_dialogue_balloon(dialogue, "finished")
+		DialogueManager.dialogue_ended.connect(_quest_finished)
+	elif Global.quest_complete == true and Global.talking == true and quest_complete_repeat == false and complete_dialogue == true:
+		quest_complete_repeat = true
+		DialogueManager.show_dialogue_balloon(dialogue, "snipet")
+		DialogueManager.dialogue_ended.connect(_quest_complete)
+		
 	# if alive show
 	# if dead hide + untouchable
 	for enemies in get_tree().get_nodes_in_group("enemy"):
@@ -143,3 +175,12 @@ func _quest(_resource):
 func _quest_repeat(_resource):
 	Global.talking = false
 	quest_repeat = false
+
+func _quest_finished(_resource):
+	Global.talking = false
+	complete_dialogue = true
+	Global.money += reward_money
+
+func _quest_complete(_resource):
+	Global.talking = false
+	quest_complete_repeat = false
