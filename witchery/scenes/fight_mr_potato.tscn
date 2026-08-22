@@ -9,30 +9,42 @@
 [ext_resource type="Texture2D" uid="uid://blq3vehgl7m87" path="res://assets/energy_tech.png" id="5_44pj3"]
 [ext_resource type="Texture2D" uid="uid://ryjhr7md15fx" path="res://assets/heart_tech.png" id="6_nlw5s"]
 [ext_resource type="Texture2D" uid="uid://usejjjt7c451" path="res://assets/hpbar_tech.png" id="7_nlw5s"]
+[ext_resource type="Texture2D" uid="uid://c5mq1it26gg5w" path="res://assets/Mrpotato0001.png" id="8_7xni5"]
 [ext_resource type="Texture2D" uid="uid://dmh3q7h8fl1g1" path="res://assets/casting0000.png" id="8_bd0v5"]
+[ext_resource type="Texture2D" uid="uid://dv5k6bqeh20uf" path="res://assets/Mrpotato0002.png" id="8_e1wqj"]
 [ext_resource type="Texture2D" uid="uid://hqhks8atkl16" path="res://assets/casting0001.png" id="9_4tnyp"]
+[ext_resource type="Texture2D" uid="uid://c6pms3n1v41cp" path="res://assets/potato_heal0007.png" id="9_7iobk"]
 [ext_resource type="Texture2D" uid="uid://df6s5dl4lytqm" path="res://assets/potion_animation0005.png" id="9_wwk1y"]
 [ext_resource type="Texture2D" uid="uid://cxlxhtffoja2o" path="res://assets/wand_tech.png" id="10_2yrmm"]
+[ext_resource type="Texture2D" uid="uid://c1r7j74kag5vj" path="res://assets/potato_heal0008.png" id="10_5pfh2"]
 [ext_resource type="Texture2D" uid="uid://bfn5hcletfrsb" path="res://assets/casting0002.png" id="10_atgat"]
 [ext_resource type="Texture2D" uid="uid://f8qg44n21dve" path="res://assets/potion_animation0006.png" id="10_bualr"]
 [ext_resource type="Texture2D" uid="uid://cl34oaiia2wu6" path="res://assets/potion_animation0007.png" id="11_b540y"]
+[ext_resource type="Texture2D" uid="uid://bmmhrnr46ukxp" path="res://assets/potato_heal0009.png" id="11_hb17o"]
 [ext_resource type="Texture2D" uid="uid://c74xe3llccqyk" path="res://assets/casting0003.png" id="11_lnk8l"]
 [ext_resource type="Texture2D" uid="uid://crhc0alwbwdn3" path="res://assets/potion_purple_tech.png" id="11_y7np1"]
 [ext_resource type="PackedScene" uid="uid://d1qryld5yii4n" path="res://scenes/pause.tscn" id="12_7268j"]
 [ext_resource type="Texture2D" uid="uid://bw526lw2lm5xk" path="res://assets/potion_animation0008.png" id="12_cob7s"]
+[ext_resource type="Texture2D" uid="uid://cjlda8xg0hdl5" path="res://assets/potato_heal0010.png" id="12_ih7qy"]
 [ext_resource type="Texture2D" uid="uid://db3kevffj8enl" path="res://assets/block_tech.png" id="12_rwdpr"]
 [ext_resource type="Texture2D" uid="uid://dmgj62rbt2y0p" path="res://assets/casting0004.png" id="12_snwy0"]
+[ext_resource type="Texture2D" uid="uid://bowgmyrl3m5yg" path="res://assets/potato_heal0011.png" id="13_fflm0"]
 [ext_resource type="Texture2D" uid="uid://4hxuf6p7nkxt" path="res://assets/potion_animation0009.png" id="13_lasbf"]
 [ext_resource type="Texture2D" uid="uid://dcarmbqrchx5x" path="res://assets/star_tech.png" id="13_rwdpr"]
 [ext_resource type="Texture2D" uid="uid://cusxt7r7k5w4d" path="res://assets/casting0005.png" id="13_t6ldy"]
+[ext_resource type="Texture2D" uid="uid://8hxufgug7ck2" path="res://assets/potato_heal0012.png" id="14_0wrct"]
 [ext_resource type="Texture2D" uid="uid://b8oh00br7wjk1" path="res://assets/casting0006.png" id="14_34xmx"]
 [ext_resource type="Texture2D" uid="uid://cu3s8hni3m3gw" path="res://assets/potion_animation0010.png" id="14_ntyfx"]
 [ext_resource type="Texture2D" uid="uid://b66kha6tysobo" path="res://assets/potion_animation0011.png" id="15_3m6lg"]
+[ext_resource type="Texture2D" uid="uid://d3f0cq4kn2prb" path="res://assets/potato_heal0013.png" id="15_5xjte"]
 [ext_resource type="Texture2D" uid="uid://c7ec1kd1tvg6q" path="res://assets/casting0007.png" id="15_atgat"]
 [ext_resource type="Texture2D" uid="uid://d01ep6gghl81o" path="res://assets/potion_animation0012.png" id="16_bd0v5"]
+[ext_resource type="Texture2D" uid="uid://khpjvr8vdu7u" path="res://assets/potato_heal0014.png" id="16_g14jh"]
 [ext_resource type="Texture2D" uid="uid://bu8oq4ue8l2q0" path="res://assets/casting0008.png" id="16_lnk8l"]
 [ext_resource type="Texture2D" uid="uid://ujg8g3t1qm4k" path="res://assets/potion_animation0013.png" id="17_4tnyp"]
+[ext_resource type="Texture2D" uid="uid://ddqx6r5xe0nl8" path="res://assets/potato_heal0015.png" id="17_5krkc"]
 [ext_resource type="Texture2D" uid="uid://djff6cjge2y1k" path="res://assets/casting0009.png" id="17_snwy0"]
+[ext_resource type="Texture2D" uid="uid://dlk28sn0kt5yg" path="res://assets/potato_heal0016.png" id="18_8tky0"]
 [ext_resource type="Texture2D" uid="uid://dvc5k30wb1ixo" path="res://assets/potion_animation0014.png" id="18_atgat"]
 [ext_resource type="Texture2D" uid="uid://dw8hmi3sud0g7" path="res://assets/potion_animation0015.png" id="19_lnk8l"]
 [ext_resource type="Texture2D" uid="uid://b4sndk4v2l63o" path="res://assets/potion_animation0016.png" id="20_snwy0"]
@@ -63,6 +75,162 @@ corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a68qr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_7xni5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_e1wqj")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_e1wqj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_7xni5")
+}],
+"loop": false,
+"name": &"attack_end",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": ExtResource("9_7iobk")
+}, {
+"duration": 0.5,
+"texture": ExtResource("10_5pfh2")
+}, {
+"duration": 0.5,
+"texture": ExtResource("11_hb17o")
+}, {
+"duration": 0.5,
+"texture": ExtResource("12_ih7qy")
+}, {
+"duration": 0.5,
+"texture": ExtResource("13_fflm0")
+}, {
+"duration": 0.5,
+"texture": ExtResource("14_0wrct")
+}, {
+"duration": 0.5,
+"texture": ExtResource("15_5xjte")
+}, {
+"duration": 0.5,
+"texture": ExtResource("16_g14jh")
+}, {
+"duration": 0.5,
+"texture": ExtResource("17_5krkc")
+}, {
+"duration": 0.5,
+"texture": ExtResource("18_8tky0")
+}],
+"loop": false,
+"name": &"heal",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_7268j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_7xni5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}]
+
+[sub_resource type="Animation" id="Animation_5lbbq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(832.00006, 371)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"attack"]
+}
+
+[sub_resource type="Animation" id="Animation_55wat"]
+resource_name = "attack"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(832.00006, 371), Vector2(410, 373), Vector2(832.00006, 371)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 6.283185307179586, 12.566370614359172, 6.283185307179586, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"attack", &"attack"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gpi7s"]
+_data = {
+&"RESET": SubResource("Animation_5lbbq"),
+&"attack": SubResource("Animation_55wat")
+}
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t6ldy"]
 animations = [{
@@ -318,7 +486,7 @@ _data = {
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3577e"]
 bg_color = Color(0.66458356, 0, 0.04976818, 1)
 
-[node name="Node2D" type="Node2D" unique_id=1641416975 node_paths=PackedStringArray("player", "health_ui", "sp_ui", "potato_ui", "health", "sp", "potato_hp", "potato_health", "potato_bar", "first_turn_p", "first_turn_w", "second_turn_p", "second_turn_w", "third_turn_p", "third_turn_w", "timer", "mistake_timer", "mistake", "spell", "spell_menu", "spell_exit", "potion", "pause", "pause_button", "canvas", "dark", "light_bar", "light_potato", "light_options", "light_turns", "block", "text", "sub_text", "intro_timer", "basic_spell_b", "super_cast_b", "look_over_there_b", "potion_menu", "potion_exit", "soda_b", "soda_value", "just_water_b", "just_water_value", "fireball", "spell_time", "fireball_animation")]
+[node name="Node2D" type="Node2D" unique_id=1641416975 node_paths=PackedStringArray("player", "health_ui", "sp_ui", "potato_ui", "health", "sp", "potato_hp", "potato_health", "potato_bar", "first_turn_p", "first_turn_w", "second_turn_p", "second_turn_w", "third_turn_p", "third_turn_w", "timer", "mistake_timer", "mistake", "spell", "spell_menu", "spell_exit", "potion", "pause", "pause_button", "canvas", "dark", "light_bar", "light_potato", "light_options", "light_turns", "block", "text", "sub_text", "intro_timer", "basic_spell_b", "super_cast_b", "look_over_there_b", "potion_menu", "potion_exit", "soda_b", "soda_value", "just_water_b", "just_water_value", "fireball", "spell_time", "fireball_animation", "potato", "potato_animation", "potato_idle_timer", "potato_heal_timer")]
 script = ExtResource("1_tlxmr")
 player = NodePath("CanvasLayer/WitchTech")
 health_ui = NodePath("CanvasLayer/ProgressBar")
@@ -366,6 +534,10 @@ just_water_value = NodePath("CanvasLayer/PanelContainer2/HBoxContainer/Button3/L
 fireball = NodePath("CanvasLayer/AnimatedSprite2D")
 spell_time = NodePath("Timer4")
 fireball_animation = NodePath("CanvasLayer/AnimatedSprite2D/AnimationPlayer")
+potato = NodePath("CanvasLayer/MrPotatoTech")
+potato_animation = NodePath("CanvasLayer/MrPotatoTech/AnimationPlayer")
+potato_idle_timer = NodePath("Timer5")
+potato_heal_timer = NodePath("Timer6")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=791422463]
 
@@ -663,10 +835,16 @@ position = Vector2(555.99994, 324)
 scale = Vector2(0.42001408, 0.42352942)
 texture = ExtResource("1_1snm0")
 
-[node name="MrPotatoTech" type="Sprite2D" parent="CanvasLayer" unique_id=732002285]
+[node name="MrPotatoTech" type="AnimatedSprite2D" parent="CanvasLayer" unique_id=377524967]
 position = Vector2(832.00006, 371)
 scale = Vector2(6, 6)
-texture = ExtResource("3_7268j")
+sprite_frames = SubResource("SpriteFrames_a68qr")
+animation = &"attack"
+autoplay = "idle"
+flip_h = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/MrPotatoTech" unique_id=1710217399]
+libraries/ = SubResource("AnimationLibrary_gpi7s")
 
 [node name="WitchTech" type="AnimatedSprite2D" parent="CanvasLayer" unique_id=1187909492]
 position = Vector2(293, 361)
@@ -1037,13 +1215,20 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_3577e")
 text = "X"
 
 [node name="Timer" type="Timer" parent="." unique_id=2088150919]
+wait_time = 2.5
 
 [node name="Timer2" type="Timer" parent="." unique_id=256539285]
 
 [node name="Timer3" type="Timer" parent="." unique_id=1636983236]
+wait_time = 2.5
 one_shot = true
 
 [node name="Timer4" type="Timer" parent="." unique_id=899836875]
+
+[node name="Timer5" type="Timer" parent="." unique_id=1584355460]
+wait_time = 0.5
+
+[node name="Timer6" type="Timer" parent="." unique_id=821672206]
 
 [connection signal="pressed" from="CanvasLayer/PanelContainer/HBoxContainer/Button2" to="." method="_basic_spell"]
 [connection signal="pressed" from="CanvasLayer/PanelContainer/HBoxContainer/Button3" to="." method="_super_cast"]
@@ -1051,11 +1236,15 @@ one_shot = true
 [connection signal="pressed" from="CanvasLayer/PanelContainer2/HBoxContainer/Button2" to="." method="_purple_potion"]
 [connection signal="pressed" from="CanvasLayer/PanelContainer2/HBoxContainer/Button3" to="." method="_blue_potion"]
 [connection signal="pressed" from="CanvasLayer/Button4" to="." method="_pause"]
+[connection signal="animation_finished" from="CanvasLayer/MrPotatoTech/AnimationPlayer" to="." method="_potato_finish"]
 [connection signal="pressed" from="CanvasLayer/Button2" to="." method="_attack"]
 [connection signal="pressed" from="CanvasLayer/Button3" to="." method="_potion"]
+[connection signal="animation_finished" from="CanvasLayer/AnimatedSprite2D/AnimationPlayer" to="." method="_fireball_finish"]
 [connection signal="pressed" from="CanvasLayer/Button5" to="." method="_spell_menu_exit"]
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_exit_potion"]
 [connection signal="timeout" from="Timer" to="." method="_potato_turn"]
 [connection signal="timeout" from="Timer2" to="." method="_mistake_timeout"]
 [connection signal="timeout" from="Timer3" to="." method="_continue_intro"]
 [connection signal="timeout" from="Timer4" to="." method="_cast"]
+[connection signal="timeout" from="Timer5" to="." method="_potato_idle"]
+[connection signal="timeout" from="Timer6" to="." method="_potato_heal_time"]

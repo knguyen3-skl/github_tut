@@ -18,6 +18,7 @@ var distract_price: int = 100
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# Loads the market dialogue before the actual shop.
 	for items in get_children():
 		if items.is_in_group("shop"):
 			items.hide()
@@ -27,9 +28,16 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	# Checks if the pause menu is opened or not and hides if it is.
 	if Global.pause == true:
 		hide()
-	elif Global.market == true:
+		Global.market = false
+		player_cam.drag_horizontal_enabled = true
+		player_cam.drag_vertical_enabled = true
+		
+	# If the market is opened, change the player's camera so that it doesn't look
+	# like their lagging when moving.
+	if Global.market == true:
 		player_cam.drag_horizontal_enabled = false
 		player_cam.drag_vertical_enabled = false
 	elif Global.market == false and Global.inventory_status == false:
@@ -56,6 +64,7 @@ func _exit() -> void:
 
 
 func _buy_super_cast() -> void:
+	# Subtracts from the player's money when brought.
 	if Global.money >= super_cast_price:
 		Global.money -= super_cast_price
 		Global.shop[supercast] = brought
@@ -70,6 +79,7 @@ func _on_timer_timeout() -> void:
 
 
 func _buy_distract() -> void:
+	# Subtracts from the player's money when brought.
 	if Global.money >= distract_price:
 		Global.money -= distract_price
 		Global.shop[lookoverthere] = brought

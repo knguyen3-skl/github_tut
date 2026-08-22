@@ -20,8 +20,8 @@ func _process(delta: float) -> void:
 	potato_defeat.text = str(Global.quest_1_value)
 
 
-
 func _hide_quest() -> void:
+	# Hides the quest menu if the player hides it.
 	if on_screen == true:
 		on_screen = false
 		for items in get_children():
@@ -30,6 +30,7 @@ func _hide_quest() -> void:
 		hide_show.text = go_out
 		position += move
 	else:
+		# Shows the quest menu if the player clicks on it.
 		on_screen = true
 		for items in get_children():
 			if items.is_in_group("quest"):

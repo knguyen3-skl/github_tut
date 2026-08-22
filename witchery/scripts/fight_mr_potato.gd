@@ -55,6 +55,11 @@ extends Node2D
 @export var spell_time: Timer
 @export var fireball_animation: AnimationPlayer
 
+@export var potato: AnimatedSprite2D
+@export var potato_animation: AnimationPlayer
+@export var potato_idle_timer: Timer
+@export var potato_heal_timer: Timer
+
 var bars: bool = false
 var options: bool = false
 var turns: bool = false
@@ -129,10 +134,36 @@ var text_position_2 = Vector2(208.0,70.0)
 var sub_text_position_2 = Vector2(456.0, 175.0)
 
 var fireball_starting = Vector2(298.0, 324.0)
+var potato_idle: bool = true
+
+var mouse_on: int = 1
+var mouse_off: int = 2
+
+var purple_potion_effect: int = 1
+var blue_potion_effect_hp: int = 2
+var blue_potion_effect_sp: int = 1
+var super_cast_value: int = 2
+var turns_value: int = 3
+var reward_value: int = 30
+var reward_range: int = 3
+var top_layer: int = 3
+var second_layer: int = 2
+var second_turn: int = 2
+var potato_health_max: int = 10
+var start: int = 3
+var start_intro: int = 4
+var turns_intro: int = 6
+var potato_intro: int = 8
+var spell_intro: int = 10
+var cast_intro: int = 14
+var after_cast_intro: int = 15
+var end_intro: int = 18
+var click_dialogue: int = 11
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	potato.animation = "idle"
 	fireball.hide()
 	player.animation = "idle"
 	potion_menu.hide()
@@ -161,11 +192,11 @@ func _ready() -> void:
 				
 		for items in canvas.get_children():
 			if items.is_in_group("stats"):
-				items.z_index -= 2
+				items.z_index -= second_layer
 		text.text = intro[0]
 	
-		spell.mouse_filter = 2
-		potion.mouse_filter = 2
+		spell.mouse_filter = mouse_off
+		potion.mouse_filter = mouse_off
 		block.position = block_position_1
 		text.position = text_position_1
 		sub_text.position = sub_text_position_1
@@ -181,6 +212,9 @@ func _process(delta: float) -> void:
 	soda_value.text = str(Global.inventory[purple_potion])
 	just_water_value.text = str(Global.inventory[blue_potion])
 	
+	if potato_idle == true:
+		potato.play("idle")
+	
 	if Global.pause == false:
 		pause_button.show()
 		spell.show()
@@ -188,28 +222,25 @@ func _process(delta: float) -> void:
 	
 	if Global.player_health <=0:
 		Global.potato_fight = false
+		Global.respawn = true
 		get_tree().call_deferred("change_scene_to_file", "res://scenes/level.tscn")
 	elif Global.potato_health <= 0 and Global.quest_talk_finish == true:
 		Global.potato_fight = false
-		print(Global.potato_fight)
-		Global.money += 30
-		Global.potato_health = 10
+		Global.money += reward_value
+		Global.potato_health = potato_health_max
 		Global.enemy_dict[Global.enemy_id] = potato_dead
-		print(Global.enemy_dict)
 		Global.quest_1_value += 1
-		var random_sprout = randi_range(1,3)
+		var random_sprout = randi_range(1,reward_range)
 		Global.sprout_reward = random_sprout
 		Global.sprout += random_sprout
 		Global.battle_won = true
 		get_tree().call_deferred("change_scene_to_file", "res://scenes/level.tscn")
 	elif Global.potato_health <= 0:
 		Global.potato_fight = false
-		print(Global.potato_fight)
-		Global.money += 30
-		Global.potato_health = 10
+		Global.money += reward_value
+		Global.potato_health = potato_health_max
 		Global.enemy_dict[Global.enemy_id] = potato_dead
-		print(Global.enemy_dict)
-		var random_sprout = randi_range(1,3)
+		var random_sprout = randi_range(1,reward_range)
 		Global.sprout_reward = random_sprout
 		Global.sprout += random_sprout
 		Global.battle_won = true
@@ -225,7 +256,7 @@ func _process(delta: float) -> void:
 		sp_ui.value = Global.player_special
 		sp.text = str(Global.player_special)	
 		
-	if counter == 4:
+	if counter == start_intro:
 		light_bar.hide()
 		turns = true
 		light_turns.show()
@@ -235,13 +266,13 @@ func _process(delta: float) -> void:
 				
 		for items in canvas.get_children():
 			if items.is_in_group("turns"):
-				items.z_index += 2
+				items.z_index += second_layer
 		
-	elif counter == 6:
+	elif counter == turns_intro:
 		bars = true
 		for items in canvas.get_children():
 			if items.is_in_group("turns"):
-				items.z_index = -2
+				items.z_index = -second_layer
 				
 		light_turns.hide()
 		light_potato.show()
@@ -249,67 +280,61 @@ func _process(delta: float) -> void:
 		block.position = block_position_2
 		text.position = text_position_2
 		sub_text.position = sub_text_position_2
-		potato_bar.z_index = 3
-		potato_hp.z_index = 3
-		potato_health.z_index = 3
-		potato_ui.z_index = 2
-	elif counter == 8 and clicked == false:
+		potato_bar.z_index = top_layer
+		potato_hp.z_index = top_layer
+		potato_health.z_index = top_layer
+		potato_ui.z_index = second_layer
+	elif counter == potato_intro and clicked == false:
 		light_potato.hide()
 		light_options.show()
 		potato_bar.z_index = 1
 		potato_hp.z_index = 0
 		potato_health.z_index = 0
 		potato_ui.z_index = 0
-		spell.z_index = 2
-		potion.z_index = 2
+		spell.z_index = second_layer
+		potion.z_index = second_layer
 		options = true
-	elif counter == 10:
-		spell.mouse_filter = 1
+	elif counter == spell_intro:
+		spell.mouse_filter = mouse_on
 		
 		if clicked == true:
-			basic_spell_b.mouse_filter = 2
-			text.text = intro[11]
+			basic_spell_b.mouse_filter = mouse_off
+			text.text = intro[click_dialogue]
 			counter += 1
-	elif counter == 14:
-			basic_spell_b.mouse_filter = 1
+	elif counter == cast_intro:
+			basic_spell_b.mouse_filter = mouse_on
 	
-	if Global.intro == false and Global.pause == false and bars == false and counter < 3 and Input.is_action_just_pressed("next"):
+	if Global.intro == false and Global.pause == false and bars == false and counter < start and Input.is_action_just_pressed("next"):
 		counter += 1
 		text.text = intro[counter]
-		print(counter)
 		light_bar.show()
 		
 		for items in canvas.get_children():
 			if items.is_in_group("stats"):
 				items.z_index = 1
 				
-	elif Global.intro == false and Global.pause == false and counter >= 3 and counter <6 and Input.is_action_just_pressed("next"):
+	elif Global.intro == false and Global.pause == false and counter >= start and counter <turns_intro and Input.is_action_just_pressed("next"):
 		counter += 1
 		text.text = intro[counter]
-		print(counter)
 		light_bar.hide()
 	
-	elif Global.intro == false and Global.pause == false and counter >= 6 and options == false and Input.is_action_just_pressed("next"):
+	elif Global.intro == false and Global.pause == false and counter >= turns_intro and options == false and Input.is_action_just_pressed("next"):
 		counter += 1
 		text.text = intro[counter]
-		print(counter)
 				
-	elif Global.intro == false and Global.pause == false and counter >= 8 and counter < 10 and options == true and Input.is_action_just_pressed("next"):
+	elif Global.intro == false and Global.pause == false and counter >= potato_intro and counter < spell_intro and options == true and Input.is_action_just_pressed("next"):
 		counter += 1
 		text.text = intro[counter]
-		print(counter)
 		
-	elif Global.intro == false and Global.pause == false and counter >= 10 and counter < 14 and clicked == true and Input.is_action_just_pressed("next"):
+	elif Global.intro == false and Global.pause == false and counter >= spell_intro and counter < cast_intro and clicked == true and Input.is_action_just_pressed("next"):
 		counter += 1
 		text.text = intro[counter]
-		print(counter)
 		
-	elif Global.pause == false and counter >= 15 and counter < 18 and Input.is_action_just_pressed("next"):
+	elif Global.pause == false and counter >= after_cast_intro and counter < end_intro and Input.is_action_just_pressed("next"):
 		counter += 1
 		text.text = intro[counter]
-		print(counter)
 		
-	elif counter == 18 and Input.is_action_just_pressed("next"):
+	elif counter == end_intro and Input.is_action_just_pressed("next"):
 		for items in canvas.get_children():
 			if items.is_in_group("intro"):
 				items.hide()
@@ -375,7 +400,7 @@ func _potion() -> void:
 
 
 func _turn() -> void:
-	if turns_left == 2:
+	if turns_left == second_turn:
 		first_turn_p.visible = false 
 		first_turn_w.visible = false 
 		
@@ -386,16 +411,23 @@ func _turn() -> void:
 	elif turns_left == 0:
 		third_turn_p.visible = false 
 		third_turn_w.visible = false 
+		spell.mouse_filter = mouse_off
+		potion.mouse_filter = mouse_off
 		timer.start()
 		
 func _potato_attack() -> void:
 	if turns_left == 0:
+		potato_idle = false
+		potato_animation.play("attack")
 		Global.player_health -= 1
 		health_ui.value = Global.player_health
 		health.text = str(Global.player_health)
 
 
 func _potato_heal() -> void:
+	potato_idle = false
+	potato.play("heal")
+	potato_heal_timer.start()
 	Global.potato_health += 1
 	potato_ui.value = Global.potato_health
 	potato_health.text = str(Global.potato_health)
@@ -418,7 +450,7 @@ func _potato_turn() -> void:
 	_turn_reset()
 	
 func _turn_reset() -> void:
-	turns_left = 3
+	turns_left = turns_value
 	first_turn_p.visible = true 
 	first_turn_w.visible = true 
 	second_turn_p.visible = true 
@@ -440,17 +472,16 @@ func _pause() -> void:
 
 func _super_cast() -> void:
 	if turns_left >= 1 and Global.player_special > 0:
-		spell.mouse_filter = 2
-		potion.mouse_filter = 2
+		spell.mouse_filter = mouse_off
+		potion.mouse_filter = mouse_off
 		player.play("casting")
 		fireball.show()
 		fireball.play("summoning")
 		fireball.position = fireball_starting
 		spell_time.start()
 		turns_left -= 1
-		print(turns_left)
 		_turn()
-		Global.potato_health -= 2
+		Global.potato_health -= super_cast_value
 		Global.player_special -= 1
 		potato_ui.value = Global.potato_health
 		potato_health.text = str(Global.potato_health)
@@ -471,15 +502,14 @@ func _super_cast() -> void:
 
 func _basic_spell() -> void:
 	if Global.intro == false and turns_left >= 1:
-		spell.mouse_filter = 2
-		potion.mouse_filter = 2
+		spell.mouse_filter = mouse_off
+		potion.mouse_filter = mouse_off
 		player.play("casting")
 		fireball.show()
 		fireball.play("summoning")
 		fireball.position = fireball_starting
 		spell_time.start()
 		turns_left -= 1
-		print(turns_left)
 		_turn()
 		Global.potato_health -= 1
 		potato_ui.value = Global.potato_health
@@ -496,15 +526,14 @@ func _basic_spell() -> void:
 			elif items.is_in_group("turns"):
 				items.z_index = 0
 	elif turns_left >= 1 and Global.intro == true:
-		spell.mouse_filter = 2
-		potion.mouse_filter = 2
+		spell.mouse_filter = mouse_off
+		potion.mouse_filter = mouse_off
 		player.play("casting")
 		fireball.show()
 		fireball.play("summoning")
 		fireball.position = fireball_starting
 		spell_time.start()
 		turns_left -= 1
-		print(turns_left)
 		_turn()
 		Global.potato_health -= 1
 		potato_ui.value = Global.potato_health
@@ -525,8 +554,8 @@ func _spell_menu_exit() -> void:
 
 func _distract() -> void:
 	if turns_left >= 1:
-		spell.mouse_filter = 2
-		potion.mouse_filter = 2
+		spell.mouse_filter = mouse_off
+		potion.mouse_filter = mouse_off
 		player.play("casting")
 		fireball.show()
 		fireball.play("summoning")
@@ -534,7 +563,6 @@ func _distract() -> void:
 		spell_time.start()
 		turns_left -= 1
 		_turn()
-		print(turns_left)
 		potato_distract = true
 		spell_opened = false
 		spell_menu.hide()
@@ -552,13 +580,11 @@ func _continue_intro() -> void:
 			items.z_index = 0
 	
 	Global.intro = true	
-	print("hello")
 	block.position = block_position_1
 	text.position = text_position_1
 	sub_text.position = sub_text_position_1
 	counter += 1
 	text.text = intro[counter]
-	print(counter)
 
 
 func _exit_potion() -> void:
@@ -573,7 +599,7 @@ func _purple_potion() -> void:
 		soda_value.text = str(Global.inventory[purple_potion])
 		turns_left -= 1
 		_turn()
-		Global.player_special += 1
+		Global.player_special += purple_potion_effect
 		sp.text = str(Global.player_special)
 		sp_ui.value = Global.player_special
 		potion_exit.hide()
@@ -595,8 +621,8 @@ func _blue_potion() -> void:
 		soda_value.text = str(Global.inventory[blue_potion])
 		turns_left -= 1
 		_turn()
-		Global.player_special += 1
-		Global.player_health += 2
+		Global.player_special += blue_potion_effect_sp
+		Global.player_health += blue_potion_effect_hp
 		sp.text = str(Global.player_special)
 		sp_ui.value = Global.player_special
 		health.text = str(Global.player_health)
@@ -617,5 +643,28 @@ func _cast() -> void:
 	fireball.play("flying")
 	fireball_animation.play("fireball")
 	spell_time.stop()
-	spell.mouse_filter = 1
-	potion.mouse_filter = 1
+	
+
+func _fireball_finish(anim_name: StringName) -> void:
+	if turns_left > 0:
+		spell.mouse_filter = mouse_on
+		potion.mouse_filter = mouse_on
+
+
+func _potato_finish(anim_name: StringName) -> void:
+	potato.play("attack_end")
+	potato_idle_timer.start()
+	spell.mouse_filter = mouse_on
+	potion.mouse_filter = mouse_on
+
+
+func _potato_idle() -> void:
+	potato_idle = true
+	potato_idle_timer.stop()
+
+
+func _potato_heal_time() -> void:
+	potato_idle = true
+	potato_heal_timer.stop()
+	spell.mouse_filter = mouse_on
+	potion.mouse_filter = mouse_on

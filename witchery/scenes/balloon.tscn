@@ -249,5 +249,14 @@ text = "Response example"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1116280512]
 unique_name_in_owner = true
 
+[node name="Label10" type="Label" parent="." unique_id=1823139017 groups=["intro"]]
+z_index = 3
+offset_left = 451.0
+offset_top = 584.0
+offset_right = 680.0
+offset_bottom = 612.0
+theme_override_font_sizes/font_size = 20
+text = "Press space to continue"
+
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
 [connection signal="response_selected" from="Balloon/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]

@@ -31,10 +31,12 @@ var potato_defeated: int = 3
 var quest_complete_repeat: bool = false
 var complete_dialogue: bool = false
 var reward_money: int = 100
+var respawn_position = Vector2(-200.0,354.0)
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	announcement.hide()
 	quest.hide()
 	print(Global.last_player_positon)
 	player_health.max_value = Global.player_base_health
@@ -47,7 +49,10 @@ func _ready() -> void:
 	
 	sprout.text = str(Global.sprout)
 	
-	if Global.last_player_positon == start_pos:
+	if Global.respawn == true:
+		player.global_position = respawn_position
+		Global.respawn = false
+	elif Global.last_player_positon == start_pos:
 		pass
 	else:
 		player.global_position = Global.last_player_positon
@@ -100,7 +105,7 @@ func _process(delta: float) -> void:
 		DialogueManager.show_dialogue_balloon(dialogue, "start")
 		DialogueManager.dialogue_ended.connect(_quest)
 		Global.quest_talk = true
-	elif Global.quest_talk_finish == true and Global.talking == true and quest_repeat == false and Global.quest_1_value < 3:
+	elif Global.quest_talk_finish == true and Global.talking == true and quest_repeat == false and Global.quest_1_value < potato_defeated:
 		DialogueManager.show_dialogue_balloon(dialogue, "repeat")
 		quest_repeat = true
 		DialogueManager.dialogue_ended.connect(_quest_repeat)
@@ -147,7 +152,7 @@ func _process(delta: float) -> void:
 			elif items.is_in_group("collect"):
 				items.show()
 				
-				
+	# Checks if the last battle was won and shows the player the rewards they recieved
 	if Global.battle_won == true and timer == false:
 		announcement.show()
 		for items in announcement.get_children():
@@ -157,6 +162,7 @@ func _process(delta: float) -> void:
 				items.hide()
 		timer_msg.start()
 		timer = true
+		Global.battle_won = false
 	
 	
 func _respawn_enemy(enemy_id: StringName) -> void:

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chf1al2rarwoh"
-path="res://.godot/imported/stone_tile_tech.png-d6b59c85fd06c3a36d0acc423acc0d8e.ctex"
+uid="uid://bmmhrnr46ukxp"
+path="res://.godot/imported/potato_heal0009.png-3940db99c69db9f5125db3197bf7fac0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/stone_tile_tech.png"
-dest_files=["res://.godot/imported/stone_tile_tech.png-d6b59c85fd06c3a36d0acc423acc0d8e.ctex"]
+source_file="res://assets/potato_heal0009.png"
+dest_files=["res://.godot/imported/potato_heal0009.png-3940db99c69db9f5125db3197bf7fac0.ctex"]
 
 [params]
 
