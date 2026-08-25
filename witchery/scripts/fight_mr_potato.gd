@@ -1,4 +1,6 @@
 extends Node2D
+
+@export_group("Screen Elements")
 @export var player: AnimatedSprite2D
 @export var health_ui: ProgressBar
 @export var sp_ui: ProgressBar
@@ -9,6 +11,7 @@ extends Node2D
 @export var potato_health: Label
 @export var potato_bar: Sprite2D
 
+@export_group("Turn Tracker")
 @export var first_turn_p: Panel
 @export var first_turn_w: Sprite2D
 @export var second_turn_p: Panel

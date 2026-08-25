@@ -1,5 +1,17 @@
 extends Node2D
 
+var timer: bool = false
+var start_pos = Vector2(-262.0, 210.0)
+var status_alive: String = "alive"
+var status_dead: String = "dead"
+var respawn_time: int = 30
+var quest_repeat: bool = false
+var potato_defeated: int = 3
+var quest_complete_repeat: bool = false
+var complete_dialogue: bool = false
+var reward_money: int = 100
+var respawn_position = Vector2(-200.0,354.0)
+
 @export var money: Label
 @export var player: CharacterBody2D
 @export var player_health: ProgressBar
@@ -21,23 +33,12 @@ extends Node2D
 @export var dialogue_scene = preload("res://scenes/balloon.tscn")
 @export var dialogue = preload("res://dialogue/pencil_dialogue.dialogue")
 
-var timer: bool = false
-var start_pos = Vector2(-262.0, 210.0)
-var status_alive: String = "alive"
-var status_dead: String = "dead"
-var respawn_time: int = 30
-var quest_repeat: bool = false
-var potato_defeated: int = 3
-var quest_complete_repeat: bool = false
-var complete_dialogue: bool = false
-var reward_money: int = 100
-var respawn_position = Vector2(-200.0,354.0)
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	announcement.hide()
 	quest.hide()
+	# Sets the healthbar and special points bar 
 	print(Global.last_player_positon)
 	player_health.max_value = Global.player_base_health
 	player_health.value = Global.player_health
@@ -138,7 +139,6 @@ func _process(delta: float) -> void:
 		inventory.hide()
 		pause.hide()
 		player.speed = 0
-	
 	elif Global.talking == true:
 		player.speed = 0
 	else:
@@ -173,19 +173,23 @@ func _respawn_enemy(enemy_id: StringName) -> void:
 func _rewards() -> void:
 	announcement.hide()
 
+
 func _quest(_resource):
 	quest.show()
 	Global.talking = false
 	Global.quest_talk_finish = true
 	
+	
 func _quest_repeat(_resource):
 	Global.talking = false
 	quest_repeat = false
+
 
 func _quest_finished(_resource):
 	Global.talking = false
 	complete_dialogue = true
 	Global.money += reward_money
+
 
 func _quest_complete(_resource):
 	Global.talking = false

@@ -1,19 +1,20 @@
 extends ColorRect
 
+var supercast: String = "super_cast"
+var lookoverthere: String = "look_over_there"
+var brought: String = "yes"
+var avaliable: String = "no"
+var status_empty: bool = false
+var super_cast_price: int = 100
+var distract_price: int = 100
+
 @export var player_cam: Camera2D
 @export var timer:Timer
 @export var broke: Label
 @export var super_cast: Panel
 @export var look_over_there: Panel
 @export var nothing: Label
-
-var supercast: String = "super_cast"
-var lookoverthere: String = "look_over_there"
-var brought: String = "yes"
-var avaliable: String = "no"
-var status: bool = false
-var super_cast_price: int = 100
-var distract_price: int = 100
+@export var market: StaticBody2D
 
 
 # Called when the node enters the scene tree for the first time.
@@ -44,22 +45,28 @@ func _process(delta: float) -> void:
 		player_cam.drag_horizontal_enabled = true
 		player_cam.drag_vertical_enabled = true
 	
+	# If the spell, super cast, is still avaliable/ not brought yet, display it in the
+	# shop for the player to see and purchase.
 	if Global.shop[supercast] == avaliable and Global.shop_speech == true:
 		super_cast.show()
 	else:
 		super_cast.hide()
-		
+	
+	# If the spell, look over there, is still avaliable/ not brought yet, display it in the
+	# shop for the player to see and purchase.	
 	if Global.shop[lookoverthere] == avaliable and Global.shop_speech == true:
 		look_over_there.show()
 	else:
 		look_over_there.hide()
 	
 	if Global.shop[lookoverthere] == brought and Global.shop[supercast] == brought:
-		status = true
+		status_empty = true
+		
 
 
 func _exit() -> void:
 	Global.market = false
+	market.shop_opened = false
 	hide()
 
 

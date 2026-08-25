@@ -1,12 +1,12 @@
 extends ColorRect
 
-@export var potato_defeat: Label
-@export var hide_show: Button
-
 var on_screen: bool = true
 var go_in: String = ">"
 var go_out: String = "<"
 var move: Vector2 = Vector2(202,0.0)
+
+@export var potato_defeat: Label
+@export var hide_show: Button
 
 
 # Called when the node enters the scene tree for the first time.

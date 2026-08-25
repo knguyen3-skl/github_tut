@@ -4,6 +4,7 @@ var player_near: bool = false
 
 @export var e: ColorRect
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	e.hide()

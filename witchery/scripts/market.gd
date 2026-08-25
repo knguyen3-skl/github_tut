@@ -1,9 +1,11 @@
 extends StaticBody2D
 
-var player_near:bool = false
+var player_near: bool = false
+var shop_opened: bool = false
 
 @export var e:ColorRect
 @export var shop: ColorRect
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,7 +15,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if player_near == true and Input.is_physical_key_pressed(KEY_E):
+	# If the player opens the shop, load the market dialogue.
+	if player_near == true and Input.is_physical_key_pressed(KEY_E) and shop_opened == false:
+		shop_opened = true
 		Global.shop_speech = false
 		for items in shop.get_children():
 			if items.is_in_group("shop"):
@@ -21,8 +25,9 @@ func _process(delta: float) -> void:
 			elif items.is_in_group("speech"):
 				items.show()
 		shop.show()
-		
-	if Input.is_action_just_pressed("next") and player_near == true:
+	
+	# When the player finsihes the market dialogue, open the shop.	
+	if Input.is_action_just_pressed("next") and player_near == true and shop_opened == true:
 		Global.market = true
 		Global.shop_speech = true
 		for items in shop.get_children():
@@ -31,11 +36,10 @@ func _process(delta: float) -> void:
 			elif items.is_in_group("speech"):
 				items.hide()
 		
-		if shop.status == true:
+		if shop.status_empty == true:
 			shop.nothing.show()
 		else:
 			shop.nothing.hide()
-		
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
@@ -46,6 +50,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
 	if area.is_in_group("player"):
+		shop_opened = false
 		Global.shop_speech = false
 		e.hide()
 		shop.hide()
