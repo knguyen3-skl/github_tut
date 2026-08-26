@@ -40,7 +40,7 @@ func _on_inventory_pressed() -> void:
 	player_cam.drag_horizontal_enabled = false
 	player_cam.drag_vertical_enabled = false
 	
-	
+	# If the player has more than one potion, show it in their inventory.
 	if Global.inventory[purplepotion] >= 1:
 		purple.show()
 	else:

@@ -23,6 +23,7 @@ func _options() -> void:
 
 
 func _quit() -> void:
+	# Takes the player back to the main menu when they want to quit the game.
 	Global.pause = false
 	get_tree().call_deferred("change_scene_to_file", "res://scenes/main_menu.tscn")
 

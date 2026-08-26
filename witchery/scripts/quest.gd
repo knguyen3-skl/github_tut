@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 
 
 func _hide_quest() -> void:
-	# Hides the quest menu if the player hides it.
+	# Hides the quest menu if the player clicks to hides it.
 	if on_screen == true:
 		on_screen = false
 		for items in get_children():

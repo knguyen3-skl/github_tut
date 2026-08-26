@@ -15,10 +15,12 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	# If the player opens the shop, load the market dialogue.
+	# If the player opens the shop, load the market dialogue before the actual shop.
 	if player_near == true and Input.is_physical_key_pressed(KEY_E) and shop_opened == false:
 		shop_opened = true
 		Global.shop_speech = false
+		# Show the items involved in the dialogue and not the shop when the player first
+		# interacts with the shop.
 		for items in shop.get_children():
 			if items.is_in_group("shop"):
 				items.hide()
@@ -30,6 +32,8 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("next") and player_near == true and shop_opened == true:
 		Global.market = true
 		Global.shop_speech = true
+		# Show the items in the shop menu whilst hiding the items in the speech menu
+		# after the player has finished the dialogue with the shop keeper.
 		for items in shop.get_children():
 			if items.is_in_group("shop"):
 				items.show()
@@ -43,12 +47,14 @@ func _process(delta: float) -> void:
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
+	# If the player is within the market's area, show the shop.
 	if area.is_in_group("player"):
 		e.show()
 		player_near = true
 
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
+	# If the player is not within the market area, hide the shop.
 	if area.is_in_group("player"):
 		shop_opened = false
 		Global.shop_speech = false

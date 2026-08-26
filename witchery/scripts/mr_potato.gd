@@ -17,14 +17,15 @@ func _ready() -> void:
 	
 
 func _physics_process(delta: float) -> void:
-	
+	# If the player has the pause menu opened, don't chase the stop.
 	if Global.pause == true:
 		velocity = stop
 		speed = 0
 	else:
 		speed = og_speed
 	
-	# Sets the goal of the enemy to the player's position
+	# Sets the goal of the enemy to the player's position so that it can chase the
+	# player when they come close enough.
 	navigation_agent_2d.target_position = player.global_position
 	direction = global_position.direction_to(navigation_agent_2d.get_next_path_position())
 	
@@ -39,7 +40,8 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 
 	
-	# if the enemy has not reached the player yet then chase the player.
+	# if the enemy has not reached the player yet, and the player is reachable, then 
+	# chase the player.
 	elif navigation_agent_2d.is_target_reached() == false:
 		velocity = velocity.lerp(direction * speed, delta)
 		animation.animation = "walk"
@@ -48,7 +50,8 @@ func _physics_process(delta: float) -> void:
 
 
 func _mr_potato_fight(area: Area2D) -> void:
-	# If the enemy comes in contact with the player, fight them.
+	# If the enemy comes in contact with the player, initiate the fight scene and set 
+	# the current enemy fighting to it's self identification.
 	if area.is_in_group("player"):
 		Global.enemy_id = self.name
 		get_tree().call_deferred("change_scene_to_file", "res://scenes/fight_mr_potato.tscn")

@@ -12,6 +12,7 @@ func _process(delta: float) -> void:
 
 
 func _play_pressed() -> void:
+	# When the player clicks play, load the game.
 	get_tree().call_deferred("change_scene_to_file", "res://scenes/level.tscn")
 
 
@@ -20,4 +21,5 @@ func _options_pressed() -> void:
 
 
 func _quit_pressed() -> void:
+	# When the player clicks quit, quit the game.
 	get_tree().quit()

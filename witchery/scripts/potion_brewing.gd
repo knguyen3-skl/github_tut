@@ -30,7 +30,7 @@ func _process(delta: float) -> void:
 
 func _purple_brewed() -> void:
 	# Adds a purple potion to the player's inventory and informs the player they have
-	# Successfully brewwed the potion in the form as an announcement.
+	# successfully brewwed the potion in the form as an announcement.
 	if Global.sprout >= 1:
 		Global.sprout -= 1
 		sprout.text = str(Global.sprout)
@@ -70,7 +70,7 @@ func _purple_to_blue() -> void:
 
 func _blue_brewed() -> void:
 	# Adds a blue potion to the player's inventory and informs the player they have
-	# Successfully brewwed the potion in the form as an announcement.
+	# successfully brewwed the potion in the form as an announcement.
 	if Global.sprout >= 2:
 		Global.sprout -= 2
 		sprout.text = str(Global.sprout)
@@ -90,6 +90,7 @@ func _blue_brewed() -> void:
 
 func _blue_to_pruple() -> void:
 	# If the player clicks the backwards button, show the option for the purple potion
+	# as that is the option prior to the blue potion.
 	for items in get_children():
 		if items.is_in_group("purple_options"):
 			items.show()

@@ -6,7 +6,7 @@ var brought: String = "yes"
 var avaliable: String = "no"
 var status_empty: bool = false
 var super_cast_price: int = 100
-var distract_price: int = 100
+var distract_price: int = 50
 
 @export var player_cam: Camera2D
 @export var timer:Timer
@@ -52,13 +52,15 @@ func _process(delta: float) -> void:
 	else:
 		super_cast.hide()
 	
-	# If the spell, look over there, is still avaliable/ not brought yet, display it in the
-	# shop for the player to see and purchase.	
+	# If the spell, look over there, is still avaliable/ not brought yet, display it
+	# in the shop for the player to see and purchase.	
 	if Global.shop[lookoverthere] == avaliable and Global.shop_speech == true:
 		look_over_there.show()
 	else:
 		look_over_there.hide()
-	
+		
+	# Display a message telling the player the shop is empty when the player has brought
+	# out every item.
 	if Global.shop[lookoverthere] == brought and Global.shop[supercast] == brought:
 		status_empty = true
 		
@@ -71,7 +73,7 @@ func _exit() -> void:
 
 
 func _buy_super_cast() -> void:
-	# Subtracts from the player's money when brought.
+	# Subtracts from the player's money when super cast is brought.
 	if Global.money >= super_cast_price:
 		Global.money -= super_cast_price
 		Global.shop[supercast] = brought
@@ -86,7 +88,7 @@ func _on_timer_timeout() -> void:
 
 
 func _buy_distract() -> void:
-	# Subtracts from the player's money when brought.
+	# Subtracts from the player's money when look over there is brought.
 	if Global.money >= distract_price:
 		Global.money -= distract_price
 		Global.shop[lookoverthere] = brought
