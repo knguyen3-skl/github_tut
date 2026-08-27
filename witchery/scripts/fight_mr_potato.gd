@@ -44,13 +44,13 @@ reset after the enemy's turn",
 "This is your enemy's health",
 "Attack the enemy to defeat it",
 "Down here are the different actions you
-can choose from each round.",
+can choose from each round",
 "Each action will cost you one turn, so
-decide with caution.",
+decide with caution",
 "There's no need to use any potions yet, so 
 lets cast a spell instead, click on the wand",
 "This area displays all the spells you could
-cast.",
+cast",
 "Each spell will have discriptions which tells
 you the requirements and specifications",
 "For the 'Basic Spell' it does 1 damage to 
@@ -90,9 +90,10 @@ var second_layer: int = 2
 var second_turn: int = 2
 var potato_health_max: int = 10
 var start: int = 3
-var start_intro: int = 4
-var turns_intro: int = 6
-var potato_intro: int = 8
+
+var turns_intro: int = 4
+var potato_intro: int = 6
+var action_intro: int = 8
 var spell_intro: int = 10
 var cast_intro: int = 14
 var after_cast_intro: int = 15
@@ -290,8 +291,10 @@ func _process(delta: float) -> void:
 		sp_ui.value = Global.player_special
 		sp.text = str(Global.player_special)	
 	
-	# When the tutorial starts, 
-	if counter == start_intro:
+	# Bring the items in the turns to the front and items in the player's stats to the 
+	# back when the player reaches that part of the tutorial, so they can understand how 
+	# the turn system works.
+	if counter == turns_intro:
 		light_bar.hide()
 		turns = true
 		light_turns.show()
@@ -302,24 +305,33 @@ func _process(delta: float) -> void:
 		for items in canvas.get_children():
 			if items.is_in_group("turns"):
 				items.z_index += second_layer
-		
-	elif counter == turns_intro:
+	# Bring the items in the potato's health to the front and turns to the back when the
+	# player reaches that part of the tutorial, so they can understand how the enemy's
+	# health works.
+	elif counter == potato_intro:
 		bars = true
 		for items in canvas.get_children():
 			if items.is_in_group("turns"):
 				items.z_index = -second_layer
 				
-		light_turns.hide()
-		light_potato.show()
-		light_options.hide()
-		block.position = block_position_2
-		text.position = text_position_2
-		sub_text.position = sub_text_position_2
 		potato_bar.z_index = top_layer
 		potato_hp.z_index = top_layer
 		potato_health.z_index = top_layer
 		potato_ui.z_index = second_layer
-	elif counter == potato_intro and clicked == false:
+		
+		light_turns.hide()
+		light_potato.show()
+		light_options.hide()
+		
+		# Moves the text box to the top of the screen, so it doesn't block the enemy's
+		# health during the introduction on the enemy's health.
+		block.position = block_position_2
+		text.position = text_position_2
+		sub_text.position = sub_text_position_2
+	# Bring the items in the player's action to the front and enemy's health to the back
+	# when the player reaches that part of the tutorial, so they can understand how their
+	# actions work.
+	elif counter == action_intro and clicked == false:
 		light_potato.hide()
 		light_options.show()
 		potato_bar.z_index = 1
@@ -329,21 +341,29 @@ func _process(delta: float) -> void:
 		spell.z_index = second_layer
 		potion.z_index = second_layer
 		options = true
+	# Allow the player to click on the spell action when they reach that stage of the
+	# tutorial, so that the player understands what actions they could take.
 	elif counter == spell_intro:
 		spell.mouse_filter = mouse_on
-		
-		if clicked == true:
+		# When the player clicks on the wand/ action, load the dialogue to explain what
+		# the actions do, so the player understands what to do in the future.
+		if clicked == true and Global.pause == false:
 			basic_spell_b.mouse_filter = mouse_off
 			text.text = intro[click_dialogue]
 			counter += 1
+	# Allow the player to cast the spell after they've gone through the tutorial
+	# explaining what it does.
 	elif counter == cast_intro:
-			basic_spell_b.mouse_filter = mouse_on
+		basic_spell_b.mouse_filter = mouse_on
 	
+	# If the player has not completed the intro, start the tutorial and let them skip
+	# through dialogue by cliking space.
 	if Global.intro == false and Global.pause == false and bars == false and counter < start and Input.is_action_just_pressed("next"):
 		counter += 1
 		text.text = intro[counter]
 		light_bar.show()
-		
+		# The first thing that gets covered in the tutorial is the player's stats so
+		# bring that to the front of the screen.
 		for items in canvas.get_children():
 			if items.is_in_group("stats"):
 				items.z_index = 1
