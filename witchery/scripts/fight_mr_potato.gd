@@ -1,68 +1,5 @@
 extends Node2D
 
-@export_group("Screen Elements")
-@export var player: AnimatedSprite2D
-@export var health_ui: ProgressBar
-@export var sp_ui: ProgressBar
-@export var potato_ui: ProgressBar
-@export var health: Label
-@export var sp: Label
-@export var potato_hp: Label
-@export var potato_health: Label
-@export var potato_bar: Sprite2D
-
-@export_group("Turn Tracker")
-@export var first_turn_p: Panel
-@export var first_turn_w: Sprite2D
-@export var second_turn_p: Panel
-@export var second_turn_w: Sprite2D
-@export var third_turn_p: Panel
-@export var third_turn_w: Sprite2D
-
-@export var timer: Timer
-@export var mistake_timer: Timer
-@export var mistake: Label
-
-@export var spell: Button
-@export var spell_menu: PanelContainer
-@export var spell_exit: Button
-@export var potion: Button
-
-@export var pause: ColorRect
-@export var pause_button: Button
-
-@export var canvas: CanvasLayer
-@export var dark: Polygon2D
-@export var light_bar: Polygon2D
-@export var light_potato: Polygon2D
-@export var light_options: Polygon2D
-@export var light_turns: Polygon2D
-@export var block: NinePatchRect
-@export var text: Label
-@export var sub_text: Label
-@export var intro_timer: Timer
-
-@export var basic_spell_b: Button
-@export var super_cast_b: Button
-@export var look_over_there_b: Button
-
-@export var potion_menu: PanelContainer
-@export var potion_exit: Button
-
-@export var soda_b: Button
-@export var soda_value:Label
-@export var just_water_b: Button
-@export var just_water_value:Label
-
-@export var fireball: AnimatedSprite2D
-@export var spell_time: Timer
-@export var fireball_animation: AnimationPlayer
-
-@export var potato: AnimatedSprite2D
-@export var potato_animation: AnimationPlayer
-@export var potato_idle_timer: Timer
-@export var potato_heal_timer: Timer
-
 var bars: bool = false
 var options: bool = false
 var turns: bool = false
@@ -127,7 +64,6 @@ did 1 damage to the enemy and took away",
 enemies!"
 ]
 
-
 var block_position_1 = Vector2(171.0,418.0)
 var text_position_1 = Vector2(208.0,447.0)
 var sub_text_position_1 = Vector2(456.0, 554.0)
@@ -163,48 +99,125 @@ var after_cast_intro: int = 15
 var end_intro: int = 18
 var click_dialogue: int = 11
 
+@export_group("Screen Elements")
+@export var player: AnimatedSprite2D
+@export var health_ui: ProgressBar
+@export var sp_ui: ProgressBar
+@export var potato_ui: ProgressBar
+@export var health: Label
+@export var sp: Label
+@export var potato_hp: Label
+@export var potato_health: Label
+@export var potato_bar: Sprite2D
+
+@export_group("Turn Tracker")
+@export var first_turn_p: Panel
+@export var first_turn_w: Sprite2D
+@export var second_turn_p: Panel
+@export var second_turn_w: Sprite2D
+@export var third_turn_p: Panel
+@export var third_turn_w: Sprite2D
+
+@export var timer: Timer
+@export var mistake_timer: Timer
+@export var mistake: Label
+
+@export var spell: Button
+@export var spell_menu: PanelContainer
+@export var spell_exit: Button
+@export var potion: Button
+
+@export var pause: ColorRect
+@export var pause_button: Button
+
+@export var canvas: CanvasLayer
+@export var dark: Polygon2D
+@export var light_bar: Polygon2D
+@export var light_potato: Polygon2D
+@export var light_options: Polygon2D
+@export var light_turns: Polygon2D
+@export var block: NinePatchRect
+@export var text: Label
+@export var sub_text: Label
+@export var intro_timer: Timer
+
+@export var basic_spell_b: Button
+@export var super_cast_b: Button
+@export var look_over_there_b: Button
+
+@export var potion_menu: PanelContainer
+@export var potion_exit: Button
+
+@export var soda_b: Button
+@export var soda_value:Label
+@export var just_water_b: Button
+@export var just_water_value:Label
+
+@export var fireball: AnimatedSprite2D
+@export var spell_time: Timer
+@export var fireball_animation: AnimationPlayer
+
+@export var potato: AnimatedSprite2D
+@export var potato_animation: AnimationPlayer
+@export var potato_idle_timer: Timer
+@export var potato_heal_timer: Timer
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Global.potato_fight = true
+	# Sets both the player and potato animations to idle as they are not currenntly in
+	# action.
 	potato.animation = "idle"
-	fireball.hide()
 	player.animation = "idle"
+	
+	fireball.hide()
 	potion_menu.hide()
 	spell_menu.hide()
 	potion_exit.hide()
 	spell_exit.hide()
-	Global.potato_fight = true
+	pause.hide()
+		
+	# Sets the player's health bar to the player's current health so that the player is
+	# always aware of their health to decide their next action.
 	health_ui.max_value = Global.player_base_health
 	health_ui.value = Global.player_health
 	health.text = str(Global.player_health)
 	
+	# Sets the player's health bar to the player's current health so that the player is
+	# always aware of their health to decide their next action.
 	sp_ui.max_value = Global.player_base_special
 	sp_ui.value = Global.player_special
 	sp.text = str(Global.player_special)
 	
+	# Sets the enemy's health bar so that the player is always aware of its health to 
+	# decide their next action.
 	potato_ui.max_value = Global.potato_health
 	potato_ui.value = Global.potato_health
 	potato_health.text = str(Global.potato_health)
 	
-	pause.hide()
-	
+	# If the player has not completed the fighting introduction yet, load in the items
+	# used to introduce the player to the fighting mechanics.
 	if Global.intro == false:
 		for items in canvas.get_children():
 			if items.is_in_group("intro"):
 				items.show()
-				
+		# Since the player's stats is the first thing getting introduced, bring it to
+		# the front layer, above the shaded background to make it stand out.
 		for items in canvas.get_children():
 			if items.is_in_group("stats"):
 				items.z_index -= second_layer
 		text.text = intro[0]
-	
+		text.position = text_position_1
+		sub_text.position = sub_text_position_1
+		# During this time, prevent the players from interacting with any of the attack/
+		# potion buttons as it may distract them from the tutorial.
 		spell.mouse_filter = mouse_off
 		potion.mouse_filter = mouse_off
 		block.position = block_position_1
-		text.position = text_position_1
-		sub_text.position = sub_text_position_1
-		
 	else:
+		# If the player has already completed the tutorial, then hide the items required
+		# for the introduction and let them fight the enemy like normal.
 		for items in canvas.get_children():
 			if items.is_in_group("intro"):
 				items.hide()
@@ -212,21 +225,31 @@ func _ready() -> void:
 				
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	# Sets the values of the potion the player has in their inventory to the ones they
+	# can use in battle.
 	soda_value.text = str(Global.inventory[purple_potion])
 	just_water_value.text = str(Global.inventory[blue_potion])
 	
 	if potato_idle == true:
 		potato.play("idle")
 	
+	# If the player does not have the pause menu opened them show all the UI elements.
 	if Global.pause == false:
 		pause_button.show()
 		spell.show()
 		potion.show()
 	
-	if Global.player_health <=0:
+	# If the player gets defeated by the enemy, load the main game and spawn them next
+	# to the cauldron to refill their health and special points.
+	if Global.player_health <= 0:
 		Global.potato_fight = false
 		Global.respawn = true
 		get_tree().call_deferred("change_scene_to_file", "res://scenes/level.tscn")
+	# If the player defeats the enemy and is currently doing their quest, add one more
+	# enemy onto their quest counter as well as give the player a randomise sprout
+	# reward from 1-3 when respawning them back into the main level. Also set the enemy
+	# health max to the maximum for the next battle as well as changing the status of
+	# the enemy fought to dead, so that it can respawn later on.
 	elif Global.potato_health <= 0 and Global.quest_talk_finish == true:
 		Global.potato_fight = false
 		Global.money += reward_value
@@ -239,6 +262,10 @@ func _process(delta: float) -> void:
 		Global.battle_won = true
 		get_tree().call_deferred("change_scene_to_file", "res://scenes/level.tscn")
 	elif Global.potato_health <= 0:
+		# If the player defeats the enemy give the player a randomise sprout reward from
+		# 1-3 when respawning them back into the main level. Also set the enemy health
+		# max to the maximum for the next battle as well as changing the status of the
+		# enemy fought to dead, so that it can respawn later on.
 		Global.potato_fight = false
 		Global.money += reward_value
 		Global.potato_health = potato_health_max
@@ -248,17 +275,22 @@ func _process(delta: float) -> void:
 		Global.sprout += random_sprout
 		Global.battle_won = true
 		get_tree().call_deferred("change_scene_to_file", "res://scenes/level.tscn")
-		
+	
+	# If the player's health every goes over their maximum base health, bring it back
+	# down to the maximum.
 	if Global.player_health > Global.player_base_health:
 		Global.player_health = Global.player_base_health
 		health_ui.value = Global.player_health
 		health.text = str(Global.player_health)	
-	
+		
+	# If the player's special points every goes over their maximum base health, bring it
+	# back down to the maximum.
 	if Global.player_special > Global.player_base_special:
 		Global.player_special = Global.player_base_special
 		sp_ui.value = Global.player_special
 		sp.text = str(Global.player_special)	
-		
+	
+	# When the tutorial starts, 
 	if counter == start_intro:
 		light_bar.hide()
 		turns = true
@@ -370,8 +402,7 @@ func _attack() -> void:
 		spell_menu.show()
 		spell_opened = true
 		wand_1 = true
-		
-		
+
 		if Global.shop[super_cast] == status_brought:
 			super_cast_b.show()
 		else:
