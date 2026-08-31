@@ -3,7 +3,6 @@ extends Node2D
 var bars: bool = false
 var options: bool = false
 var turns: bool = false
-var wand_1:bool = false
 var clicked: bool = false
 
 var spell_opened: bool = false
@@ -99,6 +98,9 @@ var cast_intro: int = 14
 var after_cast_intro: int = 15
 var end_intro: int = 18
 var click_dialogue: int = 11
+
+var basic_casted: bool = false
+var super_casted: bool = false
 
 @export_group("Screen Elements")
 @export var player: AnimatedSprite2D
@@ -289,7 +291,7 @@ func _process(delta: float) -> void:
 	if Global.player_special > Global.player_base_special:
 		Global.player_special = Global.player_base_special
 		sp_ui.value = Global.player_special
-		sp.text = str(Global.player_special)	
+		sp.text = str(Global.player_special)
 	
 	# Bring the items in the turns to the front and items in the player's stats to the 
 	# back when the player reaches that part of the tutorial, so they can understand how 
@@ -367,49 +369,52 @@ func _process(delta: float) -> void:
 		for items in canvas.get_children():
 			if items.is_in_group("stats"):
 				items.z_index = 1
-				
+	# If the player has not completed the tutorial yet and is up to the turns part,
+	# highlight the area underneath the turns section to make it stand out to the player.
 	elif Global.intro == false and Global.pause == false and counter >= start and counter <turns_intro and Input.is_action_just_pressed("next"):
 		counter += 1
 		text.text = intro[counter]
 		light_bar.hide()
-	
+	# If the player has not completed the tutorial yet and is up to the action part of
+	# the introduction, then let them skip through it by pressing space.
 	elif Global.intro == false and Global.pause == false and counter >= turns_intro and options == false and Input.is_action_just_pressed("next"):
 		counter += 1
 		text.text = intro[counter]
-				
+	# If the player has not completed the tutorial yet and is up to the enemy part of
+	# the introduction, then let them skip through it by pressing space.
 	elif Global.intro == false and Global.pause == false and counter >= potato_intro and counter < spell_intro and options == true and Input.is_action_just_pressed("next"):
 		counter += 1
 		text.text = intro[counter]
-		
+	# If the player has not completed the tutorial yet and is up to the spell part of
+	# the introduction, then let them skip through it by pressing space.
 	elif Global.intro == false and Global.pause == false and counter >= spell_intro and counter < cast_intro and clicked == true and Input.is_action_just_pressed("next"):
 		counter += 1
 		text.text = intro[counter]
-		
+	# If the player has not completed the tutorial yet and is up to the cast part of the
+	# introduction, then let them skip through it by pressing space.
 	elif Global.pause == false and counter >= after_cast_intro and counter < end_intro and Input.is_action_just_pressed("next"):
 		counter += 1
 		text.text = intro[counter]
-		
+	# If the player has not completed the tutorial yet and is at the end of the end of 
+	# the introduction, hide the things needed for the introduction and let them play
+	# the game normally.
 	elif counter == end_intro and Input.is_action_just_pressed("next"):
 		for items in canvas.get_children():
 			if items.is_in_group("intro"):
 				items.hide()
 
 
+# Runs when the player clicks on the wand button.
 func _attack() -> void:
-	if Global.intro == false:
-		super_cast_b.hide()
-		look_over_there_b.hide()
-		spell_menu.show()
-		spell_exit.show()
-		spell_opened = true
-		light_options.hide()
-		clicked = true
-	else:
-		spell_exit.show()
-		spell_menu.show()
-		spell_opened = true
-		wand_1 = true
-		
+	# Displays the spell menu for the player to choose what they want to cast on the
+	# enemy.
+	spell_menu.show()
+	spell_exit.show()
+	spell_opened = true
+	clicked = true
+	
+	# If the potion menu was opened before the player opened the spell menu, hide the
+	# potion menu when the player opens the spell menu to minimise clutter and overlap.
 	if potion_opened == true:
 		potion_menu.hide()
 		potion_exit.hide()
@@ -417,51 +422,56 @@ func _attack() -> void:
 		spell_menu.show()
 		spell_opened = true
 		potion_opened = false
-	else:
-		spell_exit.show()
-		spell_menu.show()
-		spell_opened = true
-		wand_1 = true
 
-		if Global.shop[super_cast] == status_brought:
-			super_cast_b.show()
-		else:
-			super_cast_b.hide()
-		
-		if Global.shop[look_over_there] == status_brought:
-			look_over_there_b.show()
-		else:
+	# Checks what actions the player has brought from the shop and display it, so that
+	# the player knows that its a viable action to take.
+	if Global.shop[super_cast] == status_brought:
+		super_cast_b.show()
+	else:
+		super_cast_b.hide()
+	
+	if Global.shop[look_over_there] == status_brought:
+		look_over_there_b.show()
+	else:
 			look_over_there_b.hide()
 
+# Runs when the player clicks on the potion menu.
 func _potion() -> void:
+	# Displays the potion menu for the player to choose whether or not they want to use
+	# a potion or not.
+	potion_opened = true
+	potion_menu.show()
+	potion_exit.show()
 	
+	# If the spell menu was already opened and the player opens the potion menu, hide
+	# the spell menu and show the players the potion menu instead to minimise clutter.
 	if spell_opened == true:
 		spell_menu.hide()
 		spell_exit.hide()
 		spell_opened = false
-		potion_opened = true
-		potion_menu.show()
-		potion_exit.show()
-	else:
-		potion_opened = true
-		potion_menu.show()
-		potion_exit.show()
-	
+		
+	# If the player does not own any potions, then hide the option to select one to use.
 	if Global.inventory[purple_potion] == 0:
 		soda_b.hide()
+		
 	if Global.inventory[blue_potion] == 0:
 		just_water_b.hide()
 
-
+# Runs when the completes a turn.
 func _turn() -> void:
+	# When the player completes their first turn, hide one of the symbols indicating the
+	# player's amount of turns, so they know they have two turns left.
 	if turns_left == second_turn:
 		first_turn_p.visible = false 
 		first_turn_w.visible = false 
-		
+	# When the player completes their second turn, hide another symbols indicating the
+	# player's amount of turns, so they know they have one turns left.
 	elif turns_left == 1:
 		second_turn_p.visible = false 
 		second_turn_w.visible = false 
-	
+	# When the player completes their third turn, hide the last symbol indicating the
+	# player's amount of turns, so they know they have no turns left and it's the
+	# enemy's turn.
 	elif turns_left == 0:
 		third_turn_p.visible = false 
 		third_turn_w.visible = false 
@@ -469,16 +479,19 @@ func _turn() -> void:
 		potion.mouse_filter = mouse_off
 		timer.start()
 		
+
 func _potato_attack() -> void:
-	if turns_left == 0:
-		potato_idle = false
-		potato_animation.play("attack")
-		Global.player_health -= 1
-		health_ui.value = Global.player_health
-		health.text = str(Global.player_health)
+	# Allow the enemy to attack the player after they've completed their three turns and
+	# take 1 health from the player.
+	potato_idle = false
+	potato_animation.play("attack")
+	Global.player_health -= 1
+	health_ui.value = Global.player_health
+	health.text = str(Global.player_health)
 
 
 func _potato_heal() -> void:
+	# Allow the enemy to heal from player's attacks.
 	potato_idle = false
 	potato.play("heal")
 	potato_heal_timer.start()
@@ -488,22 +501,29 @@ func _potato_heal() -> void:
 
 
 func _potato_turn() -> void:
+	# When it's the enemy's turn to attack, alternate between two moves, attacking the
+	# player and healing itself.
 	if potato_turns == 1 and potato_distract == false:
 		_potato_attack()
 		timer.stop()
 		potato_turns -= 1
-		
 	elif potato_turns != 1 and potato_distract == false:
 		_potato_heal()
 		timer.stop()
 		potato_turns += 1
-		
+	# If the player however, has casted a spell to distract the enemy, then skip its
+	# turn.
 	else:
 		timer.stop()
+		spell.mouse_filter = mouse_on
+		potion.mouse_filter = mouse_on
 	
 	_turn_reset()
 	
+	
 func _turn_reset() -> void:
+	# Resets the amount of turns the player gets, bringing it back up to three so that
+	# the player can start a new round.
 	turns_left = turns_value
 	first_turn_p.visible = true 
 	first_turn_w.visible = true 
@@ -512,11 +532,16 @@ func _turn_reset() -> void:
 	third_turn_p.visible = true 
 	third_turn_w.visible = true 
 
+
 func _mistake_timeout() -> void:
+	# Resets the mistake label and brings it back to an empty string.
 	mistake_timer.stop()
 	mistake.text = str(mistake_reset)
 
+
 func _pause() -> void:
+	# When the player clicks on the pause button, pause the current fight scene and show
+	# the player the pause menu.
 	pause.show()
 	Global.pause = true
 	pause_button.hide()
@@ -525,7 +550,16 @@ func _pause() -> void:
 
 
 func _super_cast() -> void:
-	if turns_left >= 1 and Global.player_special > 0:
+	# If the player does not have enough special points to cast the spell then show the
+	# mistake label telling them that they do not have enough special points to cast
+	# this spell.
+	if Global.player_special < 1:
+		mistake.text = str(mistake_no_sp)
+		mistake_timer.start()
+	# However, if the player does have enough special points then let them cast the
+	# spell and take away from their special points.
+	else:
+		super_casted = true
 		spell.mouse_filter = mouse_off
 		potion.mouse_filter = mouse_off
 		player.play("casting")
@@ -535,27 +569,19 @@ func _super_cast() -> void:
 		spell_time.start()
 		turns_left -= 1
 		_turn()
-		Global.potato_health -= super_cast_value
 		Global.player_special -= 1
-		potato_ui.value = Global.potato_health
-		potato_health.text = str(Global.potato_health)
 		sp.text = str(Global.player_special)
 		sp_ui.value = Global.player_special
 		spell_opened = false
 		spell_menu.hide()
 		spell_exit.hide()
-		
-	elif Global.player_special < super_cast_v and turns_left >= 1:
-		mistake.text = str(mistake_no_sp)
-		mistake_timer.start()
-		
-	else:
-		mistake.text = str(mistake_no_turn)
-		mistake_timer.start()
 
 
 func _basic_spell() -> void:
-	if Global.intro == false and turns_left >= 1:
+	# If the player has not not yet completed the introduction and fires a basic spell
+	# at the enemy, trigger the rest of the introduction after the cast.
+	if Global.intro == false:
+		basic_casted = true
 		spell.mouse_filter = mouse_off
 		potion.mouse_filter = mouse_off
 		player.play("casting")
@@ -565,21 +591,22 @@ func _basic_spell() -> void:
 		spell_time.start()
 		turns_left -= 1
 		_turn()
-		Global.potato_health -= 1
-		potato_ui.value = Global.potato_health
-		potato_health.text = str(Global.potato_health)
 		spell_opened = false
 		spell_menu.hide()
 		spell_exit.hide()
 		light_options.hide()
 		intro_timer.start()
-		
+		# Hide the items from the introduction when the player is casting a spell at the 
+		# enemy, so that the player knows what is going on.
 		for items in canvas.get_children():
 			if items.is_in_group("intro"):
 				items.hide()
 			elif items.is_in_group("turns"):
 				items.z_index = 0
-	elif turns_left >= 1 and Global.intro == true:
+	# If the player has already completed the introduction, then let the player cast the
+	# spell like normal by taking away one of their turns and special points.
+	elif Global.intro == true:
+		basic_casted = true
 		spell.mouse_filter = mouse_off
 		potion.mouse_filter = mouse_off
 		player.play("casting")
@@ -589,18 +616,13 @@ func _basic_spell() -> void:
 		spell_time.start()
 		turns_left -= 1
 		_turn()
-		Global.potato_health -= 1
-		potato_ui.value = Global.potato_health
-		potato_health.text = str(Global.potato_health)
 		spell_opened = false
 		spell_menu.hide()
 		spell_exit.hide()
-	else:
-		mistake.text = str(mistake_no_turn)
-		mistake_timer.start()
 
 
 func _spell_menu_exit() -> void:
+	# When the player closes the spell menu, hide it.
 	spell_opened = false
 	spell_menu.hide()
 	spell_exit.hide()
@@ -703,6 +725,17 @@ func _fireball_finish(anim_name: StringName) -> void:
 	if turns_left > 0:
 		spell.mouse_filter = mouse_on
 		potion.mouse_filter = mouse_on
+	
+	if basic_casted == true:
+		Global.potato_health -= 1
+		potato_ui.value = Global.potato_health
+		potato_health.text = str(Global.potato_health)
+		basic_casted = false
+	elif super_casted == true:
+		Global.potato_health -= super_cast_value
+		potato_ui.value = Global.potato_health
+		potato_health.text = str(Global.potato_health)
+		super_casted = false
 
 
 func _potato_finish(anim_name: StringName) -> void:

@@ -126,6 +126,11 @@ bg_color = Color(0.79607844, 0.6509804, 0.49019608, 1)
 bg_color = Color(0.79607844, 0.6509804, 0.49019608, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lc4cd"]
+bg_color = Color(0.7370044, 0.5897973, 0.42530978, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [node name="ExampleBalloon" type="CanvasLayer" unique_id=1434168376]
 layer = 100

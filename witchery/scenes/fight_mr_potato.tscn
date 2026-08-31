@@ -963,7 +963,6 @@ region_enabled = true
 region_rect = Rect2(3, 0, 26, 26)
 
 [node name="Frame0001" type="Sprite2D" parent="CanvasLayer" unique_id=1442411701 groups=["turns"]]
-z_index = 10
 position = Vector2(557, 54)
 scale = Vector2(2, 2)
 texture = ExtResource("4_wgrxm")
@@ -971,7 +970,6 @@ region_enabled = true
 region_rect = Rect2(3, 0, 26, 26)
 
 [node name="Frame0002" type="Sprite2D" parent="CanvasLayer" unique_id=1818029171 groups=["turns"]]
-z_index = 10
 position = Vector2(669, 54)
 scale = Vector2(2, 2)
 texture = ExtResource("4_wgrxm")
