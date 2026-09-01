@@ -271,7 +271,7 @@ position = Vector2(92, 216)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_032fp")
 
-[node name="Label5" type="Label" parent="." unique_id=151650190]
+[node name="Label5" type="Label" parent="." unique_id=151650190 groups=["shop"]]
 visible = false
 z_index = 1
 layout_mode = 0

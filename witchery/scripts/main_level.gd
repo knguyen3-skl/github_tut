@@ -45,11 +45,9 @@ func _ready() -> void:
 	player_health.max_value = Global.player_base_health
 	player_health.value = Global.player_health
 	health.text = str(Global.player_health)
-	
 	player_special.max_value = Global.player_base_special
 	player_special.value = Global.player_special
 	special.text = str(Global.player_special)
-	
 	# Sets the label for the amount of sprouts and money to the amount owned.
 	sprout.text = str(Global.sprout)
 	money.text = str(Global.money)
@@ -90,7 +88,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	sprout.text = str(Global.sprout)
 	money.text = str(Global.money)
-	
 	# If the player is involved in dialogue with an NPC, hide all the UI elements so
 	# that the player does not get ditracted.
 	if Global.talking == true:
@@ -145,7 +142,6 @@ func _process(delta: float) -> void:
 		quest_complete_repeat = true
 		DialogueManager.show_dialogue_balloon(dialogue, "snipet")
 		DialogueManager.dialogue_ended.connect(_quest_complete)
-		
 	# If the enemy is alive, show it as well as turn on it's area monitoring and
 	# collision.
 	for enemies in get_tree().get_nodes_in_group("enemy"):

@@ -34,7 +34,7 @@ Mr Pencil: Come back later
 Mr Pencil: Wow this is amazing, thank you so much
 Mr Pencil: Here is 100 coins as a reward, make sure to buy something from the market
 
-- Can you tell me what the cauldron does?
+- What the cauldron do?
 	Mr Pencil: Ah yes the cauldron
 	Mr Pencil: If you stand within a specific area around the cauldron, you will regain all your health and special points
 	Mr Pencil: You can also interact with it to brew potions that can assist you in battle
@@ -43,8 +43,9 @@ Mr Pencil: Here is 100 coins as a reward, make sure to buy something from the ma
 - This is a lot of money are you sure?
 	Mr Pencil: No please accept it, thanks to you I can potentially return home now
 
+
 - Is there anything else I can help with?
-Mr Pencil: Not at the moment
+	Mr Pencil: Not at the moment
 Mr Pencil: I'm going to be putting these energy stones to get use now
 Mr Pencil: Come back later
 => END

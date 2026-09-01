@@ -775,7 +775,7 @@ func _potato_finish(_attack: StringName) -> void:
 	potion.mouse_filter = mouse_on
 
 
-# Runs after the has finished it's attack and gets back up.
+# Runs after the timer has finished it's attack and gets back up.
 func _potato_idle() -> void:
 	# Brings the enemy back to the idle animation.
 	potato_idle = true

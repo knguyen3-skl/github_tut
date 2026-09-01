@@ -58,6 +58,7 @@ func _market_entered(area: Area2D) -> void:
 func _market_exited(area: Area2D) -> void:
 	# If the player is not within the market area, hide the shop.
 	if area.is_in_group("player"):
+		Global.market = false
 		shop_opened = false
 		Global.shop_speech = false
 		e.hide()
