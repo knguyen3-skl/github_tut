@@ -31,25 +31,29 @@ func _process(delta: float) -> void:
 				items.hide()
 			elif items.is_in_group("purple_options"):
 				items.show()
-		
 
-# If the player is in the area2D, set the player to near and show the interaction
+
+# Runs when the player enters the cauldron's area 2D.
 func _on_area_2d_entered(area: Area2D) -> void:
+	# If the player is in the area2D, set the player to near and show the interaction.
 	if area.is_in_group("player"):
 		e.show()
 		player_near = true
 
 
-# If the player exits the area2D, set the player to not near and hide the interaction
+# Runs when the player exits the cauldron's area 2D.
 func _on_area_2d_exited(area: Area2D) -> void:
+	# If the player exits the area2D, set the player to not near and hide the
+	# interaction.
 	if area.is_in_group("player"):
 		player_near = false
 		e.hide()
 		brewing.hide()
 
 
+# Runs when the player enter's the cauldron's second area 2D.
 func _healing(area: Area2D) -> void:
-	# Heals the player to their maximum base health when the player is within its area2D
+	# Heals the player to their maximum base health when the player is within its area2D.
 	if area.is_in_group("player"):
 		Global.player_health = Global.player_base_health
 		player_health.value = Global.player_health

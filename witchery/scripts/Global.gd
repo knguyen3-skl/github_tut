@@ -31,7 +31,7 @@ var shop_speech: bool = false
 
 var inventory = {
 	"purple_potion": 1,
-	"blue_potion": 0,
+	"blue_potion": 1,
 }
 
 var shop = {

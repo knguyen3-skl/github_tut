@@ -195,46 +195,52 @@ func _process(delta: float) -> void:
 		Global.battle_won = false
 	
 
-# Acts as a respawn timer, and sets an enemy status to alive so that it can respawn
-# again for the player to fight and defeat.
+# Runs after 60 seconds when the enemy gets defeated.
 func _respawn_enemy(enemy_id: StringName) -> void:
+	# Acts as a respawn timer, and sets an enemy status to alive so that it can respawn
+	# again for the player to fight and defeat.
 	Global.enemy_dict[enemy_id] = status_alive
 	print(Global.enemy_dict)
 
 
-# Hides the rewards announcement after a period of time so that the player can be
-# informed about their rewards as well as play the game normally.
+# Runs after the player finishes a battle.
 func _rewards() -> void:
+	# Hides the rewards announcement after a period of time so that the player can be
+	# informed about their rewards as well as play the game normally.
 	announcement.hide()
 
 
-# Show the quest pop up after the player has talked to the NPC for the first time and
-# set the talking status to false as well as quest talk to true.
+# Runs after the player has finished the first section of dialogue.
 func _quest(_resource):
+	# Show the quest pop up after the player has talked to the NPC for the first time and
+	# set the talking status to false as well as quest talk to true.
 	quest.show()
 	Global.talking = false
 	Global.quest_talk_finish = true
 	
 
-# After the player has talked to the NPC whilst have not done their quest yet, set
-# talking status and quest repeat to false so that the NPC can remind the player of
-# their objective again if they still haven't completed it.
+# Runs when the player is talking to the NPC, but has not completed the quest yet.
 func _quest_repeat(_resource):
+	# After the player has talked to the NPC whilst have not done their quest yet, set
+	# talking status and quest repeat to false so that the NPC can remind the player of
+	# their objective again if they still haven't completed it.
 	Global.talking = false
 	quest_repeat = false
 
 
-# When the player has talked to the NPC after completing the quest, give thier reward
-# money as well as setting the talking status to false and complete dialogue to true.
+# Runs when the player is talking to the NPC after completing the quest.
 func _quest_finished(_resource):
+	# When the player has talked to the NPC after completing the quest, give thier reward
+	# money as well as setting the talking status to false and complete dialogue to true.
 	Global.talking = false
 	complete_dialogue = true
 	Global.money += reward_money
 
 
-# Set talking and quest complete repeat to false when the player talks to the PC after
-# completing the quest so that it keeps loading the same dialogue telling the player
-# that there's nothing left to do.
+# Runs after the player has completed the quest and talks to the NPC again.
 func _quest_complete(_resource):
+	# Set talking and quest complete repeat to false when the player talks to the PC after
+	# completing the quest so that it keeps loading the same dialogue telling the player
+	# that there's nothing left to do.
 	Global.talking = false
 	quest_complete_repeat = false

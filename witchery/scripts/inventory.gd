@@ -14,6 +14,7 @@ var bluepotion: String = "blue_potion"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# When the game starts, hide the inventory as the player has not opened it yet.
 	hide()
 	purple_potion.text = str(Global.inventory[purplepotion])
 	blue_potion.text = str(Global.inventory[bluepotion])
@@ -21,13 +22,17 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	# If the player has the pause menu opened, then hide the inventory to minimise
+	# clutter and allows the player to focus on the pause menu.
 	if Global.pause == true:
 		hide()
+		Global.inventory_status = false
 		
 	purple_potion.text = str(Global.inventory[purplepotion])
 	blue_potion.text = str(Global.inventory[bluepotion])
 
 
+# Runs when the player opens the inventory.
 func _on_inventory_pressed() -> void:
 	# When the player clicks the inventory button, open the inventory and set their
 	# camera movemnt to non-drag so it doesn't look like their lagging.
@@ -52,6 +57,7 @@ func _on_inventory_pressed() -> void:
 		blue.hide()
 
 
+# Runs when the player clicks off the inventory.
 func _exit_inventory() -> void:
 	# When the player closes their inventory, set the camera back to drag.
 	hide()

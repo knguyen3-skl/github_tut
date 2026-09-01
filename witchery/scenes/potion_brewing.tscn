@@ -215,7 +215,7 @@ position = Vector2(495, 234)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("6_c8ira")
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="broke_timer"]
 [connection signal="pressed" from="Button" to="." method="_exit_brewing"]
 [connection signal="pressed" from="TextureButton" to="." method="_purple_brewed"]
 [connection signal="pressed" from="TextureButton2" to="." method="_blue_brewed"]

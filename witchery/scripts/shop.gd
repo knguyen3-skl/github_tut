@@ -63,15 +63,16 @@ func _process(delta: float) -> void:
 	# out every item.
 	if Global.shop[lookoverthere] == brought and Global.shop[supercast] == brought:
 		status_empty = true
-		
 
 
+# Runs when the player clicks off the shop.
 func _exit() -> void:
 	Global.market = false
 	market.shop_opened = false
 	hide()
 
 
+# Runs when the player clicks purchase on super cast.
 func _buy_super_cast() -> void:
 	# Subtracts from the player's money when super cast is brought.
 	if Global.money >= super_cast_price:
@@ -83,10 +84,7 @@ func _buy_super_cast() -> void:
 		broke.show()
 
 
-func _on_timer_timeout() -> void:
-	broke.hide()
-
-
+# Runs when the player clicks purchase on look over there.
 func _buy_distract() -> void:
 	# Subtracts from the player's money when look over there is brought.
 	if Global.money >= distract_price:
@@ -96,3 +94,8 @@ func _buy_distract() -> void:
 	else:
 		timer.start()
 		broke.show()
+
+
+# Runs after a period of time when the player didn't have enough money.
+func _broke_timer() -> void:
+	broke.hide()

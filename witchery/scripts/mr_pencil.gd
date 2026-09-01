@@ -16,15 +16,15 @@ func _process(delta: float) -> void:
 	if player_near == true and Input.is_physical_key_pressed(KEY_E):
 		Global.talking = true
 
-
-func _on_area_2d_area_entered(area: Area2D) -> void:
+# Runs when the player enters the Area 2D.
+func _area_entered(area: Area2D) -> void:
 	# Show the interact button if the player is near the NPC.
 	e.show()
 	player_near = true
 
 
-func _on_area_2d_area_exited(area: Area2D) -> void:
+# Runs when the player exits the Area 2D.
+func _area_exited(area: Area2D) -> void:
 	# Hide the interact button if the player is far away from the NPC.
 	e.hide()
 	player_near = false
-	

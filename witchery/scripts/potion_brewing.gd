@@ -2,6 +2,7 @@ extends ColorRect
 
 var purple_potion: String = "purple_potion"
 var blue_potion: String = "blue_potion"
+var blue_value: int = 2
 
 @export var inventory: ColorRect
 @export var timer: Timer
@@ -28,6 +29,7 @@ func _process(delta: float) -> void:
 		hide()
 
 
+# Runs when the player brews the purple potion.
 func _purple_brewed() -> void:
 	# Adds a purple potion to the player's inventory and informs the player they have
 	# successfully brewwed the potion in the form as an announcement.
@@ -50,15 +52,13 @@ func _purple_brewed() -> void:
 		timer.start()
 
 
+# Runs when the player exits the brewing menu.
 func _exit_brewing() -> void:
 	Global.potion_brewing = false
 	hide()
 
 
-func _on_timer_timeout() -> void:
-	no_money.hide()
-
-
+# Runs when the player clicks the right arrow.
 func _purple_to_blue() -> void:
 	# If the player clicks the next button, show the options for the blue potion
 	for items in get_children():
@@ -68,11 +68,12 @@ func _purple_to_blue() -> void:
 			items.show()
 
 
+# Runs when the player brews the blew potion.
 func _blue_brewed() -> void:
 	# Adds a blue potion to the player's inventory and informs the player they have
 	# successfully brewwed the potion in the form as an announcement.
-	if Global.sprout >= 2:
-		Global.sprout -= 2
+	if Global.sprout >= blue_value:
+		Global.sprout -= blue_value
 		sprout.text = str(Global.sprout)
 		Global.inventory[blue_potion] += 1
 		hide()
@@ -88,6 +89,7 @@ func _blue_brewed() -> void:
 		timer.start()
 
 
+# Runs when the player clicks on the left arrow.
 func _blue_to_pruple() -> void:
 	# If the player clicks the backwards button, show the option for the purple potion
 	# as that is the option prior to the blue potion.
@@ -98,5 +100,11 @@ func _blue_to_pruple() -> void:
 			items.hide()
 
 
+# Runs after a period of time after the brewing message was shown. 
 func _msg_done() -> void:
 	announcement.hide()
+
+
+# Runs after a period of time after the no money message was shown.
+func broke_timer() -> void:
+	no_money.hide()

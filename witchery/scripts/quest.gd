@@ -20,6 +20,7 @@ func _process(delta: float) -> void:
 	potato_defeat.text = str(Global.quest_1_value)
 
 
+# Runs when the player clicks to hide the menu.
 func _hide_quest() -> void:
 	# Hides the quest menu if the player clicks to hides it.
 	if on_screen == true:

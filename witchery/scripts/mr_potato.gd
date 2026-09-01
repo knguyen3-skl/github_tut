@@ -12,6 +12,7 @@ var stop = Vector2(0.0, 0.0)
 @export var animation: AnimatedSprite2D
 
 
+# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	stationary = global_position
 	
@@ -49,6 +50,7 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 
 
+# Runs when the player is touching the enemy.
 func _mr_potato_fight(area: Area2D) -> void:
 	# If the enemy comes in contact with the player, initiate the fight scene and set 
 	# the current enemy fighting to it's self identification.

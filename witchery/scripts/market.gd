@@ -46,14 +46,16 @@ func _process(delta: float) -> void:
 			shop.nothing.hide()
 
 
-func _on_area_2d_area_entered(area: Area2D) -> void:
+# Runs when the player enters the market's Area 2D.
+func _market_entered(area: Area2D) -> void:
 	# If the player is within the market's area, show the shop.
 	if area.is_in_group("player"):
 		e.show()
 		player_near = true
 
 
-func _on_area_2d_area_exited(area: Area2D) -> void:
+# Runs when the player exits the market's Area 2D.
+func _market_exited(area: Area2D) -> void:
 	# If the player is not within the market area, hide the shop.
 	if area.is_in_group("player"):
 		shop_opened = false

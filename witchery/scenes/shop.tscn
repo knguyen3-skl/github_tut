@@ -284,6 +284,6 @@ theme_override_font_sizes/font_size = 35
 text = "There's nothing left to buy..."
 
 [connection signal="pressed" from="Button" to="." method="_exit"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_broke_timer"]
 [connection signal="pressed" from="PanelContainer/HBoxContainer/Panel2/Button" to="." method="_buy_super_cast"]
 [connection signal="pressed" from="PanelContainer/HBoxContainer/Panel3/Button" to="." method="_buy_distract"]
