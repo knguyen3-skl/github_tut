@@ -40,6 +40,7 @@ func _process(delta: float) -> void:
 			elif items.is_in_group("speech"):
 				items.hide()
 		
+		# If the shop is empty, show a message telling the player the shop is empty.
 		if shop.status_empty == true:
 			shop.nothing.show()
 		else:

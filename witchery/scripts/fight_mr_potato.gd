@@ -675,6 +675,8 @@ func _continue_intro() -> void:
 	sub_text.position = sub_text_position_1
 	counter += 1
 	text.text = intro[counter]
+	spell.mouse_filter = mouse_on
+	potion.mouse_filter = mouse_on
 
 
 # Runs when the player clicks off the potion menu.
@@ -745,7 +747,7 @@ func _cast() -> void:
 # Runs after the player's fireball spell ends.
 func _fireball_finish(_fireball: StringName) -> void:
 	# When the fireball hits the enemy, allow the player to acess the action menu again.
-	if turns_left > 0:
+	if turns_left > 0 and Global.intro == true:
 		spell.mouse_filter = mouse_on
 		potion.mouse_filter = mouse_on
 	

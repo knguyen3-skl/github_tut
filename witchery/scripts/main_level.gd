@@ -7,7 +7,6 @@ var respawn_time: int = 30
 var quest_repeat: bool = false
 var potato_defeated: int = 3
 var quest_complete_repeat: bool = false
-var complete_dialogue: bool = false
 var reward_money: int = 100
 var respawn_position = Vector2(-200.0,354.0)
 var player_speed: int = 100
@@ -138,7 +137,8 @@ func _process(delta: float) -> void:
 	# If the player has completed the quest and talked to the NPC already, let the NPC
 	# tell the player that there is nothing else that they want the player to do at the
 	# moment.
-	elif Global.quest_complete == true and Global.talking == true and quest_complete_repeat == false and complete_dialogue == true:
+	elif Global.quest_complete == true and Global.talking == true and quest_complete_repeat == false and Global.complete_dialogue == true:
+		print("error")
 		quest_complete_repeat = true
 		DialogueManager.show_dialogue_balloon(dialogue, "snipet")
 		DialogueManager.dialogue_ended.connect(_quest_complete)
@@ -229,7 +229,7 @@ func _quest_finished(_resource):
 	# When the player has talked to the NPC after completing the quest, give thier reward
 	# money as well as setting the talking status to false and complete dialogue to true.
 	Global.talking = false
-	complete_dialogue = true
+	Global.complete_dialogue = true
 	Global.money += reward_money
 
 
@@ -240,3 +240,4 @@ func _quest_complete(_resource):
 	# that there's nothing left to do.
 	Global.talking = false
 	quest_complete_repeat = false
+	print("repeat")

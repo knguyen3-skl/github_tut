@@ -63,7 +63,9 @@ func _process(delta: float) -> void:
 	# out every item.
 	if Global.shop[lookoverthere] == brought and Global.shop[supercast] == brought:
 		status_empty = true
-
+	
+	if Global.shop_speech == true and status_empty == true:
+		nothing.show()
 
 # Runs when the player clicks off the shop.
 func _exit() -> void:

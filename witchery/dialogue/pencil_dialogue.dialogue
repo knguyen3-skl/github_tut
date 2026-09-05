@@ -16,9 +16,22 @@ Mr Pencil: My memories have been cloudy ever since I've been here
 Mr Pencil: The last thing I can recall was a portal and all of my energy being drained out of me
 - Bro that sounds rough are you okay?
 	Mr Pencil: Yes
+	
 - Do you need my help?
 Mr Pencil: I heard that the monsters around here drop energy stones when defeated, maybe you could help me collect some?
-- Sure thing
+
+- What's in it for me?
+Mr Pencil: I'll tell you a secret which will help aid your journey significantly
+
+- I'm listening
+Mr Pencil: If you start walking down from where you are now, you will find an oddly coloured patch of grass with a cauldron
+Mr Pencil: If you stand within a specific area around the cauldron, you will regain all your health and special points
+
+- Can I interact with it?
+Mr Pencil: Yes of course, the currency, sprouts, which you received after battle can be used to brew various potions with differing buffs.
+Mr Pencil: Once brewed, those potion will show up in your inventory and will be ready to use in battle.
+
+- Okay, what do you need help with?
 Mr Pencil: Please help me collect 3 energy stones from the potato monsters.
 => END
 
@@ -33,16 +46,9 @@ Mr Pencil: Come back later
 ~ finished
 Mr Pencil: Wow this is amazing, thank you so much
 Mr Pencil: Here is 100 coins as a reward, make sure to buy something from the market
-
-- What the cauldron do?
-	Mr Pencil: Ah yes the cauldron
-	Mr Pencil: If you stand within a specific area around the cauldron, you will regain all your health and special points
-	Mr Pencil: You can also interact with it to brew potions that can assist you in battle
-	Mr Pencil: Once brewed, those potion will show up in your inventory
 	
 - This is a lot of money are you sure?
 	Mr Pencil: No please accept it, thanks to you I can potentially return home now
-
 
 - Is there anything else I can help with?
 	Mr Pencil: Not at the moment

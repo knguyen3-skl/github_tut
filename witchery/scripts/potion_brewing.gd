@@ -32,7 +32,7 @@ func _process(delta: float) -> void:
 # Runs when the player brews the purple potion.
 func _purple_brewed() -> void:
 	# Adds a purple potion to the player's inventory and informs the player they have
-	# successfully brewwed the potion in the form as an announcement.
+	# successfully brewwed the potion in the form of an announcement.
 	if Global.sprout >= 1:
 		Global.sprout -= 1
 		sprout.text = str(Global.sprout)
