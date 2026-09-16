@@ -80,6 +80,9 @@ corner_radius_bottom_left = 20
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("3_7268j")
+}, {
+"duration": 1.0,
 "texture": ExtResource("8_7xni5")
 }, {
 "duration": 1.0,
@@ -486,7 +489,7 @@ _data = {
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3577e"]
 bg_color = Color(0.66458356, 0, 0.04976818, 1)
 
-[node name="Node2D" type="Node2D" unique_id=1641416975 node_paths=PackedStringArray("player", "health_ui", "sp_ui", "potato_ui", "health", "sp", "potato_hp", "potato_health", "potato_bar", "first_turn_p", "first_turn_w", "second_turn_p", "second_turn_w", "third_turn_p", "third_turn_w", "timer", "mistake_timer", "mistake", "spell", "spell_menu", "spell_exit", "potion", "pause", "pause_button", "canvas", "dark", "light_bar", "light_potato", "light_options", "light_turns", "block", "text", "sub_text", "intro_timer", "basic_spell_b", "super_cast_b", "look_over_there_b", "potion_menu", "potion_exit", "soda_b", "soda_value", "just_water_b", "just_water_value", "fireball", "spell_time", "fireball_animation", "potato", "potato_animation", "potato_idle_timer", "potato_heal_timer")]
+[node name="Node2D" type="Node2D" unique_id=1641416975 node_paths=PackedStringArray("player", "health_ui", "sp_ui", "potato_ui", "health", "sp", "potato_hp", "potato_health", "potato_bar", "first_turn_p", "first_turn_w", "second_turn_p", "second_turn_w", "third_turn_p", "third_turn_w", "timer", "mistake_timer", "mistake", "spell", "spell_menu", "spell_exit", "potion", "pause", "pause_button", "canvas", "dark", "light_bar", "light_potato", "light_options", "light_turns", "block", "text", "sub_text", "intro_timer", "basic_spell_b", "super_cast_b", "look_over_there_b", "potion_menu", "potion_exit", "soda_b", "soda_value", "just_water_b", "just_water_value", "fireball", "spell_time", "fireball_animation", "potato", "potato_animation", "potato_attack_timer", "potato_idle_timer", "potato_heal_timer")]
 script = ExtResource("1_tlxmr")
 player = NodePath("CanvasLayer/WitchTech")
 health_ui = NodePath("CanvasLayer/ProgressBar")
@@ -536,6 +539,7 @@ spell_time = NodePath("Timer4")
 fireball_animation = NodePath("CanvasLayer/AnimatedSprite2D/AnimationPlayer")
 potato = NodePath("CanvasLayer/MrPotatoTech")
 potato_animation = NodePath("CanvasLayer/MrPotatoTech/AnimationPlayer")
+potato_attack_timer = NodePath("Timer7")
 potato_idle_timer = NodePath("Timer5")
 potato_heal_timer = NodePath("Timer6")
 
@@ -1245,6 +1249,9 @@ wait_time = 0.5
 
 [node name="Timer6" type="Timer" parent="." unique_id=821672206]
 
+[node name="Timer7" type="Timer" parent="." unique_id=786617904]
+wait_time = 0.7
+
 [connection signal="pressed" from="CanvasLayer/PanelContainer/HBoxContainer/Button2" to="." method="_basic_spell"]
 [connection signal="pressed" from="CanvasLayer/PanelContainer/HBoxContainer/Button3" to="." method="_super_cast"]
 [connection signal="pressed" from="CanvasLayer/PanelContainer/HBoxContainer/Button4" to="." method="_distract"]
@@ -1263,3 +1270,4 @@ wait_time = 0.5
 [connection signal="timeout" from="Timer4" to="." method="_cast"]
 [connection signal="timeout" from="Timer5" to="." method="_potato_idle"]
 [connection signal="timeout" from="Timer6" to="." method="_potato_heal_time"]
+[connection signal="timeout" from="Timer7" to="." method="_potato_attack_initiate"]

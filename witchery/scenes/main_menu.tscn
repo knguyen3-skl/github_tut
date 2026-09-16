@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://crhc0alwbwdn3" path="res://assets/potion_purple_tech.png" id="3_tbmy8"]
 [ext_resource type="Texture2D" uid="uid://j57c4g7m4san" path="res://assets/spider_tech.png" id="4_wu84c"]
 [ext_resource type="Texture2D" uid="uid://cxlxhtffoja2o" path="res://assets/wand_tech.png" id="9_jk1qb"]
+[ext_resource type="AudioStream" uid="uid://cqjd6g2ahu4mg" path="res://assets/button_tech.mp3" id="11_lgwnu"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jk1qb"]
 
@@ -262,6 +263,10 @@ theme_override_constants/shadow_offset_x = 20
 theme_override_constants/shadow_offset_y = 30
 theme_override_font_sizes/font_size = 200
 text = "Title"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1768075709]
+stream = ExtResource("11_lgwnu")
+volume_db = -10.0
 
 [connection signal="pressed" from="CanvasLayer4/PanelContainer/VBoxContainer/TextureButton2" to="." method="_play_pressed"]
 [connection signal="pressed" from="CanvasLayer4/PanelContainer/VBoxContainer/TextureButton3" to="." method="_options_pressed"]

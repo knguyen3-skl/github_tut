@@ -162,6 +162,7 @@ var super_casted: bool = false
 
 @export var potato: AnimatedSprite2D
 @export var potato_animation: AnimationPlayer
+@export var potato_attack_timer: Timer
 @export var potato_idle_timer: Timer
 @export var potato_heal_timer: Timer
 
@@ -486,7 +487,6 @@ func _turn() -> void:
 func _potato_attack() -> void:
 	# Allow the enemy to attack the player after they've completed their three turns and
 	# take two health from the player.
-	potato_idle = false
 	potato_animation.play("attack")
 	Global.player_health -= 2
 	health_ui.value = Global.player_health
@@ -509,7 +509,10 @@ func _potato_turn() -> void:
 	# When it's the enemy's turn to attack, alternate between two moves, attacking the
 	# player and healing itself.
 	if potato_turns == 1 and potato_distract == false:
-		_potato_attack()
+		print("test")
+		potato_idle = false
+		potato_attack_timer.start()
+		potato.play("attack")
 		timer.stop()
 		potato_turns -= 1
 	elif potato_turns != 1 and potato_distract == false:
@@ -792,3 +795,8 @@ func _potato_heal_time() -> void:
 	potato_heal_timer.stop()
 	spell.mouse_filter = mouse_on
 	potion.mouse_filter = mouse_on
+
+
+func _potato_attack_initiate() -> void:
+	_potato_attack()
+	potato_attack_timer.stop()

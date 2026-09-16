@@ -1,4 +1,5 @@
 extends Node2D
+@onready var background: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var timer: bool = false
 var status_alive: String = "alive"
@@ -36,6 +37,7 @@ var enemy_area2D: int = 2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	background.play()
 	announcement.hide()
 	quest.hide()
 	# Sets the healthbar and special points bar to the current player's health/
