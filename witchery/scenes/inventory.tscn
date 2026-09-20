@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://crhc0alwbwdn3" path="res://assets/potion_purple_tech.png" id="1_qw0r6"]
 [ext_resource type="Texture2D" uid="uid://db3kevffj8enl" path="res://assets/block_tech.png" id="2_53g1v"]
 [ext_resource type="Texture2D" uid="uid://dit7vdud5kxxa" path="res://assets/potion_tech.png" id="3_ty45s"]
+[ext_resource type="AudioStream" uid="uid://cqjd6g2ahu4mg" path="res://assets/button_tech.mp3" id="5_yyk2a"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hj2ta"]
 bg_color = Color(0.66458356, 0, 0.04976818, 1)
@@ -135,5 +136,9 @@ offset_top = 7.0
 offset_right = 115.0
 offset_bottom = 30.0
 text = "Just Water"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=397549292]
+stream = ExtResource("5_yyk2a")
+volume_db = -16.0
 
 [connection signal="pressed" from="Button" to="." method="_exit_inventory"]

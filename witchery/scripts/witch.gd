@@ -1,4 +1,5 @@
 extends CharacterBody2D
+@onready var walking_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var speed: int = 100
 
@@ -29,4 +30,3 @@ func _process(delta: float) -> void:
 	else:
 		player.animation = "idle"
 	move_and_slide()
-	

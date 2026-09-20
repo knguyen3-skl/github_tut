@@ -56,6 +56,15 @@
 [ext_resource type="Texture2D" uid="uid://b8sb2ok0ve2mv" path="res://assets/spell_animation0003.png" id="42_gpi7s"]
 [ext_resource type="Texture2D" uid="uid://dm50i67n41wof" path="res://assets/spell_animation0004.png" id="43_8xwck"]
 [ext_resource type="Texture2D" uid="uid://sha1meod02ux" path="res://assets/spell_animation0005.png" id="44_j2m3b"]
+[ext_resource type="Texture2D" uid="uid://d0lyebuyc37ja" path="res://assets/dizzy_tech0000.png" id="57_0wrct"]
+[ext_resource type="Texture2D" uid="uid://dxawpj3r0bx0q" path="res://assets/dizzy_tech0001.png" id="58_5xjte"]
+[ext_resource type="Texture2D" uid="uid://cu8s7eldt3gjm" path="res://assets/dizzy_tech0002.png" id="59_g14jh"]
+[ext_resource type="Texture2D" uid="uid://c6utojn3p6vhh" path="res://assets/dizzy_tech0003.png" id="60_5krkc"]
+[ext_resource type="Texture2D" uid="uid://25cn7j2kxg4p" path="res://assets/dizzy_tech0004.png" id="61_8tky0"]
+[ext_resource type="AudioStream" uid="uid://cfkgiy0e4perp" path="res://assets/fire_tech.mp3" id="62_5xjte"]
+[ext_resource type="AudioStream" uid="uid://djobn0cfiwr46" path="res://assets/error_tech.mp3" id="63_g14jh"]
+[ext_resource type="AudioStream" uid="uid://dkdh8yqpaesln" path="res://assets/bubbles_tech.mp3" id="64_5krkc"]
+[ext_resource type="AudioStream" uid="uid://cnscbpshvkxvy" path="res://assets/book_tech.mp3" id="65_8tky0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhm2j"]
 content_margin_left = 25.0
@@ -489,7 +498,30 @@ _data = {
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3577e"]
 bg_color = Color(0.66458356, 0, 0.04976818, 1)
 
-[node name="Node2D" type="Node2D" unique_id=1641416975 node_paths=PackedStringArray("player", "health_ui", "sp_ui", "potato_ui", "health", "sp", "potato_hp", "potato_health", "potato_bar", "first_turn_p", "first_turn_w", "second_turn_p", "second_turn_w", "third_turn_p", "third_turn_w", "timer", "mistake_timer", "mistake", "spell", "spell_menu", "spell_exit", "potion", "pause", "pause_button", "canvas", "dark", "light_bar", "light_potato", "light_options", "light_turns", "block", "text", "sub_text", "intro_timer", "basic_spell_b", "super_cast_b", "look_over_there_b", "potion_menu", "potion_exit", "soda_b", "soda_value", "just_water_b", "just_water_value", "fireball", "spell_time", "fireball_animation", "potato", "potato_animation", "potato_attack_timer", "potato_idle_timer", "potato_heal_timer")]
+[sub_resource type="SpriteFrames" id="SpriteFrames_2c1ao"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("57_0wrct")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_5xjte")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_g14jh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_5krkc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_8tky0")
+}],
+"loop": true,
+"name": &"spining",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D" unique_id=1641416975 node_paths=PackedStringArray("player", "health_ui", "sp_ui", "potato_ui", "health", "sp", "potato_hp", "potato_health", "potato_bar", "first_turn_p", "first_turn_w", "second_turn_p", "second_turn_w", "third_turn_p", "third_turn_w", "timer", "mistake_timer", "mistake", "spell", "spell_menu", "spell_exit", "potion", "pause", "pause_button", "canvas", "dark", "light_bar", "light_potato", "light_options", "light_turns", "block", "text", "sub_text", "intro_timer", "basic_spell_b", "super_cast_b", "look_over_there_b", "potion_menu", "potion_exit", "soda_b", "soda_value", "just_water_b", "just_water_value", "fireball", "spell_time", "fireball_animation", "potato", "potato_animation", "potato_attack_timer", "potato_idle_timer", "potato_heal_timer", "potato_pointer", "potato_name", "dizzy", "dizzy_timer", "spell_background", "potion_background")]
 script = ExtResource("1_tlxmr")
 player = NodePath("CanvasLayer/WitchTech")
 health_ui = NodePath("CanvasLayer/ProgressBar")
@@ -542,6 +574,12 @@ potato_animation = NodePath("CanvasLayer/MrPotatoTech/AnimationPlayer")
 potato_attack_timer = NodePath("Timer7")
 potato_idle_timer = NodePath("Timer5")
 potato_heal_timer = NodePath("Timer6")
+potato_pointer = NodePath("CanvasLayer/Polygon2D")
+potato_name = NodePath("CanvasLayer/Label4")
+dizzy = NodePath("CanvasLayer/AnimatedSprite2D2")
+dizzy_timer = NodePath("Timer8")
+spell_background = NodePath("CanvasLayer/NinePatchRect2")
+potion_background = NodePath("CanvasLayer/NinePatchRect3")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=791422463]
 
@@ -551,7 +589,7 @@ z_index = 1
 offset_left = 271.0
 offset_top = 270.0
 offset_right = 796.0
-offset_bottom = 497.0
+offset_bottom = 492.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_rhm2j")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PanelContainer" unique_id=292695934]
@@ -687,18 +725,18 @@ text = "?"
 [node name="Polygon2D" type="Polygon2D" parent="CanvasLayer/PanelContainer" unique_id=1903128183]
 position = Vector2(246, 202)
 scale = Vector2(0.8, 0.8)
-color = Color(0.4117647, 0.4117647, 0.4117647, 1)
+color = Color(0.79607844, 0.6509804, 0.49019608, 1)
 polygon = PackedVector2Array(20, 70, 40, 30, 0, 30)
 uv = PackedVector2Array(50.471344, -0.8537636, 79.851776, 39.613644, 24.971344, 39.613644)
 
-[node name="NinePatchRect2" type="NinePatchRect" parent="CanvasLayer" unique_id=1254376753 groups=["quest"]]
+[node name="NinePatchRect2" type="NinePatchRect" parent="CanvasLayer" unique_id=1254376753]
 visible = false
 z_index = 1
 offset_left = 270.0
-offset_top = 270.0
-offset_right = 533.5
-offset_bottom = 383.0
-scale = Vector2(2, 2)
+offset_top = 261.99997
+offset_right = 520.9524
+offset_bottom = 374.99997
+scale = Vector2(2.1, 2.1)
 texture = ExtResource("12_rwdpr")
 patch_margin_left = 17
 patch_margin_top = 17
@@ -708,10 +746,10 @@ patch_margin_bottom = 17
 [node name="PanelContainer2" type="PanelContainer" parent="CanvasLayer" unique_id=723731608]
 visible = false
 z_index = 2
-offset_left = 369.0
-offset_top = 273.0
-offset_right = 894.0
-offset_bottom = 498.0
+offset_left = 372.0
+offset_top = 272.0
+offset_right = 897.0
+offset_bottom = 487.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_rhm2j")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PanelContainer2" unique_id=965302120]
@@ -719,6 +757,7 @@ layout_mode = 2
 theme_override_constants/separation = 20
 
 [node name="Button2" type="Button" parent="CanvasLayer/PanelContainer2/HBoxContainer" unique_id=963601003]
+z_index = 1
 custom_minimum_size = Vector2(145, 0)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_7pvyh")
@@ -776,6 +815,7 @@ theme_override_colors/font_color = Color(0.86898494, 0.8689849, 0.8689849, 1)
 theme_override_font_sizes/font_size = 15
 
 [node name="Button3" type="Button" parent="CanvasLayer/PanelContainer2/HBoxContainer" unique_id=283873555]
+z_index = 1
 custom_minimum_size = Vector2(145, 0)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_7pvyh")
@@ -783,9 +823,9 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_7pvyh")
 [node name="Label2" type="Label" parent="CanvasLayer/PanelContainer2/HBoxContainer/Button3" unique_id=148921640]
 layout_mode = 0
 offset_left = 9.0
-offset_top = 106.0
+offset_top = 103.0
 offset_right = 143.0
-offset_bottom = 153.0
+offset_bottom = 150.0
 theme_override_colors/font_color = Color(0.86898494, 0.8689849, 0.8689849, 1)
 theme_override_font_sizes/font_size = 15
 text = "Regain 2 HP and 
@@ -817,9 +857,9 @@ text = "Just Water"
 [node name="Label3" type="Label" parent="CanvasLayer/PanelContainer2/HBoxContainer/Button3" unique_id=116878840]
 layout_mode = 0
 offset_left = 10.0
-offset_top = 154.0
+offset_top = 148.0
 offset_right = 66.0
-offset_bottom = 176.0
+offset_bottom = 170.0
 theme_override_colors/font_color = Color(0.86898494, 0.8689849, 0.8689849, 1)
 theme_override_font_sizes/font_size = 15
 text = "Owned:"
@@ -827,18 +867,32 @@ text = "Owned:"
 [node name="Label4" type="Label" parent="CanvasLayer/PanelContainer2/HBoxContainer/Button3" unique_id=2064027332]
 layout_mode = 0
 offset_left = 70.0
-offset_top = 154.0
+offset_top = 148.0
 offset_right = 126.0
-offset_bottom = 176.0
+offset_bottom = 170.0
 theme_override_colors/font_color = Color(0.86898494, 0.8689849, 0.8689849, 1)
 theme_override_font_sizes/font_size = 15
 
 [node name="Polygon2D" type="Polygon2D" parent="CanvasLayer/PanelContainer2" unique_id=1844497111]
 position = Vector2(246, 199)
 scale = Vector2(0.8, 0.8)
-color = Color(0.4117647, 0.4117647, 0.4117647, 1)
+color = Color(0.79607844, 0.6509804, 0.49019608, 1)
 polygon = PackedVector2Array(20, 70, 40, 30, 0, 30)
 uv = PackedVector2Array(50.471344, -0.8537636, 79.851776, 39.613644, 24.971344, 39.613644)
+
+[node name="NinePatchRect3" type="NinePatchRect" parent="CanvasLayer" unique_id=1864563477]
+visible = false
+z_index = 2
+offset_left = 370.0
+offset_top = 260.0
+offset_right = 620.9524
+offset_bottom = 373.0
+scale = Vector2(2.1, 2.1)
+texture = ExtResource("12_rwdpr")
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 17
 
 [node name="Button4" type="Button" parent="CanvasLayer" unique_id=1379259856]
 z_index = 1
@@ -964,6 +1018,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_nlw5s")
 metadata/_edit_use_anchors_ = true
 
 [node name="Polygon2D" type="Polygon2D" parent="CanvasLayer" unique_id=709534337]
+visible = false
 position = Vector2(816, 188)
 scale = Vector2(0.8, 0.8)
 color = Color(0.7137255, 0.2509804, 0.21960784, 1)
@@ -1007,6 +1062,7 @@ text = "HP"
 metadata/_edit_use_anchors_ = true
 
 [node name="Label4" type="Label" parent="CanvasLayer" unique_id=970702815]
+visible = false
 offset_left = 783.0
 offset_top = 248.0
 offset_right = 880.0
@@ -1214,10 +1270,10 @@ libraries/ = SubResource("AnimationLibrary_e1wqj")
 [node name="Button5" type="Button" parent="CanvasLayer" unique_id=2005292655]
 visible = false
 z_index = 1
-offset_left = 776.0
-offset_top = 256.0
-offset_right = 811.0
-offset_bottom = 291.0
+offset_left = 772.0
+offset_top = 250.0
+offset_right = 807.0
+offset_bottom = 285.0
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_3577e")
 text = "X"
@@ -1225,13 +1281,20 @@ text = "X"
 [node name="Button" type="Button" parent="CanvasLayer" unique_id=566301445]
 visible = false
 z_index = 2
-offset_left = 870.0
-offset_top = 261.0
-offset_right = 905.0
-offset_bottom = 296.0
+offset_left = 871.0
+offset_top = 249.0
+offset_right = 906.0
+offset_bottom = 284.0
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_3577e")
 text = "X"
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="CanvasLayer" unique_id=1827406593]
+position = Vector2(831, 295)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_2c1ao")
+animation = &"spining"
+frame_progress = 0.57336056
 
 [node name="Timer" type="Timer" parent="." unique_id=2088150919]
 wait_time = 2.5
@@ -1252,6 +1315,25 @@ wait_time = 0.5
 [node name="Timer7" type="Timer" parent="." unique_id=786617904]
 wait_time = 0.7
 
+[node name="Timer8" type="Timer" parent="." unique_id=1994609024]
+wait_time = 2.0
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="." unique_id=1780564516]
+stream = ExtResource("62_5xjte")
+volume_db = -2.0
+
+[node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="." unique_id=1391910435]
+stream = ExtResource("63_g14jh")
+volume_db = -5.0
+
+[node name="AudioStreamPlayer2D4" type="AudioStreamPlayer2D" parent="." unique_id=95595173]
+stream = ExtResource("64_5krkc")
+volume_db = -5.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1240198636]
+stream = ExtResource("65_8tky0")
+volume_db = -16.0
+
 [connection signal="pressed" from="CanvasLayer/PanelContainer/HBoxContainer/Button2" to="." method="_basic_spell"]
 [connection signal="pressed" from="CanvasLayer/PanelContainer/HBoxContainer/Button3" to="." method="_super_cast"]
 [connection signal="pressed" from="CanvasLayer/PanelContainer/HBoxContainer/Button4" to="." method="_distract"]
@@ -1271,3 +1353,4 @@ wait_time = 0.7
 [connection signal="timeout" from="Timer5" to="." method="_potato_idle"]
 [connection signal="timeout" from="Timer6" to="." method="_potato_heal_time"]
 [connection signal="timeout" from="Timer7" to="." method="_potato_attack_initiate"]
+[connection signal="timeout" from="Timer8" to="." method="_dizzy_timeout"]

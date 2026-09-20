@@ -1,4 +1,5 @@
 extends ColorRect
+@onready var interact_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var purplepotion: String = "purple_potion"
 var bluepotion: String = "blue_potion"
@@ -38,6 +39,9 @@ func _on_inventory_pressed() -> void:
 	# camera movemnt to non-drag so it doesn't look like their lagging.
 	# If the player has another screen like potion brewing opened, close it to let them
 	# focus on their inventory.
+	if Global.sound_effects == true:
+		interact_sfx.play()
+		
 	show()
 	Global.potion_brewing = false
 	brewing_potion.hide()

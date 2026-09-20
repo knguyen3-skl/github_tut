@@ -1,4 +1,6 @@
 extends ColorRect
+@onready var buttion_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D2
+@onready var error_sfx: AudioStreamPlayer2D = $"../../AudioStreamPlayer2D2"
 
 var purple_potion: String = "purple_potion"
 var blue_potion: String = "blue_potion"
@@ -34,6 +36,9 @@ func _purple_brewed() -> void:
 	# Adds a purple potion to the player's inventory and informs the player they have
 	# successfully brewwed the potion in the form of an announcement.
 	if Global.sprout >= 1:
+		if Global.sound_effects == true:
+			buttion_sfx.play()
+			
 		Global.sprout -= 1
 		sprout.text = str(Global.sprout)
 		Global.inventory[purple_potion] += 1
@@ -48,6 +53,9 @@ func _purple_brewed() -> void:
 			else:
 				items.show()
 	else:
+		if Global.sound_effects == true:
+			error_sfx.play()
+			
 		no_money.show()
 		timer.start()
 
@@ -73,6 +81,9 @@ func _blue_brewed() -> void:
 	# Adds a blue potion to the player's inventory and informs the player they have
 	# successfully brewwed the potion in the form as an announcement.
 	if Global.sprout >= blue_value:
+		if Global.sound_effects == true:
+			buttion_sfx.play()
+			
 		Global.sprout -= blue_value
 		sprout.text = str(Global.sprout)
 		Global.inventory[blue_potion] += 1
@@ -85,6 +96,9 @@ func _blue_brewed() -> void:
 			else:
 				items.show()
 	else:
+		if Global.sound_effects == true:
+			error_sfx.play()
+			
 		no_money.show()
 		timer.start()
 

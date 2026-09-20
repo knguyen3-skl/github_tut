@@ -1,5 +1,6 @@
 extends Node2D
 @onready var background: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var quest_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D3
 
 var timer: bool = false
 var status_alive: String = "alive"
@@ -37,7 +38,9 @@ var enemy_area2D: int = 2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	background.play()
+	if Global.background_music == true:
+		background.play()
+		
 	announcement.hide()
 	quest.hide()
 	# Sets the healthbar and special points bar to the current player's health/
@@ -87,6 +90,11 @@ func _ready() -> void:
 			
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if Global.background_music == false:
+		background.stream_paused = true
+	else:
+		background.stream_paused = false
+	
 	sprout.text = str(Global.sprout)
 	money.text = str(Global.money)
 	# If the player is involved in dialogue with an NPC, hide all the UI elements so
@@ -213,6 +221,9 @@ func _quest(_resource):
 	# Show the quest pop up after the player has talked to the NPC for the first time and
 	# set the talking status to false as well as quest talk to true.
 	quest.show()
+	if Global.sound_effects == true:
+		quest_sfx.play()
+		
 	Global.talking = false
 	Global.quest_talk_finish = true
 	

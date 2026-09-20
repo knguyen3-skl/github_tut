@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dxn8bc3i6naxu" path="res://scripts/market.gd" id="1_wuado"]
 [ext_resource type="Texture2D" uid="uid://qqpyhg17dw33" path="res://assets/stall_tech.png" id="2_3dq5b"]
+[ext_resource type="AudioStream" uid="uid://cqjd6g2ahu4mg" path="res://assets/button_tech.mp3" id="3_3dq5b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nay5t"]
 size = Vector2(8, 46)
@@ -54,6 +55,10 @@ offset_bottom = 21.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 15
 text = "E"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=789351733]
+stream = ExtResource("3_3dq5b")
+volume_db = -16.0
 
 [connection signal="area_entered" from="Area2D" to="." method="_market_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_market_exited"]

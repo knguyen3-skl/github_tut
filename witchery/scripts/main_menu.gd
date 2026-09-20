@@ -15,7 +15,9 @@ func _process(delta: float) -> void:
 # Runs when the player presses play.
 func _play_pressed() -> void:
 	# When the player clicks play, load the game.
-	open_sfx.play()
+	if Global.sound_effects == true:
+		open_sfx.play()
+	
 	get_tree().call_deferred("change_scene_to_file", "res://scenes/level.tscn")
 
 

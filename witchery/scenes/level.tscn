@@ -22,6 +22,8 @@
 [ext_resource type="Texture2D" uid="uid://cki2qc60cqak1" path="res://assets/coin_tech.png" id="20_8gofh"]
 [ext_resource type="Texture2D" uid="uid://bw8lmu140qwrr" path="res://assets/stone_tile_tech.png" id="21_h6wmr"]
 [ext_resource type="Texture2D" uid="uid://b8pstb4ajq5mi" path="res://assets/path_tech.png" id="22_pqd0y"]
+[ext_resource type="AudioStream" uid="uid://djobn0cfiwr46" path="res://assets/error_tech.mp3" id="23_5k0ak"]
+[ext_resource type="AudioStream" uid="uid://dbg5cgr1qubnp" path="res://assets/reward_tech.mp3" id="24_wu01b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mx8sn"]
 texture = ExtResource("1_w8frs")
@@ -376,6 +378,14 @@ navigation_polygon = SubResource("NavigationPolygon_w7c3h")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=551954441]
 stream = SubResource("AudioStreamMP3_pqd0y")
+volume_db = -10.0
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="." unique_id=415106966]
+stream = ExtResource("23_5k0ak")
+volume_db = -5.0
+
+[node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="." unique_id=1581389491]
+stream = ExtResource("24_wu01b")
 volume_db = -10.0
 
 [connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/ColorRect2" method="_on_inventory_pressed"]

@@ -36,7 +36,7 @@ var inventory = {
 
 var shop = {
 	"super_cast": "yes",
-	"look_over_there": "no",
+	"look_over_there": "yes",
 }
 
 var intro: bool = true
@@ -47,6 +47,9 @@ var quest_complete: bool = false
 var complete_dialogue: bool = false
 
 var sprout_reward = 1
+
+var background_music: bool = true
+var sound_effects: bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

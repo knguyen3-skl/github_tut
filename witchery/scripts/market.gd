@@ -1,4 +1,5 @@
 extends StaticBody2D
+@onready var interact_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var player_near: bool = false
 var shop_opened: bool = false
@@ -17,6 +18,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	# If the player opens the shop, load the market dialogue before the actual shop.
 	if player_near == true and Input.is_physical_key_pressed(KEY_E) and shop_opened == false:
+		if Global.sound_effects == true:
+			interact_sfx.play()
+			
 		shop_opened = true
 		Global.shop_speech = false
 		# Show the items involved in the dialogue and not the shop when the player first

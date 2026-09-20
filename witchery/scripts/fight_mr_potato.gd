@@ -1,4 +1,8 @@
 extends Node2D
+@onready var fireball_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D2
+@onready var error_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D3
+@onready var potion_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D4
+@onready var pause_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var bars: bool = false
 var options: bool = false
@@ -166,6 +170,14 @@ var super_casted: bool = false
 @export var potato_idle_timer: Timer
 @export var potato_heal_timer: Timer
 
+@export var potato_pointer: Polygon2D
+@export var potato_name: Label
+@export var dizzy: AnimatedSprite2D
+@export var dizzy_timer: Timer
+
+@export var spell_background: NinePatchRect
+@export var potion_background: NinePatchRect
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -181,6 +193,9 @@ func _ready() -> void:
 	potion_exit.hide()
 	spell_exit.hide()
 	pause.hide()
+	dizzy.hide()
+	potato_name.show()
+	potato_pointer.show()
 		
 	# Sets the player's health bar to the player's current health so that the player is
 	# always aware of their health to decide their next action.
@@ -411,6 +426,7 @@ func _attack() -> void:
 	# enemy.
 	spell_menu.show()
 	spell_exit.show()
+	spell_background.show()
 	spell_opened = true
 	clicked = true
 	
@@ -419,9 +435,7 @@ func _attack() -> void:
 	if potion_opened == true:
 		potion_menu.hide()
 		potion_exit.hide()
-		spell_exit.show()
-		spell_menu.show()
-		spell_opened = true
+		potion_background.hide()
 		potion_opened = false
 
 	# Checks what actions the player has brought from the shop and display it, so that
@@ -444,12 +458,14 @@ func _potion() -> void:
 	potion_opened = true
 	potion_menu.show()
 	potion_exit.show()
+	potion_background.show()
 	
 	# If the spell menu was already opened and the player opens the potion menu, hide
 	# the spell menu and show the players the potion menu instead to minimise clutter.
 	if spell_opened == true:
 		spell_menu.hide()
 		spell_exit.hide()
+		spell_background.hide()
 		spell_opened = false
 		
 	# If the player does not own any potions, then hide the option to select one to use.
@@ -496,6 +512,9 @@ func _potato_attack() -> void:
 ## The enemy heals itself  when run, during the enemy's turn.
 func _potato_heal() -> void:
 	# Allow the enemy to heal from player's attacks.
+	if Global.sound_effects == true:
+		potion_sfx.play()
+	
 	potato_idle = false
 	potato.play("heal")
 	potato_heal_timer.start()
@@ -508,8 +527,9 @@ func _potato_heal() -> void:
 func _potato_turn() -> void:
 	# When it's the enemy's turn to attack, alternate between two moves, attacking the
 	# player and healing itself.
+	potato_name.hide()
+	potato_pointer.hide()
 	if potato_turns == 1 and potato_distract == false:
-		print("test")
 		potato_idle = false
 		potato_attack_timer.start()
 		potato.play("attack")
@@ -523,6 +543,9 @@ func _potato_turn() -> void:
 	# turn.
 	else:
 		timer.stop()
+		dizzy.show()
+		dizzy.play("spining")
+		dizzy_timer.start()
 		spell.mouse_filter = mouse_on
 		potion.mouse_filter = mouse_on
 	
@@ -558,6 +581,9 @@ func _pause() -> void:
 	pause_button.hide()
 	spell.hide()
 	potion.hide()
+	
+	if Global.sound_effects == true:
+		pause_sfx.play()
 
 
 # Runs when the player clicks on super cast.
@@ -568,9 +594,16 @@ func _super_cast() -> void:
 	if Global.player_special < 1:
 		mistake.text = str(mistake_no_sp)
 		mistake_timer.start()
+		
+		if Global.sound_effects == true:
+			error_sfx.play()
+			
 	# However, if the player does have enough special points then let them cast the
 	# spell and take away from their special points.
 	else:
+		if Global.sound_effects == true:
+			fireball_sfx.play()
+			
 		super_casted = true
 		spell.mouse_filter = mouse_off
 		potion.mouse_filter = mouse_off
@@ -587,6 +620,7 @@ func _super_cast() -> void:
 		spell_opened = false
 		spell_menu.hide()
 		spell_exit.hide()
+		spell_background.hide()
 
 
 # Runs when the player clicks on basic cast.
@@ -594,6 +628,9 @@ func _basic_spell() -> void:
 	# If the player has not not yet completed the introduction and fires a basic spell
 	# at the enemy, trigger the rest of the introduction after the cast.
 	if Global.intro == false:
+		if Global.sound_effects == true:
+			fireball_sfx.play()
+			
 		basic_casted = true
 		spell.mouse_filter = mouse_off
 		potion.mouse_filter = mouse_off
@@ -607,6 +644,7 @@ func _basic_spell() -> void:
 		spell_opened = false
 		spell_menu.hide()
 		spell_exit.hide()
+		spell_background.hide()
 		light_options.hide()
 		intro_timer.start()
 		# Hide the items from the introduction when the player is casting a spell at the 
@@ -619,6 +657,9 @@ func _basic_spell() -> void:
 	# If the player has already completed the introduction, then let the player cast the
 	# spell like normal by taking away one of their turns and special points.
 	elif Global.intro == true:
+		if Global.sound_effects == true:
+			fireball_sfx.play()
+			
 		basic_casted = true
 		spell.mouse_filter = mouse_off
 		potion.mouse_filter = mouse_off
@@ -632,6 +673,7 @@ func _basic_spell() -> void:
 		spell_opened = false
 		spell_menu.hide()
 		spell_exit.hide()
+		spell_background.hide()
 
 
 # Runs when the player clicks off the spell menu.
@@ -640,6 +682,7 @@ func _spell_menu_exit() -> void:
 	spell_opened = false
 	spell_menu.hide()
 	spell_exit.hide()
+	spell_background.hide()
 
 
 # Runs when the player clicks on look over there.
@@ -648,6 +691,9 @@ func _distract() -> void:
 	# and skips the enemy's next turn.
 	spell.mouse_filter = mouse_off
 	potion.mouse_filter = mouse_off
+	if Global.sound_effects == true:
+		fireball_sfx.play()
+		
 	player.play("casting")
 	fireball.show()
 	fireball.play("summoning")
@@ -659,6 +705,7 @@ func _distract() -> void:
 	spell_opened = false
 	spell_menu.hide()
 	spell_exit.hide()
+	spell_background.hide()
 
 
 # Runs a few seconds after the player casted a spell while still in the introduction.
@@ -687,6 +734,7 @@ func _exit_potion() -> void:
 	# Hides the potion menu when the player clicks off it.
 	potion_exit.hide()
 	potion_menu.hide()
+	potion_background.hide()
 
 
 # Runs when the player clicks on the purple potion in the potion  menu.
@@ -695,6 +743,9 @@ func _purple_potion() -> void:
 	# own a purple potion then allow them to use the potion to regain health while 
 	# taking a turn.
 	if Global.player_special < Global.player_base_special and Global.inventory[purple_potion] >= 1:
+		if Global.sound_effects == true:
+			potion_sfx.play()
+			
 		player.play("potion")
 		Global.inventory[purple_potion] -= 1
 		soda_value.text = str(Global.inventory[purple_potion])
@@ -705,9 +756,13 @@ func _purple_potion() -> void:
 		sp_ui.value = Global.player_special
 		potion_exit.hide()
 		potion_menu.hide()
+		potion_background.hide()
 	# If the player already has maxed out special points then inform the player that
 	# they cannot use the potion, so that it does not get wasted.
 	elif Global.player_special == Global.player_base_special:
+		if Global.sound_effects == true:
+			error_sfx.play()
+			
 		mistake.text = str(mistake_sp_maxed)
 		mistake_timer.start()
 
@@ -718,6 +773,9 @@ func _blue_potion() -> void:
 	# health than their base health, as well as own a blue potion then allow them to use
 	# the potion to regain health while taking a turn.
 	if (Global.player_special < Global.player_base_special or Global.player_health < Global.player_base_health) and Global.inventory[blue_potion] >= 1:
+		if Global.sound_effects == true:
+			potion_sfx.play()
+			
 		player.play("potion")
 		Global.inventory[blue_potion] -= 1
 		soda_value.text = str(Global.inventory[blue_potion])
@@ -731,9 +789,13 @@ func _blue_potion() -> void:
 		health_ui.value = Global.player_health
 		potion_exit.hide()
 		potion_menu.hide()
+		potion_background.hide()
 	# If the player already has maxed out special points then inform the player that
 	# they cannot use the potion, so that it does not get wasted.
 	elif Global.player_special == Global.player_base_special:
+		if Global.sound_effects == true:
+			error_sfx.play()
+			
 		mistake.text = str(mistake_maxed)
 		mistake_timer.start()
 
@@ -783,6 +845,8 @@ func _potato_finish(_attack: StringName) -> void:
 # Runs after the timer has finished it's attack and gets back up.
 func _potato_idle() -> void:
 	# Brings the enemy back to the idle animation.
+	potato_name.show()
+	potato_pointer.show()
 	potato_idle = true
 	potato_idle_timer.stop()
 
@@ -791,6 +855,8 @@ func _potato_idle() -> void:
 func _potato_heal_time() -> void:
 	# After finishing healing, bring the enmy back to being idle as well as allowing 
 	# the player to acess the action menu again.
+	potato_name.show()
+	potato_pointer.show()
 	potato_idle = true
 	potato_heal_timer.stop()
 	spell.mouse_filter = mouse_on
@@ -800,3 +866,11 @@ func _potato_heal_time() -> void:
 func _potato_attack_initiate() -> void:
 	_potato_attack()
 	potato_attack_timer.stop()
+
+
+func _dizzy_timeout() -> void:
+	dizzy_timer.stop()
+	potato_name.show()
+	potato_pointer.show()
+	dizzy.hide()
+	potato_distract = false

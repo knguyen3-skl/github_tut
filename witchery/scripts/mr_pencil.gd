@@ -1,4 +1,5 @@
 extends StaticBody2D
+@onready var interact_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var player_near: bool = false
 
@@ -14,6 +15,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	# If the player is near the NPC and clicks E, talk to the NPC.
 	if player_near == true and Input.is_physical_key_pressed(KEY_E):
+		if Global.sound_effects == true:
+			interact_sfx.play()
+		
 		Global.talking = true
 
 # Runs when the player enters the Area 2D.

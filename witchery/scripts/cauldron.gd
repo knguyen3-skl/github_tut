@@ -1,4 +1,5 @@
 extends StaticBody2D
+@onready var interact_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var player_near: bool = false
 
@@ -20,6 +21,9 @@ func _process(delta: float) -> void:
 	# Checks if the player is near the cauldron/ inside the area2D, and the player
 	# presses E displays the brewing menu and hides the inventory if opened
 	if player_near == true and Input.is_physical_key_pressed(KEY_E):
+		if Global.sound_effects == true:
+			interact_sfx.play()
+			
 		Global.potion_brewing = true
 		brewing.show()
 		inventory.hide()
