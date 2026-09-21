@@ -1,10 +1,10 @@
 extends StaticBody2D
-@onready var interact_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var player_near: bool = false
 
 @export var e: ColorRect
 
+@onready var interact_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

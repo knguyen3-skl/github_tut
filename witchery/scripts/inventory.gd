@@ -1,5 +1,4 @@
 extends ColorRect
-@onready var interact_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var purplepotion: String = "purple_potion"
 var bluepotion: String = "blue_potion"
@@ -11,6 +10,8 @@ var bluepotion: String = "blue_potion"
 @export var player: CharacterBody2D
 @export var purple:Panel
 @export var blue:Panel
+
+@onready var interact_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 
 # Called when the node enters the scene tree for the first time.

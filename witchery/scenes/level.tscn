@@ -22,8 +22,8 @@
 [ext_resource type="Texture2D" uid="uid://cki2qc60cqak1" path="res://assets/coin_tech.png" id="20_8gofh"]
 [ext_resource type="Texture2D" uid="uid://bw8lmu140qwrr" path="res://assets/stone_tile_tech.png" id="21_h6wmr"]
 [ext_resource type="Texture2D" uid="uid://b8pstb4ajq5mi" path="res://assets/path_tech.png" id="22_pqd0y"]
-[ext_resource type="AudioStream" uid="uid://djobn0cfiwr46" path="res://assets/error_tech.mp3" id="23_5k0ak"]
-[ext_resource type="AudioStream" uid="uid://dbg5cgr1qubnp" path="res://assets/reward_tech.mp3" id="24_wu01b"]
+[ext_resource type="AudioStream" uid="uid://djobn0cfiwr46" path="res://music/error_tech.mp3" id="23_5k0ak"]
+[ext_resource type="AudioStream" uid="uid://dbg5cgr1qubnp" path="res://music/reward_tech.mp3" id="24_wu01b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mx8sn"]
 texture = ExtResource("1_w8frs")

@@ -61,10 +61,10 @@
 [ext_resource type="Texture2D" uid="uid://cu8s7eldt3gjm" path="res://assets/dizzy_tech0002.png" id="59_g14jh"]
 [ext_resource type="Texture2D" uid="uid://c6utojn3p6vhh" path="res://assets/dizzy_tech0003.png" id="60_5krkc"]
 [ext_resource type="Texture2D" uid="uid://25cn7j2kxg4p" path="res://assets/dizzy_tech0004.png" id="61_8tky0"]
-[ext_resource type="AudioStream" uid="uid://cfkgiy0e4perp" path="res://assets/fire_tech.mp3" id="62_5xjte"]
-[ext_resource type="AudioStream" uid="uid://djobn0cfiwr46" path="res://assets/error_tech.mp3" id="63_g14jh"]
-[ext_resource type="AudioStream" uid="uid://dkdh8yqpaesln" path="res://assets/bubbles_tech.mp3" id="64_5krkc"]
-[ext_resource type="AudioStream" uid="uid://cnscbpshvkxvy" path="res://assets/book_tech.mp3" id="65_8tky0"]
+[ext_resource type="AudioStream" uid="uid://cfkgiy0e4perp" path="res://music/fire_tech.mp3" id="62_5xjte"]
+[ext_resource type="AudioStream" uid="uid://djobn0cfiwr46" path="res://music/error_tech.mp3" id="63_g14jh"]
+[ext_resource type="AudioStream" uid="uid://dkdh8yqpaesln" path="res://music/bubbles_tech.mp3" id="64_5krkc"]
+[ext_resource type="AudioStream" uid="uid://cnscbpshvkxvy" path="res://music/book_tech.mp3" id="65_8tky0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhm2j"]
 content_margin_left = 25.0

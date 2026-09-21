@@ -1,6 +1,4 @@
 extends Node2D
-@onready var background: AudioStreamPlayer2D = $AudioStreamPlayer2D
-@onready var quest_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D3
 
 var timer: bool = false
 var status_alive: String = "alive"
@@ -35,6 +33,9 @@ var enemy_area2D: int = 2
 @export var dialogue_scene = preload("res://scenes/balloon.tscn")
 @export var dialogue = preload("res://dialogue/pencil_dialogue.dialogue")
 
+@onready var background: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var quest_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D3
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -45,7 +46,6 @@ func _ready() -> void:
 	quest.hide()
 	# Sets the healthbar and special points bar to the current player's health/
 	# special points.
-	print(Global.last_player_positon)
 	player_health.max_value = Global.player_base_health
 	player_health.value = Global.player_health
 	health.text = str(Global.player_health)
@@ -85,8 +85,10 @@ func _ready() -> void:
 			enemies.get_child(enemy_collison).disabled = true
 			enemies.set_physics_process(false)
 			# Runs a timer to respawn the enemy that was just defeated after battle.
-			get_tree().create_timer(respawn_time).connect("timeout", _respawn_enemy.bind(enemies.name))
-			
+			(
+				get_tree().create_timer(respawn_time).connect
+				("timeout", _respawn_enemy.bind(enemies.name))
+		)
 			
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -133,13 +135,19 @@ func _process(delta: float) -> void:
 	# If the player has finished talking to the NPC, but has not completed the quest
 	# yet, let the NPC remind the player of their objective again, so that the player
 	# understands what they need to do.
-	elif Global.quest_talk_finish == true and Global.talking == true and quest_repeat == false and Global.quest_1_value < potato_defeated:
+	elif (
+			Global.quest_talk_finish == true and Global.talking == true 
+			and quest_repeat == false and Global.quest_1_value < potato_defeated
+	):
 		DialogueManager.show_dialogue_balloon(dialogue, "repeat")
 		quest_repeat = true
 		DialogueManager.dialogue_ended.connect(_quest_repeat)
 	# If the player has completed the quest, but has not talked to the NPC, then load
 	# the dialogue where the NPC thanks the player and rewards them for their effors.
-	elif Global.quest_1_value >= potato_defeated and Global.talking == true and Global.quest_complete == false:
+	elif (
+			Global.quest_1_value >= potato_defeated and Global.talking == true 
+			and Global.quest_complete == false
+	):
 		Global.quest_complete = true
 		quest.hide()
 		DialogueManager.show_dialogue_balloon(dialogue, "finished")
@@ -147,8 +155,10 @@ func _process(delta: float) -> void:
 	# If the player has completed the quest and talked to the NPC already, let the NPC
 	# tell the player that there is nothing else that they want the player to do at the
 	# moment.
-	elif Global.quest_complete == true and Global.talking == true and quest_complete_repeat == false and Global.complete_dialogue == true:
-		print("error")
+	elif (
+			Global.quest_complete == true and Global.talking == true 
+			and quest_complete_repeat == false and Global.complete_dialogue == true
+	):
 		quest_complete_repeat = true
 		DialogueManager.show_dialogue_balloon(dialogue, "snipet")
 		DialogueManager.dialogue_ended.connect(_quest_complete)
@@ -253,4 +263,3 @@ func _quest_complete(_resource):
 	# that there's nothing left to do.
 	Global.talking = false
 	quest_complete_repeat = false
-	print("repeat")

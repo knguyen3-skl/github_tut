@@ -1,11 +1,12 @@
 extends StaticBody2D
-@onready var interact_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var player_near: bool = false
 var shop_opened: bool = false
 
 @export var e:ColorRect
 @export var shop: ColorRect
+
+@onready var interact_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 
 # Called when the node enters the scene tree for the first time.

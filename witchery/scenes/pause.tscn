@@ -5,17 +5,13 @@
 [ext_resource type="Texture2D" uid="uid://dse4l0phdu1og" path="res://assets/web_tech.png" id="2_jn4bt"]
 [ext_resource type="Texture2D" uid="uid://j57c4g7m4san" path="res://assets/spider_tech.png" id="3_r1fnm"]
 [ext_resource type="Texture2D" uid="uid://bndrktykp16q1" path="res://assets/spider_web_tech.png" id="4_wen6a"]
-[ext_resource type="Texture2D" uid="uid://dx5ffu386ai8t" path="res://assets/button_tech.png" id="5_r1fnm"]
 [ext_resource type="Texture2D" uid="uid://dri8or757ah0y" path="res://assets/button_bold_tech.png" id="6_wen6a"]
-[ext_resource type="AudioStream" uid="uid://cnscbpshvkxvy" path="res://assets/book_tech.mp3" id="8_cml1b"]
-[ext_resource type="AudioStream" uid="uid://on4hjaf3yq1w" path="res://assets/button_low.mp3" id="9_1xtef"]
+[ext_resource type="AudioStream" uid="uid://cnscbpshvkxvy" path="res://music/book_tech.mp3" id="8_cml1b"]
+[ext_resource type="AudioStream" uid="uid://on4hjaf3yq1w" path="res://music/button_low.mp3" id="9_1xtef"]
 [ext_resource type="Texture2D" uid="uid://dhdcprsq4eiiu" path="res://assets/button_brown.png" id="10_xmhi0"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xmhi0"]
-load_path = "res://.godot/imported/button_bold_tech.png-9b005a0bc2146959ea2359697594fe0e.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xw83q"]
-load_path = "res://.godot/imported/button_bold_tech.png-9b005a0bc2146959ea2359697594fe0e.ctex"
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1xtef"]
+load_path = "res://.godot/imported/button_tech.png-5e4834eb3d98d4436a2ce9bfc10d8985.ctex"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cml1b"]
 bg_color = Color(0.7666196, 0.76661956, 0.76661944, 0.43137255)
@@ -81,7 +77,7 @@ texture = ExtResource("4_wen6a")
 [node name="ButtonTech" type="Sprite2D" parent="." unique_id=1446810160]
 position = Vector2(-110.00001, 21.000008)
 scale = Vector2(12, 12)
-texture = ExtResource("5_r1fnm")
+texture = SubResource("CompressedTexture2D_1xtef")
 region_enabled = true
 region_rect = Rect2(55, 6, 21, 21)
 
@@ -107,28 +103,28 @@ horizontal_alignment = 1
 
 [node name="TextureButton" type="TextureButton" parent="." unique_id=2137745433 groups=["pause"]]
 layout_mode = 0
-offset_left = 84.99997
-offset_top = -156.0
-offset_right = 180.99997
-offset_bottom = -108.0
+offset_left = 104.99997
+offset_top = -117.0
+offset_right = 186.99997
+offset_bottom = -91.0
 scale = Vector2(3, 3)
-texture_normal = SubResource("CompressedTexture2D_xmhi0")
+texture_normal = ExtResource("6_wen6a")
 
 [node name="TextureButton2" type="TextureButton" parent="." unique_id=674854815 groups=["pause"]]
 layout_mode = 0
-offset_left = 84.99997
-offset_top = -63.0
-offset_right = 180.99997
-offset_bottom = -15.0
+offset_left = 106.99997
+offset_top = -23.0
+offset_right = 188.99997
+offset_bottom = 3.0
 scale = Vector2(3, 3)
-texture_normal = SubResource("CompressedTexture2D_xw83q")
+texture_normal = ExtResource("6_wen6a")
 
 [node name="TextureButton3" type="TextureButton" parent="." unique_id=308777977 groups=["pause"]]
 layout_mode = 0
-offset_left = 84.99997
-offset_top = 33.0
-offset_right = 180.99997
-offset_bottom = 81.0
+offset_left = 107.99997
+offset_top = 74.0
+offset_right = 189.99997
+offset_bottom = 100.0
 scale = Vector2(3, 3)
 texture_normal = ExtResource("6_wen6a")
 

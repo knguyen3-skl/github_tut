@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
+const OG_SPEED: int = 70
+
 var speed: int = 70
-var og_speed: int = 70
 var ROLL: int = 5
 var direction : Vector2
 var stationary : Vector2
@@ -18,12 +19,14 @@ func _ready() -> void:
 	
 
 func _physics_process(delta: float) -> void:
-	# If the player has the pause menu opened, don't chase the stop.
+	# If the player has the pause menu opened, don't chase the player.
 	if Global.pause == true:
+		animation.rotate(0)
 		velocity = stop
 		speed = 0
 	else:
-		speed = og_speed
+		animation.rotate(delta * ROLL)
+		speed = OG_SPEED
 	
 	# Sets the goal of the enemy to the player's position so that it can chase the
 	# player when they come close enough.

@@ -1,6 +1,4 @@
 extends ColorRect
-@onready var buttion_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D2
-@onready var error_sfx: AudioStreamPlayer2D = $"../../AudioStreamPlayer2D2"
 
 var purple_potion: String = "purple_potion"
 var blue_potion: String = "blue_potion"
@@ -13,6 +11,9 @@ var blue_value: int = 2
 @export var no_money: Label
 @export var announcement: ColorRect
 @export var timer_brewed: Timer
+
+@onready var buttion_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D2
+@onready var error_sfx: AudioStreamPlayer2D = $"../../AudioStreamPlayer2D2"
 
 
 # Called when the node enters the scene tree for the first time.

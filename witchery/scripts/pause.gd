@@ -1,14 +1,14 @@
 extends ColorRect
-@onready var pause_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D
-@onready var button_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D2
 
 @export var puase: Button
-
 @export var background_on: Button
 @export var background_off: Button
 @export var sound_on: Button
 @export var sound_off: Button
 @export var back: Button
+
+@onready var pause_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var button_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D2
 
 
 # Called when the node enters the scene tree for the first time.
@@ -44,7 +44,9 @@ func _options() -> void:
 			items.hide()
 		elif items.is_in_group("options"):
 			items.show()
-			
+	
+	# Checks to see the player's current settings that they have chosen for background
+	# music and displays the option buttons accordingly.
 	if Global.background_music == true:
 		background_on.show()
 		background_off.hide()
@@ -52,6 +54,8 @@ func _options() -> void:
 		background_on.hide()
 		background_off.show()
 	
+	# Checks to see the player's current settings that they have chosen for sound
+	# effects and displays the option buttons accordingly.
 	if Global.sound_effects == true:
 		sound_on.show()
 		sound_off.hide()
@@ -75,6 +79,7 @@ func _close() -> void:
 	if Global.sound_effects == true:
 		pause_sfx.play()
 	
+	# When the player closes the pause menu, hide both the pause and option items.
 	for items in get_children():
 		if items.is_in_group("pause"):
 			items.show()
@@ -94,31 +99,38 @@ func _open_pause() -> void:
 	show()
 
 
+# Runs when the player turns off the background music. 
 func _background_on_to_off() -> void:
 	background_on.hide()
 	background_off.show()
 	Global.background_music = false
 
 
+# Runs when the player turns on the background music. 
 func _background_off_to_on() -> void:
 	background_on.show()
 	background_off.hide()
 	Global.background_music = true
 
 
+# Runs when the player turns off the sound effects. 
 func _sound_on_to_off() -> void:
 	sound_on.hide()
 	sound_off.show()
 	Global.sound_effects = false
 
 
+# Runs when the player turns on the sound effects. 
 func _sound_off_to_on() -> void:
 	sound_on.show()
 	sound_off.hide()
 	Global.sound_effects = true
 
 
+# Runs when the player clicks off the option menu.
 func _back_pause() -> void:
+	# When the player clicks off the option menu, display the pause menu again by
+	# showing the items in the pause menu and hiding the items in options.
 	for items in get_children():
 		if items.is_in_group("pause"):
 			items.show()

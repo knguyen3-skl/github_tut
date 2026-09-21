@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bk71h7pld0vpn" path="res://assets/mr_pencil.png" id="1_873u4"]
 [ext_resource type="Script" uid="uid://cxarxd3oi3ah5" path="res://scripts/mr_pencil.gd" id="1_suqmq"]
-[ext_resource type="AudioStream" uid="uid://cqjd6g2ahu4mg" path="res://assets/button_tech.mp3" id="3_8ltqn"]
+[ext_resource type="AudioStream" uid="uid://cqjd6g2ahu4mg" path="res://music/button_tech.mp3" id="3_8ltqn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_suqmq"]
 size = Vector2(207, 279)

@@ -35,8 +35,8 @@ var inventory = {
 }
 
 var shop = {
-	"super_cast": "yes",
-	"look_over_there": "yes",
+	"super_cast": "no",
+	"look_over_there": "no",
 }
 
 var intro: bool = true

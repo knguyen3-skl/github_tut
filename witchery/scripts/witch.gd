@@ -1,14 +1,15 @@
 extends CharacterBody2D
-@onready var walking_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var speed: int = 100
 
 @export var player: AnimatedSprite2D
 
+@onready var walking_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	walking_sfx.stream_paused = false
+	walking_sfx.play()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -20,13 +21,24 @@ func _process(delta: float) -> void:
 	direction.y = Input.get_axis("ui_up", "ui_down")
 	velocity = speed * direction.normalized()
 	
+	if Global.pause == true:
+		walking_sfx.stream_paused = true
+	
 	# Runs walking animation if the player goes left or right
-	if Input.get_axis("ui_left", "ui_right"):
+	if Input.get_axis("ui_left", "ui_right") and Global.talking == false:
 		player.animation = "walk"
 		if direction.x == -1:
 			player.flip_h = true
 		else:
 			player.flip_h = false
+		if Global.sound_effects == true and Global.pause == false:
+			walking_sfx.stream_paused = false
+	elif Input.get_axis("ui_up", "ui_down"):
+		if Global.sound_effects == true and Global.pause == false:
+			walking_sfx.stream_paused = false
 	else:
 		player.animation = "idle"
+		if Global.sound_effects == true and Global.pause == false:
+			walking_sfx.stream_paused = true
+		
 	move_and_slide()

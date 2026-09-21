@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dxn8bc3i6naxu" path="res://scripts/market.gd" id="1_wuado"]
 [ext_resource type="Texture2D" uid="uid://qqpyhg17dw33" path="res://assets/stall_tech.png" id="2_3dq5b"]
-[ext_resource type="AudioStream" uid="uid://cqjd6g2ahu4mg" path="res://assets/button_tech.mp3" id="3_3dq5b"]
+[ext_resource type="AudioStream" uid="uid://cqjd6g2ahu4mg" path="res://music/button_tech.mp3" id="3_3dq5b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nay5t"]
 size = Vector2(8, 46)

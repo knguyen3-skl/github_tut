@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dhdcprsq4eiiu" path="res://assets/button_brown.png" id="3_c8ira"]
 [ext_resource type="Texture2D" uid="uid://dit7vdud5kxxa" path="res://assets/potion_tech.png" id="4_280xy"]
 [ext_resource type="Texture2D" uid="uid://225epqan7c2r" path="res://assets/sprout_tech.png" id="6_c8ira"]
-[ext_resource type="AudioStream" uid="uid://dbg5cgr1qubnp" path="res://assets/reward_tech.mp3" id="7_p3gfq"]
+[ext_resource type="AudioStream" uid="uid://dbg5cgr1qubnp" path="res://music/reward_tech.mp3" id="7_p3gfq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ocvxt"]
 bg_color = Color(0.16026929, 0.16026929, 0.16026929, 0.49803922)
@@ -87,19 +87,19 @@ text = "Brew"
 
 [node name="TextureButton" type="TextureButton" parent="." unique_id=1073951921 groups=["purple_options"]]
 layout_mode = 0
-offset_left = 359.0
-offset_top = 256.0
+offset_left = 363.0
+offset_top = 267.0
 offset_right = 445.0
-offset_bottom = 288.0
+offset_bottom = 293.0
 scale = Vector2(3, 3)
 texture_normal = ExtResource("3_c8ira")
 
 [node name="TextureButton2" type="TextureButton" parent="." unique_id=1372853352 groups=["blue_options"]]
 layout_mode = 0
-offset_left = 359.0
-offset_top = 256.0
+offset_left = 363.0
+offset_top = 267.0
 offset_right = 445.0
-offset_bottom = 288.0
+offset_bottom = 293.0
 scale = Vector2(3, 3)
 texture_normal = ExtResource("3_c8ira")
 

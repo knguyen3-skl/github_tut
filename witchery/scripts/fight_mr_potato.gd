@@ -1,8 +1,4 @@
 extends Node2D
-@onready var fireball_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D2
-@onready var error_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D3
-@onready var potion_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D4
-@onready var pause_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var bars: bool = false
 var options: bool = false
@@ -177,6 +173,11 @@ var super_casted: bool = false
 
 @export var spell_background: NinePatchRect
 @export var potion_background: NinePatchRect
+
+@onready var fireball_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D2
+@onready var error_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D3
+@onready var potion_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D4
+@onready var pause_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 
 # Called when the node enters the scene tree for the first time.
@@ -376,7 +377,10 @@ func _process(delta: float) -> void:
 	
 	# If the player has not completed the intro, start the tutorial and let them skip
 	# through dialogue by cliking space.
-	if Global.intro == false and Global.pause == false and bars == false and counter < start and Input.is_action_just_pressed("next"):
+	if (
+			Global.intro == false and Global.pause == false and bars == false 
+			and counter < start and Input.is_action_just_pressed("next")
+	):
 		counter += 1
 		text.text = intro[counter]
 		light_bar.show()
@@ -387,28 +391,43 @@ func _process(delta: float) -> void:
 				items.z_index = 1
 	# If the player has not completed the tutorial yet and is up to the turns part,
 	# highlight the area underneath the turns section to make it stand out to the player.
-	elif Global.intro == false and Global.pause == false and counter >= start and counter <turns_intro and Input.is_action_just_pressed("next"):
+	elif (
+			Global.intro == false and Global.pause == false and counter >= start 
+			and counter <turns_intro and Input.is_action_just_pressed("next")
+	):
 		counter += 1
 		text.text = intro[counter]
 		light_bar.hide()
 	# If the player has not completed the tutorial yet and is up to the action part of
 	# the introduction, then let them skip through it by pressing space.
-	elif Global.intro == false and Global.pause == false and counter >= turns_intro and options == false and Input.is_action_just_pressed("next"):
+	elif (
+			Global.intro == false and Global.pause == false and counter >= turns_intro 
+			and options == false and Input.is_action_just_pressed("next")
+	):
 		counter += 1
 		text.text = intro[counter]
 	# If the player has not completed the tutorial yet and is up to the enemy part of
 	# the introduction, then let them skip through it by pressing space.
-	elif Global.intro == false and Global.pause == false and counter >= potato_intro and counter < spell_intro and options == true and Input.is_action_just_pressed("next"):
+	elif (
+			Global.intro == false and Global.pause == false and counter >= potato_intro 
+			and counter < spell_intro and options == true and Input.is_action_just_pressed("next")
+	):
 		counter += 1
 		text.text = intro[counter]
 	# If the player has not completed the tutorial yet and is up to the spell part of
 	# the introduction, then let them skip through it by pressing space.
-	elif Global.intro == false and Global.pause == false and counter >= spell_intro and counter < cast_intro and clicked == true and Input.is_action_just_pressed("next"):
+	elif (
+			Global.intro == false and Global.pause == false and counter >= spell_intro 
+			and counter < cast_intro and clicked == true and Input.is_action_just_pressed("next")
+	):
 		counter += 1
 		text.text = intro[counter]
 	# If the player has not completed the tutorial yet and is up to the cast part of the
 	# introduction, then let them skip through it by pressing space.
-	elif Global.pause == false and counter >= after_cast_intro and counter < end_intro and Input.is_action_just_pressed("next"):
+	elif (
+			Global.pause == false and counter >= after_cast_intro and counter < end_intro 
+			and Input.is_action_just_pressed("next")
+	):
 		counter += 1
 		text.text = intro[counter]
 	# If the player has not completed the tutorial yet and is at the end of the end of 
