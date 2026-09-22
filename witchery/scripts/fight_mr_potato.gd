@@ -323,7 +323,7 @@ func _process(delta: float) -> void:
 				
 		for items in canvas.get_children():
 			if items.is_in_group("turns"):
-				items.z_index += second_layer
+				items.z_index =+ second_layer
 	# Bring the items in the potato's health to the front and turns to the back when the
 	# player reaches that part of the tutorial, so they can understand how the enemy's
 	# health works.

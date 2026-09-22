@@ -39,7 +39,7 @@ var shop = {
 	"look_over_there": "no",
 }
 
-var intro: bool = true
+var intro: bool = false
 var quest_1_value: int = 2
 var quest_talk: bool = false
 var quest_talk_finish: bool = false

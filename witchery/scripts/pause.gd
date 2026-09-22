@@ -6,6 +6,12 @@ extends ColorRect
 @export var sound_on: Button
 @export var sound_off: Button
 @export var back: Button
+@export var canvas: CanvasLayer
+@export var inventory_button: Button
+@export var inventory: ColorRect
+@export var brewing: ColorRect
+@export var shop: ColorRect
+@export var market: StaticBody2D
 
 @onready var pause_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var button_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D2
@@ -29,6 +35,11 @@ func _process(delta: float) -> void:
 func _continue() -> void:
 	hide()
 	Global.pause = false
+	get_tree().paused = false
+	
+	if Global.potato_fight == false:
+		market.shop_opened = false
+		Global.inventory_status = false
 	
 	if Global.sound_effects == true:
 		button_sfx.play()
@@ -67,10 +78,14 @@ func _options() -> void:
 # Runs when the player clicks quit.
 func _quit() -> void:
 	# Takes the player back to the main menu when they want to quit the game.
+	get_tree().paused = false
 	if Global.sound_effects == true:
 		button_sfx.play()
+	
+	if Global.potato_fight == false:
+		market.shop_opened = false
+		Global.inventory_status = false
 		
-	Global.pause = false
 	get_tree().call_deferred("change_scene_to_file", "res://scenes/main_menu.tscn")
 
 
@@ -86,8 +101,14 @@ func _close() -> void:
 		elif items.is_in_group("options"):
 			items.hide()
 	
+	get_tree().paused = false
 	Global.pause = false
+	inventory_button.show()
 	hide()
+	
+	if Global.potato_fight == false:
+		market.shop_opened = false
+		Global.inventory_status = false
 
 
 # Runs when the player opens the pause menu.
@@ -95,8 +116,20 @@ func _open_pause() -> void:
 	if Global.sound_effects == true:
 		pause_sfx.play()
 	
-	Global.pause = true	
+	get_tree().paused = true
+	Global.pause = true
+	puase.hide()
+	inventory.hide()
+	inventory_button.hide()
+	brewing.hide()
+	shop.hide()
 	show()
+	
+	for items in canvas.get_children():
+		if items.is_in_group("stats"):
+			items.hide()
+		elif items.is_in_group("collect"):
+			items.hide()
 
 
 # Runs when the player turns off the background music. 

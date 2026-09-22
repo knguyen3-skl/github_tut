@@ -18,7 +18,10 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	# If the player opens the shop, load the market dialogue before the actual shop.
-	if player_near == true and Input.is_physical_key_pressed(KEY_E) and shop_opened == false:
+	if (
+			player_near == true and Input.is_physical_key_pressed(KEY_E)
+			and shop_opened == false and Global.inventory_status == false
+	):
 		if Global.sound_effects == true:
 			interact_sfx.play()
 			

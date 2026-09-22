@@ -8,7 +8,6 @@ var speed: int = 100
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	walking_sfx.stream_paused = false
 	walking_sfx.play()
 
 
@@ -21,8 +20,6 @@ func _process(delta: float) -> void:
 	direction.y = Input.get_axis("ui_up", "ui_down")
 	velocity = speed * direction.normalized()
 	
-	if Global.pause == true:
-		walking_sfx.stream_paused = true
 	
 	# Runs walking animation if the player goes left or right
 	if Input.get_axis("ui_left", "ui_right") and Global.talking == false:
@@ -32,13 +29,14 @@ func _process(delta: float) -> void:
 		else:
 			player.flip_h = false
 		if Global.sound_effects == true and Global.pause == false:
+			print("you")
 			walking_sfx.stream_paused = false
 	elif Input.get_axis("ui_up", "ui_down"):
 		if Global.sound_effects == true and Global.pause == false:
+			print("me")
 			walking_sfx.stream_paused = false
 	else:
 		player.animation = "idle"
-		if Global.sound_effects == true and Global.pause == false:
-			walking_sfx.stream_paused = true
+		walking_sfx.stream_paused = true
 		
 	move_and_slide()

@@ -14,7 +14,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	# If the player is near the NPC and clicks E, talk to the NPC.
-	if player_near == true and Input.is_physical_key_pressed(KEY_E):
+	if player_near == true and Input.is_physical_key_pressed(KEY_E) and Global.pause == false:
 		if Global.sound_effects == true:
 			interact_sfx.play()
 		

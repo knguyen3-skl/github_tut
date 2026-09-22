@@ -19,15 +19,6 @@ func _ready() -> void:
 	
 
 func _physics_process(delta: float) -> void:
-	# If the player has the pause menu opened, don't chase the player.
-	if Global.pause == true:
-		animation.rotate(0)
-		velocity = stop
-		speed = 0
-	else:
-		animation.rotate(delta * ROLL)
-		speed = OG_SPEED
-	
 	# Sets the goal of the enemy to the player's position so that it can chase the
 	# player when they come close enough.
 	navigation_agent_2d.target_position = player.global_position

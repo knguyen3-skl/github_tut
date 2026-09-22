@@ -22,7 +22,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	# Checks if the player is near the cauldron/ inside the area2D, and the player
 	# presses E displays the brewing menu and hides the inventory if opened
-	if player_near == true and Input.is_physical_key_pressed(KEY_E):
+	if player_near == true and Input.is_physical_key_pressed(KEY_E) and Global.pause == false:
 		if Global.sound_effects == true:
 			interact_sfx.play()
 			

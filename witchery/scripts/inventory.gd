@@ -26,12 +26,12 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	# If the player has the pause menu opened, then hide the inventory to minimise
 	# clutter and allows the player to focus on the pause menu.
-	if Global.pause == true:
-		hide()
-		Global.inventory_status = false
 		
 	purple_potion.text = str(Global.inventory[purplepotion])
 	blue_potion.text = str(Global.inventory[bluepotion])
+	
+	if Global.inventory_status == false:
+		hide()
 
 
 # Runs when the player opens the inventory.
@@ -68,3 +68,4 @@ func _exit_inventory() -> void:
 	hide()
 	player_cam.drag_horizontal_enabled = true
 	player_cam.drag_vertical_enabled = true
+	Global.inventory_status = false

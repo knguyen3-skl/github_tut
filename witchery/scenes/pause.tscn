@@ -41,6 +41,7 @@ corner_detail = 20
 bg_color = Color(0.6862745, 0.5647059, 0.43137255, 0.7058824)
 
 [node name="ColorRect" type="ColorRect" unique_id=625441976 node_paths=PackedStringArray("background_on", "background_off", "sound_on", "sound_off", "back")]
+process_mode = 3
 offset_left = 526.0
 offset_top = 283.0
 offset_right = 566.0

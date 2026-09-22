@@ -24,6 +24,7 @@ var enemy_area2D: int = 2
 @export var heart:Sprite2D
 @export var energy:Sprite2D
 @export var inventory: Button
+@export var market: StaticBody2D
 @export var pause: Button
 @export var canvas: CanvasLayer
 @export var quest: ColorRect
@@ -44,6 +45,10 @@ func _ready() -> void:
 		
 	announcement.hide()
 	quest.hide()
+	Global.pause = false
+	Global.potato_fight = false
+	market.shop_opened = false
+	Global.inventory_status = false
 	# Sets the healthbar and special points bar to the current player's health/
 	# special points.
 	player_health.max_value = Global.player_base_health

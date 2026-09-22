@@ -29,12 +29,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	# Checks if the pause menu is opened or not and hides if it is.
-	if Global.pause == true:
+	# If the player has their inventory open, hide the shop in favour of the inventory.
+	if Global.inventory_status == true:
 		hide()
+		market.shop_opened = false
 		Global.market = false
-		player_cam.drag_horizontal_enabled = true
-		player_cam.drag_vertical_enabled = true
 		
 	# If the market is opened, change the player's camera so that it doesn't look
 	# like their lagging when moving.
