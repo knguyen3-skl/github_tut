@@ -1,6 +1,6 @@
 extends Node
 
-var money: int = 500
+var money: int = 101
 var sprout: int = 5
 
 var potato_fight: bool = false

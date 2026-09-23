@@ -29,11 +29,9 @@ func _process(delta: float) -> void:
 		else:
 			player.flip_h = false
 		if Global.sound_effects == true and Global.pause == false:
-			print("you")
 			walking_sfx.stream_paused = false
 	elif Input.get_axis("ui_up", "ui_down"):
 		if Global.sound_effects == true and Global.pause == false:
-			print("me")
 			walking_sfx.stream_paused = false
 	else:
 		player.animation = "idle"

@@ -32,6 +32,8 @@ func _process(delta: float) -> void:
 	
 	if Global.inventory_status == false:
 		hide()
+	elif Global.talking == true:
+		hide()
 
 
 # Runs when the player opens the inventory.

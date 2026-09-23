@@ -63,6 +63,7 @@ func _process(delta: float) -> void:
 	if Global.shop[lookoverthere] == brought and Global.shop[supercast] == brought:
 		status_empty = true
 	
+	# If the shop is empty, tell the player the shop is empty.
 	if Global.shop_speech == true and status_empty == true:
 		nothing.show()
 
