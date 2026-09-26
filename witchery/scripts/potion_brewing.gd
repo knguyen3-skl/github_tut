@@ -12,7 +12,7 @@ var blue_value: int = 2
 @export var announcement: ColorRect
 @export var timer_brewed: Timer
 
-@onready var buttion_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D2
+@onready var button_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D2
 @onready var error_sfx: AudioStreamPlayer2D = $"../../AudioStreamPlayer2D2"
 
 
@@ -38,7 +38,7 @@ func _purple_brewed() -> void:
 	# successfully brewwed the potion in the form of an announcement.
 	if Global.sprout >= 1:
 		if Global.sound_effects == true:
-			buttion_sfx.play()
+			button_sfx.play()
 			
 		Global.sprout -= 1
 		sprout.text = str(Global.sprout)
@@ -83,7 +83,7 @@ func _blue_brewed() -> void:
 	# successfully brewwed the potion in the form as an announcement.
 	if Global.sprout >= blue_value:
 		if Global.sound_effects == true:
-			buttion_sfx.play()
+			button_sfx.play()
 			
 		Global.sprout -= blue_value
 		sprout.text = str(Global.sprout)

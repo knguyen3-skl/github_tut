@@ -37,6 +37,7 @@ func _continue() -> void:
 	Global.pause = false
 	get_tree().paused = false
 	
+	# If the player is in the main level, set the market and inventory to closed.
 	if Global.potato_fight == false:
 		market.shop_opened = false
 		Global.inventory_status = false
@@ -82,6 +83,7 @@ func _quit() -> void:
 	if Global.sound_effects == true:
 		button_sfx.play()
 	
+	# If the player is in the main level, set the market and inventory to closed.
 	if Global.potato_fight == false:
 		market.shop_opened = false
 		Global.inventory_status = false
@@ -89,29 +91,7 @@ func _quit() -> void:
 	get_tree().call_deferred("change_scene_to_file", "res://scenes/main_menu.tscn")
 
 
-# Runs when the player clicks off the pause menu.
-func _close() -> void:
-	if Global.sound_effects == true:
-		pause_sfx.play()
-	
-	# When the player closes the pause menu, hide both the pause and option items.
-	for items in get_children():
-		if items.is_in_group("pause"):
-			items.show()
-		elif items.is_in_group("options"):
-			items.hide()
-	
-	get_tree().paused = false
-	Global.pause = false
-	inventory_button.show()
-	hide()
-	
-	if Global.potato_fight == false:
-		market.shop_opened = false
-		Global.inventory_status = false
-
-
-# Runs when the player opens the pause menu.
+# Runs when the player opens the pause menu in the main level.
 func _open_pause() -> void:
 	if Global.sound_effects == true:
 		pause_sfx.play()
@@ -169,3 +149,6 @@ func _back_pause() -> void:
 			items.show()
 		elif items.is_in_group("options"):
 			items.hide()
+			
+	if Global.sound_effects == true:
+		pause_sfx.play()

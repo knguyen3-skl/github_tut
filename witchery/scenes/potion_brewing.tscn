@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dhdcprsq4eiiu" path="res://assets/button_brown.png" id="3_c8ira"]
 [ext_resource type="Texture2D" uid="uid://dit7vdud5kxxa" path="res://assets/potion_tech.png" id="4_280xy"]
 [ext_resource type="Texture2D" uid="uid://225epqan7c2r" path="res://assets/sprout_tech.png" id="6_c8ira"]
-[ext_resource type="AudioStream" uid="uid://dbg5cgr1qubnp" path="res://music/reward_tech.mp3" id="7_p3gfq"]
+[ext_resource type="AudioStream" uid="uid://dkdh8yqpaesln" path="res://music/bubbles_tech.mp3" id="7_p3gfq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ocvxt"]
 bg_color = Color(0.16026929, 0.16026929, 0.16026929, 0.49803922)
@@ -202,9 +202,9 @@ text = "Requires: 2 "
 
 [node name="Label8" type="Label" parent="." unique_id=2120426221 groups=["blue_options"]]
 layout_mode = 0
-offset_left = 395.0
+offset_left = 370.0
 offset_top = 71.0
-offset_right = 571.0
+offset_right = 546.0
 offset_bottom = 120.0
 theme_override_font_sizes/font_size = 35
 text = "Just Water"

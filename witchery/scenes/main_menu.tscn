@@ -259,11 +259,11 @@ scale = Vector2(7, 7)
 texture = ExtResource("1_8ln24")
 
 [node name="Panel" type="Panel" parent="CanvasLayer4" unique_id=373398188]
-offset_left = 279.00003
-offset_top = 60.0
-offset_right = 319.00003
-offset_bottom = 100.0
-scale = Vector2(15, 15)
+offset_left = 190.0
+offset_top = 29.0
+offset_right = 230.0
+offset_bottom = 69.0
+scale = Vector2(20, 20)
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_jk1qb")
 
@@ -288,29 +288,34 @@ texture = ExtResource("9_jk1qb")
 
 [node name="Label4" type="Label" parent="CanvasLayer4" unique_id=1950023582]
 z_index = 4
-offset_left = 378.0
-offset_top = 69.0
-offset_right = 797.0
-offset_bottom = 342.0
+offset_left = 160.0
+offset_top = 90.0
+offset_right = 1012.0
+offset_bottom = 395.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.14901961)
-theme_override_constants/shadow_offset_x = 20
-theme_override_constants/shadow_offset_y = 30
-theme_override_font_sizes/font_size = 200
-text = "Title"
+theme_override_constants/line_spacing = -25
+theme_override_constants/shadow_offset_x = 15
+theme_override_constants/shadow_offset_y = 15
+theme_override_font_sizes/font_size = 150
+text = "Spud Fiasco"
+horizontal_alignment = 1
 
 [node name="BookTech" type="Sprite2D" parent="CanvasLayer4" unique_id=1338938610 groups=["options"]]
+visible = false
 z_index = 5
 position = Vector2(578, 390)
 scale = Vector2(27, 27)
 texture = ExtResource("11_flqon")
 
 [node name="Panel2" type="Panel" parent="CanvasLayer4" unique_id=1278456126 groups=["options"]]
+visible = false
 z_index = 4
 offset_right = 1152.0
 offset_bottom = 645.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_flqon")
 
 [node name="Label5" type="Label" parent="CanvasLayer4" unique_id=635981447 groups=["options"]]
+visible = false
 z_index = 6
 offset_left = 621.0
 offset_top = 133.71878
@@ -322,12 +327,14 @@ text = "Background Music"
 horizontal_alignment = 1
 
 [node name="ButtonBrown" type="Sprite2D" parent="CanvasLayer4" unique_id=2096147542 groups=["options"]]
+visible = false
 z_index = 5
 position = Vector2(753.99994, 150.71875)
 scale = Vector2(3, 2.59375)
 texture = ExtResource("12_rcqid")
 
 [node name="Panel3" type="Panel" parent="CanvasLayer4" unique_id=665596484 groups=["options"]]
+visible = false
 z_index = 5
 offset_left = 631.0
 offset_top = 201.21878
@@ -336,6 +343,7 @@ offset_bottom = 272.21878
 theme_override_styles/panel = SubResource("StyleBoxFlat_1ajci")
 
 [node name="Button2" type="Button" parent="CanvasLayer4" unique_id=1314121041 groups=["options"]]
+visible = false
 z_index = 5
 offset_left = 642.0
 offset_top = 210.21878
@@ -345,6 +353,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_7b55j")
 text = "ON"
 
 [node name="Button3" type="Button" parent="CanvasLayer4" unique_id=642024435 groups=["options"]]
+visible = false
 z_index = 5
 offset_left = 757.0
 offset_top = 210.21878
@@ -354,12 +363,14 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_7b55j")
 text = "OFF"
 
 [node name="ButtonBrown2" type="Sprite2D" parent="CanvasLayer4" unique_id=1405775228 groups=["options"]]
+visible = false
 z_index = 5
 position = Vector2(753.99994, 150.71875)
 scale = Vector2(3, 2.59375)
 texture = ExtResource("12_rcqid")
 
 [node name="Label6" type="Label" parent="CanvasLayer4" unique_id=2113655550 groups=["options"]]
+visible = false
 z_index = 6
 offset_left = 622.0
 offset_top = 330.71878
@@ -371,12 +382,14 @@ text = "Sound Effects"
 horizontal_alignment = 1
 
 [node name="ButtonBrown3" type="Sprite2D" parent="CanvasLayer4" unique_id=944971650 groups=["options"]]
+visible = false
 z_index = 5
 position = Vector2(755.99994, 347.71872)
 scale = Vector2(3, 2.59375)
 texture = ExtResource("12_rcqid")
 
 [node name="Panel4" type="Panel" parent="CanvasLayer4" unique_id=1588922187 groups=["options"]]
+visible = false
 z_index = 5
 offset_left = 633.0
 offset_top = 398.21878
@@ -385,6 +398,7 @@ offset_bottom = 469.21878
 theme_override_styles/panel = SubResource("StyleBoxFlat_1ajci")
 
 [node name="Button4" type="Button" parent="CanvasLayer4" unique_id=1636126038 groups=["options"]]
+visible = false
 z_index = 5
 offset_left = 644.0
 offset_top = 407.21878
@@ -394,6 +408,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_7b55j")
 text = "ON"
 
 [node name="Button5" type="Button" parent="CanvasLayer4" unique_id=183346855 groups=["options"]]
+visible = false
 z_index = 5
 offset_left = 759.0
 offset_top = 407.21878
@@ -403,12 +418,14 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_7b55j")
 text = "OFF"
 
 [node name="ButtonBrown4" type="Sprite2D" parent="CanvasLayer4" unique_id=160603872 groups=["options"]]
+visible = false
 z_index = 5
 position = Vector2(755.99994, 347.71872)
 scale = Vector2(3, 2.59375)
 texture = ExtResource("12_rcqid")
 
 [node name="Button6" type="Button" parent="CanvasLayer4" unique_id=93618899 groups=["options"]]
+visible = false
 z_index = 5
 offset_left = 265.0
 offset_top = 472.21878
@@ -419,6 +436,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_5pajh")
 text = "<"
 
 [node name="Label7" type="Label" parent="CanvasLayer4" unique_id=1948132001 groups=["options"]]
+visible = false
 z_index = 6
 offset_left = 295.0
 offset_top = 271.21878
@@ -429,6 +447,7 @@ text = "Options"
 horizontal_alignment = 1
 
 [node name="ButtonTech" type="Sprite2D" parent="CanvasLayer4" unique_id=1945438071 groups=["options"]]
+visible = false
 z_index = 5
 position = Vector2(416, 317.12674)
 scale = Vector2(12, 12)
@@ -437,6 +456,7 @@ region_enabled = true
 region_rect = Rect2(55, 6, 21, 21)
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer4" unique_id=861192293 groups=["options"]]
+visible = false
 z_index = 5
 offset_left = 387.00006
 offset_top = 163.12679

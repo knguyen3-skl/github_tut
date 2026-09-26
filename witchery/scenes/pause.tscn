@@ -13,14 +13,6 @@
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1xtef"]
 load_path = "res://.godot/imported/button_tech.png-5e4834eb3d98d4436a2ce9bfc10d8985.ctex"
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cml1b"]
-bg_color = Color(0.7666196, 0.76661956, 0.76661944, 0.43137255)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-corner_detail = 20
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xw83q"]
 bg_color = Color(0.84313726, 0.76862746, 0.65882355, 1)
 corner_radius_top_left = 20
@@ -155,22 +147,6 @@ offset_right = 280.0
 offset_bottom = 145.0
 theme_override_font_sizes/font_size = 50
 text = "Quit"
-
-[node name="Button" type="Button" parent="." unique_id=629021296]
-layout_mode = 0
-offset_left = -510.0
-offset_top = -273.0
-offset_right = -424.0
-offset_bottom = -186.0
-scale = Vector2(0.8, 0.8)
-theme_override_styles/normal = SubResource("StyleBoxFlat_cml1b")
-
-[node name="Polygon2D" type="Polygon2D" parent="Button" unique_id=770095067]
-position = Vector2(-10, 68)
-rotation = -1.5707964
-scale = Vector2(1.2, 1.2)
-polygon = PackedVector2Array(20, 62.499996, 40, 30, 0, 30)
-uv = PackedVector2Array(50.471344, -0.8537636, 79.851776, 39.613644, 24.971344, 39.613644)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=852696860]
 stream = ExtResource("8_cml1b")
@@ -313,7 +289,6 @@ horizontal_alignment = 1
 [connection signal="pressed" from="TextureButton" to="." method="_continue"]
 [connection signal="pressed" from="TextureButton2" to="." method="_options"]
 [connection signal="pressed" from="TextureButton3" to="." method="_quit"]
-[connection signal="pressed" from="Button" to="." method="_close"]
 [connection signal="pressed" from="Button2" to="." method="_background_on_to_off"]
 [connection signal="pressed" from="Button3" to="." method="_background_off_to_on"]
 [connection signal="pressed" from="Button4" to="." method="_sound_on_to_off"]

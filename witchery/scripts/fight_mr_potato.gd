@@ -22,7 +22,6 @@ var look_over_there: String = "look_over_there"
 var status_brought: String = "yes"
 
 var mistake_no_sp: String = "Not enough special points!"
-var mistake_no_turn: String = "Not your turn!"
 var mistake_maxed: String = "Stats already maxed!"
 var mistake_sp_maxed: String = "Special points already maxed!"
 var mistake_reset: String = ""
@@ -30,38 +29,38 @@ var mistake_reset: String = ""
 var counter = 0
 var intro = [
 	"This is a quick introduction to mastering
-combat!",
-"In the top left is your health and special 
-points",
-"Whenever you get attacked, you will lose
-health, so be careful and don't go below 0",
-"Special points can be used to cast spells, so
-remember to recharge them",
-"Up here are the amount of turns you have
-left each round",
-"You get three turns each round and will
-reset after the enemy's turn",
-"This is your enemy's health",
-"Attack the enemy to defeat it",
-"Down here are the different actions you
-can choose from each round",
-"Each action will cost you one turn, so
-decide with caution",
-"There's no need to use any potions yet, so 
-lets cast a spell instead, click on the wand",
-"This area displays all the spells you could
-cast",
-"Each spell will have discriptions which tells
-you the requirements and specifications",
-"For the 'Basic Spell' it does 1 damage to 
-the enemy and cost no special points",
-"Now, cast the spell",
-"As you could see, the spell you just casted
-did 1 damage to the enemy and took away",
-"as well as reduced your turns down to 2",
-"This concludes introduction",
-"Now go have fun and beat up some 
-enemies!"
+	combat!",
+	"In the top left is your health and special 
+	points",
+	"Whenever you get attacked, you will lose
+	health, so be careful and don't go below 0",
+	"Special points can be used to cast spells, so
+	remember to recharge them",
+	"Up here are the amount of turns you have
+	left each round",
+	"You get three turns each round and will
+	reset after the enemy's turn",
+	"This is your enemy's health",
+	"Attack the enemy to defeat it",
+	"Down here are the different actions you
+	can choose from each round",
+	"Each action will cost you one turn, so
+	decide with caution",
+	"There's no need to use any potions yet, so 
+	lets cast a spell instead, click on the wand",
+	"This area displays all the spells you could
+	cast",
+	"Each spell will have discriptions which tells
+	you the requirements and specifications",
+	"For the 'Basic Spell' it does 1 damage to 
+	the enemy and cost no special points",
+	"Now, cast the spell",
+	"As you could see, the spell you just casted
+	did 1 damage to the enemy and took away",
+	"as well as reduced your turns down to 2",
+	"This concludes introduction",
+	"Now go have fun and beat up some 
+	enemies!",
 ]
 
 var block_position_1 = Vector2(171.0,418.0)
@@ -178,10 +177,12 @@ var super_casted: bool = false
 @onready var error_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D3
 @onready var potion_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D4
 @onready var pause_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var background: AudioStreamPlayer2D = $AudioStreamPlayer2D5
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	background.play()
 	Global.potato_fight = true
 	# Sets both the player and potato animations to idle as they are not currenntly in
 	# action.
@@ -245,6 +246,13 @@ func _ready() -> void:
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	# If the player has their music on, play the background music, or if they have it off,
+	# don't play the background music
+	if Global.background_music == false:
+		background.stream_paused = true
+	else:
+		background.stream_paused = false
+	
 	# Sets the values of the potion the player has in their inventory to the ones they
 	# can use in battle.
 	soda_value.text = str(Global.inventory[purple_potion])
@@ -258,7 +266,7 @@ func _process(delta: float) -> void:
 		pause_button.show()
 		spell.show()
 		potion.show()
-	
+		
 	# If the player gets defeated by the enemy, load the main game and spawn them next
 	# to the cauldron to refill their health and special points.
 	if Global.player_health <= 0:
@@ -267,12 +275,12 @@ func _process(delta: float) -> void:
 		get_tree().call_deferred("change_scene_to_file", "res://scenes/level.tscn")
 	# If the player defeats the enemy and is currently doing their quest, add one more
 	# enemy onto their quest counter as well as give the player a randomise sprout
-	# reward from 1-3 when respawning them back into the main level. Also set the enemy
-	# health max to the maximum for the next battle as well as changing the status of
-	# the enemy fought to dead, so that it can respawn later on.
+	# reward from 1-3 when respawning them back into the main level.
 	elif Global.potato_health <= 0 and Global.quest_talk_finish == true:
 		Global.potato_fight = false
 		Global.money += reward_value
+		# Also set the enemy health max to the maximum for the next battle as well as 
+		# changing the status of the enemy fought to dead, so that it can respawn later on.
 		Global.potato_health = potato_health_max
 		Global.enemy_dict[Global.enemy_id] = potato_dead
 		Global.quest_1_value += 1
@@ -347,6 +355,7 @@ func _process(delta: float) -> void:
 		block.position = block_position_2
 		text.position = text_position_2
 		sub_text.position = sub_text_position_2
+		
 	# Bring the items in the player's action to the front and enemy's health to the back
 	# when the player reaches that part of the tutorial, so they can understand how their
 	# actions work.
@@ -520,12 +529,8 @@ func _turn() -> void:
 		
 ## The enemy attacks the player when run, during the enemy's turn.
 func _potato_attack() -> void:
-	# Allow the enemy to attack the player after they've completed their three turns and
-	# take two health from the player.
+	# Allow the enemy to attack the player after they've completed their three turns..
 	potato_animation.play("attack")
-	Global.player_health -= 2
-	health_ui.value = Global.player_health
-	health.text = str(Global.player_health)
 
 
 ## The enemy heals itself  when run, during the enemy's turn.
@@ -565,8 +570,6 @@ func _potato_turn() -> void:
 		dizzy.show()
 		dizzy.play("spining")
 		dizzy_timer.start()
-		spell.mouse_filter = mouse_on
-		potion.mouse_filter = mouse_on
 	
 	_turn_reset()
 	
@@ -591,10 +594,11 @@ func _mistake_timeout() -> void:
 	mistake.text = str(mistake_reset)
 
 
-# Runs when the player clicks on the pause button.
+# Runs when the player clicks on the pause button when in combat.
 func _pause() -> void:
 	# When the player clicks on the pause button, pause the current fight scene and show
 	# the player the pause menu.
+	get_tree().paused = true
 	pause.show()
 	Global.pause = true
 	pause_button.hide()
@@ -622,7 +626,7 @@ func _super_cast() -> void:
 	else:
 		if Global.sound_effects == true:
 			fireball_sfx.play()
-			
+		
 		super_casted = true
 		spell.mouse_filter = mouse_off
 		potion.mouse_filter = mouse_off
@@ -647,25 +651,9 @@ func _basic_spell() -> void:
 	# If the player has not not yet completed the introduction and fires a basic spell
 	# at the enemy, trigger the rest of the introduction after the cast.
 	if Global.intro == false:
-		if Global.sound_effects == true:
-			fireball_sfx.play()
-			
-		basic_casted = true
-		spell.mouse_filter = mouse_off
-		potion.mouse_filter = mouse_off
-		player.play("casting")
-		fireball.show()
-		fireball.play("summoning")
-		fireball.position = fireball_starting
-		spell_time.start()
-		turns_left -= 1
-		_turn()
-		spell_opened = false
-		spell_menu.hide()
-		spell_exit.hide()
-		spell_background.hide()
 		light_options.hide()
 		intro_timer.start()
+		
 		# Hide the items from the introduction when the player is casting a spell at the 
 		# enemy, so that the player knows what is going on.
 		for items in canvas.get_children():
@@ -673,26 +661,25 @@ func _basic_spell() -> void:
 				items.hide()
 			elif items.is_in_group("turns"):
 				items.z_index = 0
-	# If the player has already completed the introduction, then let the player cast the
-	# spell like normal by taking away one of their turns and special points.
-	elif Global.intro == true:
-		if Global.sound_effects == true:
-			fireball_sfx.play()
-			
-		basic_casted = true
-		spell.mouse_filter = mouse_off
-		potion.mouse_filter = mouse_off
-		player.play("casting")
-		fireball.show()
-		fireball.play("summoning")
-		fireball.position = fireball_starting
-		spell_time.start()
-		turns_left -= 1
-		_turn()
-		spell_opened = false
-		spell_menu.hide()
-		spell_exit.hide()
-		spell_background.hide()
+	
+	if Global.sound_effects == true:
+		fireball_sfx.play()
+		
+	# Take away one of the player's turns and special points.	
+	basic_casted = true
+	spell.mouse_filter = mouse_off
+	potion.mouse_filter = mouse_off
+	player.play("casting")
+	fireball.show()
+	fireball.play("summoning")
+	fireball.position = fireball_starting
+	spell_time.start()
+	turns_left -= 1
+	_turn()
+	spell_opened = false
+	spell_menu.hide()
+	spell_exit.hide()
+	spell_background.hide()
 
 
 # Runs when the player clicks off the spell menu.
@@ -791,7 +778,12 @@ func _blue_potion() -> void:
 	# If the player has less special points than their base special points or less
 	# health than their base health, as well as own a blue potion then allow them to use
 	# the potion to regain health while taking a turn.
-	if (Global.player_special < Global.player_base_special or Global.player_health < Global.player_base_health) and Global.inventory[blue_potion] >= 1:
+	if (
+			(Global.player_special < Global.player_base_special 
+			or Global.player_health < Global.player_base_health) 
+			and Global.inventory[blue_potion] >= 1
+	):
+		
 		if Global.sound_effects == true:
 			potion_sfx.play()
 			
@@ -863,7 +855,10 @@ func _potato_finish(_attack: StringName) -> void:
 
 # Runs after the timer has finished it's attack and gets back up.
 func _potato_idle() -> void:
-	# Brings the enemy back to the idle animation.
+	# Brings the enemy back to the idle animation and take away 2 health from the player.
+	Global.player_health -= 2
+	health_ui.value = Global.player_health
+	health.text = str(Global.player_health)
 	potato_name.show()
 	potato_pointer.show()
 	potato_idle = true
@@ -893,3 +888,5 @@ func _dizzy_timeout() -> void:
 	potato_pointer.show()
 	dizzy.hide()
 	potato_distract = false
+	spell.mouse_filter = mouse_on
+	potion.mouse_filter = mouse_on

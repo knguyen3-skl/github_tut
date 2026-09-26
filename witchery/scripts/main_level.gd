@@ -40,9 +40,7 @@ var enemy_area2D: int = 2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if Global.background_music == true:
-		background.play()
-		
+	background.play()
 	announcement.hide()
 	quest.hide()
 	Global.pause = false
@@ -97,6 +95,8 @@ func _ready() -> void:
 			
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	# If the player has their music on, play the background music, or if they have it off,
+	# don't play the background music
 	if Global.background_music == false:
 		background.stream_paused = true
 	else:
@@ -167,6 +167,7 @@ func _process(delta: float) -> void:
 		quest_complete_repeat = true
 		DialogueManager.show_dialogue_balloon(dialogue, "snipet")
 		DialogueManager.dialogue_ended.connect(_quest_complete)
+		
 	# If the enemy is alive, show it as well as turn on it's area monitoring and
 	# collision.
 	for enemies in get_tree().get_nodes_in_group("enemy"):
@@ -175,33 +176,7 @@ func _process(delta: float) -> void:
 			enemies.get_child(enemy_area2D).monitoring = true
 			enemies.get_child(enemy_collison).disabled = false
 			enemies.set_physics_process(true)
-	
-	# If the pause menu is opened, hide all the UI elements and stop player movement, so
-	# that the player does not get ditracted.
-	if Global.pause == true:
-		for items in canvas.get_children():
-			if items.is_in_group("stats"):
-				items.hide()
-			elif items.is_in_group("collect"):
-				items.hide()
-		inventory.hide()
-		pause.hide()
-		player.speed = 0
-	elif Global.talking == true:
-		player.speed = 0
-	else:
-		# If the player is not involved in NPC interaction or the pause menu, display
-		# all the UI elements again for the player to play the game.
-		player.speed = player_speed
-		inventory.show()
-		pause.show()
-		money.show()
-		for items in canvas.get_children():
-			if items.is_in_group("stats"):
-				items.show()
-			elif items.is_in_group("collect"):
-				items.show()
-				
+
 	# Checks if the last battle was won and shows the player the rewards they recieved
 	# as soon as they come out from battle.
 	if Global.battle_won == true and timer == false:

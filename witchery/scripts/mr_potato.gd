@@ -33,7 +33,6 @@ func _physics_process(delta: float) -> void:
 		animation.rotate(delta * ROLL)
 		velocity = velocity.lerp(direction * speed, delta)
 		move_and_slide()
-
 	
 	# if the enemy has not reached the player yet, and the player is reachable, then 
 	# chase the player.

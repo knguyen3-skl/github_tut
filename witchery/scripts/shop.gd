@@ -16,6 +16,9 @@ var distract_price: int = 50
 @export var nothing: Label
 @export var market: StaticBody2D
 
+@onready var error_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D2
+@onready var reward_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D3
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -80,8 +83,12 @@ func _buy_super_cast() -> void:
 	if Global.money >= super_cast_price:
 		Global.money -= super_cast_price
 		Global.shop[supercast] = brought
-		
+		if Global.sound_effects == true:
+			reward_sfx.play()
 	else:
+		if Global.sound_effects == true:
+			error_sfx.play()
+			
 		timer.start()
 		broke.show()
 
@@ -92,8 +99,12 @@ func _buy_distract() -> void:
 	if Global.money >= distract_price:
 		Global.money -= distract_price
 		Global.shop[lookoverthere] = brought
-		
+		if Global.sound_effects == true:
+			reward_sfx.play()
 	else:
+		if Global.sound_effects == true:
+			error_sfx.play()
+			
 		timer.start()
 		broke.show()
 

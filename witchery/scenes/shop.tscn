@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://db3kevffj8enl" path="res://assets/block_tech.png" id="1_lx5au"]
 [ext_resource type="Texture2D" uid="uid://cxlxhtffoja2o" path="res://assets/wand_tech.png" id="2_xfvoa"]
 [ext_resource type="Texture2D" uid="uid://cki2qc60cqak1" path="res://assets/coin_tech.png" id="4_032fp"]
+[ext_resource type="AudioStream" uid="uid://djobn0cfiwr46" path="res://music/error_tech.mp3" id="5_2fc2m"]
+[ext_resource type="AudioStream" uid="uid://dbg5cgr1qubnp" path="res://music/reward_tech.mp3" id="6_8r1wq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfvoa"]
 bg_color = Color(0.66458356, 0, 0.04976818, 1)
@@ -282,6 +284,14 @@ offset_bottom = 364.0
 theme_override_constants/line_spacing = 0
 theme_override_font_sizes/font_size = 35
 text = "There's nothing left to buy..."
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="." unique_id=455577610]
+stream = ExtResource("5_2fc2m")
+volume_db = -5.0
+
+[node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="." unique_id=913953440]
+stream = ExtResource("6_8r1wq")
+volume_db = -5.0
 
 [connection signal="pressed" from="Button" to="." method="_exit"]
 [connection signal="timeout" from="Timer" to="." method="_broke_timer"]

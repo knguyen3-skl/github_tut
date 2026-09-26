@@ -25,7 +25,6 @@ func _process(delta: float) -> void:
 	# Checks to see if the option menu is opened, and if it is, display the current
 	# settings that the players have chosen.
 	if options == true:
-		
 		# Checks to see the player's current settings that they have chosen for 
 		# background music and displays the option buttons accordingly.
 		if Global.background_music == true:

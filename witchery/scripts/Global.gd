@@ -1,6 +1,6 @@
 extends Node
 
-var money: int = 101
+var money: int = 100
 var sprout: int = 5
 
 var potato_fight: bool = false
@@ -31,15 +31,15 @@ var shop_speech: bool = false
 
 var inventory = {
 	"purple_potion": 0,
-	"blue_potion": 0,
+	"blue_potion": 5,
 }
 
 var shop = {
-	"super_cast": "no",
-	"look_over_there": "no",
+	"super_cast": "yes",
+	"look_over_there": "yes",
 }
 
-var intro: bool = false
+var intro: bool = true
 var quest_1_value: int = 2
 var quest_talk: bool = false
 var quest_talk_finish: bool = false
